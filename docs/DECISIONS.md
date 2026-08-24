@@ -114,6 +114,28 @@ Admin RLS covers most tables. `saved_items` is deliberately not one of them.
 
 ---
 
+**17. The database is hosted in Frankfurt, `eu-central-1`.**
+Confirmed by HWS after the alternative was put to them. Lawful under UK GDPR:
+the UK's adequacy regulations cover the EEA, so data flows from the UK to
+Germany without additional safeguards, and the brief's requirement is
+"UK/approved-region hosting" rather than UK-only.
+
+*Caveat, recorded so it is not a surprise later:* Scottish public-sector
+buyers frequently make UK data residency a hard tender requirement. Supabase
+cannot change a project's region in place, so satisfying such a requirement
+after launch means a new project and a migration window. The cost of moving
+was roughly ten minutes while the database was empty.
+
+**18. Roles are never self-assignable beyond `organisation`.**
+`handle_new_user` reads the requested role from sign-up metadata, which is
+attacker-controlled: anyone can post arbitrary `options.data` to the public
+auth endpoint. Honouring a claimed `admin` there would let a stranger mint an
+admin account and read every table gated by `is_admin()`, including
+verification evidence and the review queue. The trigger resolves anything
+other than `organisation` to `woman`. Admin is granted by hand.
+
+---
+
 ## Open
 
 - **The four categories with no Access Zone.** Housing, safety and rights,
@@ -121,5 +143,3 @@ Admin RLS covers most tables. `saved_items` is deliberately not one of them.
   for them; whether they belong in the zone model is HWS's call. Until it is
   made, `hand_routing_requests` is the only path for an organisation working
   in those areas, and it must reach a person.
-- **Supabase region.** Must be UK for the hosting requirement in the brief,
-  and the region is fixed at project creation.
