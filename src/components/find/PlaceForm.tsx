@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { Globe, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
-type Match = { name: string; note: string };
+type Match = { name: string; note: string; value: string };
 
 const ESCAPE = "Anywhere in Scotland";
 const ONLINE = "Online support only";
@@ -79,7 +79,7 @@ export function PlaceForm({
             <li key={`${match.name}-${match.note}`}>
               <button
                 type="button"
-                onClick={() => go(match.name)}
+                onClick={() => go(match.value)}
                 className="flex w-full min-h-[44px] items-center gap-2 px-[18px] py-4 text-left text-[17px] text-ink"
               >
                 <strong className="font-semibold">{match.name}</strong>

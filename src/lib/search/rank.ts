@@ -79,17 +79,34 @@ function isScotlandWide(listing: SearchableListing) {
   return place.includes("scotland") || place.includes("nationwide");
 }
 
+/**
+ * Does this listing run somewhere she can reach?
+ *
+ * Her answer arrives as every level of the place at once, because question 2
+ * accepts any precision: "EH48 · Bathgate, West Lothian". Each level is
+ * tested separately. Matching only the first would fail the most ordinary
+ * case in the product, a woman typing her own postcode, since listings
+ * record the town they run in rather than the postcodes around it.
+ *
+ * The postcode itself is skipped: a listing never says "EH48", so testing it
+ * can only produce a false match against some unrelated string.
+ */
 function placeMatches(listing: SearchableListing, place: string) {
   if (!place) return false;
-  const needle = place.toLowerCase().split(/[·,]/)[0].trim();
-  if (!needle) return false;
 
   const haystack = [listing.place, listing.organisationPlace]
     .filter(Boolean)
     .join(" ")
     .toLowerCase();
 
-  return haystack.includes(needle) || needle.includes(haystack.trim());
+  if (!haystack.trim()) return false;
+
+  return place
+    .toLowerCase()
+    .split(/[·,]/)
+    .map((part) => part.trim())
+    .filter((part) => part.length > 2 && !/^[a-z]{1,2}\d/.test(part))
+    .some((part) => haystack.includes(part) || part.includes(haystack.trim()));
 }
 
 function isStale(listing: SearchableListing) {
