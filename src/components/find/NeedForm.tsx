@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
-import { Button } from "@/components/ui/Button";
+import { NextButton } from "@/components/find/NextButton";
 
 /**
  * Shown before she types, not after. These are the five most common ways
@@ -21,7 +21,6 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
   const [need, setNeed] = useState(initialNeed);
   const [blankAttempt, setBlankAttempt] = useState(false);
   const areaRef = useRef<HTMLTextAreaElement>(null);
-  const hintId = useId();
   const alertId = useId();
 
   useEffect(() => {
@@ -116,27 +115,11 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2">
-        {/*
-          aria-disabled rather than the disabled attribute, so the control
-          stays in the tab order. A truly disabled button is skipped entirely,
-          which leaves a keyboard or screen reader user at the end of the page
-          with no idea the way forward exists or why it is not working.
-        */}
-        <Button
-          onClick={go}
-          aria-disabled={!ready}
-          aria-describedby={!ready ? hintId : undefined}
-          className={!ready ? "opacity-40" : undefined}
-        >
-          Next
-        </Button>
-        {!ready ? (
-          <span id={hintId} className="text-[14px] leading-[1.5] text-ink-60">
-            Add a few words, or pick one of the suggestions above.
-          </span>
-        ) : null}
-      </div>
+      <NextButton
+        ready={ready}
+        onNext={go}
+        hint="Add a few words, or pick one of the suggestions above."
+      />
     </div>
   );
 }

@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Globe, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/Button";
+import { NextButton } from "@/components/find/NextButton";
 
 type Match = { name: string; note: string; value: string };
 
@@ -18,6 +18,7 @@ export function PlaceForm({
   initialPlace: string;
 }) {
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
   const [place, setPlace] = useState(initialPlace);
   const [matches, setMatches] = useState<Match[]>([]);
   const [searched, setSearched] = useState(false);
@@ -51,7 +52,12 @@ export function PlaceForm({
   const visible = longEnough ? matches : [];
 
   function go(value: string) {
-    const params = new URLSearchParams({ need, place: value.trim() });
+    const chosen = value.trim();
+    if (!chosen) {
+      inputRef.current?.focus();
+      return;
+    }
+    const params = new URLSearchParams({ need, place: chosen });
     router.push(`/find/situation?${params}`);
   }
 
@@ -65,6 +71,7 @@ export function PlaceForm({
         </label>
         <input
           id="place"
+          ref={inputRef}
           value={place}
           onChange={(e) => setPlace(e.target.value)}
           placeholder="e.g. EH48"
@@ -121,7 +128,11 @@ export function PlaceForm({
         </div>
       </div>
 
-      <Button onClick={() => go(place)}>Next</Button>
+      <NextButton
+        ready={query.length > 0}
+        onNext={() => go(place)}
+        hint="Type a place, or choose one of the two options above."
+      />
     </div>
   );
 }

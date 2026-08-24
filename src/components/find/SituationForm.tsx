@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Chip, ChipGroup } from "@/components/ui/Chip";
-import { Button } from "@/components/ui/Button";
+import { NextButton } from "@/components/find/NextButton";
 import type { Situation } from "@/lib/data/situations";
 
 const PREFER_NOT_TO_SAY = "prefer-not-to-say";
@@ -58,8 +58,19 @@ export function SituationForm({
         ))}
       </ChipGroup>
 
-      {/* Next always proceeds, including with nothing selected. */}
-      <Button onClick={go}>Next</Button>
+      {/*
+        The handoff has Next always proceeding here. It waits for an answer
+        instead, by decision, which resolves the risk the handoff itself
+        flags: the approved design dropped the Skip button, so a silent skip
+        was no longer stated anywhere. "Prefer not to say" is the stated way
+        through, and the hint names it, because a woman unwilling to disclose
+        anything must never meet a wall on this screen.
+      */}
+      <NextButton
+        ready={picked.length > 0}
+        onNext={go}
+        hint="Pick anything that applies, or choose Prefer not to say."
+      />
 
       <span className="text-[14px] leading-[1.5] text-ink-60">
         We don&apos;t store your answers or share them with the organisations we
