@@ -144,7 +144,7 @@ export default async function ResultsPage({
       </div>
 
       <div className="flex flex-col gap-[14px]">
-        {ranked.map(({ listing, why }) => {
+        {ranked.map(({ listing, why }, index) => {
           const card: ResultCardData = {
             name: listing.name,
             source: [listing.organisationName, listing.place]
@@ -172,6 +172,7 @@ export default async function ResultsPage({
               key={listing.id}
               data={card}
               interactive
+              bestMatch={index === 0}
               actionSlot={
                 <Link
                   /* Her answers travel with her, so the service page can
@@ -183,7 +184,10 @@ export default async function ResultsPage({
                       string,
                     ][],
                   )}`}
-                  className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-8 py-[15px] text-[17px] font-bold text-white no-underline"
+                  /* Light at rest, dark on hover. Inverting on hover is the
+                     whole affordance, so both states carry AA contrast on
+                     their own ground rather than relying on the change. */
+                  className="inline-flex min-h-[44px] items-center rounded-control border border-ink bg-surface px-8 py-[15px] text-[17px] font-bold text-ink no-underline transition-colors duration-150 ease-out hover:bg-ink hover:text-white focus-visible:bg-ink focus-visible:text-white"
                 >
                   Learn more
                 </Link>
