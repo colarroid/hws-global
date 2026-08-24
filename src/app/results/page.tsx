@@ -170,7 +170,15 @@ export default async function ResultsPage({
               strongest={index === 0}
               actionSlot={
                 <Link
-                  href={`/service/${listing.id}`}
+                  /* Her answers travel with her, so the service page can
+                     offer a way back to these results and knows not to
+                     treat her as a cold arrival. */
+                  href={`/service/${listing.id}?${new URLSearchParams(
+                    Object.entries(params).filter(([, v]) => v) as [
+                      string,
+                      string,
+                    ][],
+                  )}`}
                   className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-8 py-[15px] text-[17px] font-bold text-white no-underline"
                 >
                   Learn more
