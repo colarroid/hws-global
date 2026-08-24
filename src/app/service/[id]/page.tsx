@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { ArrowLeft, BadgeCheck, Flag } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ColdArrivalBar, ColdArrivalPanel } from "@/components/find/ColdArrival";
+import { SaveButton } from "@/components/find/SaveButton";
+import { getSavedIds } from "@/lib/saved";
 import { getService, applyHost } from "@/lib/data/service";
 import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
 
@@ -73,7 +75,7 @@ function Fact({ label, value }: { label: string; value: string | null }) {
 export default async function ServicePage({ params, searchParams }: Params & Search) {
   const { id } = await params;
   const query = await searchParams;
-  const service = await getService(id);
+  const [service, savedIds] = await Promise.all([getService(id), getSavedIds()]);
 
   if (!service) notFound();
 
@@ -116,6 +118,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
           </Link>
         ) : null}
 
+        <div className="flex flex-wrap items-start justify-between gap-4">
         <div className="flex flex-col gap-3">
           {closed ? (
             <span className="self-start rounded-pill-sm bg-closed px-[11px] py-[7px] text-[13px] font-bold text-ink-65">
@@ -132,6 +135,13 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
           <p className="m-0 text-[17px] text-ink-65">
             {[service.organisationName, service.place].filter(Boolean).join(" · ")}
           </p>
+        </div>
+
+          <SaveButton
+            listingId={service.id}
+            saved={savedIds.includes(service.id)}
+            name={service.name}
+          />
         </div>
 
         {service.blurb ? (

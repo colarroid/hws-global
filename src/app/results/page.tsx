@@ -3,6 +3,8 @@ import { ArrowLeft, SlidersHorizontal } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ResultCard, type ResultCardData } from "@/components/ResultCard";
 import { NoMatch } from "@/components/find/NoMatch";
+import { SaveButton } from "@/components/find/SaveButton";
+import { getSavedIds } from "@/lib/saved";
 import { getLiveListings, recordUnmetSearch } from "@/lib/data/search";
 import { getSituationLabels, getSituationPhrases } from "@/lib/data/situations";
 import { rank, countForScope, type Answers, type Scope } from "@/lib/search/rank";
@@ -64,11 +66,13 @@ export default async function ResultsPage({
   const params = await searchParams;
   const answers = parseAnswers(params);
 
-  const [listings, situationLabels, situationPhrases] = await Promise.all([
-    getLiveListings(),
-    getSituationLabels(),
-    getSituationPhrases(),
-  ]);
+  const [listings, situationLabels, situationPhrases, savedIds] =
+    await Promise.all([
+      getLiveListings(),
+      getSituationLabels(),
+      getSituationPhrases(),
+      getSavedIds(),
+    ]);
 
   // Phrases build the reason; labels show her answers back as chips.
   const ranked = rank(listings, answers, situationPhrases);
@@ -173,6 +177,13 @@ export default async function ResultsPage({
               data={card}
               interactive
               bestMatch={index === 0}
+              saveSlot={
+                <SaveButton
+                  listingId={listing.id}
+                  saved={savedIds.includes(listing.id)}
+                  name={listing.name}
+                />
+              }
               actionSlot={
                 <Link
                   /* Her answers travel with her, so the service page can
