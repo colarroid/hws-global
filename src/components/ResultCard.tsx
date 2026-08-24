@@ -41,8 +41,13 @@ export function ResultCard({
   data,
   saveSlot,
   actionSlot,
-  /** The strongest match carries a 2px border. Preview always shows it. */
+  /**
+   * Draws the heavy border permanently. Used by the organisation preview,
+   * where a single card stands alone and needs an edge.
+   */
   strongest = false,
+  /** Adds the hover and keyboard-focus edge. Results cards set this. */
+  interactive = false,
   /** In preview, empty fields are named rather than collapsed. */
   showGaps = false,
 }: {
@@ -52,6 +57,7 @@ export function ResultCard({
   /** Live "Learn more" link. Omitted, an inert copy is drawn for preview. */
   actionSlot?: React.ReactNode;
   strongest?: boolean;
+  interactive?: boolean;
   showGaps?: boolean;
 }) {
   const fallback = (value: string) =>
@@ -62,9 +68,17 @@ export function ResultCard({
 
   return (
     <article
-      className={`flex flex-col gap-[14px] rounded-card-lg bg-surface p-7 ${
-        strongest ? "border-2 border-ink" : "border border-ring"
-      }`}
+      className={[
+        "flex flex-col gap-[14px] rounded-card-lg bg-surface p-7",
+        strongest ? "border-2 border-ink" : "border border-ring",
+        // outline rather than a thicker border: it is drawn outside the box
+        // model, so nothing reflows and the cards below do not jump as the
+        // pointer crosses them. focus-within means tabbing to Save or Learn
+        // more shows which card you are working inside.
+        interactive
+          ? "outline-offset-[-2px] hover:outline-2 hover:outline-ink focus-within:outline-2 focus-within:outline-ink"
+          : "",
+      ].join(" ")}
     >
       <div className="flex items-start justify-between gap-6">
         <div className="flex flex-col gap-[5px]">

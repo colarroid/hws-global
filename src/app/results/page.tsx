@@ -39,8 +39,12 @@ function parseAnswers(params: {
  * Screen 5. Next steps.
  *
  * The whole proposition: a short, ordered set of next steps, each with a
- * reason attached. Capped at five, strongest first, and the only thing
- * marking the strongest is the heavier border.
+ * reason attached. Capped at five, strongest first.
+ *
+ * Order is now the only thing conveying rank. The handoff gave the first card
+ * a permanent heavy border as the strongest-match marker, and that was
+ * removed by decision because it read as a selected state rather than a
+ * ranking. The heavy edge is a hover and focus affordance instead.
  *
  * Server-rendered from the URL, so back, refresh, sharing and printing all
  * behave. There is no loading route to get trapped on: loading.tsx streams
@@ -140,7 +144,7 @@ export default async function ResultsPage({
       </div>
 
       <div className="flex flex-col gap-[14px]">
-        {ranked.map(({ listing, why }, index) => {
+        {ranked.map(({ listing, why }) => {
           const card: ResultCardData = {
             name: listing.name,
             source: [listing.organisationName, listing.place]
@@ -167,7 +171,7 @@ export default async function ResultsPage({
             <ResultCard
               key={listing.id}
               data={card}
-              strongest={index === 0}
+              interactive
               actionSlot={
                 <Link
                   /* Her answers travel with her, so the service page can
