@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Local env
 .env.local
+
+# Dev seed output
+.seed-*
