@@ -9,6 +9,11 @@ import { cookies } from "next/headers";
  * and the design work still renders before credentials are wired up.
  */
 export async function createClient() {
+  // Read cookies first. Any route reaching this is session-dependent, and
+  // touching cookies is what opts it out of static prerendering. Throwing
+  // above this line would fail the build instead.
+  const cookieStore = await cookies();
+
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
@@ -18,8 +23,6 @@ export async function createClient() {
         "NEXT_PUBLIC_SUPABASE_ANON_KEY in .env.local (see .env.example).",
     );
   }
-
-  const cookieStore = await cookies();
 
   return createServerClient(url, key, {
     cookies: {

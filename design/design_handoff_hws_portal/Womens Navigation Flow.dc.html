@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; background: #F9F6F1; }
+  a { color: #5F5230; }
+  a:hover { color: #8E7B49; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#F9F6F1"></rect><rect x="36" y="24" width="48" height="72" rx="10" fill="#FFFFFF" stroke="#120902" stroke-opacity="0.16"></rect><rect x="44" y="36" width="32" height="6" rx="3" fill="#BEA461"></rect><rect x="44" y="48" width="32" height="4" rx="2" fill="#120902" fill-opacity="0.2"></rect><rect x="44" y="58" width="24" height="4" rx="2" fill="#120902" fill-opacity="0.2"></rect><rect x="44" y="72" width="32" height="12" rx="4" fill="#120902"></rect></svg>
+</template>
+
+<div style="font-family: Inter, 'Open Sans', system-ui, sans-serif; background: #F9F6F1; color: #120902; padding: 64px 56px 120px; display: flex; flex-direction: column; gap: 72px; width: max-content;">
+
+  <header style="display: flex; flex-direction: column; gap: 20px; max-width: 900px;">
+    <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase; color: #5F5230; font-weight: 600;">
+      <span style="width: 26px; height: 2px; background: #8E7B49; display: block;"></span>
+      <span>Approved screens &middot; Phase One</span>
+    </div>
+    <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 54px; line-height: 1.05; font-weight: 500; margin: 0; letter-spacing: -0.01em;">Women's Navigation &amp; Access Platform</h1>
+    <p style="font-size: 19px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.7); max-width: 760px; text-wrap: pretty;">The twelve approved screens, mobile first, annotated with purpose, content hierarchy, primary action and states. Everything not in the approved set has been removed from this board.</p>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px;">
+      <span style="font-size: 13px; font-weight: 600; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 14px;">No account to search, read or apply</span>
+      <span style="font-size: 13px; font-weight: 600; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 14px;">WCAG 2.2 AA</span>
+      <span style="font-size: 13px; font-weight: 600; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 14px;">Navigation, not a directory</span>
+      <span style="font-size: 13px; font-weight: 600; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 14px;">Neutral ranking, no paid placement</span>
+      <span style="font-size: 13px; font-weight: 600; background: #FDEEEB; border: 1px solid #F1C7C0; border-radius: 999px; padding: 7px 14px; color: #B91C1C;">Red notes = risk or open decision</span>
+    </div>
+    <p style="font-size: 14px; line-height: 1.5; margin: 8px 0 0; color: rgba(18, 9, 2, 0.6); max-width: 760px;">Services shown are invented examples for layout purposes, not real listings. The walkthrough is the 42-year-old West Lothian returner: out of work while caring for her mother, older Android phone, patchy signal, twenty minutes between appointments.</p>
+  </header>
+
+  <section style="display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.1); padding-bottom: 12px;">
+      <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 500; margin: 0;">Find a solution</h2>
+      <span style="font-size: 14px; color: rgba(18, 9, 2, 0.6);">Screens 1.0 &ndash; 8.0 &middot; one decision per screen, no dead ends</span>
+    </div>
+
+    <div style="display: flex; gap: 28px; align-items: flex-start;">
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">1.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Question 1 &mdash; need</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Back</span>
+            <span style="font-weight: 600;">Question 1 of 4</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="height: 4px; background: rgba(18, 9, 2, 0.08);"><div style="width: 25%; height: 4px; background: #8E7B49;"></div></div>
+          <div style="padding: 24px 20px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px; line-height: 1.15; margin: 0; font-weight: 500;">What do you need help with?</h3>
+            <p style="font-size: 15px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.65);">In your own words. There's no wrong answer.</p>
+            <div style="border: 1.5px solid #120902; border-radius: 10px; padding: 14px; font-size: 16px; line-height: 1.4; min-height: 84px;">getting back to work after caring for my mum<span style="color: #8E7B49;">|</span></div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Suggestions</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 14px; background: #F7F3EB; border: 1px solid #DED1B0; border-radius: 999px; padding: 9px 13px;">Returning to work after a break</span>
+                <span style="font-size: 14px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Support while caring for a relative</span>
+                <span style="font-size: 14px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Confidence and skills for work</span>
+              </div>
+            </div>
+            <button style="font: inherit; font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 17px; cursor: pointer; margin-top: auto;">Next</button>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Let her use her own language, then quietly translate it into something we can match on.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Question &rarr; free text, focused on load &rarr; up to three interpreted suggestions &rarr; Next.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Next. Tapping a suggestion also advances.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Empty:</strong> suggestions become five common needs and Next is disabled with hint text, never a red error. <strong>Typing:</strong> suggestions refresh after a pause, not per keystroke. <strong>Unrecognised words:</strong> her text is kept verbatim and we say &ldquo;We'll search on what you wrote&rdquo;. <strong>Submitted blank:</strong> inline message above the field with focus moved to it &mdash; &ldquo;Add a few words so we know where to look.&rdquo;</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">A blank box is intimidating, and this is where digital confidence bites. The suggestion list must be visible before she types or she stalls here.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">2.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Question 2 &mdash; where</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Back</span>
+            <span style="font-weight: 600;">Question 2 of 4</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="height: 4px; background: rgba(18, 9, 2, 0.08);"><div style="width: 50%; height: 4px; background: #8E7B49;"></div></div>
+          <div style="padding: 24px 20px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px; line-height: 1.15; margin: 0; font-weight: 500;">Where should we look for support?</h3>
+            <p style="font-size: 15px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.65);">A town, a postcode, or your council area.</p>
+            <div style="border: 1.5px solid #120902; border-radius: 10px; padding: 14px; font-size: 16px;">EH48<span style="color: #8E7B49;">|</span></div>
+            <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; overflow: hidden;">
+              <div style="padding: 13px 14px; font-size: 15px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); background: #F7F3EB;"><strong>EH48</strong> &middot; Bathgate, West Lothian</div>
+              <div style="padding: 13px 14px; font-size: 15px; border-bottom: 1px solid rgba(18, 9, 2, 0.08);">West Lothian <span style="color: rgba(18, 9, 2, 0.6);">&middot; council area</span></div>
+              <div style="padding: 13px 14px; font-size: 15px;">Livingston <span style="color: rgba(18, 9, 2, 0.6);">&middot; town</span></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Or</span>
+              <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+                <span style="font-size: 14px; background: #F7F3EB; border: 1px solid #DED1B0; border-radius: 999px; padding: 9px 13px;">Anywhere in Scotland</span>
+                <span style="font-size: 14px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Online support only</span>
+              </div>
+            </div>
+            <button style="font: inherit; font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 17px; cursor: pointer; margin-top: auto;">Next</button>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Accept any level of precision she has, and make &ldquo;I don't mind where&rdquo; a first-class answer.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Question &rarr; one field &rarr; matched places &rarr; the two escape hatches, visible without scrolling on a small screen.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Choose a place, or Next with what's typed.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Partial postcode:</strong> resolves to a district; a full postcode is never demanded. <strong>Unrecognised:</strong> &ldquo;We don't know that place. Try a nearby town, or search anywhere in Scotland.&rdquo; with both buttons. <strong>Ambiguous</strong> (two Newtons): list both with council names. <strong>Location services:</strong> never requested in Phase One.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">Postcode fields read as officialdom. The plain sub-line and the &ldquo;anywhere&rdquo; option are what keep her moving.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">3.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Question 3 &mdash; situation</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Back</span>
+            <span style="font-weight: 600;">Question 3 of 4</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="height: 4px; background: rgba(18, 9, 2, 0.08);"><div style="width: 75%; height: 4px; background: #8E7B49;"></div></div>
+          <div style="padding: 22px 20px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px; line-height: 1.15; margin: 0; font-weight: 500;">What best describes your situation?</h3>
+            <p style="font-size: 15px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.65);">This helps us spot support you may qualify for. You can pick more than one.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <span style="font-size: 15px; border: 2px solid #120902; background: #120902; color: #FFFFFF; border-radius: 999px; padding: 10px 14px; font-weight: 600;">Returning to work &check;</span>
+              <span style="font-size: 15px; border: 2px solid #120902; background: #120902; color: #FFFFFF; border-radius: 999px; padding: 10px 14px; font-weight: 600;">Unpaid carer &check;</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Pregnant or new parent</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Starting or growing a business</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Looking for funding</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Changing career</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Recently graduated</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">New to Scotland</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Rural or island community</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Experiencing financial difficulty</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Looking after my health</span>
+              <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 14px;">Prefer not to say</span>
+            </div>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+              <button style="font: inherit; font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 17px; cursor: pointer;">Next</button>
+              <span style="font-size: 13px; line-height: 1.5; color: rgba(18, 9, 2, 0.6); text-align: center;">We don't store your answers or share them with the organisations we show you.</span>
+            </div>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Unlock eligibility-based matches without ever feeling like a means test.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Question &rarr; why it helps &rarr; twelve chips in plain words &rarr; Next &rarr; the reassurance line about not storing answers.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Next &rarr; 4.0.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Nothing selected:</strong> Next still proceeds, and nothing nags. <strong>Nothing selected or &ldquo;prefer not to say&rdquo;:</strong> results run on need and place only, and the eligibility-based matches drop out of the list. <strong>Prefer not to say:</strong> treated as a real answer and remembered for the session so we don't re-ask.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">Twelve chips is the longest list in the flow. If she reads it as being sorted into a category, she leaves, so the reassurance line has to sit on this screen and not in a policy page. The approved screen also drops the explicit &ldquo;Skip this question&rdquo; button: Next still proceeds with nothing selected, but a woman who would rather not answer now has to work that out for herself.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">4.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Working it out</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 600;">Finding your next steps</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="padding: 26px 20px; display: flex; flex-direction: column; gap: 18px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 26px; line-height: 1.2; margin: 0; font-weight: 500;">Looking for support near Bathgate&hellip;</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div style="height: 96px; background: #EEF2EF; border-radius: 10px;"></div>
+              <div style="height: 96px; background: #F7F3EB; border-radius: 10px;"></div>
+              <div style="height: 96px; background: #FCFCFA; border-radius: 10px;"></div>
+            </div>
+            <p style="font-size: 15px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.65);">This usually takes a couple of seconds.</p>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Hold attention on a slow connection without a spinner that could mean anything. Naming her town is what makes the wait feel like work being done.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Under 1s:</strong> skipped entirely. <strong>Over 6s:</strong> adds &ldquo;Still looking. You can wait, or see online support now&rdquo; with a button. <strong>Failure:</strong> an error state that keeps every answer &mdash; not yet approved, and needed before build. Announced to screen readers through a polite live region.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 400px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">5.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Your next steps &mdash; happy path</span>
+        </div>
+        <div style="width: 400px; min-height: 1180px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Change answers</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="padding: 20px 18px 24px; display: flex; flex-direction: column; gap: 18px; flex: 1;">
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.2; margin: 0; font-weight: 500;">Next steps for you</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                <span style="font-size: 13px; background: #EEF2EF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 12px;">back to work after caring &times;</span>
+                <span style="font-size: 13px; background: #EEF2EF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 12px;">EH48 Bathgate &times;</span>
+                <span style="font-size: 13px; background: #EEF2EF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 7px 12px;">Returning to work &times;</span>
+                <span style="font-size: 13px; background: #FFFFFF; border: 1px solid #8E7B49; color: #5F5230; border-radius: 999px; padding: 7px 12px; font-weight: 700;">Refine or widen</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 21px; font-weight: 600;">Start here</span>
+                <span style="font-size: 13px; color: rgba(18, 9, 2, 0.6);">strongest match</span>
+              </div>
+              <div style="border: 2px solid #120902; border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 19px; font-weight: 700; line-height: 1.25;">Return to Work West Lothian</span>
+                  <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Example service &middot; Livingston &amp; Bathgate</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.55; margin: 0;">A six-week group programme that helps women who have been out of paid work update their CV, practise interviews and find local employers who are hiring.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; color: #14672F; border-radius: 6px; padding: 5px 9px;">Free</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; border-radius: 6px; padding: 5px 9px;">In person &middot; Bathgate</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; border-radius: 6px; padding: 5px 9px;">6 weeks, one morning a week</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #F7F3EB; color: #5F5230; border-radius: 6px; padding: 5px 9px;">Next group: 5 October 2026</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; line-height: 1.5; border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 10px;">
+                  <span><strong>Who it's for:</strong> women aged 25+ in West Lothian who haven't worked in the last 12 months.</span>
+                  <span><strong>What to expect:</strong> you fill in a short form, then someone phones you within a week for an informal chat.</span>
+                  <span><strong>Apply by:</strong> 26 September 2026.</span>
+                </div>
+                <div style="background: #F7F3EB; border-radius: 10px; padding: 11px 12px; font-size: 14px; line-height: 1.5; color: #5F5230;"><strong>Why this matched you:</strong> you said you want to get back into work after caring for a relative, and this runs in West Lothian.</div>
+                <div style="display: flex; gap: 8px;">
+                  <button style="font: inherit; font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 15px; cursor: pointer; flex: 1;">Learn more</button>
+                  <span style="font-size: 15px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 14px 13px; display: flex; align-items: center; gap: 6px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;">Save</span><span style="font-size: 15px;">&#9734;</span></span>
+                </div>
+                <span style="font-size: 12px; color: rgba(18, 9, 2, 0.65);">&#10003; Verified &middot; last checked 4 August 2026 &middot; Information supplied by Westlothian.org</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 9px;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 18px; font-weight: 700; line-height: 1.25;">Carer's Break Grant</span>
+                  <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Example fund &middot; Scotland-wide</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.55; margin: 0;">A one-off grant of up to &pound;300 for people who look after a relative, to spend on a course, equipment or travel.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; color: #14672F; border-radius: 6px; padding: 5px 9px;">Free to apply</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; border-radius: 6px; padding: 5px 9px;">Online form</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #F7F3EB; color: #5F5230; border-radius: 6px; padding: 5px 9px;">Closes 31 October 2026</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; line-height: 1.5; border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 10px;">
+                  <span><strong>Who it's for:</strong> unpaid carers over 16 living in Scotland. You don't need to claim Carer's Allowance.</span>
+                  <span><strong>What to expect:</strong> a form of about 15 minutes, and a decision in four weeks.</span>
+                </div>
+                <div style="background: #F7F3EB; border-radius: 10px; padding: 11px 12px; font-size: 14px; line-height: 1.5; color: #5F5230;"><strong>Why this matched you:</strong> you told us you're an unpaid carer, and this is open across Scotland.</div>
+                <div style="display: flex; gap: 8px;">
+                  <button style="font: inherit; font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 14px; cursor: pointer; flex: 1;">Learn more</button>
+                  <span style="font-size: 15px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 14px 13px; display: flex; align-items: center; gap: 6px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;">Save</span><span style="font-size: 15px;">&#9734;</span></span>
+                </div>
+                <span style="font-size: 12px; color: rgba(18, 9, 2, 0.65);">&#10003; Verified &middot; last checked 22 July 2026 &middot; Information supplied by Westlothian.org</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 14px; padding: 16px; display: flex; flex-direction: column; gap: 9px;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <span style="font-size: 18px; font-weight: 700; line-height: 1.25;">West Lothian Carers Centre</span>
+                  <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Example organisation &middot; Bathgate</span>
+                </div>
+                <p style="font-size: 15px; line-height: 1.55; margin: 0;">A person who will talk through your situation with you and point you to money, respite and training you may not know about.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; color: #14672F; border-radius: 6px; padding: 5px 9px;">Free</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; border-radius: 6px; padding: 5px 9px;">Phone, or drop in</span>
+                  <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; border-radius: 6px; padding: 5px 9px;">Mon&ndash;Thu, 9am&ndash;4pm</span>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 5px; font-size: 14px; line-height: 1.5; border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 10px;">
+                  <span><strong>Who it's for:</strong> anyone in West Lothian who looks after someone. No referral needed.</span>
+                  <span><strong>What to expect:</strong> a 20-minute conversation, no forms on the first call.</span>
+                </div>
+                <div style="background: #F7F3EB; border-radius: 10px; padding: 11px 12px; font-size: 14px; line-height: 1.5; color: #5F5230;"><strong>Why this matched you:</strong> you're in West Lothian and caring for a relative, and they can help you work out what else you're entitled to.</div>
+                <div style="display: flex; gap: 8px;">
+                  <button style="font: inherit; font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 14px; cursor: pointer; flex: 1;">Learn more</button>
+                  <span style="font-size: 15px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 14px 13px; display: flex; align-items: center; gap: 6px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;">Save</span><span style="font-size: 15px;">&#9734;</span></span>
+                </div>
+                <span style="font-size: 12px; color: rgba(18, 9, 2, 0.65);">&#10003; Verified &middot; last checked 12 August 2026 &middot; Information supplied by Westlothian.org</span>
+              </div>
+            </div>
+
+            <div style="border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 16px; display: flex; flex-direction: column; gap: 10px;">
+              <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">That's everything that fits closely. You can widen the search or change what you told us.</span>
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <span style="font-size: 16px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 14px; text-align: center;">Show support across Scotland</span>
+                <span style="font-size: 16px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 14px; text-align: center;">Change my answers</span>
+                <span style="font-size: 15px; font-weight: 700; color: #5F5230; padding: 8px; text-align: center;">Start over</span>
+              </div>
+              <span style="font-size: 13px; line-height: 1.5; color: rgba(18, 9, 2, 0.6);">We show what fits, in the order we think is most useful. No organisation pays to be here. We can't decide what you're entitled to &mdash; only the organisation can do that.</span>
+            </div>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">The whole proposition lands here: a short, ordered set of next steps with a reason attached to each.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Title &rarr; editable answer chips &rarr; Start here, one card with a heavier border and the &ldquo;strongest match&rdquo; label &rarr; the remaining cards in rank order, unheaded &rarr; widen / change / start over &rarr; how ranking works.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Learn more, with Save beside it on every card. Cap the list at five. Applying always happens on the organisation's own site, so no results card is ever labelled &ldquo;Apply&rdquo;.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Card contents</span><span style="font-size: 14px; line-height: 1.5;">Name, what it is, plain-language tags, who it's for, what to expect, any deadline, why it matched, the action, the verified stamp and the source. Eleven pieces of information, in that order, on every card.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Loading:</strong> 4.0. <strong>None:</strong> 8.0. <strong>Fewer than three matches:</strong> the list is simply shorter &mdash; no empty groups, no padding. <strong>Widened:</strong> a banner reads &ldquo;Now showing support across Scotland &mdash; back to West Lothian&rdquo;. <strong>Removing an answer chip:</strong> re-runs the search in place and keeps her scroll position.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">Cards this full can read as three walls of text on a small screen. Everything below &ldquo;Who it's for&rdquo; can collapse behind a details link on the lower cards if testing shows scroll fatigue &mdash; but never for Start here, and never behind a login. With the group headings gone, the reason a card is in the list rests entirely on its own &ldquo;Why this matched you&rdquo; line.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">6.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Refine or widen</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Back to results</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="height: 150px; background: #ECE7DF;"></div>
+          <div style="padding: 20px 18px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 24px; margin: 0; font-weight: 500;">Refine or widen</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">How far to look</span>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span style="font-size: 15px; border: 2px solid #120902; background: #120902; color: #FFFFFF; border-radius: 999px; padding: 9px 13px; font-weight: 600;">My area</span>
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Nearby areas</span>
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">All Scotland</span>
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Online only</span>
+              </div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Only show</span>
+              <div style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Free</span>
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Open now</span>
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">No forms</span>
+                <span style="font-size: 15px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 13px;">Women only</span>
+              </div>
+            </div>
+            <button style="font: inherit; font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 15px; cursor: pointer; margin-top: auto;">Update my search</button>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Let her widen or narrow without re-answering anything. Answers persist for the session; this screen only ever adds or relaxes.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Update my search, returning to 5.0 with the same scroll position.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Filter empties results:</strong> stay here and show the count live &mdash; &ldquo;0 with these filters. Try removing &lsquo;No forms&rsquo;.&rdquo; <strong>Back to results:</strong> discards unapplied changes without warning, since nothing is lost. <strong>Clearing:</strong> happens by deselecting, so there is no separate reset control.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">Filters are how a directory thinks. Keep this shallow and secondary &mdash; if she needs it to get a useful answer, the ranking on 5.0 is wrong.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">7.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Change answers</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Back to results</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="padding: 24px 20px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 28px; line-height: 1.15; margin: 0; font-weight: 500;">Here's what we heard</h3>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 14px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;"><span style="font-size: 16px; line-height: 1.4;"><span style="display: block; font-size: 13px; color: rgba(18, 9, 2, 0.6); font-weight: 600;">You need help with</span>getting back to work after caring for my mum</span><span style="font-size: 15px; font-weight: 700; color: #5F5230; white-space: nowrap;">Change</span></div>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 14px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;"><span style="font-size: 16px; line-height: 1.4;"><span style="display: block; font-size: 13px; color: rgba(18, 9, 2, 0.6); font-weight: 600;">Looking in</span>EH48 &middot; Bathgate, West Lothian</span><span style="font-size: 15px; font-weight: 700; color: #5F5230; white-space: nowrap;">Change</span></div>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 14px; display: flex; justify-content: space-between; gap: 12px; align-items: flex-start;"><span style="font-size: 16px; line-height: 1.4;"><span style="display: block; font-size: 13px; color: rgba(18, 9, 2, 0.6); font-weight: 600;">Your situation</span>Returning to work &middot; Unpaid carer</span><span style="font-size: 15px; font-weight: 700; color: #5F5230; white-space: nowrap;">Change</span></div>
+            </div>
+            <p style="font-size: 15px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">We'll show you a small number of next steps, strongest match first. Nobody pays to appear here.</p>
+            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+              <button style="font: inherit; font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 17px; cursor: pointer;">Update my search</button>
+              <span style="font-size: 15px; text-align: center; font-weight: 700; color: #5F5230;">Start over</span>
+            </div>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Show her she was understood in her own words, and set expectations for a short answer rather than 147 results.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Three editable answers &rarr; what happens next &rarr; Update my search &rarr; Start over.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Update my search. Change returns to that one question and comes straight back here.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Q3 not answered:</strong> the third row reads &ldquo;Not given &mdash; add if you'd like&rdquo;. <strong>Start over:</strong> confirms once &mdash; &ldquo;This clears your answers. Start again?&rdquo; <strong>Reached from results:</strong> Back returns to the results she came from, not to the question sequence.</span></div>
+          <div style="background: #F7F3EB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5F5230;">Note</span><span style="font-size: 14px; line-height: 1.5; color: #5F5230;">This screen does double duty: a checkpoint before the first search, and the edit surface reached from the results header afterwards.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">8.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Nothing matched &mdash; never a dead end</span>
+        </div>
+        <div style="width: 360px; min-height: 860px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.08); font-size: 12px; color: rgba(18, 9, 2, 0.65);">
+            <span style="font-weight: 700;">&larr; Change answers</span>
+            <span style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 6px 10px; font-weight: 600;">&times; Close</span>
+          </div>
+          <div style="padding: 22px 18px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.2; margin: 0; font-weight: 500;">We haven't found a close match yet</h3>
+            <p style="font-size: 16px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">That doesn't mean there's no help &mdash; it means we don't have something that fits your search right now.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="border: 2px solid #120902; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5F5230;">Try this first</span>
+                <span style="font-size: 17px; font-weight: 700;">Widen to all of Scotland</span>
+                <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">4 services support this, and 3 of them work by phone or online.</span>
+                <button style="font: inherit; font-size: 16px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 14px; cursor: pointer; margin-top: 4px;">Show me those 4</button>
+              </div>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 17px; font-weight: 700;">Online support only</span>
+                <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">Courses and advice you can use from home, wherever you are.</span>
+              </div>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 17px; font-weight: 700;">Nearby areas</span>
+                <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">Highland &middot; Caithness &middot; Sutherland</span>
+              </div>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+                <span style="font-size: 17px; font-weight: 700;">Change what you asked for</span>
+                <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">Try &ldquo;starting a business&rdquo; instead of &ldquo;childminding&rdquo;.</span>
+              </div>
+            </div>
+            <div style="border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 14px; display: flex; flex-direction: column; gap: 10px;">
+              <span style="font-size: 17px; font-weight: 700;">Rather talk to a person?</span>
+              <p style="font-size: 15px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.7);">We can help with almost anything, and might know who else to ask.</p>
+              <div style="background: #120902; border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 3px; align-items: center;"><span style="font-size: 16px; font-weight: 700; color: #FFFFFF;">Contact our support</span><span style="font-size: 13px; color: rgba(255, 255, 255, 0.75);">Free &middot; Phone &middot; Mon&ndash;Fri</span></div>
+            </div>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Turn absence into a next step. Never the words &ldquo;no results&rdquo;, never a full stop.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Honest explanation &rarr; the one widening most likely to work, with a real count &rarr; three other routes &rarr; a route to a person.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">The pre-counted widening. Counts are computed before this screen renders, so we only ever offer a widening that has something in it.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Nothing anywhere in Scotland:</strong> drop the widening block and lead with &ldquo;Contact our support&rdquo;. <strong>Nothing nearby but online exists:</strong> say so plainly and lead with the online results. <strong>Outside opening hours:</strong> the button still works and says when someone will answer.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">Highest-risk screen in the flow. If it reads as failure she will not come back, and she'll tell other women it doesn't work. &ldquo;Contact our support&rdquo; makes the fallback dependable, but it puts a staffing commitment behind it &mdash; someone has to answer Mon&ndash;Fri, and the queue is now ours.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.1); padding-bottom: 12px;">
+      <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 500; margin: 0;">Account</h2>
+      <span style="font-size: 14px; color: rgba(18, 9, 2, 0.6);">Screens 9.0 &ndash; 12.0 &middot; the account exists to hold saved opportunities and their deadlines</span>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 16px; padding: 24px 28px; max-width: 1000px; display: flex; flex-direction: column; gap: 10px;">
+      <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">The account's job</span>
+      <p style="font-size: 17px; line-height: 1.55; margin: 0;">Hold the opportunities she found so she can come back to them, and tell her before a deadline passes. Everything a woman can read, search or apply for without an account stays that way. The account is offered only after she has already saved something worth keeping &mdash; never before results, never as a wall.</p>
+    </div>
+
+    <div style="display: flex; gap: 28px; align-items: flex-start;">
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">9.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Access your account</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: flex-end; padding: 14px 18px;"><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;"><span style="width: 18px; height: 2px; background: #120902; display: block;"></span><span style="width: 18px; height: 2px; background: #120902; display: block;"></span></div></div>
+          <div style="padding: 8px 18px 22px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.2; margin: 0; font-weight: 500;">Access your account</h3>
+              <p style="font-size: 15px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">We'll send you a one-time passcode to sign in.</p>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 14px; font-weight: 600;">Email address</span>
+              <div style="border: 1.5px solid #120902; border-radius: 10px; padding: 14px; font-size: 16px;">j.mcallister@example.com<span style="color: #8E7B49;">|</span></div>
+            </div>
+            <span style="font-size: 16px; font-weight: 700; background: #120902; color: #FFFFFF; border-radius: 10px; padding: 15px; text-align: center;">Send me a sign-in code</span>
+            <div style="display: flex; align-items: center; gap: 12px; font-size: 13px; color: rgba(18, 9, 2, 0.6);"><span style="flex: 1; height: 1px; background: rgba(18, 9, 2, 0.08);"></span><span>or</span><span style="flex: 1; height: 1px; background: rgba(18, 9, 2, 0.08);"></span></div>
+            <span style="font-size: 16px; font-weight: 700; background: #F7F3EB; border: 1px solid #DED1B0; border-radius: 10px; padding: 15px; text-align: center;">Continue with Google</span>
+            <span style="font-size: 13px; color: rgba(18, 9, 2, 0.6); text-align: center;">&#128274; Your email is kept private and secure.</span>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">The smallest possible entry point: an emailed one-time passcode, or Google. No password to invent, and one screen serves both signing up and signing back in.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Title and what happens next &rarr; one field &rarr; send the code &rarr; Google as the alternative &rarr; the privacy line.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Send me a sign-in code. Reached only when she asks to save something or to be reminded.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Code sent:</strong> a six-digit entry screen &mdash; not in the approved set, and needed before build. <strong>Existing address:</strong> identical screen and message, so we never reveal whether an account exists. <strong>Malformed address:</strong> inline above the field, never a bare red border. <strong>Code never arrives:</strong> &ldquo;Check spam, or try another address&rdquo;. New accounts continue to 10.0; returning women go straight to 11.0.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">A passcode still needs email access on the same phone, a real barrier on borrowed or shared devices, though a code she reads and types beats a link she must open. Two things need deciding: the line &ldquo;kept private and secure&rdquo; sits directly above a Google button that hands an identifier to a third party, and any email from us could be seen by someone else in the house. Neutral sender and subject, signed off with a safety partner.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">10.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Set up your profile</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: flex-end; padding: 14px 18px;"><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;"><span style="width: 18px; height: 2px; background: #120902; display: block;"></span><span style="width: 18px; height: 2px; background: #120902; display: block;"></span></div></div>
+          <div style="padding: 8px 18px 22px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.2; margin: 0; font-weight: 500;">Setup your profile</h3>
+              <p style="font-size: 15px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">One email address is all we need. No name, no postcode, no password to invent.</p>
+            </div>
+            <div style="display: flex; gap: 10px;">
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 14px; font-weight: 600;">First name</span><div style="border: 1.5px solid #120902; border-radius: 10px; padding: 13px; font-size: 16px;">John</div></div>
+              <div style="flex: 1; display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 14px; font-weight: 600;">Last name</span><div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px; font-size: 16px; color: rgba(18, 9, 2, 0.4);">Doe</div></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <span style="font-size: 14px; font-weight: 600;">Phone number (Optional)</span>
+              <div style="display: flex; gap: 10px;"><div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 16px; font-size: 16px;">&#9662;</div><div style="flex: 1; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px; font-size: 16px; color: rgba(18, 9, 2, 0.4);">Phone number</div></div>
+            </div>
+            <span style="font-size: 16px; font-weight: 700; background: #120902; color: #FFFFFF; border-radius: 10px; padding: 15px; text-align: center;">Continue</span>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">Give the account a name to greet her by, and an optional phone number. Shown once, immediately after the passcode is accepted.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Title &rarr; what we need &rarr; name &rarr; optional phone &rarr; Continue. Nothing is gated behind this screen: Continue works with the fields untouched.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Continue &rarr; 11.0, her saved list, with the item she saved already in it.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>All fields empty:</strong> Continue still proceeds and the list greets her without a name. <strong>Arrived via Google:</strong> name pre-filled from the Google account, phone blank. <strong>Phone entered:</strong> unused in Phase Two &mdash; no SMS, no sharing.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Copy defect</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">The approved screen labels both name fields &ldquo;First name&rdquo;, and its body copy reads &ldquo;One email address is all we need. No name, no postcode&rdquo; directly above a request for a name. Corrected to &ldquo;Last name&rdquo; here; the body copy needs rewriting before build.</span></div>
+          <div style="background: #FDEEEB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #B91C1C;">Risk</span><span style="font-size: 14px; line-height: 1.5; color: #B91C1C;">This step adds three fields to a flow whose promise was that we ask for nothing. A name is defensible for greeting her. An unexplained phone number is the kind of request that makes a woman close the tab, and we have no use for it in Phase Two &mdash; recommend cutting it or stating its purpose on the screen.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">11.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Your saved list</span>
+        </div>
+        <div style="width: 360px; min-height: 860px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: flex-end; padding: 14px 18px;"><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;"><span style="width: 18px; height: 2px; background: #120902; display: block;"></span><span style="width: 18px; height: 2px; background: #120902; display: block;"></span></div></div>
+          <div style="padding: 8px 18px 22px; display: flex; flex-direction: column; gap: 14px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.2; margin: 0; font-weight: 500;">Your saved list</h3>
+            <div style="display: flex; gap: 6px;">
+              <span style="font-size: 14px; font-weight: 600; border: 2px solid #120902; border-radius: 999px; padding: 8px 13px;">All 4</span>
+              <span style="font-size: 14px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 8px 13px;">Closing soon</span>
+              <span style="font-size: 14px; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 8px 13px;">Applied</span>
+            </div>
+
+            <div style="border: 1.5px solid #B91C1C; border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 8px;">
+              <div style="background: #FDEEEB; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #B91C1C;">Closes in 8 days &middot; 26 September</div>
+              <span style="font-size: 17px; font-weight: 700;">Return to Work West Lothian</span>
+              <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Free &middot; In person &middot; Bathgate &middot; Saved 4 Sep</span>
+              <div style="display: flex; gap: 8px;">
+                <span style="font-size: 15px; font-weight: 700; background: #120902; color: #FFFFFF; border-radius: 10px; padding: 12px 16px;">Apply</span>
+                <span style="font-size: 15px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 12px 16px;">Mark applied</span>
+              </div>
+            </div>
+
+            <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+              <div style="background: #F7F3EB; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #5F5230;">Closes 31 October</div>
+              <span style="font-size: 17px; font-weight: 700;">Carer's Break Grant</span>
+              <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Free to apply &middot; Online form &middot; Saved 4 Sep</span>
+            </div>
+
+            <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px; background: #FCFCFA;">
+              <div style="background: #EEF2EF; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #14672F;">&#10003; You marked this applied &middot; 9 Sep</div>
+              <span style="font-size: 17px; font-weight: 700;">Bathgate Jobs &amp; Skills Hub</span>
+              <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Free &middot; Drop in &middot; Tue and Thu</span>
+            </div>
+
+            <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 14px; display: flex; flex-direction: column; gap: 6px;">
+              <div style="background: #F7F3EB; border-radius: 8px; padding: 8px 10px; font-size: 13px; font-weight: 700; color: #5F5230;">No closing date</div>
+              <span style="font-size: 17px; font-weight: 700;">West Lothian Carers Centre</span>
+              <span style="font-size: 14px; color: rgba(18, 9, 2, 0.65);">Free &middot; Phone or drop in &middot; Mon&ndash;Thu</span>
+            </div>
+
+            <div style="margin-top: auto; border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+              <div style="display: flex; gap: 8px;"><span style="font-size: 15px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 12px 14px;">Print my list</span><span style="font-size: 15px; font-weight: 700; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 12px 14px;">Share</span></div>
+              <span style="font-size: 15px; font-weight: 700; color: #5F5230;">Reminders and account settings</span>
+            </div>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">The reason the account exists. Ordered by what closes first, so the list itself does the prompting.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Hierarchy</span><span style="font-size: 14px; line-height: 1.5;">Deadline status on every card, above the name &rarr; the action &rarr; mark applied. Sorting is by closing date, and applied items sink to the bottom.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Primary action</span><span style="font-size: 14px; line-height: 1.5;">Apply, on the item closing soonest. This is the one place &ldquo;Apply&rdquo; is the right label, because she has already read the detail and decided. &ldquo;Mark applied&rdquo; is hers to set and never inferred &mdash; we can't see what the organisation does.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Empty:</strong> not in the approved set, and needed before build. <strong>Deadline passed:</strong> the card stays, marked &ldquo;Closed 26 September&rdquo;, with &ldquo;Ask when the next one starts&rdquo; and two alternatives &mdash; a saved item never silently disappears. <strong>Service stopped running:</strong> marked &ldquo;No longer running&rdquo; with alternatives. <strong>Details changed since saving:</strong> a line reads &ldquo;The dates for this changed on 12 September&rdquo;.</span></div>
+          <div style="background: #F7F3EB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5F5230;">Note</span><span style="font-size: 14px; line-height: 1.5; color: #5F5230;">Print and Share stay on the signed-in list &mdash; support workers and family often act on her behalf. The header is a menu button rather than Back and Close, so the way out of the account area lives in that menu and still needs drawing.</span></div>
+        </div>
+      </div>
+
+      <div style="width: 360px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="display: flex; align-items: baseline; gap: 10px;">
+          <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; color: #5F5230; font-weight: 600;">12.0</span>
+          <span style="font-size: 16px; font-weight: 700;">Settings</span>
+        </div>
+        <div style="width: 360px; min-height: 700px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 4px 6px -1px rgba(18, 9, 2, 0.1), 0 2px 4px -2px rgba(18, 9, 2, 0.1);">
+          <div style="display: flex; justify-content: flex-end; padding: 14px 18px;"><div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-end;"><span style="width: 18px; height: 2px; background: #120902; display: block;"></span><span style="width: 18px; height: 2px; background: #120902; display: block;"></span></div></div>
+          <div style="padding: 8px 18px 22px; display: flex; flex-direction: column; gap: 16px; flex: 1;">
+            <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 27px; line-height: 1.2; margin: 0; font-weight: 500;">Settings</h3>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Reminders</span>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 14px; font-size: 16px; display: flex; justify-content: space-between;"><span>Before a deadline</span><span style="font-weight: 700;">On</span></div>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 14px; font-size: 16px; display: flex; justify-content: space-between;"><span>How far ahead</span><span style="font-weight: 700;">7 days</span></div>
+              <span style="font-size: 14px; line-height: 1.5; color: rgba(18, 9, 2, 0.65);">We send nothing else. No newsletter, no suggestions.</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Email address</span>
+              <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 14px; font-size: 16px; display: flex; justify-content: space-between;"><span>j.mcallister@example.com</span><span style="color: #5F5230; font-weight: 700;">Change</span></div>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 8px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Your data</span>
+              <span style="font-size: 15px; line-height: 1.55; color: rgba(18, 9, 2, 0.7);">We hold your email address, your four saved items, and the dates you saved them. Nothing else.</span>
+              <span style="font-size: 15px; font-weight: 700; border: 1.5px solid #B91C1C; color: #B91C1C; border-radius: 10px; padding: 13px; text-align: center;">Delete my account and everything in it</span>
+            </div>
+            <span style="font-size: 15px; font-weight: 700; color: #5F5230; margin-top: auto;">Sign out on this device</span>
+          </div>
+        </div>
+        <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Purpose</span><span style="font-size: 14px; line-height: 1.5;">State exactly what we hold in plain numbers, and make leaving as easy as joining. Four controls, no dashboard.</span></div>
+          <div style="display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">States</span><span style="font-size: 14px; line-height: 1.5;"><strong>Delete:</strong> one confirmation naming what goes (&ldquo;Your 4 saved items and your email address. This can't be undone.&rdquo;), then done immediately, then a plain search screen with no win-back prompt. <strong>Reminders off:</strong> deadline status still shows in the list itself. <strong>Change email:</strong> confirmed at the new address before it takes effect.</span></div>
+          <div style="background: #F7F3EB; border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 3px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5F5230;">Note</span><span style="font-size: 14px; line-height: 1.5; color: #5F5230;">Deliberately absent: profiles beyond a name, interests, following organisations, activity history, recommendations. Each one would make the account a reason to hold data we don't need. The screen also lists a phone number as held data once 10.0 collects one, which is another reason to cut that field.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section style="display: flex; flex-direction: column; gap: 28px;">
+    <div style="display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid rgba(18, 9, 2, 0.1); padding-bottom: 12px;">
+      <h2 style="font-family: 'Playfair Display', Georgia, serif; font-size: 30px; font-weight: 500; margin: 0;">Navigation model</h2>
+      <span style="font-size: 14px; color: rgba(18, 9, 2, 0.6);">How she moves, and what she never loses</span>
+    </div>
+
+    <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+      <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 16px; padding: 26px 28px; width: 640px; display: flex; flex-direction: column; gap: 14px;">
+        <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; margin: 0; font-weight: 600;">The approved path</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55;">
+          <span><strong>1.0</strong> need &rarr; <strong>2.0</strong> where &rarr; <strong>3.0</strong> situation &rarr; <strong>4.0</strong> working it out &rarr; <strong>5.0</strong> next steps &rarr; the organisation's own site.</span>
+          <span>From <strong>5.0</strong>: the Refine chip &rarr; <strong>6.0</strong>; the header &rarr; <strong>7.0</strong>; nothing found &rarr; <strong>8.0</strong>.</span>
+          <span>Save on any card &rarr; <strong>9.0</strong> &rarr; <strong>10.0</strong>, first time only &rarr; <strong>11.0</strong> her list &rarr; <strong>12.0</strong> settings.</span>
+        </div>
+        <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; margin: 10px 0 0; font-weight: 600;">Still to approve</h3>
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.55;">
+          <span>The <strong>fourth question</strong>. All three question screens are labelled &ldquo;of 4&rdquo;, but no fourth screen is in the approved set. Either it exists and needs drawing, or the counters should read &ldquo;of 3&rdquo;.</span>
+          <span>The <strong>landing screen</strong>, the <strong>passcode entry screen</strong>, the <strong>empty saved list</strong>, and the <strong>deadline reminder email</strong> &mdash; each one is reachable from an approved screen, so the flow has gaps without them.</span>
+          <span>The <strong>service detail page</strong> behind &ldquo;Learn more&rdquo;, and the <strong>handover</strong> to the organisation's site.</span>
+          <span><strong>Error and offline states</strong>, <strong>sensitive-category handling</strong> and its exit-control explainer, <strong>helper mode</strong> for support workers, <strong>cold arrivals</strong> from a search engine, and <strong>reading and access controls</strong> (text size, contrast, language, low data).</span>
+        </div>
+      </div>
+
+      <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 16px; padding: 26px 28px; width: 560px; display: flex; flex-direction: column; gap: 14px;">
+        <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; margin: 0; font-weight: 600;">Rules that hold everywhere</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55;">
+          <span><strong>Back</strong> is always one step, labelled with where it goes (&ldquo;Change answers&rdquo;, &ldquo;Back to results&rdquo;), and never loses what she typed.</span>
+          <span><strong>Refine</strong> happens in place. Answer chips on 5.0 are removable; removing one re-runs the search and keeps her scroll position.</span>
+          <span><strong>Widen</strong> is additive and reversible, with a banner naming the current scope and a one-tap return.</span>
+          <span><strong>Start over</strong> is always available, confirms once, and is never the only way forward.</span>
+          <span><strong>Close</strong> sits in the same place on every screen in the search flow, and closes straight away.</span>
+          <span><strong>Saving never requires an account.</strong> The star works immediately for the session; the account only makes the list outlive the window. Searching, reading and applying never ask her to sign in.</span>
+          <span><strong>State lives in the URL</strong>, so Back, refresh, sharing and printing all work, and the browser's own back button behaves.</span>
+          <span>Every target <strong>44px or larger</strong>. Keyboard order: skip link, Back, Close, then content.</span>
+        </div>
+      </div>
+    </div>
+
+    <sc-if value="{{ showRisks }}" hint-placeholder-val="{{ true }}">
+      <div style="background: #FDEEEB; border: 1px solid #F1C7C0; border-radius: 16px; padding: 26px 28px; width: 1224px; display: flex; flex-direction: column; gap: 14px;">
+        <h3 style="font-family: 'Playfair Display', Georgia, serif; font-size: 22px; margin: 0; font-weight: 600; color: #B91C1C;">Where the flow risks losing her</h3>
+        <div style="display: flex; flex-direction: column; gap: 10px; font-size: 15px; line-height: 1.55; color: #991B1B;">
+          <span><strong>1.0 &mdash; the blank box.</strong> Free text is the whole promise of &ldquo;tell us what you need&rdquo;, and also the point where digital confidence bites. Suggestions must be visible before she types.</span>
+          <span><strong>3.0 &mdash; twelve chips, and no Skip.</strong> Any hint of being sorted into a category loses trust. With the Skip button removed, Next has to be visibly usable with nothing selected.</span>
+          <span><strong>5.0 &mdash; card weight.</strong> Eleven pieces of information per card is a lot of screen. If scroll fatigue shows in testing, collapse the lower half of the cards below Start here &mdash; never Start here itself, and never behind a login.</span>
+          <span><strong>8.0 &mdash; nothing matched.</strong> The single highest-risk screen. If it reads as failure she won't return, and she'll tell other women. Every widening we offer must be pre-counted so it is never another dead end.</span>
+          <span><strong>9.0 &mdash; the only ask in the flow.</strong> Every other screen gives without requesting. If the sign-in prompt drifts earlier &mdash; onto results, or before she has saved anything &mdash; the no-login promise reads as a bait and switch.</span>
+          <span><strong>10.0 &mdash; three fields we don't need.</strong> The profile step asks for a name and a phone number in a flow that promised to ask for nothing, and its own body copy still says &ldquo;no name, no postcode&rdquo;. The phone number has no use in Phase Two.</span>
+          <span><strong>Data freshness.</strong> The verified stamp is the trust mechanism. Stale dates undo the ranking work, so a re-check cadence and a &ldquo;something wrong?&rdquo; reporting loop need an owner before launch.</span>
+        </div>
+      </div>
+    </sc-if>
+  </section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showRiskFlags&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Board&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    return { showRisks: this.props.showRiskFlags ?? true };
+  }
+}
+</script>
+</body>
+</html>

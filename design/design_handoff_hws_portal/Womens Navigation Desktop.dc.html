@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin: 0; background: #F9F6F1; }
+  a { color: #5F5230; }
+  a:hover { color: #8E7B49; }
+  input, button, textarea { font-family: inherit; }
+  input:focus-visible, button:focus-visible { outline: 2px solid #8E7B49; outline-offset: 2px; }
+</style>
+</helmet>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#F9F6F1"></rect><rect x="18" y="30" width="84" height="60" rx="6" fill="#FFFFFF" stroke="#120902" stroke-opacity="0.16"></rect><rect x="30" y="42" width="42" height="7" rx="3" fill="#BEA461"></rect><rect x="30" y="56" width="60" height="4" rx="2" fill="#120902" fill-opacity="0.2"></rect><rect x="30" y="66" width="48" height="4" rx="2" fill="#120902" fill-opacity="0.2"></rect><rect x="30" y="76" width="34" height="10" rx="4" fill="#120902"></rect></svg>
+</template>
+
+<div style="font-family: Inter, 'Open Sans', system-ui, sans-serif; background: #F9F6F1; color: #120902; min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header style="border-bottom: 1px solid rgba(18, 9, 2, 0.1); background: #F9F6F1; position: sticky; top: 0; z-index: 10;">
+    <div style="max-width: 1100px; margin: 0 auto; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+      <button onClick="{{ goHome }}" style="background: none; border: 0; padding: 0; cursor: pointer; display: flex; align-items: center;">
+        <span style="font-size: 15px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #120902;">Logo</span>
+      </button>
+      <nav style="display: flex; align-items: center; gap: 8px;">
+        <button onClick="{{ goSaved }}" style="font-size: 15px; font-weight: 600; background: none; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 16px; cursor: pointer; color: #120902; display: flex; align-items: center; gap: 8px;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path></svg>
+          <span>My saved list</span>
+          <span style="font-size: 13px; font-weight: 700; background: #F7F3EB; color: #5F5230; border-radius: 999px; padding: 2px 8px;">{{ savedCount }}</span>
+        </button>
+        <button onClick="{{ goSettings }}" style="font-size: 15px; font-weight: 600; background: none; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 9px 16px; cursor: pointer; color: #120902; display: flex; align-items: center; gap: 8px;">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main style="flex: 1; display: flex; flex-direction: column;">
+
+    <sc-if value="{{ isQ1 }}" hint-placeholder-val="{{ true }}">
+      <div style="height: 4px; background: rgba(18, 9, 2, 0.08);"><div style="width: 33%; height: 4px; background: #8E7B49;"></div></div>
+      <div style="max-width: 660px; margin: 0 auto; padding: 72px 40px 96px; display: flex; flex-direction: column; gap: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: rgba(18, 9, 2, 0.6);">
+          <span style="font-weight: 600;">Question 1 of 3</span>
+          <span></span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 46px; line-height: 1.1; margin: 0; font-weight: 500; letter-spacing: -0.01em;">What do you need help with?</h1>
+          <p style="font-size: 18px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">In your own words. There's no wrong answer.</p>
+        </div>
+        <textarea value="{{ needText }}" onChange="{{ setNeed }}" placeholder="e.g. getting back to work after caring for my mum" rows="3" style="border: 1.5px solid #120902; border-radius: 10px; padding: 18px; font-size: 18px; line-height: 1.5; resize: vertical; background: #FFFFFF; color: #120902;"></textarea>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Suggestions</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <sc-for list="{{ needSuggestions }}" as="s" hint-placeholder-count="3">
+              <button onClick="{{ s.pick }}" style="font-size: 16px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 12px 18px; cursor: pointer; color: #120902;">{{ s.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <button onClick="{{ goQ2 }}" style="font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 19px; cursor: pointer; margin-top: 8px;">Next</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isQ2 }}" hint-placeholder-val="{{ false }}">
+      <div style="height: 4px; background: rgba(18, 9, 2, 0.08);"><div style="width: 66%; height: 4px; background: #8E7B49;"></div></div>
+      <div style="max-width: 660px; margin: 0 auto; padding: 72px 40px 96px; display: flex; flex-direction: column; gap: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: rgba(18, 9, 2, 0.6);">
+          <button onClick="{{ goQ1 }}" style="font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back</span></button>
+          <span style="font-weight: 600;">Question 2 of 3</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 46px; line-height: 1.1; margin: 0; font-weight: 500; letter-spacing: -0.01em;">Where should we look for support?</h1>
+          <p style="font-size: 18px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">A town, a postcode, or your council area.</p>
+        </div>
+        <input value="{{ placeText }}" onChange="{{ setPlace }}" placeholder="e.g. EH48" style="border: 1.5px solid #120902; border-radius: 10px; padding: 18px; font-size: 18px; background: #FFFFFF; color: #120902;">
+        <div style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; overflow: hidden; background: #FFFFFF;">
+          <sc-for list="{{ placeMatches }}" as="p" hint-placeholder-count="3">
+            <button onClick="{{ p.pick }}" style="width: 100%; text-align: left; font-size: 17px; padding: 16px 18px; border: 0; border-bottom: 1px solid rgba(18, 9, 2, 0.08); background: none; cursor: pointer; color: #120902;">
+              <strong>{{ p.name }}</strong><span style="color: rgba(18, 9, 2, 0.6);">{{ p.note }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Or</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <button onClick="{{ pickAnywhere }}" style="font-size: 16px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 12px 18px; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>Anywhere in Scotland</span></button>
+            <button onClick="{{ pickOnline }}" style="font-size: 16px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 12px 18px; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>Online support only</span></button>
+          </div>
+        </div>
+        <button onClick="{{ goQ3 }}" style="font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 19px; cursor: pointer; margin-top: 8px;">Next</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isQ3 }}" hint-placeholder-val="{{ false }}">
+      <div style="height: 4px; background: rgba(18, 9, 2, 0.08);"><div style="width: 100%; height: 4px; background: #8E7B49;"></div></div>
+      <div style="max-width: 780px; margin: 0 auto; padding: 72px 40px 96px; display: flex; flex-direction: column; gap: 28px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; font-size: 14px; color: rgba(18, 9, 2, 0.6);">
+          <button onClick="{{ goQ2 }}" style="font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back</span></button>
+          <span style="font-weight: 600;">Question 3 of 3</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 46px; line-height: 1.1; margin: 0; font-weight: 500; letter-spacing: -0.01em;">What best describes your situation?</h1>
+          <p style="font-size: 18px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">This helps us spot support you may qualify for. You can pick more than one.</p>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+          <sc-for list="{{ situations }}" as="c" hint-placeholder-count="12">
+            <button onClick="{{ c.toggle }}" style-hover="border-color: #8E7B49" style="font-size: 16px; background: {{ c.bg }}; border: {{ c.border }}; border-radius: 999px; padding: 12px 18px; cursor: pointer; color: {{ c.fg }}; font-weight: {{ c.weight }};">
+              <sc-if value="{{ c.on }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; margin-right: 6px; vertical-align: -2px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"></path></svg></span></sc-if>{{ c.label }}
+            </button>
+          </sc-for>
+        </div>
+        <button onClick="{{ goLoading }}" style="font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 19px; cursor: pointer; margin-top: 8px;">Next</button>
+        <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.6); text-align: center;">We don't store your answers or share them with the organisations we show you.</span>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isLoading }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 780px; margin: 0 auto; padding: 96px 40px; display: flex; flex-direction: column; gap: 32px; width: 100%;">
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; line-height: 1.15; margin: 0; font-weight: 500;">{{ loadingTitle }}</h1>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <div style="height: 120px; background: #EEF2EF; border-radius: 12px;"></div>
+          <div style="height: 120px; background: #F7F3EB; border-radius: 12px;"></div>
+          <div style="height: 120px; background: #FCFCFA; border-radius: 12px;"></div>
+        </div>
+        <p style="font-size: 17px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.65);">This usually takes a couple of seconds.</p>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isResults }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 820px; margin: 0 auto; padding: 56px 40px 96px; display: flex; flex-direction: column; gap: 28px; width: 100%;">
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+          <button onClick="{{ goChange }}" style="align-self: flex-start; font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Change answers</span></button>
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 44px; line-height: 1.1; margin: 0; font-weight: 500; letter-spacing: -0.01em;">Next steps for you</h1>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px; align-items: center;">
+            <sc-for list="{{ answerChips }}" as="a" hint-placeholder-count="3">
+              <span style="font-size: 14px; background: #EEF2EF; border: 1px solid rgba(18, 9, 2, 0.1); border-radius: 999px; padding: 8px 14px;">{{ a.label }}</span>
+            </sc-for>
+            <button onClick="{{ goRefine }}" style="font-size: 14px; font-weight: 700; background: #FFFFFF; border: 1px solid #8E7B49; color: #5F5230; border-radius: 999px; padding: 8px 14px; cursor: pointer;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><line x1="21" x2="14" y1="4" y2="4"></line><line x1="10" x2="3" y1="4" y2="4"></line><line x1="21" x2="12" y1="12" y2="12"></line><line x1="8" x2="3" y1="12" y2="12"></line><line x1="21" x2="16" y1="20" y2="20"></line><line x1="12" x2="3" y1="20" y2="20"></line><line x1="14" x2="14" y1="2" y2="6"></line><line x1="8" x2="8" y1="10" y2="14"></line><line x1="16" x2="16" y1="18" y2="22"></line></svg>Refine or widen</span></button>
+          </div>
+        </div>
+
+        <sc-for list="{{ results }}" as="r" hint-placeholder-count="3">
+          <article style="background: #FFFFFF; border: {{ r.border }}; border-radius: 14px; padding: 28px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; justify-content: space-between; gap: 24px; align-items: flex-start;">
+              <div style="display: flex; flex-direction: column; gap: 5px;">
+                <h2 style="font-size: 23px; font-weight: 700; line-height: 1.25; margin: 0;">{{ r.name }}</h2>
+                <span style="font-size: 15px; color: rgba(18, 9, 2, 0.65);">{{ r.source }}</span>
+              </div>
+              <button onClick="{{ r.toggleSave }}" style="font-size: 15px; font-weight: 700; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 12px 16px; cursor: pointer; color: #120902; white-space: nowrap; display: flex; align-items: center; gap: 8px;">
+                <span style="display: inline-flex; color: #8E7B49;">{{ r.saveIconEl }}</span><span>{{ r.saveLabel }}</span>
+              </button>
+            </div>
+            <p style="font-size: 17px; line-height: 1.6; margin: 0; max-width: 62ch;">{{ r.blurb }}</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ r.tags }}" as="t" hint-placeholder-count="3">
+                <span style="font-size: 13px; font-weight: 600; background: #EEF2EF; border-radius: 6px; padding: 6px 10px;">{{ t.label }}</span>
+              </sc-for>
+              <sc-if value="{{ r.deadline }}" hint-placeholder-val="{{ true }}">
+                <span style="font-size: 13px; font-weight: 600; background: #F7F3EB; color: #5F5230; border-radius: 6px; padding: 6px 10px;">{{ r.deadline }}</span>
+              </sc-if>
+            </div>
+            <sc-if value="{{ detailed }}" hint-placeholder-val="{{ true }}">
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px 32px; border-top: 1px solid rgba(18, 9, 2, 0.08); padding-top: 14px;">
+                <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Who it's for</span><span style="font-size: 15px; line-height: 1.5;">{{ r.who }}</span></div>
+                <div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">What to expect</span><span style="font-size: 15px; line-height: 1.5;">{{ r.expect }}</span></div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ showWhy }}" hint-placeholder-val="{{ true }}">
+              <div style="background: #F7F3EB; border-radius: 10px; padding: 14px 16px; font-size: 15px; line-height: 1.55; color: #5F5230;"><strong>Why this matched you:</strong> {{ r.why }}</div>
+            </sc-if>
+            <div style="display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;">
+              <button style="font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 15px 32px; cursor: pointer;">Learn more</button>
+              <span style="font-size: 13px; color: #14672F; display: inline-flex; align-items: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"></path><path d="m9 12 2 2 4-4"></path></svg>{{ r.verified }}</span>
+            </div>
+          </article>
+        </sc-for>
+
+        <div style="border-top: 1px solid rgba(18, 9, 2, 0.1); padding-top: 24px; display: flex; flex-direction: column; gap: 16px;">
+          <p style="font-size: 17px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.7);">That's everything that fits closely. You can widen the search or change what you told us.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <button onClick="{{ goNoMatch }}" style="font-size: 16px; font-weight: 700; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 15px 22px; cursor: pointer; color: #120902;">Show support across Scotland</button>
+            <button onClick="{{ goChange }}" style="font-size: 16px; font-weight: 700; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 15px 22px; cursor: pointer; color: #120902;">Change my answers</button>
+            <button onClick="{{ startOver }}" style="font-size: 16px; font-weight: 700; background: none; border: 0; padding: 15px 8px; cursor: pointer; color: #5F5230;">Start over</button>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isRefine }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 660px; margin: 0 auto; padding: 56px 40px 96px; display: flex; flex-direction: column; gap: 28px; width: 100%;">
+        <button onClick="{{ goResults }}" style="align-self: flex-start; font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to results</span></button>
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 42px; line-height: 1.1; margin: 0; font-weight: 500;">Refine or widen</h1>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">How far to look</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <sc-for list="{{ scopes }}" as="s" hint-placeholder-count="4">
+              <button onClick="{{ s.pick }}" style="font-size: 16px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 12px 18px; cursor: pointer; color: #120902;">
+                <sc-if value="{{ s.on }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; color: #5F5230; margin-right: 6px; vertical-align: -2px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"></path></svg></span></sc-if>{{ s.label }}
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Only show</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+            <sc-for list="{{ filters }}" as="f" hint-placeholder-count="4">
+              <button onClick="{{ f.toggle }}" style="font-size: 16px; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 12px 18px; cursor: pointer; color: #120902;">
+                <sc-if value="{{ f.on }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; color: #5F5230; margin-right: 6px; vertical-align: -2px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"></path></svg></span></sc-if>{{ f.label }}
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <span style="font-size: 16px; color: rgba(18, 9, 2, 0.7);">{{ filterCount }}</span>
+        <button onClick="{{ goResults }}" style="font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 19px; cursor: pointer;">Update my search</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isChange }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 660px; margin: 0 auto; padding: 56px 40px 96px; display: flex; flex-direction: column; gap: 28px; width: 100%;">
+        <button onClick="{{ goResults }}" style="align-self: flex-start; font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Back to results</span></button>
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 42px; line-height: 1.1; margin: 0; font-weight: 500;">Here's what we heard</h1>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <sc-for list="{{ answerRows }}" as="row" hint-placeholder-count="3">
+            <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 18px 20px; display: flex; justify-content: space-between; gap: 20px; align-items: flex-start;">
+              <span style="font-size: 17px; line-height: 1.45;"><span style="display: block; font-size: 13px; color: rgba(18, 9, 2, 0.6); font-weight: 600;">{{ row.label }}</span>{{ row.value }}</span>
+              <button onClick="{{ row.change }}" style="font-size: 16px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #5F5230; white-space: nowrap;">Change</button>
+            </div>
+          </sc-for>
+        </div>
+        <p style="font-size: 17px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">We'll show you a small number of next steps, strongest match first. Nobody pays to appear here.</p>
+        <button onClick="{{ goLoading }}" style="font-size: 18px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 19px; cursor: pointer;">Update my search</button>
+        <button onClick="{{ startOver }}" style="font-size: 16px; font-weight: 700; background: none; border: 0; padding: 8px; cursor: pointer; color: #5F5230;">Start over</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isNoMatch }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 720px; margin: 0 auto; padding: 56px 40px 96px; display: flex; flex-direction: column; gap: 28px; width: 100%;">
+        <button onClick="{{ goChange }}" style="align-self: flex-start; font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>Change answers</span></button>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 42px; line-height: 1.1; margin: 0; font-weight: 500;">We haven't found a close match yet</h1>
+          <p style="font-size: 18px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">That doesn't mean there's no help. It means we don't have something that fits your search right now. Here's what we'd try next.</p>
+        </div>
+        <div style="background: #FFFFFF; border: 2px solid #120902; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5F5230;">Try this first</span>
+          <span style="font-size: 21px; font-weight: 700;">Widen to all of Scotland</span>
+          <span style="font-size: 16px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">4 services support this, and 3 of them work by phone or online.</span>
+          <button onClick="{{ goLoading }}" style="align-self: flex-start; font-size: 16px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 14px 26px; cursor: pointer; margin-top: 6px;">Show me those 4</button>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+          <sc-for list="{{ widenOptions }}" as="w" hint-placeholder-count="3">
+            <button onClick="{{ w.pick }}" style="text-align: left; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 20px; cursor: pointer; display: flex; flex-direction: column; gap: 6px; color: #120902;">
+              <span style="font-size: 18px; font-weight: 700;">{{ w.title }}</span>
+              <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.7);">{{ w.note }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <div style="border-top: 1px solid rgba(18, 9, 2, 0.1); padding-top: 24px; display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 20px; font-weight: 700;">Rather talk to a person?</span>
+          <p style="font-size: 16px; line-height: 1.5; margin: 0; color: rgba(18, 9, 2, 0.7);">We can help with almost anything, and might know who else to ask.</p>
+          <div style="background: #120902; border-radius: 10px; padding: 18px; display: flex; flex-direction: column; gap: 4px; align-items: center; align-self: flex-start; min-width: 260px;">
+            <span style="font-size: 17px; font-weight: 700; color: #FFFFFF; display: inline-flex; align-items: center; gap: 9px;"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Contact our support</span>
+            <span style="font-size: 14px; color: rgba(255, 255, 255, 0.75);">Free, by phone, Monday to Friday</span>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSignin }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 460px; margin: 0 auto; padding: 80px 40px 96px; display: flex; flex-direction: column; gap: 22px; width: 100%;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; line-height: 1.1; margin: 0; font-weight: 500;">Access your account</h1>
+          <p style="font-size: 17px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">We'll send you a one-time passcode to sign in.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 15px; font-weight: 600;">Email address</span>
+          <input value="{{ emailText }}" onChange="{{ setEmail }}" placeholder="you@example.com" style="border: 1.5px solid #120902; border-radius: 10px; padding: 16px; font-size: 17px; background: #FFFFFF; color: #120902;">
+        </div>
+        <button onClick="{{ goProfile }}" style="font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 17px; cursor: pointer;">Send me a sign-in code</button>
+        <div style="display: flex; align-items: center; gap: 14px; font-size: 14px; color: rgba(18, 9, 2, 0.6);">
+          <span style="flex: 1; height: 1px; background: rgba(18, 9, 2, 0.08);"></span><span>or</span><span style="flex: 1; height: 1px; background: rgba(18, 9, 2, 0.08);"></span>
+        </div>
+        <button onClick="{{ goProfile }}" style="font-size: 17px; font-weight: 700; background: #F7F3EB; border: 1px solid #DED1B0; border-radius: 10px; padding: 17px; cursor: pointer; color: #120902;">Continue with Google</button>
+        <span style="font-size: 14px; color: rgba(18, 9, 2, 0.6); display: flex; align-items: center; justify-content: center; gap: 7px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>Your email is kept private and secure.</span>
+        <button onClick="{{ goResults }}" style="font-size: 15px; font-weight: 700; background: none; border: 0; padding: 8px; cursor: pointer; color: #5F5230;">Just search without signing in</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 520px; margin: 0 auto; padding: 80px 40px 96px; display: flex; flex-direction: column; gap: 22px; width: 100%;">
+        <div style="display: flex; flex-direction: column; gap: 10px;">
+          <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 40px; line-height: 1.1; margin: 0; font-weight: 500;">Set up your profile</h1>
+          <p style="font-size: 17px; line-height: 1.55; margin: 0; color: rgba(18, 9, 2, 0.7);">Just a name to greet you by. Nothing here is required.</p>
+        </div>
+        <div style="display: flex; gap: 14px;">
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 15px; font-weight: 600;">First name</span><input value="{{ firstName }}" onChange="{{ setFirstName }}" placeholder="First name" style="border: 1.5px solid #120902; border-radius: 10px; padding: 15px; font-size: 17px; background: #FFFFFF; color: #120902; width: 100%; box-sizing: border-box;"></div>
+          <div style="flex: 1; display: flex; flex-direction: column; gap: 8px;"><span style="font-size: 15px; font-weight: 600;">Last name</span><input value="{{ lastName }}" onChange="{{ setLastName }}" placeholder="Last name" style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 15px; font-size: 17px; background: #FFFFFF; color: #120902; width: 100%; box-sizing: border-box;"></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px;">
+          <span style="font-size: 15px; font-weight: 600;">Phone number (optional)</span>
+          <input placeholder="Phone number" style="border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 15px; font-size: 17px; background: #FFFFFF; color: #120902;">
+          <span style="font-size: 14px; line-height: 1.5; color: rgba(18, 9, 2, 0.6);">We only use this if you ask us to call you back.</span>
+        </div>
+        <button onClick="{{ goSaved }}" style="font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 17px; cursor: pointer;">Continue</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSaved }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 780px; margin: 0 auto; padding: 56px 40px 96px; display: flex; flex-direction: column; gap: 28px; width: 100%;">
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 44px; line-height: 1.1; margin: 0; font-weight: 500;">{{ savedTitle }}</h1>
+        <sc-if value="{{ hasSaved }}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; gap: 10px;">
+            <sc-for list="{{ savedTabs }}" as="t" hint-placeholder-count="3">
+              <button onClick="{{ t.pick }}" style="font-size: 15px; font-weight: 600; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 999px; padding: 10px 18px; cursor: pointer; color: #120902;">
+                <sc-if value="{{ t.on }}" hint-placeholder-val="{{ false }}"><span style="display: inline-flex; color: #5F5230; margin-right: 6px; vertical-align: -2px;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M20 6 9 17l-5-5"></path></svg></span></sc-if>{{ t.label }}
+              </button>
+            </sc-for>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <sc-for list="{{ savedItems }}" as="i" hint-placeholder-count="3">
+              <article style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 12px; padding: 24px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-start; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                  <sc-if value="{{ i.urgent }}" hint-placeholder-val="{{ true }}">
+                    <span style="font-size: 13px; font-weight: 700; background: #FDEEEB; color: #B91C1C; border-radius: 8px; padding: 7px 11px; align-self: flex-start;">{{ i.pill }}</span>
+                  </sc-if>
+                  <sc-if value="{{ i.applied }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size: 13px; font-weight: 700; background: #EEF2EF; color: #14672F; border-radius: 8px; padding: 7px 11px; align-self: flex-start;">{{ i.pill }}</span>
+                  </sc-if>
+                  <sc-if value="{{ i.plain }}" hint-placeholder-val="{{ false }}">
+                    <span style="font-size: 13px; font-weight: 700; background: #F7F3EB; color: #5F5230; border-radius: 8px; padding: 7px 11px; align-self: flex-start;">{{ i.pill }}</span>
+                  </sc-if>
+                  <span style="font-size: 20px; font-weight: 700;">{{ i.name }}</span>
+                  <span style="font-size: 15px; color: rgba(18, 9, 2, 0.65);">{{ i.meta }}</span>
+                </div>
+                <div style="display: flex; gap: 10px; align-items: center;">
+                  <button style="font-size: 16px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 13px 24px; cursor: pointer;">Apply</button>
+                  <button onClick="{{ i.markApplied }}" style="font-size: 16px; font-weight: 700; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 18px; cursor: pointer; color: #120902; white-space: nowrap;">{{ i.markLabel }}</button>
+                </div>
+              </article>
+            </sc-for>
+          </div>
+          <div style="border-top: 1px solid rgba(18, 9, 2, 0.1); padding-top: 22px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+            <button style="font-size: 16px; font-weight: 700; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 20px; cursor: pointer; color: #120902;">Print my list</button>
+            <button style="font-size: 16px; font-weight: 700; background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 13px 20px; cursor: pointer; color: #120902;">Share</button>
+            <button onClick="{{ goSettings }}" style="font-size: 16px; font-weight: 700; background: none; border: 0; padding: 13px 8px; cursor: pointer; color: #5F5230;">Reminders and account settings</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ noSaved }}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 20px; max-width: 60ch;">
+            <p style="font-size: 18px; line-height: 1.6; margin: 0; color: rgba(18, 9, 2, 0.7);">When you find something worth coming back to, press Save on it. It'll wait here, and we'll tell you before it closes.</p>
+            <button onClick="{{ goQ1 }}" style="align-self: flex-start; font-size: 17px; font-weight: 700; background: #120902; color: #FFFFFF; border: 0; border-radius: 10px; padding: 16px 30px; cursor: pointer;">Find support</button>
+          </div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+      <div style="max-width: 600px; margin: 0 auto; padding: 56px 40px 96px; display: flex; flex-direction: column; gap: 30px; width: 100%;">
+        <button onClick="{{ goSaved }}" style="align-self: flex-start; font-size: 14px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #120902;"><span style="display: inline-flex; align-items: center; gap: 6px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>My saved list</span></button>
+        <h1 style="font-family: 'Playfair Display', Georgia, serif; font-size: 42px; line-height: 1.1; margin: 0; font-weight: 500;">Settings</h1>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Reminders</span>
+          <button onClick="{{ toggleReminders }}" style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 17px 20px; font-size: 17px; display: flex; justify-content: space-between; cursor: pointer; color: #120902;"><span>Before a deadline</span><span style="font-weight: 700; color: #5F5230;">{{ remindersLabel }}</span></button>
+          <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 17px 20px; font-size: 17px; display: flex; justify-content: space-between;"><span>How far ahead</span><span style="font-weight: 700;">7 days</span></div>
+          <span style="font-size: 15px; line-height: 1.5; color: rgba(18, 9, 2, 0.65);">We send nothing else. No newsletter, no suggestions.</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Email address</span>
+          <div style="background: #FFFFFF; border: 1px solid rgba(18, 9, 2, 0.16); border-radius: 10px; padding: 17px 20px; font-size: 17px; display: flex; justify-content: space-between; gap: 16px;"><span>{{ emailDisplay }}</span><button onClick="{{ goSignin }}" style="font-size: 16px; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #5F5230;">Change</button></div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+          <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(18, 9, 2, 0.6);">Your data</span>
+          <span style="font-size: 16px; line-height: 1.6; color: rgba(18, 9, 2, 0.7);">{{ dataSummary }}</span>
+          <button onClick="{{ deleteAccount }}" style="align-self: flex-start; font-size: 16px; font-weight: 700; background: #FFFFFF; border: 1.5px solid #B91C1C; color: #B91C1C; border-radius: 10px; padding: 15px 22px; cursor: pointer;"><span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>Delete my account and everything in it</span></button>
+        </div>
+        <button onClick="{{ goHome }}" style="align-self: flex-start; font-size: 16px; font-weight: 700; background: none; border: 0; padding: 8px 0; cursor: pointer; color: #5F5230;"><span style="display: inline-flex; align-items: center; gap: 8px;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex-shrink: 0;"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><path d="m16 17 5-5-5-5"></path><path d="M21 12H9"></path></svg>Sign out on this device</span></button>
+      </div>
+    </sc-if>
+
+  </main>
+
+  <footer style="border-top: 1px solid rgba(18, 9, 2, 0.1); padding: 26px 40px;">
+    <div style="max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; font-size: 14px; color: rgba(18, 9, 2, 0.6);">
+      <span>HWS Portal &copy; 2026</span>
+      <span style="display: flex; gap: 20px;">
+        <a href="#terms">Terms of Use</a>
+        <a href="#privacy">Privacy Policy</a>
+      </span>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:900},&quot;showWhyMatched&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Results&quot;},&quot;cardDetail&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;full&quot;,&quot;compact&quot;],&quot;default&quot;:&quot;full&quot;,&quot;tsType&quot;:&quot;'full' | 'compact'&quot;,&quot;section&quot;:&quot;Results&quot;}}">
+const SITUATIONS = ['Returning to work', 'Unpaid carer', 'Pregnant or new parent', 'Starting or growing a business', 'Looking for funding', 'Changing career', 'Recently graduated', 'New to Scotland', 'Rural or island community', 'Experiencing financial difficulty', 'Looking after my health', 'Prefer not to say'];
+const SCOPES = ['My area', 'Nearby areas', 'All Scotland', 'Online only'];
+const FILTERS = ['Free', 'Open now', 'No forms', 'Women only'];
+
+const RESULTS = [
+  { id: 'rtw', name: 'Return to Work West Lothian', source: 'Example service · Livingston & Bathgate',
+    blurb: 'A six-week group programme that helps women who have been out of paid work update their CV, practise interviews and find local employers who are hiring.',
+    tags: ['Free', 'In person · Bathgate', '6 weeks, one morning a week'], deadline: 'Next group: 5 October 2026',
+    who: 'Women aged 25 and over in West Lothian who haven\u2019t worked in the last 12 months.',
+    expect: 'A short form, then someone phones you within a week for an informal chat.',
+    why: 'you said you want to get back into work after caring for a relative, and this runs in West Lothian.',
+    verified: 'Verified · last checked 4 August 2026', pill: 'Closes in 8 days · 26 September', urgent: true,
+    meta: 'Free · In person · Bathgate' },
+  { id: 'grant', name: 'Carer\u2019s Break Grant', source: 'Example fund · Scotland-wide',
+    blurb: 'A one-off grant of up to \u00a3300 for people who look after a relative, to spend on a course, equipment or travel.',
+    tags: ['Free to apply', 'Online form'], deadline: 'Closes 31 October 2026',
+    who: 'Unpaid carers over 16 living in Scotland. You don\u2019t need to claim Carer\u2019s Allowance.',
+    expect: 'A form of about 15 minutes, and a decision in four weeks.',
+    why: 'you told us you\u2019re an unpaid carer, and this is open across Scotland.',
+    verified: 'Verified · last checked 22 July 2026', pill: 'Closes 31 October', urgent: false,
+    meta: 'Free to apply · Online form' },
+  { id: 'carers', name: 'West Lothian Carers Centre', source: 'Example organisation · Bathgate',
+    blurb: 'A person who will talk through your situation with you and point you to money, respite and training you may not know about.',
+    tags: ['Free', 'Phone, or drop in', 'Mon\u2013Thu, 9am\u20134pm'], deadline: '',
+    who: 'Anyone in West Lothian who looks after someone. No referral needed.',
+    expect: 'A 20-minute conversation, no forms on the first call.',
+    why: 'you\u2019re in West Lothian and caring for a relative, and they can help you work out what else you\u2019re entitled to.',
+    verified: 'Verified · last checked 12 August 2026', pill: 'No closing date', urgent: false,
+    meta: 'Free · Phone or drop in · Mon\u2013Thu' }
+];
+
+const KEY = 'wnap-desktop-v1';
+
+class Component extends DCLogic {
+  state = {
+    screen: 'q1',
+    need: 'getting back to work after caring for my mum',
+    place: 'EH48 · Bathgate, West Lothian',
+    situation: ['Returning to work', 'Unpaid carer'],
+    scope: 'My area',
+    filters: [],
+    saved: [],
+    applied: [],
+    savedTab: 'All',
+    email: 'j.mcallister@example.com',
+    first: '',
+    last: '',
+    reminders: true
+  };
+
+  componentDidMount() {
+    try {
+      const raw = window.localStorage.getItem(KEY);
+      if (raw) {
+        const saved = JSON.parse(raw);
+        if (saved.screen === 'loading') saved.screen = 'results';
+        this.setState(saved);
+      }
+    } catch (e) {}
+  }
+
+  persist(next) {
+    this.setState(next, () => {
+      try {
+        const store = { ...this.state };
+        if (store.screen === 'loading') store.screen = 'results';
+        window.localStorage.setItem(KEY, JSON.stringify(store));
+      } catch (e) {}
+    });
+  }
+
+  go = (screen) => {
+    if (this.timer) { window.clearTimeout(this.timer); this.timer = null; }
+    this.persist({ screen });
+    if (screen === 'loading') {
+      this.timer = window.setTimeout(() => this.persist({ screen: 'results' }), 1500);
+    }
+    if (typeof window !== 'undefined') window.scrollTo(0, 0);
+  };
+
+  toggleIn(key, value) {
+    const list = this.state[key];
+    const next = list.indexOf(value) > -1 ? list.filter(v => v !== value) : list.concat([value]);
+    this.persist({ [key]: next });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const on = (k, v) => s[k].indexOf(v) > -1;
+    const savedList = RESULTS.filter(r => s.saved.indexOf(r.id) > -1);
+    const tab = s.savedTab;
+    const visible = savedList.filter(r => {
+      if (tab === 'Closing soon') return !!r.deadline && s.applied.indexOf(r.id) < 0;
+      if (tab === 'Applied') return s.applied.indexOf(r.id) > -1;
+      return true;
+    });
+    const firstName = s.first.trim();
+
+    return {
+      savedCount: s.saved.length,
+      isQ1: s.screen === 'q1', isQ2: s.screen === 'q2', isQ3: s.screen === 'q3',
+      isLoading: s.screen === 'loading', isResults: s.screen === 'results',
+      isRefine: s.screen === 'refine', isChange: s.screen === 'change', isNoMatch: s.screen === 'nomatch',
+      isSignin: s.screen === 'signin', isProfile: s.screen === 'profile',
+      isSaved: s.screen === 'saved', isSettings: s.screen === 'settings',
+
+      needText: s.need, placeText: s.place, emailText: s.email,
+      firstName: s.first, lastName: s.last,
+      emailDisplay: s.email || 'Not set',
+      setNeed: (e) => this.persist({ need: e.target.value }),
+      setPlace: (e) => this.persist({ place: e.target.value }),
+      setEmail: (e) => this.persist({ email: e.target.value }),
+      setFirstName: (e) => this.persist({ first: e.target.value }),
+      setLastName: (e) => this.persist({ last: e.target.value }),
+
+      goHome: () => this.go('q1'), goQ1: () => this.go('q1'), goQ2: () => this.go('q2'),
+      goQ3: () => this.go('q3'), goLoading: () => this.go('loading'), goResults: () => this.go('results'),
+      goRefine: () => this.go('refine'), goChange: () => this.go('change'), goNoMatch: () => this.go('nomatch'),
+      goSignin: () => this.go('signin'), goProfile: () => this.go('profile'),
+      goSaved: () => this.go(s.saved.length ? 'saved' : (s.email ? 'saved' : 'signin')),
+      goSettings: () => this.go('settings'),
+      close: () => this.go('q1'),
+      startOver: () => this.persist({ screen: 'q1', need: '', place: '', situation: [], filters: [], scope: 'My area' }),
+      deleteAccount: () => this.persist({ screen: 'q1', saved: [], applied: [], first: '', last: '' }),
+
+      needSuggestions: ['Returning to work after a break', 'Support while caring for a relative', 'Confidence and skills for work']
+        .map(label => ({ label, pick: () => { this.persist({ need: label }); this.go('q2'); } })),
+      placeMatches: [
+        { name: 'EH48', note: ' · Bathgate, West Lothian', full: 'EH48 · Bathgate, West Lothian' },
+        { name: 'West Lothian', note: ' · council area', full: 'West Lothian' },
+        { name: 'Livingston', note: ' · town', full: 'Livingston' }
+      ].map(p => ({ ...p, pick: () => { this.persist({ place: p.full }); this.go('q3'); } })),
+      pickAnywhere: () => { this.persist({ place: 'Anywhere in Scotland' }); this.go('q3'); },
+      pickOnline: () => { this.persist({ place: 'Online support only' }); this.go('q3'); },
+
+      situations: SITUATIONS.map(label => {
+        const sel = on('situation', label);
+        return {
+          label, on: sel,
+          bg: sel ? '#120902' : '#FFFFFF',
+          fg: sel ? '#FFFFFF' : '#120902',
+          border: sel ? '2px solid #120902' : '1px solid rgba(18, 9, 2, 0.16)',
+          weight: sel ? '600' : '400',
+          toggle: () => this.toggleIn('situation', label)
+        };
+      }),
+      scopes: SCOPES.map(label => ({ label, on: s.scope === label, pick: () => this.persist({ scope: label }) })),
+      filters: FILTERS.map(label => ({ label, on: on('filters', label), toggle: () => this.toggleIn('filters', label) })),
+      filterCount: s.filters.length
+        ? 'Showing 3 next steps with ' + s.filters.length + (s.filters.length === 1 ? ' filter.' : ' filters.')
+        : 'Showing all 3 next steps in ' + s.scope.toLowerCase() + '.',
+
+      loadingTitle: s.place ? 'Looking for support near ' + s.place.split('·').pop().split(',')[0].trim() + '\u2026' : 'Looking for support\u2026',
+
+      answerChips: [s.need, s.place].concat(s.situation).filter(Boolean).map(label => ({ label })),
+      answerRows: [
+        { label: 'You need help with', value: s.need || 'Not given', change: () => this.go('q1') },
+        { label: 'Looking in', value: s.place || 'Not given', change: () => this.go('q2') },
+        { label: 'Your situation', value: s.situation.length ? s.situation.join(' · ') : 'Not given, add if you\u2019d like', change: () => this.go('q3') }
+      ],
+
+      detailed: (this.props.cardDetail ?? 'full') === 'full',
+      showWhy: this.props.showWhyMatched ?? true,
+
+      results: RESULTS.map((r, i) => ({
+        ...r,
+        isFirst: i === 0,
+        border: i === 0 ? '2px solid #120902' : '1px solid rgba(18, 9, 2, 0.16)',
+        tags: r.tags.map(label => ({ label })),
+        saveLabel: on('saved', r.id) ? 'Saved' : 'Save',
+        saveIconEl: React.createElement('svg', {
+          width: 17, height: 17, viewBox: '0 0 24 24',
+          fill: on('saved', r.id) ? 'currentColor' : 'none',
+          stroke: 'currentColor', strokeWidth: 2, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': 'true'
+        }, React.createElement('path', { d: 'm19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z' })),
+        toggleSave: () => this.toggleIn('saved', r.id)
+      })),
+
+      widenOptions: [
+        { title: 'Online support only', note: 'Courses and advice you can use from home, wherever you are.' },
+        { title: 'Nearby areas', note: 'Highland · Caithness · Sutherland' },
+        { title: 'Change what you asked for', note: 'Try \u201cstarting a business\u201d instead of \u201cchildminding\u201d.' }
+      ].map(w => ({ ...w, pick: () => this.go('loading') })),
+
+      savedTitle: firstName ? firstName + '\u2019s saved list' : 'Your saved list',
+      hasSaved: savedList.length > 0,
+      noSaved: savedList.length === 0,
+      savedTabs: ['All ' + savedList.length, 'Closing soon', 'Applied'].map(label => ({
+        label,
+        on: label.indexOf('All') === 0 ? tab === 'All' : tab === label,
+        pick: () => this.persist({ savedTab: label.indexOf('All') === 0 ? 'All' : label })
+      })),
+      savedItems: visible.map(r => {
+        const isApplied = s.applied.indexOf(r.id) > -1;
+        return {
+          name: r.name, meta: r.meta,
+          pill: isApplied ? '\u2713 You marked this applied' : r.pill,
+          urgent: !isApplied && r.urgent,
+          applied: isApplied,
+          plain: !isApplied && !r.urgent,
+          markLabel: isApplied ? 'Applied' : 'Mark applied',
+          markApplied: () => this.toggleIn('applied', r.id)
+        };
+      }),
+
+      remindersLabel: s.reminders ? 'On' : 'Off',
+      toggleReminders: () => this.persist({ reminders: !s.reminders }),
+      dataSummary: 'We hold your email address, your saved items, and the dates you saved them. Nothing else.'
+    };
+  }
+}
+</script>
+</body>
+</html>
