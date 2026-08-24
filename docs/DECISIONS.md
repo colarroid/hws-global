@@ -64,9 +64,46 @@ in between.
 
 ## Technical
 
-**9. One Next.js app, not a monorepo.**
-Three sites, one deploy, one Supabase client, one token set. At the current
-timeline a monorepo buys separation nobody needs yet.
+**9. ~~One Next.js app, not a monorepo.~~ Superseded by 19.**
+Originally: three sites, one deploy, one Supabase client, one token set,
+routed by hostname in `src/proxy.ts`.
+
+**19. Three repositories, three Vercel projects.**
+`hws-global` (woman-facing and landing), `hws-organization`, `hws-admin`. One
+Supabase database behind all three. `src/proxy.ts` and `src/lib/sites.ts` are
+gone, since each front end now owns its domain outright.
+
+Done at the point where only the organisation flow existed, which is by far
+the cheapest moment: splitting after all three were built would have been
+several times the work.
+
+What it buys:
+
+- **Blast radius.** The woman-facing site is the whole trust promise. An
+  organisation-portal mistake can no longer take it down.
+- **Real preview deployments** per front end. Under one project, `*.vercel.app`
+  previews carry no subdomain, so every preview resolved to the woman-facing
+  site and the organisation portal could not be reviewed on a preview at all.
+- **Separate access control**, so the admin deployment can be locked at the
+  edge independently.
+
+**20. The schema lives in `hws-global` and nowhere else.**
+One migration history and one seed script for one database. Three
+repositories writing migrations against the same database would diverge, and
+unpicking that later is far more expensive than the small inconvenience of
+raising schema changes in one place.
+
+**21. The shared layer is duplicated across the three repositories, not
+published.**
+Tokens, UI primitives, Supabase clients and the fixed taxonomies exist three
+times. A private registry costs more than it returns before launch.
+
+The cost is named rather than hidden: a change to the token layer has to be
+applied three times. The surface is deliberately small and stable. If it
+starts drifting, extract it to a package rather than letting three versions
+diverge quietly. The woman-facing result card is the one component that is
+genuinely shared rather than incidentally duplicated, since the organisation
+preview screen renders the real card.
 
 **10. Access Zones and situations are database rows, not enumerated types.**
 An HWS admin can add, rename, re-describe or retire a zone without a release.
