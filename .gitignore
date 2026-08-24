@@ -48,3 +48,6 @@ next-env.d.ts
 
 # Supabase CLI scratch
 supabase/.temp/
+
+# Local verification scratch
+scratch/
