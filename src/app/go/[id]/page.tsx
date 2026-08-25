@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { getService, applyHost } from "@/lib/data/service";
+import { track } from "@/lib/track";
 
 /**
  * The handover interstitial.
@@ -24,6 +25,10 @@ export default async function HandoverPage({
   const service = await getService(id);
 
   if (!service || !service.apply_url) notFound();
+
+  // The click-through. This page exists only on the way out, so reaching it
+  // is the last thing the platform can observe before she is gone.
+  void track(service.id, "clickthrough");
 
   const host = applyHost(service.apply_url);
 

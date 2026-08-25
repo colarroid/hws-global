@@ -8,7 +8,7 @@ export type Answers = {
   /** Situation slugs she picked on question 3. */
   situations: string[];
   scope: Scope;
-  /** Slugs from the refine screen: free, open-now, no-forms, women-only. */
+  /** Slugs from the refine screen. See FILTERS. */
   filters: string[];
 };
 
@@ -80,18 +80,32 @@ function isScotlandWide(listing: SearchableListing) {
 }
 
 /**
- * Does this listing run somewhere she can reach?
- *
  * Her answer arrives as every level of the place at once, because question 2
- * accepts any precision: "EH48 · Bathgate, West Lothian". Each level is
- * tested separately. Matching only the first would fail the most ordinary
- * case in the product, a woman typing her own postcode, since listings
- * record the town they run in rather than the postcodes around it.
+ * accepts any precision: "EH48 · Bathgate, West Lothian". The postcode itself
+ * is dropped, since a listing never says "EH48" and testing it could only
+ * produce a false match.
  *
- * The postcode itself is skipped: a listing never says "EH48", so testing it
- * can only produce a false match against some unrelated string.
+ * Narrowest first: for "EH48 · Bathgate, West Lothian" that is Bathgate, then
+ * West Lothian. Which levels count is what separates the scopes.
  */
-function placeMatches(listing: SearchableListing, place: string) {
+function placeParts(place: string): string[] {
+  return place
+    .toLowerCase()
+    .split(/[·,]/)
+    .map((part) => part.trim())
+    .filter((part) => part.length > 2 && !/^[a-z]{1,2}\d/.test(part));
+}
+
+function placeMatches(
+  listing: SearchableListing,
+  place: string,
+  /**
+   * "town" tests only the narrowest level, so My area means the town she
+   * named. "any" also accepts the council area, which is what makes Nearby
+   * areas a real widening rather than a relabelled All Scotland.
+   */
+  precision: "town" | "any" = "any",
+) {
   if (!place) return false;
 
   const haystack = [listing.place, listing.organisationPlace]
@@ -101,12 +115,56 @@ function placeMatches(listing: SearchableListing, place: string) {
 
   if (!haystack.trim()) return false;
 
-  return place
-    .toLowerCase()
-    .split(/[·,]/)
-    .map((part) => part.trim())
-    .filter((part) => part.length > 2 && !/^[a-z]{1,2}\d/.test(part))
-    .some((part) => haystack.includes(part) || part.includes(haystack.trim()));
+  const parts = placeParts(place);
+  const tested = precision === "town" ? parts.slice(0, 1) : parts;
+
+  return tested.some(
+    (part) => haystack.includes(part) || part.includes(haystack.trim()),
+  );
+}
+
+/**
+ * The refine screen's scopes and filters.
+ *
+ * Every one of these does something to the result set. The approved design
+ * had a fourth filter, "Women only", which is absent: no listing records
+ * whether it is women-only, so the control could only ever have returned
+ * everything or nothing. A filter that silently does nothing is worse than a
+ * missing one. Adding it needs a boolean on `listings` and a checkbox on the
+ * organisation form.
+ */
+export const SCOPES = [
+  { slug: "my-area", label: "My area" },
+  { slug: "nearby", label: "Nearby areas" },
+  { slug: "all-scotland", label: "All Scotland" },
+  { slug: "online", label: "Online only" },
+] as const;
+
+export const FILTERS = [
+  { slug: "free", label: "Free" },
+  { slug: "open-now", label: "Open now" },
+  { slug: "no-forms", label: "No forms" },
+] as const;
+
+/** Filters narrow. Each is a hard exclusion, never a score adjustment. */
+function passesFilters(listing: SearchableListing, filters: string[]): boolean {
+  if (filters.includes("free") && listing.cost !== "free") return false;
+
+  if (filters.includes("open-now")) {
+    // No deadline means it runs all year, which counts as open.
+    if (listing.deadline && new Date(listing.deadline) < new Date()) return false;
+  }
+
+  if (filters.includes("no-forms")) {
+    // "No forms" is really "I can just turn up or phone", so it is about how
+    // she takes part rather than what the apply link happens to look like.
+    const reachableWithoutAForm =
+      listing.formats.includes("by_phone") ||
+      listing.formats.includes("in_person");
+    if (!reachableWithoutAForm) return false;
+  }
+
+  return true;
 }
 
 function isStale(listing: SearchableListing) {
@@ -175,7 +233,7 @@ function explain(
  * explain the basis on which anything surfaced, and forbids paid placement:
  * nothing here can be bought, and every factor is visible in this file.
  */
-export function rank(
+function scoreAll(
   listings: SearchableListing[],
   answers: Answers,
   /** Slug to second-person phrase. See situations.match_phrase. */
@@ -207,26 +265,32 @@ export function rank(
       SCORES.needWordCap,
     );
 
+    // My area means the town she named. Nearby areas also accepts her council
+    // area. All Scotland stops excluding on place entirely. Online only keeps
+    // just the things she can reach without going anywhere.
+    const precision = answers.scope === "my-area" ? "town" : "any";
+    const near = placeMatches(listing, answers.place, precision);
+
     if (answers.scope === "online") {
       if (!isOnline(listing)) return { listing, score: -1, why: "" };
       score += SCORES.placeOnline;
-    } else if (placeMatches(listing, answers.place)) {
+    } else if (near) {
       score += SCORES.placeExact;
     } else if (isOnline(listing)) {
       score += SCORES.placeOnline;
     } else if (isScotlandWide(listing)) {
       score += SCORES.scotlandWide;
-    } else if (answers.scope === "my-area" && answers.place) {
+    } else if (
+      (answers.scope === "my-area" || answers.scope === "nearby") &&
+      answers.place
+    ) {
       // Somewhere else entirely, and she asked to look close to home.
       return { listing, score: -1, why: "" };
     }
 
     if (isStale(listing)) score += SCORES.stalePenalty;
 
-    if (answers.filters.includes("free") && listing.cost !== "free") {
-      return { listing, score: -1, why: "" };
-    }
-    if (answers.filters.includes("no-forms") && listing.apply_url?.startsWith("http")) {
+    if (!passesFilters(listing, answers.filters)) {
       return { listing, score: -1, why: "" };
     }
 
@@ -246,8 +310,35 @@ export function rank(
 
   return scored
     .filter((r) => r.score > 0)
-    .sort((a, b) => b.score - a.score || a.listing.name.localeCompare(b.listing.name))
-    .slice(0, MAX_RESULTS);
+    .sort(
+      (a, b) => b.score - a.score || a.listing.name.localeCompare(b.listing.name),
+    );
+}
+
+/**
+ * The ranked results she sees, capped at five. If she needs more than five,
+ * the ranking is the problem rather than the cap.
+ */
+export function rank(
+  listings: SearchableListing[],
+  answers: Answers,
+  situationPhrases: Map<string, string>,
+): RankedListing[] {
+  return scoreAll(listings, answers, situationPhrases).slice(0, MAX_RESULTS);
+}
+
+/**
+ * How many listings match, uncapped.
+ *
+ * The refine screen states a real number, and the no-match screen only ever
+ * offers a widening that has something in it. Both need the true total rather
+ * than the capped list.
+ */
+export function countMatches(
+  listings: SearchableListing[],
+  answers: Answers,
+): number {
+  return scoreAll(listings, answers, new Map()).length;
 }
 
 /**
@@ -262,5 +353,5 @@ export function countForScope(
   answers: Answers,
   scope: Scope,
 ): number {
-  return rank(listings, { ...answers, scope }, new Map()).length;
+  return countMatches(listings, { ...answers, scope });
 }

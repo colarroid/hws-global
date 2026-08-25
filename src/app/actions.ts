@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { getSavedIds, writeSavedIds } from "@/lib/saved";
-import { createClient } from "@/lib/supabase/server";
+import { track } from "@/lib/track";
 
 /**
  * Toggle a save.
@@ -24,12 +24,9 @@ export async function toggleSave(listingId: string) {
     already ? saved.filter((id) => id !== listingId) : [...saved, listingId],
   );
 
-  if (!already) {
-    const supabase = await createClient();
-    await supabase
-      .from("listing_events")
-      .insert({ listing_id: listingId, kind: "save" });
-  }
+  // Unsaving is not recorded. The figure an organisation sees is how many
+  // women thought this worth coming back to, not a net balance.
+  if (!already) await track(listingId, "save");
 
   revalidatePath("/results");
   revalidatePath("/saved");

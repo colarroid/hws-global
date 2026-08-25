@@ -105,7 +105,10 @@ export default async function ResultsPage({
     ...answers.situations.map((s) => situationLabels.get(s) ?? s),
   ].filter(Boolean);
 
-  const changeHref = `/find?need=${encodeURIComponent(answers.need)}`;
+  const query = new URLSearchParams(
+    Object.entries(params).filter(([, v]) => v) as [string, string][],
+  );
+  const changeHref = `/change?${query}`;
 
   return (
     <Page width={820} top={56} gap={28}>
@@ -227,7 +230,7 @@ export default async function ResultsPage({
             Change my answers
           </Link>
           <Link
-            href="/find"
+            href={`/start-over?${query}`}
             className="inline-flex min-h-[44px] items-center p-1 text-[16px] font-bold text-gold-700 no-underline"
           >
             Start over

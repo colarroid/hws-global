@@ -6,6 +6,7 @@ import { Page } from "@/components/ui/Page";
 import { ColdArrivalBar, ColdArrivalPanel } from "@/components/find/ColdArrival";
 import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
+import { track } from "@/lib/track";
 import { getService, applyHost } from "@/lib/data/service";
 import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
 
@@ -78,6 +79,10 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
   const [service, savedIds] = await Promise.all([getService(id), getSavedIds()]);
 
   if (!service) notFound();
+
+  // One of the three figures an organisation sees. Not awaited: the count
+  // must never delay what she is trying to read.
+  void track(service.id, "view");
 
   // She came from a search if her answers are still in the URL.
   const fromSearch = Boolean(query.need || query.place || query.situations);
