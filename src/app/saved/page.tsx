@@ -4,6 +4,7 @@ import { Page } from "@/components/ui/Page";
 import { ButtonLink } from "@/components/ui/Button";
 import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
+import { getAccount } from "@/lib/data/account";
 import { getService, type Service } from "@/lib/data/service";
 import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
 
@@ -70,7 +71,7 @@ const TONES: Record<Status["tone"], string> = {
  * and it is offered here rather than demanded anywhere earlier.
  */
 export default async function SavedPage() {
-  const ids = await getSavedIds();
+  const [ids, account] = await Promise.all([getSavedIds(), getAccount()]);
   const services = (await Promise.all(ids.map(getService))).filter(
     (s): s is Service => Boolean(s),
   );
@@ -106,7 +107,7 @@ export default async function SavedPage() {
     <Page width={780} top={56} gap={24}>
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
-          Your saved list
+          {account?.firstName ? `${account.firstName}'s saved list` : "Your saved list"}
         </h1>
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
           {sorted.length} {sorted.length === 1 ? "thing" : "things"} saved,
@@ -167,31 +168,44 @@ export default async function SavedPage() {
         })}
       </div>
 
-      {/*
-        The only place the account is offered. It buys one thing and the copy
-        says exactly that, because overclaiming here is what would make the
-        rest of the promises sound like marketing.
-      */}
-      <div className="flex flex-col items-start gap-3 rounded-card-lg border border-gold-300 bg-gold-200 p-6">
-        <span className="inline-flex items-center gap-2 text-[19px] font-bold text-gold-700">
-          <Bookmark size={18} strokeWidth={2} aria-hidden="true" />
-          Keep this list
-        </span>
-        <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-gold-700">
-          This list is here until you close your browser. An account keeps it,
-          and sends one email before anything closes. We hold your email
-          address and these saved items, and nothing else.
-        </p>
-        <span className="text-[15px] font-bold text-gold-700 opacity-60">
-          Sign-in is not built yet
-        </span>
-      </div>
+      {account ? (
+        <div className="flex flex-wrap items-center gap-3 border-t border-hairline pt-6">
+          <ButtonLink href="/find" variant="secondary" size="inline">
+            Find something else
+          </ButtonLink>
+          <ButtonLink href="/settings" variant="text" size="bare">
+            Reminders and account settings
+          </ButtonLink>
+        </div>
+      ) : (
+        <>
+          {/*
+            The only place the account is offered. It buys one thing and the
+            copy says exactly that, because overclaiming here is what would
+            make the rest of the promises sound like marketing.
+          */}
+          <div className="flex flex-col items-start gap-3 rounded-card-lg border border-gold-300 bg-gold-200 p-6">
+            <span className="inline-flex items-center gap-2 text-[19px] font-bold text-gold-700">
+              <Bookmark size={18} strokeWidth={2} aria-hidden="true" />
+              Keep this list
+            </span>
+            <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-gold-700">
+              This list is here until you close your browser. An account keeps
+              it, and sends one email before anything closes. We hold your
+              email address and these saved items, and nothing else.
+            </p>
+            <ButtonLink href="/account" size="inline" className="px-6 py-4 text-[16px]">
+              Keep my list
+            </ButtonLink>
+          </div>
 
-      <div className="flex flex-wrap items-center gap-3 border-t border-hairline pt-6">
-        <ButtonLink href="/find" variant="secondary" size="inline">
-          Find something else
-        </ButtonLink>
-      </div>
+          <div className="flex flex-wrap items-center gap-3 border-t border-hairline pt-6">
+            <ButtonLink href="/find" variant="secondary" size="inline">
+              Find something else
+            </ButtonLink>
+          </div>
+        </>
+      )}
     </Page>
   );
 }

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { Bookmark } from "lucide-react";
+import { Bookmark, Settings } from "lucide-react";
 import { getSavedIds } from "@/lib/saved";
+import { getAccount } from "@/lib/data/account";
 
 /**
  * The woman-facing header.
@@ -14,7 +15,7 @@ import { getSavedIds } from "@/lib/saved";
  * stays empty for a woman who has just arrived.
  */
 export async function SiteHeader() {
-  const saved = await getSavedIds();
+  const [saved, account] = await Promise.all([getSavedIds(), getAccount()]);
 
   return (
     <header className="border-b border-hairline bg-ground">
@@ -26,7 +27,8 @@ export async function SiteHeader() {
           Logo
         </Link>
 
-        {saved.length > 0 ? (
+        <div className="flex items-center gap-2">
+          {saved.length > 0 ? (
           <Link
             href="/saved"
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ring bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:border-gold-500"
@@ -43,7 +45,18 @@ export async function SiteHeader() {
               {saved.length}
             </span>
           </Link>
-        ) : null}
+          ) : null}
+
+          {account ? (
+            <Link
+              href="/settings"
+              aria-label="Reminders and account settings"
+              className="inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-ring bg-surface text-ink no-underline transition-colors duration-150 ease-out hover:border-gold-500"
+            >
+              <Settings size={17} strokeWidth={2} aria-hidden="true" />
+            </Link>
+          ) : null}
+        </div>
       </div>
     </header>
   );

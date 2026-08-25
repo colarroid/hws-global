@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { getSavedIds, writeSavedIds } from "@/lib/saved";
+import { toggleSavedId } from "@/lib/saved";
 import { track } from "@/lib/track";
 
 /**
@@ -17,19 +17,14 @@ import { track } from "@/lib/track";
  * women thought this was worth coming back to, not a net balance.
  */
 export async function toggleSave(listingId: string) {
-  const saved = await getSavedIds();
-  const already = saved.includes(listingId);
-
-  await writeSavedIds(
-    already ? saved.filter((id) => id !== listingId) : [...saved, listingId],
-  );
+  const nowSaved = await toggleSavedId(listingId);
 
   // Unsaving is not recorded. The figure an organisation sees is how many
   // women thought this worth coming back to, not a net balance.
-  if (!already) await track(listingId, "save");
+  if (nowSaved) await track(listingId, "save");
 
   revalidatePath("/results");
   revalidatePath("/saved");
 
-  return !already;
+  return nowSaved;
 }
