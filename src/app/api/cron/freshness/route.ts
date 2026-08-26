@@ -30,10 +30,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Not authorised" }, { status: 401 });
   }
 
-  const portal = process.env.NEXT_PUBLIC_ORG_PORTAL_URL;
+  const portal = process.env.ORG_PORTAL_URL;
   if (!portal) {
     return NextResponse.json(
-      { error: "NEXT_PUBLIC_ORG_PORTAL_URL is not set." },
+      { error: "ORG_PORTAL_URL is not set." },
       { status: 500 },
     );
   }
