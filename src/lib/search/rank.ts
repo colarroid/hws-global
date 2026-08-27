@@ -308,10 +308,20 @@ function scoreAll(
     };
   });
 
+  // Closed listings sort below every open one rather than being scored down.
+  // A penalty large enough to guarantee that would push them under the score
+  // floor and out of the results entirely, which is the opposite of the
+  // intent: she is allowed to find a closed listing, it just must never
+  // compete with something she can still act on.
+  const closed = (r: RankedListing) => (r.listing.status === "closed" ? 1 : 0);
+
   return scored
     .filter((r) => r.score > 0)
     .sort(
-      (a, b) => b.score - a.score || a.listing.name.localeCompare(b.listing.name),
+      (a, b) =>
+        closed(a) - closed(b) ||
+        b.score - a.score ||
+        a.listing.name.localeCompare(b.listing.name),
     );
 }
 

@@ -1,7 +1,7 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
 
-/** A live listing with everything the ranker and the card need. */
+/** A listing women can reach, with everything the ranker and the card need. */
 export type SearchableListing = {
   id: string;
   name: string;
@@ -14,14 +14,18 @@ export type SearchableListing = {
   place: string | null;
   deadline: string | null;
   apply_url: string | null;
+  /** "live" or "closed". Closed ones stay findable, far down. */
+  status: string;
   last_confirmed_at: string | null;
+  /** When the organisation last changed what the listing says. */
+  updated_at: string | null;
   organisationName: string;
   organisationPlace: string | null;
   situationSlugs: string[];
 };
 
 /**
- * Every live listing.
+ * Every listing women can reach: live, plus closed ones the ranker sinks.
  *
  * Phase One ranks in application code over the whole live set rather than in
  * SQL. At 40 to 75 listings that is not a performance question, and it buys
@@ -64,7 +68,9 @@ export async function getLiveListings(): Promise<SearchableListing[]> {
     place: row.place,
     deadline: row.deadline,
     apply_url: row.apply_url,
+    status: row.status,
     last_confirmed_at: row.last_confirmed_at,
+    updated_at: row.updated_at,
     organisationName: row.organisation_name ?? "",
     organisationPlace: row.organisation_place,
     situationSlugs: row.situation_slugs ?? [],

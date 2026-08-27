@@ -14,6 +14,8 @@ export type Service = {
   deadline: string | null;
   apply_url: string | null;
   last_confirmed_at: string | null;
+  /** When the organisation last changed what this says. */
+  updated_at: string | null;
   status: "live" | "closed";
   organisationName: string;
   organisationPlace: string | null;
@@ -53,6 +55,7 @@ export async function getService(id: string): Promise<Service | null> {
     deadline: data.deadline,
     apply_url: data.apply_url,
     last_confirmed_at: data.last_confirmed_at,
+    updated_at: data.updated_at,
     status: data.status,
     organisationName: data.organisation_name ?? "",
     organisationPlace: data.organisation_place,

@@ -32,6 +32,23 @@ export async function GET(request: NextRequest) {
   const supabase = createAdminClient();
   const origin = request.nextUrl.origin;
 
+  // Deadlines first, and in the same daily run, because both jobs turn on the
+  // same date. Closing before the reminders go out means nobody is reminded
+  // about something that expired overnight.
+  //
+  // The organisation is not asked to confirm the closure. They gave us the
+  // date; asking them to agree with it afterwards turns a fact into a chore.
+  // Extending is editing the deadline, which is where they would go anyway.
+  const { data: closed, error: closeError } = await supabase.rpc(
+    "close_expired_listings",
+  );
+
+  if (closeError) {
+    // Not fatal. A listing that stays live a day longer than its deadline is
+    // a smaller failure than nobody getting their reminder.
+    console.error("close_expired_listings failed", closeError);
+  }
+
   const { data: profiles, error: profileError } = await supabase
     .from("profiles")
     .select("id, reminders_enabled, reminder_days")
@@ -130,5 +147,5 @@ export async function GET(request: NextRequest) {
     sent += 1;
   }
 
-  return NextResponse.json({ sent, failures });
+  return NextResponse.json({ sent, failures, closed: closed ?? 0 });
 }
