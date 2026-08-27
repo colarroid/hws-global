@@ -38,7 +38,7 @@ export function SaveButton({
           await toggleSave(listingId);
         })
       }
-      className="flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-control border border-ring bg-surface px-4 py-3 text-[15px] font-bold text-ink transition-colors duration-150 ease-out hover:border-gold-500"
+      className="flex min-h-[44px] items-center gap-2 whitespace-nowrap rounded-control shadow-hairline bg-surface px-4 py-3 text-[15px] font-bold text-ink transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
     >
       <Bookmark
         size={17}

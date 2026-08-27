@@ -76,12 +76,12 @@ export function PlaceForm({
           onChange={(e) => setPlace(e.target.value)}
           placeholder="e.g. EH48"
           autoComplete="off"
-          className="rounded-control border-[1.5px] border-ink bg-surface p-[18px] text-[18px] text-ink"
+          className="rounded-control shadow-hairline-ink bg-surface p-[18px] text-[18px] text-ink"
         />
       </div>
 
       {visible.length > 0 ? (
-        <ul className="m-0 flex list-none flex-col divide-y divide-hairline-soft rounded-control border border-ring bg-surface p-0">
+        <ul className="m-0 flex list-none flex-col divide-y divide-hairline-soft rounded-control shadow-hairline bg-surface p-0">
           {visible.map((match) => (
             <li key={`${match.name}-${match.note}`}>
               <button
@@ -105,14 +105,14 @@ export function PlaceForm({
       ) : null}
 
       <div className="flex flex-col gap-3">
-        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <span className="eyebrow text-ink-60">
           Or
         </span>
         <div className="flex flex-wrap gap-[10px]">
           <button
             type="button"
             onClick={() => go(ESCAPE)}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ring bg-surface px-[18px] py-3 text-[16px] text-ink hover:border-gold-500"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface px-[18px] py-3 text-[16px] text-ink transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
           >
             <MapPin size={16} strokeWidth={2} aria-hidden="true" />
             {ESCAPE}
@@ -120,7 +120,7 @@ export function PlaceForm({
           <button
             type="button"
             onClick={() => go(ONLINE)}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ring bg-surface px-[18px] py-3 text-[16px] text-ink hover:border-gold-500"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface px-[18px] py-3 text-[16px] text-ink transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
           >
             <Globe size={16} strokeWidth={2} aria-hidden="true" />
             {ONLINE}

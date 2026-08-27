@@ -60,6 +60,35 @@ Both are exposed as switches in the prototype and both default true. Review
 off is a one-way door: turning it back on means auditing everything published
 in between.
 
+**22. `design.md` is adopted for form, not for contrast or text size.**
+`design.md` reverse-engineers unlistedhomes.com, the site this brand's visual
+language comes from. Most of it was already in place, since the handoff draws
+on the same source. Where the two disagree, its type scale and geometry are
+adopted and its colour and sizing decisions are not:
+
+*Adopted.* Headings are Playfair at weight 400 and never bold, with a single
+italic word for emphasis. Card titles move from Inter 700 to the same serif.
+Eyebrows go from 11px/700/0.14em to 12px/500/0.22em. One card radius at 12px
+and one control radius at 6px, replacing 14/10. Edges are drawn with a 1px
+`box-shadow` ring rather than a real border.
+
+*Held back.* Gold stays `#8E7B49` and `#5F5230`. `design.md`'s `#BEA461`
+measures 2.2:1 on the cream ground, which fails even the 3:1 bar for icons
+and focus rings; the two in use measure 3.79:1 and 7.05:1. Body copy stays at
+17-18px against its 16px, and the 15px floor stands. Eyebrows keep ink 60%
+(5.05:1) rather than its 50% (3.60:1, below AA). Button weight stays 700 —
+`design.md` contradicts itself there, saying 400 in the type scale and 500 in
+the cheat sheet, and neither is worth the affordance on this audience.
+
+The reason is the audience, not taste: `UX.txt` describes women with low
+digital confidence who are sometimes time-poor and often reluctant. Every
+value held back is one where `design.md` optimises for editorial elegance on
+a property-marketing site and this platform cannot afford to.
+
+The ring also removed a defect. Chips and fields swapped between 1px and
+2px/1.5px borders on selection, so the box shifted under the pointer as she
+picked. Rings are drawn outside the box, so the geometry now holds still.
+
 ---
 
 ## Technical

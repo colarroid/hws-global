@@ -21,7 +21,7 @@ export function DangerZone({ savedCount }: { savedCount: number }) {
   return (
     <>
       <section className="flex flex-col gap-3">
-        <h2 className="m-0 text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <h2 className="m-0 eyebrow text-ink-60">
           Your data
         </h2>
         <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">

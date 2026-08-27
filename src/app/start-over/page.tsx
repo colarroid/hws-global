@@ -33,7 +33,7 @@ export default async function StartOverPage({
         Back to results
       </Link>
 
-      <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
+      <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
         This clears your answers. Start again?
       </h1>
 

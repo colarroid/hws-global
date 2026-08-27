@@ -61,7 +61,7 @@ export function QuestionShell({
         </div>
 
         <div className="flex flex-col gap-[10px]">
-          <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[46px] sm:leading-[1.1]">
+          <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[46px] sm:leading-[1.1]">
             {title}
           </h1>
           <p className="m-0 text-[18px] leading-[1.55] text-ink-70">{subline}</p>

@@ -61,7 +61,7 @@ export function NoMatch({
       </Link>
 
       <div className="flex flex-col gap-[10px]">
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
           We haven&apos;t found a close match yet
         </h1>
         <p className="m-0 text-[18px] leading-[1.6] text-ink-70">
@@ -72,11 +72,11 @@ export function NoMatch({
       </div>
 
       {widenCount > 0 ? (
-        <div className="flex flex-col items-start gap-3 rounded-card border-2 border-ink p-6">
-          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-700">
+        <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline-ink p-6">
+          <span className="eyebrow text-gold-700">
             Try this first
           </span>
-          <span className="text-[21px] font-bold leading-[1.3]">
+          <span className="font-display text-[21px] font-normal leading-[1.3]">
             Widen to all of Scotland
           </span>
           <span className="text-[17px] leading-[1.6] text-ink-70">
@@ -101,7 +101,7 @@ export function NoMatch({
           <Link
             key={option.title}
             href={option.href}
-            className="flex flex-col gap-2 rounded-card border border-ring bg-surface p-5 no-underline"
+            className="flex flex-col gap-2 rounded-card shadow-hairline bg-surface p-5 no-underline"
           >
             <span className="text-[17px] font-bold text-ink">{option.title}</span>
             <span className="text-[15px] leading-[1.5] text-ink-65">
@@ -113,7 +113,7 @@ export function NoMatch({
 
       {/* Must reach a person, not another search. */}
       <div className="flex flex-col gap-3 rounded-card bg-ink p-6 text-white">
-        <span className="text-[19px] font-bold">Rather talk to a person?</span>
+        <span className="font-display text-[19px] font-normal">Rather talk to a person?</span>
         <p className="m-0 text-[16px] leading-[1.6] text-white/75">
           We can help with almost anything, and might know who else to ask.
         </p>

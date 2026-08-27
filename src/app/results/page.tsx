@@ -121,7 +121,7 @@ export default async function ResultsPage({
           Change answers
         </Link>
 
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
           Next steps for you
         </h1>
 
@@ -136,7 +136,7 @@ export default async function ResultsPage({
           ))}
           <Link
             href={`/refine?${new URLSearchParams(params as Record<string, string>)}`}
-            className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-gold-500 bg-surface px-[14px] py-2 text-[14px] font-bold text-gold-700 no-underline"
+            className="inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline-gold bg-surface px-[14px] py-2 text-[14px] font-bold text-gold-700 no-underline"
           >
             <SlidersHorizontal size={15} strokeWidth={2} aria-hidden="true" />
             Refine or widen
@@ -201,7 +201,7 @@ export default async function ResultsPage({
                   /* Light at rest, dark on hover. Inverting on hover is the
                      whole affordance, so both states carry AA contrast on
                      their own ground rather than relying on the change. */
-                  className="inline-flex min-h-[44px] items-center rounded-control border border-ink bg-surface px-8 py-[15px] text-[17px] font-bold text-ink no-underline transition-colors duration-150 ease-out hover:bg-ink hover:text-white focus-visible:bg-ink focus-visible:text-white"
+                  className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline-ink bg-surface px-8 py-[15px] text-[17px] font-bold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:bg-ink hover:text-white focus-visible:bg-ink focus-visible:text-white"
                 >
                   Learn more
                 </Link>
@@ -219,13 +219,13 @@ export default async function ResultsPage({
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href={`/results?${new URLSearchParams({ ...params, scope: "all-scotland" } as Record<string, string>)}`}
-            className="inline-flex min-h-[44px] items-center rounded-control border border-ring bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
+            className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
           >
             Show support across Scotland
           </Link>
           <Link
             href={changeHref}
-            className="inline-flex min-h-[44px] items-center rounded-control border border-ring bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
+            className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
           >
             Change my answers
           </Link>

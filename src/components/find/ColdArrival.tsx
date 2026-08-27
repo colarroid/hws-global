@@ -35,8 +35,8 @@ export function ColdArrivalBar() {
  */
 export function ColdArrivalPanel() {
   return (
-    <div className="flex flex-col items-start gap-3 rounded-card-lg border border-ring bg-surface p-7">
-      <h2 className="m-0 font-display text-[26px] font-medium leading-[1.2]">
+    <div className="flex flex-col items-start gap-3 rounded-card-lg shadow-hairline bg-surface p-7">
+      <h2 className="m-0 font-display text-[26px] font-normal leading-[1.2]">
         Not quite what you needed?
       </h2>
       <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">

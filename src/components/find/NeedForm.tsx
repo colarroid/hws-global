@@ -88,7 +88,7 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
             if (blankAttempt) setBlankAttempt(false);
           }}
           placeholder="e.g. getting back to work after caring for my mum"
-          className="resize-y rounded-control border-[1.5px] border-ink bg-surface p-[18px] text-[18px] leading-[1.5] text-ink"
+          className="resize-y rounded-control shadow-hairline-ink bg-surface p-[18px] text-[18px] leading-[1.5] text-ink"
         />
         {ready ? (
           <span className="text-[14px] leading-[1.5] text-ink-60">
@@ -98,7 +98,7 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
       </div>
 
       <div className="flex flex-col gap-3">
-        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <span className="eyebrow text-ink-60">
           Suggestions
         </span>
         <div className="flex flex-wrap gap-[10px]">
@@ -107,7 +107,7 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
               key={suggestion}
               type="button"
               onClick={() => applySuggestion(suggestion)}
-              className="min-h-[44px] rounded-full border border-ring bg-surface px-[18px] py-3 text-left text-[16px] text-ink hover:border-gold-500"
+              className="min-h-[44px] rounded-full shadow-hairline bg-surface px-[18px] py-3 text-left text-[16px] text-ink transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
             >
               {suggestion}
             </button>

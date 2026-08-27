@@ -27,7 +27,7 @@ export default async function CodePage({
       </span>
 
       <div className="flex flex-col gap-[10px]">
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
           Check your email
         </h1>
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">

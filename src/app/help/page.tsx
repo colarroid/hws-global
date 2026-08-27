@@ -26,7 +26,7 @@ export default async function HelpPage({
   return (
     <Page width={660} top={56} gap={26}>
       <div className="flex flex-col gap-[10px]">
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
           Talk to a person
         </h1>
         <p className="m-0 max-w-[62ch] text-[18px] leading-[1.6] text-ink-70">
@@ -48,13 +48,13 @@ export default async function HelpPage({
       </div>
 
       {service ? (
-        <div className="flex flex-col gap-2 rounded-card border border-ring bg-surface px-[22px] py-5">
-          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <div className="flex flex-col gap-2 rounded-card shadow-hairline bg-surface px-[22px] py-5">
+          <span className="eyebrow text-ink-60">
             About this listing
           </span>
           <Link
             href={`/service/${service.id}`}
-            className="text-[19px] font-bold leading-[1.3] text-ink no-underline hover:underline"
+            className="font-display text-[19px] font-normal leading-[1.3] text-ink no-underline hover:underline"
           >
             {service.name}
           </Link>
@@ -68,7 +68,7 @@ export default async function HelpPage({
       ) : null}
 
       <div className="flex flex-col items-start gap-3 rounded-card bg-ink p-6 text-white">
-        <span className="text-[19px] font-bold">Contact our support</span>
+        <span className="font-display text-[19px] font-normal">Contact our support</span>
         <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-white/75">
           We can help with almost anything, and might know who else to ask. If
           what you need is not on the platform yet, telling us is how it gets
@@ -85,7 +85,7 @@ export default async function HelpPage({
 
       {/* Honesty about limits, in the place where it matters most. */}
       <div className="flex flex-col gap-2 border-t border-hairline pt-6">
-        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <span className="eyebrow text-ink-60">
           What we cannot do
         </span>
         <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-ink-70">

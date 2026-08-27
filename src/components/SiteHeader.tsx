@@ -11,7 +11,7 @@ function SavedLink({ count }: { count: number }) {
   return (
     <Link
       href="/saved"
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ring bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:border-gold-500"
+      className="inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
     >
       <Bookmark
         size={17}
@@ -35,8 +35,8 @@ function SettingsLink({ withLabel = false }: { withLabel?: boolean }) {
       aria-label={withLabel ? undefined : "Reminders and account settings"}
       className={
         withLabel
-          ? "inline-flex min-h-[44px] items-center gap-2 rounded-full border border-ring bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:border-gold-500"
-          : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full border border-ring bg-surface text-ink no-underline transition-colors duration-150 ease-out hover:border-gold-500"
+          ? "inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
+          : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full shadow-hairline bg-surface text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
       }
     >
       <Settings size={17} strokeWidth={2} aria-hidden="true" />

@@ -47,7 +47,7 @@ function Fact({ label, value }: { label: string; value: string | null }) {
   if (!value?.trim()) return null;
   return (
     <div className="flex flex-col gap-2 border-t border-hairline-soft pt-5">
-      <dt className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+      <dt className="eyebrow text-ink-60">
         {label}
       </dt>
       <dd className="m-0 max-w-[62ch] text-[17px] leading-[1.6]">{value}</dd>
@@ -134,7 +134,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
             </span>
           ) : null}
 
-          <h1 className="m-0 font-display text-[32px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
+          <h1 className="m-0 font-display text-[32px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
             {service.name}
           </h1>
           <p className="m-0 text-[17px] text-ink-65">
@@ -188,8 +188,8 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
 
         {closed ? (
           /* A closed listing is never a dead end either. */
-          <div className="flex flex-col items-start gap-3 rounded-card border border-ring bg-surface p-6">
-            <span className="text-[19px] font-bold">This one has closed</span>
+          <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline bg-surface p-6">
+            <span className="font-display text-[19px] font-normal">This one has closed</span>
             <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
               It may run again. {service.organisationName} can tell you when the
               next one opens, and there may be something similar available now.
@@ -206,7 +206,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
               ) : null}
               <Link
                 href={similarHref}
-                className="inline-flex min-h-[44px] items-center rounded-control border border-ring bg-surface px-6 py-4 text-[16px] font-bold text-ink no-underline"
+                className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-6 py-4 text-[16px] font-bold text-ink no-underline"
               >
                 Find similar support
               </Link>
@@ -249,7 +249,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
 
         {service.organisationBlurb ? (
           <div className="flex flex-col gap-2 border-t border-hairline pt-6">
-            <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+            <span className="eyebrow text-ink-60">
               About {service.organisationName}
             </span>
             <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">

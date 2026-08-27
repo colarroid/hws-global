@@ -88,7 +88,7 @@ export default async function SavedPage() {
   if (sorted.length === 0) {
     return (
       <Page width={780} top={72} gap={24}>
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
           Your saved list
         </h1>
         <p className="m-0 max-w-[62ch] text-[18px] leading-[1.6] text-ink-70">
@@ -106,7 +106,7 @@ export default async function SavedPage() {
   return (
     <Page width={780} top={56} gap={24}>
       <div className="flex flex-col gap-[10px]">
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
           {account?.firstName ? `${account.firstName}'s saved list` : "Your saved list"}
         </h1>
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
@@ -131,7 +131,7 @@ export default async function SavedPage() {
           return (
             <article
               key={service.id}
-              className={`flex flex-wrap items-start justify-between gap-5 rounded-card border border-ring p-6 ${
+              className={`flex flex-wrap items-start justify-between gap-5 rounded-card shadow-hairline p-6 ${
                 closed ? "bg-surface-subtle" : "bg-surface"
               }`}
             >
@@ -143,7 +143,7 @@ export default async function SavedPage() {
                 </span>
                 <Link
                   href={`/service/${service.id}`}
-                  className="text-[20px] font-bold leading-[1.3] text-ink no-underline hover:underline"
+                  className="font-display text-[20px] font-normal leading-[1.3] text-ink no-underline hover:underline"
                 >
                   {service.name}
                 </Link>
@@ -185,7 +185,7 @@ export default async function SavedPage() {
             make the rest of the promises sound like marketing.
           */}
           <div className="flex flex-col items-start gap-3 rounded-card-lg border border-gold-300 bg-gold-200 p-6">
-            <span className="inline-flex items-center gap-2 text-[19px] font-bold text-gold-700">
+            <span className="inline-flex items-center gap-2 font-display text-[19px] font-normal text-gold-700">
               <Bookmark size={18} strokeWidth={2} aria-hidden="true" />
               Keep this list
             </span>

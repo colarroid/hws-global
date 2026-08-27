@@ -132,7 +132,7 @@ export function CodeForm({ email }: { email: string }) {
             placeholder="000000"
             disabled={locked}
             aria-describedby={hintId}
-            className="rounded-control border-[1.5px] border-ink bg-surface p-[18px] text-center text-[28px] font-semibold tracking-[0.4em] text-ink tabular-nums disabled:opacity-40"
+            className="rounded-control shadow-hairline-ink bg-surface p-[18px] text-center text-[28px] font-semibold tracking-[0.4em] text-ink tabular-nums disabled:opacity-40"
           />
           <span id={hintId} className="text-[14px] leading-[1.5] text-ink-60">
             The code works for 15 minutes.

@@ -15,7 +15,7 @@ export default function Landing() {
   return (
     <div className="flex flex-1 items-center justify-center px-5 py-24 sm:px-10">
       <div className="flex w-full max-w-[660px] flex-col items-start gap-7">
-        <h1 className="m-0 font-display text-[34px] font-medium leading-[1.1] tracking-[-0.01em] sm:text-[52px]">
+        <h1 className="m-0 font-display text-[34px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[52px]">
           Find support for women in Scotland
         </h1>
         <p className="m-0 max-w-[52ch] text-[18px] leading-[1.6] text-ink-70">

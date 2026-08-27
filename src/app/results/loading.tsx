@@ -15,7 +15,7 @@ export default function Loading() {
     <Page width={780} top={96}>
       <h1
         aria-live="polite"
-        className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]"
+        className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]"
       >
         Looking for support…
       </h1>

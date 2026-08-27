@@ -57,12 +57,12 @@ export function RefineForm({
         Back to results
       </Link>
 
-      <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
+      <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
         Refine or widen
       </h1>
 
       <div className="flex flex-col gap-3">
-        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <span className="eyebrow text-ink-60">
           How far to look
         </span>
         <ChipGroup label="How far to look" multi={false}>
@@ -80,7 +80,7 @@ export function RefineForm({
       </div>
 
       <div className="flex flex-col gap-3">
-        <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <span className="eyebrow text-ink-60">
           Only show
         </span>
         {/* Clearing happens by deselecting. There is no reset control. */}

@@ -67,7 +67,7 @@ export default async function ChangePage({
         Back to results
       </Link>
 
-      <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
+      <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
         Here&apos;s what we heard
       </h1>
 
@@ -75,10 +75,10 @@ export default async function ChangePage({
         {rows.map((row) => (
           <div
             key={row.label}
-            className="flex flex-wrap items-center justify-between gap-4 rounded-card border border-ring bg-surface px-[22px] py-5"
+            className="flex flex-wrap items-center justify-between gap-4 rounded-card shadow-hairline bg-surface px-[22px] py-5"
           >
             <div className="flex min-w-0 flex-col gap-1">
-              <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+              <span className="eyebrow text-ink-60">
                 {row.label}
               </span>
               <span

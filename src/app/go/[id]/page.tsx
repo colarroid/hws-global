@@ -43,7 +43,7 @@ export default async function HandoverPage({
       </Link>
 
       <div className="flex flex-col gap-3">
-        <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
+        <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
           You&apos;re leaving to apply
         </h1>
         <p className="m-0 max-w-[62ch] text-[18px] leading-[1.6] text-ink-70">
@@ -54,7 +54,7 @@ export default async function HandoverPage({
 
       {service.what_to_expect ? (
         <div className="flex flex-col gap-2 rounded-card bg-gold-200 px-[22px] py-5">
-          <span className="text-[11px] font-bold uppercase tracking-[0.14em] text-gold-700">
+          <span className="eyebrow text-gold-700">
             What happens next
           </span>
           <p className="m-0 text-[16px] leading-[1.6] text-gold-700">

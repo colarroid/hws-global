@@ -34,15 +34,15 @@ export default async function SettingsPage() {
         My saved list
       </Link>
 
-      <h1 className="m-0 font-display text-[30px] font-medium leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
+      <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
         Settings
       </h1>
 
       <section className="flex flex-col gap-3">
-        <h2 className="m-0 text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <h2 className="m-0 eyebrow text-ink-60">
           Reminders
         </h2>
-        <div className="flex flex-col rounded-card border border-ring bg-surface px-[22px]">
+        <div className="flex flex-col rounded-card shadow-hairline bg-surface px-[22px]">
           <RemindersToggle enabled={account.remindersEnabled} />
           <div className="flex items-center justify-between gap-4 border-t border-hairline-soft py-4">
             <span className="text-[17px]">How far ahead</span>
@@ -62,10 +62,10 @@ export default async function SettingsPage() {
       </section>
 
       <section className="flex flex-col gap-3">
-        <h2 className="m-0 text-[11px] font-bold uppercase tracking-[0.14em] text-ink-60">
+        <h2 className="m-0 eyebrow text-ink-60">
           Email address
         </h2>
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-card border border-ring bg-surface px-[22px] py-4">
+        <div className="flex flex-wrap items-center justify-between gap-4 rounded-card shadow-hairline bg-surface px-[22px] py-4">
           <span className="text-[17px] break-all">{account.email}</span>
           <Link
             href="/account"
