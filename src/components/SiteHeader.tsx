@@ -76,7 +76,14 @@ export async function SiteHeader() {
           two headers. It is furniture: capping it leaves the logo floating
           mid-screen while the page beneath runs to the edges.
         */}
-        <div className="flex w-full items-center justify-between gap-6 px-5 py-[18px] sm:px-8 lg:px-10">
+        {/*
+          Sized off the controls rather than padded around them. A 44px tap
+          target is the floor, so the padding is the only thing that can give,
+          and every pixel here is one fewer for the results she came to read
+          on a small screen. min-h keeps it steady when the controls are
+          absent and only the logo is left.
+        */}
+        <div className="flex min-h-[60px] w-full items-center justify-between gap-6 px-5 py-2 sm:px-8 lg:px-10">
           <Link
             href="/"
             className="text-[15px] font-bold uppercase tracking-[0.14em] text-ink no-underline"
