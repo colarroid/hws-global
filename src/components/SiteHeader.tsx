@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Bookmark, Settings } from "lucide-react";
 import { MobileNav } from "@/components/ui/MobileNav";
@@ -84,11 +85,23 @@ export async function SiteHeader() {
           absent and only the logo is left.
         */}
         <div className="flex min-h-[60px] w-full items-center justify-between gap-6 px-5 py-2 sm:px-8 lg:px-10">
+          {/* The name is on the link and alt is empty, so it is announced
+              once, as the thing it does, rather than twice. */}
           <Link
             href="/"
-            className="text-[15px] font-bold uppercase tracking-[0.14em] text-ink no-underline"
+            aria-label="HWS Pathgrid, home"
+            className="flex items-center no-underline"
           >
-            Logo
+            <Image
+              src="/logo.svg"
+              alt=""
+              width={100}
+              height={36}
+              priority
+              // Served as authored. The image optimiser does not process SVG,
+              // and there is nothing to gain from it on a 5KB vector.
+              unoptimized
+            />
           </Link>
 
           {hasControls ? (
