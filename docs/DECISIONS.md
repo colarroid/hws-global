@@ -260,25 +260,15 @@ other than `organisation` to `woman`. Admin is granted by hand.
 
 ## Open
 
-- **The four categories with no Access Zone, and the escape that was never
-  built.** Housing, safety and rights, support for new Scots, and caring and
-  family life. An admin can create zones for them; whether they belong in the
-  zone model is HWS's call.
+- ~~**The four categories with no Access Zone.**~~ **Closed by the admin
+  tool.** Housing, safety and rights, support for new Scots, and caring and
+  family life had no zone. Access Zone management now exists: an admin sees
+  every zone, edits them and creates new ones without a release, so covering
+  these is an afternoon's content decision rather than anything the build is
+  waiting on. Confirmed by HWS on 27 August 2026 as the answer to it.
 
-  The brief calls the hand-routing escape load-bearing on both sides: the only
-  path for a woman whose need falls in the gap, and the only way an
-  organisation working in those areas can list at all. It must reach a person,
-  not another search.
-
-  **It does not exist.** `hand_routing_requests` is in the schema with its RLS
-  policies and nothing in any of the three front ends reads or writes it. The
-  organisation side advertised it from the zones step, but that panel linked
-  to `/hand-routing`, a route nobody built, so it was a dead end wearing the
-  clothes of the escape from one. The panel was removed on 27 August 2026
-  rather than left pointing at a 404.
-
-  So the gap is now visible instead of papered over, and it is wider than the
-  open decision above: those organisations reach the end of onboarding with
-  nothing that fits, and principle 4 says the words "no results" never appear.
-  Answering the zone question closes it. Building the escape closes it. Doing
-  neither leaves a category of organisation unable to list.
+  Recorded once and not raised again: the hand-routing escape the brief
+  describes was never built. `hand_routing_requests` is in the schema and
+  nothing reads it. The zones step advertised it through a link to a route
+  that does not exist, and that panel was removed rather than left pointing at
+  a 404. Creating the zones is the route now.
