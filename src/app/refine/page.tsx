@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { Page } from "@/components/ui/Page";
 import { RefineForm } from "@/components/find/RefineForm";
 import { getLiveListings } from "@/lib/data/search";
@@ -24,6 +25,8 @@ function combinations(): { scope: Scope; filters: string[] }[] {
 
 export const countKey = (scope: string, filters: string[]) =>
   `${scope}|${[...filters].sort().join(",")}`;
+
+export const metadata: Metadata = { title: "Refine or widen" };
 
 /**
  * Screen 6. Refine or widen.

@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Phone, TriangleAlert } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { getService } from "@/lib/data/service";
+
+export const metadata: Metadata = { title: "Talk to a person" };
 
 /**
  * Contact our support, and the "something wrong?" reporting loop.

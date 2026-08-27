@@ -9,24 +9,19 @@
  * creates is namespaced under the address below, so `npm run seed:clean`
  * removes it again.
  *
- *   node --env-file=.env.local scripts/seed-dev.mjs
+ * The project has to be named on the command line, so this cannot be pointed
+ * at production by loading the wrong env file. See guard.mjs.
+ *
+ *   node --env-file=.env.local scripts/seed-dev.mjs --project <ref>
  */
 
 import { createClient } from "@supabase/supabase-js";
+import { requireNamedProject } from "./guard.mjs";
 
 const EMAIL = "dev-organisation@example.org";
 const PASSWORD = "a memorable phrase";
 
-const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!url || !serviceKey) {
-  console.error(
-    "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY.\n" +
-      "Run with: node --env-file=.env.local scripts/seed-dev.mjs",
-  );
-  process.exit(1);
-}
+const { url, serviceKey } = requireNamedProject();
 
 const supabase = createClient(url, serviceKey, {
   auth: { autoRefreshToken: false, persistSession: false },
@@ -214,7 +209,9 @@ async function main() {
   if (error) throw error;
 
   console.log("listings  4 created (live, live, in review, closed)");
-  console.log(`\nSign in at http://organisations.localhost:3000/sign-in`);
+  // The portal is its own repository and its own deployment now, so there is
+  // no single URL this script can name. Decision 19.
+  console.log(`\nSign in to the organisation portal as:`);
   console.log(`  ${EMAIL}`);
   console.log(`  ${PASSWORD}`);
 }

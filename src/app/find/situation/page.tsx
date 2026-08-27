@@ -1,6 +1,9 @@
+import type { Metadata } from "next";
 import { QuestionShell } from "@/components/QuestionShell";
 import { SituationForm } from "@/components/find/SituationForm";
 import { getSituations } from "@/lib/data/situations";
+
+export const metadata: Metadata = { title: "What best describes your situation?" };
 
 /**
  * Question 3. Her situation.

@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { AccessForm } from "@/components/account/AccessForm";
+
+export const metadata: Metadata = { title: "Access your account" };
 
 /**
  * Screen 9. Access your account.

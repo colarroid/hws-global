@@ -21,7 +21,14 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "HWS Portal",
+  /* Every screen sets its own title; the template adds the suffix. The
+     default is the landing page, which sets none of its own, and it is what
+     most people will see first: the brief expects most traffic to arrive
+     from a search engine rather than the front door. */
+  title: {
+    default: "Find support for women in Scotland",
+    template: "%s | HWS Portal",
+  },
   description:
     "Find support for women across Scotland, and list support for the women who need it.",
 };

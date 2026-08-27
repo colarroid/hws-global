@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -6,6 +7,8 @@ import { RemindersToggle } from "@/components/account/RemindersToggle";
 import { DangerZone } from "@/components/account/DangerZone";
 import { getAccount } from "@/lib/data/account";
 import { getSavedIds } from "@/lib/saved";
+
+export const metadata: Metadata = { title: "Settings" };
 
 /**
  * Screen 12. Settings.

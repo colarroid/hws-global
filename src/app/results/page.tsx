@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, SlidersHorizontal } from "lucide-react";
 import { Page } from "@/components/ui/Page";
@@ -36,6 +37,8 @@ function parseAnswers(params: {
     filters: params.filters?.split(",").filter(Boolean) ?? [],
   };
 }
+
+export const metadata: Metadata = { title: "Next steps for you" };
 
 /**
  * Screen 5. Next steps.

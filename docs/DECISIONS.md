@@ -106,6 +106,21 @@ The ring also removed a defect. Chips and fields swapped between 1px and
 2px/1.5px borders on selection, so the box shifted under the pointer as she
 picked. Rings are drawn outside the box, so the geometry now holds still.
 
+**23. Organisation onboarding counts to three, not four.**
+The brief says "four-step onboarding" and lists three: about the
+organisation, Access Zones, verification evidence, "then straight to the
+dashboard". The shell counted the dashboard as the fourth so the progress bar
+could fill, and the counter beside it therefore read "Step 1 of 4" across
+three forms.
+
+Confirmed as three by HWS. The bar fills just as completely in thirds, and
+the counter now describes what is actually in front of them.
+
+This is decision 5 a second time. There the approved screens labelled the
+woman's three questions "of 4" and the same answer was given. The brief's
+sentence is the likelier origin of both, so it is worth reading as prose
+rather than as a specification wherever it counts something.
+
 ---
 
 ## Technical
@@ -209,6 +224,30 @@ cannot change a project's region in place, so satisfying such a requirement
 after launch means a new project and a migration window. The cost of moving
 was roughly ten minutes while the database was empty.
 
+**24. Reserved addresses are refused in `sendEmail`, and the seed scripts
+must name their project.**
+`dev-organisation@example.org` and `dev-woman@example.org` are in production,
+and the cron jobs read whatever address sits on a user, so both were being
+emailed on a schedule and bouncing every time. Bounce rate is what decides
+whether the mail that matters reaches an inbox or a spam folder, and
+providers suspend senders over it.
+
+Two changes, at two different depths:
+
+- `sendEmail` refuses anything under the domains RFC 2606 and 6761 reserve
+  for documentation and testing. Refused centrally rather than per caller, so
+  a reserved address cannot reach the provider by way of a route nobody
+  thought to guard. All four senders already go through it.
+- `scripts/guard.mjs` makes both seed scripts take the project reference on
+  the command line and match it against the URL. The old check confirmed the
+  credentials existed, never which project they opened, which is how test
+  organisations reached production in the first place: one careless
+  `--env-file` is all it took, and `hws-global/.env.local` points at
+  production.
+
+`seed:clean` now exists. The seed's header had promised it since it was
+written, which is the likeliest reason the seeded rows are still there.
+
 **18. Roles are never self-assignable beyond `organisation`.**
 `handle_new_user` reads the requested role from sign-up metadata, which is
 attacker-controlled: anyone can post arbitrary `options.data` to the public
@@ -221,8 +260,25 @@ other than `organisation` to `woman`. Admin is granted by hand.
 
 ## Open
 
-- **The four categories with no Access Zone.** Housing, safety and rights,
-  support for new Scots, and caring and family life. An admin can create zones
-  for them; whether they belong in the zone model is HWS's call. Until it is
-  made, `hand_routing_requests` is the only path for an organisation working
-  in those areas, and it must reach a person.
+- **The four categories with no Access Zone, and the escape that was never
+  built.** Housing, safety and rights, support for new Scots, and caring and
+  family life. An admin can create zones for them; whether they belong in the
+  zone model is HWS's call.
+
+  The brief calls the hand-routing escape load-bearing on both sides: the only
+  path for a woman whose need falls in the gap, and the only way an
+  organisation working in those areas can list at all. It must reach a person,
+  not another search.
+
+  **It does not exist.** `hand_routing_requests` is in the schema with its RLS
+  policies and nothing in any of the three front ends reads or writes it. The
+  organisation side advertised it from the zones step, but that panel linked
+  to `/hand-routing`, a route nobody built, so it was a dead end wearing the
+  clothes of the escape from one. The panel was removed on 27 August 2026
+  rather than left pointing at a 404.
+
+  So the gap is now visible instead of papered over, and it is wider than the
+  open decision above: those organisations reach the end of onboarding with
+  nothing that fits, and principle 4 says the words "no results" never appear.
+  Answering the zone question closes it. Building the escape closes it. Doing
+  neither leaves a category of organisation unable to list.

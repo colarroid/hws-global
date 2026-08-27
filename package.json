@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "seed": "node --env-file=.env.local scripts/seed-dev.mjs",
+    "seed:clean": "node --env-file=.env.local scripts/seed-clean.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

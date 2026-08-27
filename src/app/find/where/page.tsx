@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { QuestionShell } from "@/components/QuestionShell";
 import { PlaceForm } from "@/components/find/PlaceForm";
+
+export const metadata: Metadata = { title: "Where should we look for support?" };
 
 /**
  * Question 2. Where to look.

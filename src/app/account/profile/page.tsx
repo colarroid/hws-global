@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { Page } from "@/components/ui/Page";
 import { ProfileForm } from "@/components/account/ProfileForm";
 import { getAccount } from "@/lib/data/account";
+
+export const metadata: Metadata = { title: "Set up your profile" };
 
 /**
  * Screen 10. Set up your profile.

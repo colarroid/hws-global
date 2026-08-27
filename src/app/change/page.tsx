@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ButtonLink } from "@/components/ui/Button";
 import { getSituationLabels } from "@/lib/data/situations";
+
+export const metadata: Metadata = { title: "Change your answers" };
 
 /**
  * Screen 7. Change answers.

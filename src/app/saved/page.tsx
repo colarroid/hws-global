@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Bookmark } from "lucide-react";
 import { Page } from "@/components/ui/Page";
@@ -57,6 +58,8 @@ const TONES: Record<Status["tone"], string> = {
   neutral: "bg-gold-200 text-gold-700",
   closed: "bg-closed text-ink-65",
 };
+
+export const metadata: Metadata = { title: "Your saved list" };
 
 /**
  * Screen 11. Your saved list.

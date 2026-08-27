@@ -1,8 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Mail } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { CodeForm } from "@/components/account/CodeForm";
+
+export const metadata: Metadata = { title: "Check your email" };
 
 /**
  * Passcode entry. Never designed; the spec existed only in prose.

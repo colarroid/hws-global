@@ -1,5 +1,8 @@
+import type { Metadata } from "next";
 import { QuestionShell } from "@/components/QuestionShell";
 import { NeedForm } from "@/components/find/NeedForm";
+
+export const metadata: Metadata = { title: "What do you need help with?" };
 
 /**
  * Question 1. What she needs, in her own words.
