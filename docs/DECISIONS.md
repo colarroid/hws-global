@@ -23,10 +23,27 @@ designs win without further discussion.
 **2. Build order: organisations, women, admin, landing.**
 The organisation portal ships first, so there is something for women to find.
 
-**3. Three subdomains on one deployment.**
-`organisations.` for the portal, `administrator.` for the admin tools, and the
-bare domain for the woman-facing flow and the landing page. Resolved in
-`src/proxy.ts`, which rewrites the host onto an internal path prefix.
+**3. ~~Three subdomains on one deployment.~~ Deployment model superseded by 19.
+Hosts corrected below.**
+This entry recorded `organisations.` for the portal and the bare domain for the
+woman-facing flow. Both are wrong. Verified against DNS on 27 August 2026:
+
+| Front end | Host |
+| --- | --- |
+| Woman-facing and landing | `www.hwspathgrid.com` — the apex 308-redirects here |
+| Organisation portal | `organisation.hwspathgrid.com`, **singular** |
+| Admin tools | `administrator.hwspathgrid.com` |
+
+`organisations.` plural does not resolve at all and never has.
+
+This is not a documentation nicety. The plural was copied into Supabase's
+**Redirect URLs** allow-list, so `emailRedirectTo` never matched and Supabase
+silently fell back to the Site URL: every organisation confirmation email
+landed a woman-facing page holding an auth code it has no route for. Password
+reset failed the same way, through `redirectTo` in `src/app/actions.ts`.
+
+Anything that hard-codes a host — the allow-list, the Site URL, email
+templates — must be checked against this table, not against prose.
 
 **4. Accounts are in scope, and the saved list is their purpose.**
 The v1.0 brief said no accounts in Phase One. Superseded: four woman-facing
