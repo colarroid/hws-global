@@ -201,7 +201,7 @@ export default async function ResultsPage({
                   /* Light at rest, dark on hover. Inverting on hover is the
                      whole affordance, so both states carry AA contrast on
                      their own ground rather than relying on the change. */
-                  className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline-ink bg-surface px-8 py-[15px] text-[17px] font-bold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:bg-ink hover:text-white focus-visible:bg-ink focus-visible:text-white"
+                  className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-8 py-[15px] text-[17px] font-bold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:bg-ink hover:text-white focus-visible:bg-ink focus-visible:text-white"
                 >
                   Learn more
                 </Link>

@@ -88,7 +88,7 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
             if (blankAttempt) setBlankAttempt(false);
           }}
           placeholder="e.g. getting back to work after caring for my mum"
-          className="resize-y rounded-control shadow-hairline-ink bg-surface p-[18px] text-[18px] leading-[1.5] text-ink"
+          className="resize-y rounded-control shadow-hairline bg-surface p-[18px] text-[18px] leading-[1.5] text-ink"
         />
         {ready ? (
           <span className="text-[14px] leading-[1.5] text-ink-60">

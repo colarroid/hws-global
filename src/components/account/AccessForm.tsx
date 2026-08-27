@@ -20,7 +20,6 @@ export function AccessForm() {
         type="email"
         autoComplete="email"
         placeholder="you@example.com"
-        emphasis
         required
       />
       <SubmitButton>Send me a sign-in code</SubmitButton>

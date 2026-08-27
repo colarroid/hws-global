@@ -76,7 +76,7 @@ export function PlaceForm({
           onChange={(e) => setPlace(e.target.value)}
           placeholder="e.g. EH48"
           autoComplete="off"
-          className="rounded-control shadow-hairline-ink bg-surface p-[18px] text-[18px] text-ink"
+          className="rounded-control shadow-hairline bg-surface p-[18px] text-[18px] text-ink"
         />
       </div>
 
