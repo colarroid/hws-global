@@ -8,12 +8,15 @@ import { getAccount } from "@/lib/data/account";
 /**
  * Shared by the desktop row and the mobile panel, so the two cannot drift.
  */
-function SavedLink({ count }: { count: number }) {
+function SavedLink({
+  count,
+  inPanel = false,
+}: {
+  count: number;
+  inPanel?: boolean;
+}) {
   return (
-    <Link
-      href="/saved"
-      className="inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
-    >
+    <Link href="/saved" className={inPanel ? PANEL_ROW : PILL}>
       <Bookmark
         size={17}
         strokeWidth={2}
@@ -29,6 +32,18 @@ function SavedLink({ count }: { count: number }) {
   );
 }
 
+const PILL =
+  "inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface " +
+  "px-4 py-[9px] text-[15px] font-semibold text-ink no-underline " +
+  "transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold";
+
+/* In the panel the sheet is already a raised white surface, so a ringed
+   white pill on it reads as flat. Rows there instead. */
+const PANEL_ROW =
+  "inline-flex w-full min-h-[44px] items-center gap-3 rounded-control px-3 py-[10px] " +
+  "text-[15px] font-medium text-ink-70 no-underline " +
+  "transition-[color,background-color] duration-150 ease-out hover:bg-gold-200/60 hover:text-ink";
+
 function SettingsLink({ withLabel = false }: { withLabel?: boolean }) {
   return (
     <Link
@@ -36,7 +51,7 @@ function SettingsLink({ withLabel = false }: { withLabel?: boolean }) {
       aria-label={withLabel ? undefined : "Reminders and account settings"}
       className={
         withLabel
-          ? "inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
+          ? PANEL_ROW
           : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full shadow-hairline bg-surface text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
       }
     >
@@ -112,7 +127,7 @@ export async function SiteHeader() {
               </div>
 
               <MobileNav label="menu">
-                {hasSaved ? <SavedLink count={saved.length} /> : null}
+                {hasSaved ? <SavedLink count={saved.length} inPanel /> : null}
                 {account ? <SettingsLink withLabel /> : null}
               </MobileNav>
             </>
