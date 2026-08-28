@@ -1,3 +1,5 @@
+import { emailButton, emailLayout, emailText, escapeHtml } from "@/emails/layout";
+
 export type StaleListing = {
   name: string;
   lastConfirmed: string | null;
@@ -67,37 +69,22 @@ export function listingRecheck(
     )
     .join("");
 
-  const html = `<!doctype html>
-<html lang="en-GB">
-<body style="margin:0;background:#F9F6F1;font-family:Helvetica,Arial,sans-serif;color:#120902;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F9F6F1;padding:32px 16px;">
-    <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#FFFFFF;border:1px solid rgba(18,9,2,0.16);border-radius:14px;padding:28px;">
-        <tr><td>
-          <p style="margin:0 0 20px;font-size:18px;line-height:1.6;">${escapeHtml(opening)}</p>
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>
-          <p style="margin:20px 0 0;font-size:16px;line-height:1.6;color:rgba(18,9,2,0.7);">
-            Women see the date each listing was last checked, so an old one
-            costs you applications. Confirming takes a moment if nothing has
-            changed.
-          </p>
-          <p style="margin:24px 0 0;">
-            <a href="${dashboardUrl}" style="display:inline-block;background:#120902;color:#FFFFFF;font-size:16px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:10px;">Check my listings</a>
-          </p>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`;
+  const html = emailLayout({
+    preheader: one
+      ? "One listing has not been confirmed in six months."
+      : `${listings.length} listings have not been confirmed in six months.`,
+    heading: one
+      ? "One of your listings needs checking"
+      : "Some of your listings need checking",
+    body:
+      emailText(escapeHtml(opening)) +
+      `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 0;">${rows}</table>` +
+      emailText(
+        "Women see the date each listing was last checked, so an old one costs you applications. Confirming takes a moment if nothing has changed.",
+        "muted",
+      ) +
+      emailButton("Confirm they are current", dashboardUrl),
+  });
 
   return { subject, html, text };
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }

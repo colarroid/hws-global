@@ -1,3 +1,5 @@
+import { emailButton, emailLayout, emailText, escapeHtml } from "@/emails/layout";
+
 
 export type ClosingSoon = {
   name: string;
@@ -62,38 +64,22 @@ export function deadlineReminder(items: ClosingSoon[], savedUrl: string) {
     )
     .join("");
 
-  const html = `<!doctype html>
-<html lang="en-GB">
-<body style="margin:0;background:#F9F6F1;font-family:Helvetica,Arial,sans-serif;color:#120902;">
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F9F6F1;padding:32px 16px;">
-    <tr><td align="center">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#FFFFFF;border:1px solid rgba(18,9,2,0.16);border-radius:14px;padding:28px;">
-        <tr><td>
-          <p style="margin:0 0 20px;font-size:18px;line-height:1.6;">
-            ${one ? "Something on your saved list closes soon." : "A few things on your saved list close soon."}
-          </p>
-          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table>
-          <p style="margin:24px 0 0;">
-            <a href="${savedUrl}" style="display:inline-block;background:#120902;color:#FFFFFF;font-size:16px;font-weight:700;text-decoration:none;padding:14px 24px;border-radius:10px;">See your list</a>
-          </p>
-          <p style="margin:24px 0 0;font-size:14px;line-height:1.6;color:rgba(18,9,2,0.6);">
-            We only email you about closing dates. To stop these, open your list
-            and turn reminders off in settings.
-          </p>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-</body>
-</html>`;
+  const html = emailLayout({
+    preheader: one
+      ? "One closing date on your saved list."
+      : `${items.length} closing dates on your saved list.`,
+    heading: one ? "Something you saved closes soon" : "Some things close soon",
+    body:
+      emailText(
+        one
+          ? "Something on your saved list closes soon."
+          : "A few things on your saved list close soon.",
+      ) +
+      `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:8px 0 0;">${rows}</table>` +
+      emailButton("See your list", savedUrl),
+    footnote:
+      "We only email you about closing dates. To stop these, open your list and turn reminders off in settings.",
+  });
 
   return { subject, html, text };
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }
