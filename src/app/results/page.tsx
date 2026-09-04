@@ -6,9 +6,16 @@ import { ResultCard, type ResultCardData } from "@/components/ResultCard";
 import { NoMatch } from "@/components/find/NoMatch";
 import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
-import { getLiveListings, recordUnmetSearch } from "@/lib/data/search";
+import {
+  getLiveListings,
+  getMarkets,
+  getSearchableOrganisations,
+  recordUnmetSearch,
+} from "@/lib/data/search";
 import { getSituationLabels, getSituationPhrases } from "@/lib/data/situations";
 import { rank, countForScope, type Answers, type Scope } from "@/lib/search/rank";
+import { rankOrganisations } from "@/lib/search/rankOrganisations";
+import { OrganisationAnswers } from "@/components/find/OrganisationAnswers";
 import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
 
 const DATE = new Intl.DateTimeFormat("en-GB", {
@@ -69,9 +76,11 @@ export default async function ResultsPage({
   const params = await searchParams;
   const answers = parseAnswers(params);
 
-  const [listings, situationLabels, situationPhrases, savedIds] =
+  const [listings, organisations, markets, situationLabels, situationPhrases, savedIds] =
     await Promise.all([
       getLiveListings(),
+      getSearchableOrganisations(),
+      getMarkets(),
       getSituationLabels(),
       getSituationPhrases(),
       getSavedIds(),
@@ -80,7 +89,12 @@ export default async function ResultsPage({
   // Phrases build the reason; labels show her answers back as chips.
   const ranked = rank(listings, answers, situationPhrases);
 
-  if (ranked.length === 0) {
+  // Beside the listings rather than mixed into them. A specific thing with a
+  // date and a way in beats a general one every time, so these are the second
+  // answer: who can help when there is nothing open, or nothing that fits.
+  const rankedOrganisations = rankOrganisations(organisations, answers, markets);
+
+  if (ranked.length === 0 && rankedOrganisations.length === 0) {
     // Counts are computed before the screen renders, so a suggested widening
     // is never itself another dead end.
     const widenCount = countForScope(listings, answers, "all-scotland");
@@ -148,8 +162,9 @@ export default async function ResultsPage({
 
         {/* Stated where she can see it, because it is a promise about her. */}
         <p className="m-0 text-[14px] leading-[1.5] text-ink-60">
-          Ordered by how well they fit what you told us. Nobody pays to appear
-          here.
+          {ranked.length === 0
+            ? "Nothing open fits closely enough to put in front of you, but these organisations work on what you asked about."
+            : "Ordered by how well they fit what you told us. Nobody pays to appear here."}
         </p>
       </div>
 
@@ -213,6 +228,10 @@ export default async function ResultsPage({
           );
         })}
       </div>
+
+      {rankedOrganisations.length > 0 ? (
+        <OrganisationAnswers organisations={rankedOrganisations} />
+      ) : null}
 
       <div className="flex flex-col gap-[14px] border-t border-hairline pt-6">
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">

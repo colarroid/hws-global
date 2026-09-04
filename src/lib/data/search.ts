@@ -98,3 +98,110 @@ export async function recordUnmetSearch(input: {
     result_count: input.resultCount,
   });
 }
+
+/**
+ * One verified organisation, with everything the organisation ranker scores.
+ *
+ * Reads `public_organisation_search`, which is the same allowlist discipline
+ * as the profile view: the organisations table holds verification evidence
+ * and a named contact's phone number, and none of it is here.
+ */
+export type SearchableOrganisation = {
+  id: string;
+  name: string;
+  place: string | null;
+  blurb: string | null;
+  mission: string | null;
+  uniqueOffer: string | null;
+  eligibility: string | null;
+  coverage: string | null;
+  audiences: string[];
+  serviceKinds: string[];
+  accessRoutes: string[];
+  logoUrl: string | null;
+  marketSlugs: string[];
+  zoneSlugs: string[];
+  liveListings: number;
+};
+
+export async function getSearchableOrganisations(): Promise<
+  SearchableOrganisation[]
+> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("public_organisation_search")
+    .select("*");
+
+  if (error) throw error;
+
+  type Row = {
+    id: string;
+    name: string;
+    place: string | null;
+    blurb: string | null;
+    mission: string | null;
+    unique_offer: string | null;
+    eligibility: string | null;
+    coverage: string | null;
+    audiences: string[] | null;
+    service_kinds: string[] | null;
+    access_routes: string[] | null;
+    logo_path: string | null;
+    market_slugs: string[] | null;
+    zone_slugs: string[] | null;
+    live_listings: number | null;
+  };
+
+  return ((data ?? []) as Row[]).map((row) => ({
+    id: row.id,
+    name: row.name,
+    place: row.place,
+    blurb: row.blurb,
+    mission: row.mission,
+    uniqueOffer: row.unique_offer,
+    eligibility: row.eligibility,
+    coverage: row.coverage,
+    audiences: row.audiences ?? [],
+    serviceKinds: row.service_kinds ?? [],
+    accessRoutes: row.access_routes ?? [],
+    logoUrl: row.logo_path
+      ? supabase.storage.from("organisation-logos").getPublicUrl(row.logo_path)
+          .data.publicUrl
+      : null,
+    marketSlugs: row.market_slugs ?? [],
+    zoneSlugs: row.zone_slugs ?? [],
+    liveListings: row.live_listings ?? 0,
+  }));
+}
+
+export type Market = {
+  slug: string;
+  label: string;
+  /**
+   * The label plus what a woman is likely to type, for matching only. Kept
+   * apart from the label because the label goes into her sentence, and
+   * "they work on digital ai artificial intelligence tech coding" is not a
+   * sentence anybody wrote.
+   */
+  matchText: string;
+};
+
+/** The market vocabulary, in admin-set order. */
+export async function getMarkets(): Promise<Market[]> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("secondary_markets")
+    .select("slug, label, match_phrase")
+    .is("retired_at", null)
+    .order("sort_order");
+
+  if (error) throw error;
+
+  return (data ?? []).map((row) => ({
+    slug: row.slug,
+    label: row.label,
+    matchText: [row.label, row.match_phrase].filter(Boolean).join(" "),
+  }));
+}

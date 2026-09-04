@@ -365,3 +365,120 @@ export async function searchOrganisations(
     isPrimary: false,
   }));
 }
+
+export type Need = {
+  slug: string;
+  label: string;
+  organisationCount: number;
+};
+
+/**
+ * The practical needs, with how many organisations cover each.
+ *
+ * Offered above the Access Zones on Discover, because a zone is HWS's way of
+ * dividing the work and a need is hers. "I want to return to work" is a
+ * sentence somebody says; "Career, Confidence & Employability" is a heading
+ * in a strategy document. Both are on the page, in that order.
+ */
+export async function getNeedsWithCounts(): Promise<Need[]> {
+  const supabase = await createClient();
+
+  const { data: markets, error } = await supabase
+    .from("secondary_markets")
+    .select("slug, label")
+    .is("retired_at", null)
+    .order("sort_order");
+
+  if (error) throw error;
+
+  const { data: rows, error: rowsError } = await supabase
+    .from("public_organisation_search")
+    .select("id, market_slugs");
+
+  if (rowsError) throw rowsError;
+
+  const counts = new Map<string, number>();
+  for (const row of rows ?? []) {
+    for (const slug of (row.market_slugs as string[] | null) ?? []) {
+      counts.set(slug, (counts.get(slug) ?? 0) + 1);
+    }
+  }
+
+  return (markets ?? []).map((market) => ({
+    slug: market.slug,
+    label: market.label,
+    organisationCount: counts.get(market.slug) ?? 0,
+  }));
+}
+
+export async function getNeed(slug: string): Promise<Need | null> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("secondary_markets")
+    .select("slug, label")
+    .eq("slug", slug)
+    .is("retired_at", null)
+    .maybeSingle();
+
+  if (error) throw error;
+  if (!data) return null;
+
+  const all = await getOrganisationsForNeed(slug);
+  return { slug: data.slug, label: data.label, organisationCount: all.length };
+}
+
+/**
+ * Everyone HWS says can help with one need.
+ *
+ * Ordered by whether they have something open, because a woman who has come
+ * this far is looking for a next step and one that exists beats one that
+ * might. Then alphabetically, so the order is stable rather than whatever
+ * the database returned.
+ */
+export async function getOrganisationsForNeed(
+  slug: string,
+): Promise<OrganisationCard[]> {
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("public_organisation_search")
+    .select(
+      "id, name, place, blurb, logo_path, coverage, service_kinds, audiences, market_slugs, live_listings",
+    )
+    .contains("market_slugs", [slug])
+    .order("name");
+
+  if (error) throw error;
+
+  type Row = {
+    id: string;
+    name: string;
+    place: string | null;
+    blurb: string | null;
+    logo_path: string | null;
+    coverage: string | null;
+    service_kinds: string[] | null;
+    audiences: string[] | null;
+    live_listings: number | null;
+  };
+
+  return ((data ?? []) as Row[])
+    .map((row) => ({
+      id: row.id,
+      name: row.name,
+      place: row.place,
+      blurb: row.blurb,
+      logoUrl: logoUrl(supabase, row.logo_path),
+      coverage: row.coverage,
+      serviceKinds: row.service_kinds ?? [],
+      audiences: row.audiences ?? [],
+      liveListings: row.live_listings ?? 0,
+      // Meaningless outside a zone page, where it decides the order.
+      isPrimary: false,
+    }))
+    .sort(
+      (a, b) =>
+        b.liveListings - a.liveListings || a.name.localeCompare(b.name),
+    );
+}
