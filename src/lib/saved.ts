@@ -3,18 +3,23 @@ import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 
 /**
- * Saving works immediately, with no account.
+ * Saving belongs to an account.
  *
- * Signed out, the list lives in a session cookie: no Max-Age and no Expires,
- * so it dies when the browser closes. That is not a shortcut, it is the
- * promise. The platform says nothing is remembered between visits without an
- * account, and a persistent cookie would quietly make that untrue.
+ * It used to work signed out, in a session cookie that died with the window.
+ * That made the saved list a thing you could build and lose without ever
+ * being told, and it meant the header could say "Saved 3" to somebody who
+ * would have nothing tomorrow. An account is now the price of saving, and it
+ * is the only thing on the platform that has one.
  *
- * Signed in, the list lives in `saved_items` and the cookie stops being the
- * source. That is the single thing an account buys, and the only reason it
- * exists.
+ * Nothing else changed. Searching, reading and applying still need no
+ * account, which is the promise that actually matters, and the whole flow up
+ * to the moment she presses Save is untouched.
+ *
+ * The cookie survives for one job: remembering the listing she pressed Save
+ * on while she goes and signs in, so the press is not thrown away. It is
+ * written just before the redirect and read once on the way back.
  */
-const COOKIE = "hws_saved";
+const PENDING = "hws_pending_save";
 
 /** A long list means something is wrong, not that someone is thorough. */
 const MAX_SAVED = 50;
@@ -27,54 +32,31 @@ async function currentUserId(): Promise<string | null> {
   return user?.id ?? null;
 }
 
-async function cookieIds(): Promise<string[]> {
-  const store = await cookies();
-  const raw = store.get(COOKIE)?.value ?? "";
-  return raw.split(",").filter(Boolean).slice(0, MAX_SAVED);
-}
-
-/** Writes the session list. Only callable from a server action or route. */
-export async function writeCookieIds(ids: string[]) {
-  const store = await cookies();
-  const unique = [...new Set(ids)].slice(0, MAX_SAVED);
-
-  if (unique.length === 0) {
-    store.delete(COOKIE);
-    return;
-  }
-
-  store.set(COOKIE, unique.join(","), {
-    httpOnly: true,
-    sameSite: "lax",
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    // Deliberately no maxAge and no expires: a session cookie.
-  });
-}
-
 export async function getSavedIds(): Promise<string[]> {
   const userId = await currentUserId();
-  if (!userId) return cookieIds();
+  if (!userId) return [];
 
   const supabase = await createClient();
   const { data } = await supabase
     .from("saved_items")
     .select("listing_id")
-    .order("saved_at", { ascending: false });
+    .order("saved_at", { ascending: false })
+    .limit(MAX_SAVED);
 
   return (data ?? []).map((row) => row.listing_id);
 }
 
-export async function toggleSavedId(listingId: string): Promise<boolean> {
+export type SaveResult =
+  | { ok: true; saved: boolean }
+  /** She is not signed in. The listing is held; send her to the account. */
+  | { ok: false; reason: "signed-out" };
+
+export async function toggleSavedId(listingId: string): Promise<SaveResult> {
   const userId = await currentUserId();
 
   if (!userId) {
-    const ids = await cookieIds();
-    const already = ids.includes(listingId);
-    await writeCookieIds(
-      already ? ids.filter((id) => id !== listingId) : [...ids, listingId],
-    );
-    return !already;
+    await holdPendingSave(listingId);
+    return { ok: false, reason: "signed-out" };
   }
 
   const supabase = await createClient();
@@ -86,33 +68,66 @@ export async function toggleSavedId(listingId: string): Promise<boolean> {
 
   if (existing) {
     await supabase.from("saved_items").delete().eq("listing_id", listingId);
-    return false;
+    return { ok: true, saved: false };
   }
 
   await supabase
     .from("saved_items")
     .insert({ user_id: userId, listing_id: listingId });
-  return true;
+
+  return { ok: true, saved: true };
 }
 
 /**
- * Carry the session list into the account, once, at sign-in.
+ * Remember the one listing she pressed Save on, while she signs in.
  *
- * She saved those things before signing in, which is the whole point of the
- * order these screens come in. Losing them at the moment she creates an
- * account to keep them would be the worst possible time to drop anything.
+ * A session cookie, so it dies with the window: a save she abandoned
+ * halfway through should not be waiting for her in a fortnight. httpOnly,
+ * because nothing on the client has any business reading it.
  */
-export async function adoptSessionSaves(userId: string) {
-  const ids = await cookieIds();
-  if (ids.length === 0) return;
+export async function holdPendingSave(listingId: string) {
+  const store = await cookies();
+  store.set(PENDING, listingId, {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    // Deliberately no maxAge and no expires: a session cookie.
+  });
+}
+
+export async function clearPendingSave() {
+  const store = await cookies();
+  store.delete(PENDING);
+}
+
+export async function readPendingSave(): Promise<string | null> {
+  const store = await cookies();
+  return store.get(PENDING)?.value ?? null;
+}
+
+/**
+ * Finish the save she started before signing in.
+ *
+ * Called once, at the moment the account exists. Losing the press that sent
+ * her to sign in would be the worst possible time to drop anything, and it
+ * is the only reason the pending cookie exists at all.
+ *
+ * Returns the listing so the screen after sign-in can say what was saved.
+ */
+export async function completePendingSave(userId: string): Promise<string | null> {
+  const listingId = await readPendingSave();
+  if (!listingId) return null;
+
+  await clearPendingSave();
 
   const supabase = await createClient();
   await supabase
     .from("saved_items")
     .upsert(
-      ids.map((listing_id) => ({ user_id: userId, listing_id })),
+      { user_id: userId, listing_id: listingId },
       { onConflict: "user_id,listing_id", ignoreDuplicates: true },
     );
 
-  await writeCookieIds([]);
+  return listingId;
 }

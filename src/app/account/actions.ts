@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
-import { adoptSessionSaves, writeCookieIds } from "@/lib/saved";
+import { clearPendingSave, completePendingSave } from "@/lib/saved";
 
 export type FormState = { error?: string } | null;
 
@@ -85,7 +85,9 @@ export async function verifyCode(
     };
   }
 
-  await adoptSessionSaves(data.user.id);
+  // The listing she pressed Save on before being sent here, finished now
+  // that there is an account to hang it on.
+  const saved = await completePendingSave(data.user.id);
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -95,7 +97,12 @@ export async function verifyCode(
 
   revalidatePath("/saved");
 
-  redirect(profile?.first_name ? "/saved" : "/account/profile");
+  // Straight to the list when there is a name already, and to the name
+  // question when there is not. Either way the save she started is done, so
+  // the first thing she sees is the thing she pressed Save on.
+  redirect(
+    profile?.first_name ? "/saved" : `/account/profile${saved ? "?saved=1" : ""}`,
+  );
 }
 
 /** Nothing here is required, so nothing here can fail. */
@@ -146,8 +153,8 @@ export async function setReminders(enabled: boolean) {
 export async function signOut() {
   const supabase = await createClient();
   await supabase.auth.signOut();
-  // The session list belongs to the browser, not the account she just left.
-  await writeCookieIds([]);
+  // Nothing of hers is left behind in the browser.
+  await clearPendingSave();
   redirect("/");
 }
 
@@ -171,7 +178,7 @@ export async function deleteAccount() {
   await supabase.from("saved_items").delete().eq("user_id", user.id);
   await supabase.from("profiles").delete().eq("id", user.id);
   await supabase.auth.signOut();
-  await writeCookieIds([]);
+  await clearPendingSave();
 
   redirect("/?deleted=1");
 }

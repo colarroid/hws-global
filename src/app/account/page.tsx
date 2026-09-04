@@ -20,16 +20,26 @@ export const metadata: Metadata = { title: "Access your account" };
  * the entire product, this is passcode-only until HWS decides. The privacy
  * line below is written to be accurate as it stands.
  */
-export default function AccessPage() {
+export default async function AccessPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ save?: string }>;
+}) {
+  // She pressed Save and was sent here. The listing is held and finishes
+  // saving itself the moment the account exists, so the page says that
+  // rather than leaving her to wonder whether the press was thrown away.
+  const { save } = await searchParams;
+
   return (
     <Page width={460} top={80} gap={22}>
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[40px] sm:leading-[1.1]">
-          Access your account
+          {save ? "Sign in to save it" : "Access your account"}
         </h1>
         <p className="m-0 text-[17px] leading-[1.55] text-ink-70">
-          We&apos;ll send you a one-time passcode to sign in. No password to
-          remember.
+          {save
+            ? "Saving is the one thing here that needs an account, so your list is still there next time. We have kept hold of what you just pressed Save on, and it will be waiting once you are in."
+            : "We'll send you a one-time passcode to sign in. No password to remember."}
         </p>
       </div>
 
@@ -46,7 +56,7 @@ export default function AccessPage() {
         href="/find"
         className="self-center p-1 text-[15px] font-bold text-gold-700 no-underline"
       >
-        Just search without signing in
+        {save ? "Carry on without saving" : "Just search without signing in"}
       </Link>
     </Page>
   );

@@ -22,7 +22,7 @@ export const FOR_WOMEN: Question[] = [
   },
   {
     q: "Do I need an account?",
-    a: "No. You never need one to search, read or apply for anything. An account exists only so you can save something to come back to and be reminded before a closing date, and you are asked for one after you save, never before.",
+    a: "Not to search, read or apply for anything. The one thing that needs an account is saving: press Save and you are asked to sign in, so your list is still there next time and we can warn you before something closes. Nothing else on the platform asks you for anything.",
   },
   {
     q: "Does it cost anything?",
@@ -50,7 +50,7 @@ export const FOR_WOMEN: Question[] = [
   },
   {
     q: "Can I save something and come back to it?",
-    a: "Yes. Save anything from your results and it is there when you return. If you add an email address we will remind you about seven days before a closing date, and you can turn that off at any time.",
+    a: "Yes, with an account. Press Save on anything and you are asked to sign in with a one-time code; what you pressed Save on is kept while you do and is waiting when you get back. We remind you about seven days before a closing date, and you can turn that off at any time.",
   },
   {
     q: "Will anyone know I have been here?",
