@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
 
 /**
@@ -10,6 +12,10 @@ import { ButtonLink } from "@/components/ui/Button";
  *
  * No sign-in prompt anywhere near it. No account is ever required to search,
  * read or apply.
+ *
+ * Discover sits under the button rather than beside it. It is the answer for
+ * a woman who cannot yet name what she needs, which is a real case and a
+ * smaller one than the case for typing it.
  */
 export default function Landing() {
   return (
@@ -22,9 +28,21 @@ export default function Landing() {
           Tell us what you need in your own words, and we will show you a few
           next steps worth taking. Three questions, no account needed.
         </p>
-        <ButtonLink href="/find" size="inline" className="px-9 py-[19px] text-[18px]">
-          Find solution
-        </ButtonLink>
+        <div className="flex flex-wrap items-center gap-4">
+          <ButtonLink href="/find" size="inline" className="px-9 py-[19px] text-[18px]">
+            Find solution
+          </ButtonLink>
+          {/* Second, and quieter. Searching is the front door for almost
+              everybody; browsing is for the woman who cannot yet name what
+              she needs, and offering it as an equal would slow the rest. */}
+          <Link
+            href="/discover"
+            className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
+          >
+            Or see who is out there
+            <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
+          </Link>
+        </div>
       </div>
     </div>
   );

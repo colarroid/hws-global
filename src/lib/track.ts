@@ -40,3 +40,27 @@ export async function track(listingId: string, kind: Kind) {
     // Deliberately swallowed. See above.
   }
 }
+
+/**
+ * Record one organisation event, for its own overview figures.
+ *
+ * Separate from `track` because an organisation profile is not a listing and
+ * counting a visit to one as a listing view would inflate a figure HWS
+ * repeats to funders. Same shape and the same silence: an id, a kind, a date,
+ * and never an exception that could cost her the page.
+ */
+export async function trackOrganisation(
+  organisationId: string,
+  kind: "profile_view",
+) {
+  try {
+    if (await looksLikeARobot()) return;
+
+    const supabase = await createClient();
+    await supabase
+      .from("organisation_events")
+      .insert({ organisation_id: organisationId, kind });
+  } catch {
+    // Deliberately swallowed. See above.
+  }
+}
