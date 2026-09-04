@@ -3,8 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Building2 } from "lucide-react";
 import { Page } from "@/components/ui/Page";
+import { OrganisationRow } from "@/components/discover/OrganisationRow";
 import { getZone, getOrganisationsInZone } from "@/lib/data/discover";
-import { COVERAGE, SOLUTION_KINDS, labelFor, labelsFor } from "@/lib/design/taxonomy";
 
 export async function generateMetadata({
   params,
@@ -45,7 +45,7 @@ export default async function ZonePage({
   const also = organisations.filter((o) => !o.isPrimary);
 
   return (
-    <Page width={880} top={48} gap={26}>
+    <Page width={1180} top={48} gap={26}>
       <Link
         href="/discover"
         className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
@@ -108,73 +108,7 @@ function OrganisationList({
   return (
     <div className="flex flex-col gap-[14px]">
       {organisations.map((organisation) => (
-        <Link
-          key={organisation.id}
-          href={`/organisation/${organisation.id}`}
-          className="group flex gap-5 rounded-card bg-surface p-6 no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[2px] hover:shadow-panel"
-        >
-          {/* Always drawn, logo or not, so a row without one does not sit at
-              a different indent to the rows around it. */}
-          <span className="flex size-[56px] shrink-0 items-center justify-center overflow-hidden rounded-control bg-ground">
-            {organisation.logoUrl ? (
-              /* eslint-disable-next-line @next/next/no-img-element */
-              <img
-                src={organisation.logoUrl}
-                alt=""
-                width={56}
-                height={56}
-                loading="lazy"
-                className="size-full object-contain"
-              />
-            ) : (
-              <Building2
-                size={24}
-                strokeWidth={1.5}
-                className="text-ink-40"
-                aria-hidden="true"
-              />
-            )}
-          </span>
-
-          <span className="flex min-w-0 flex-1 flex-col gap-2">
-            <span className="font-display text-[21px] font-normal leading-[1.25] text-ink">
-              {organisation.name}
-            </span>
-
-            {organisation.blurb ? (
-              <span className="text-[16px] leading-[1.55] text-ink-70">
-                {organisation.blurb}
-              </span>
-            ) : null}
-
-            <span className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[14px] text-ink-60">
-              {[
-                organisation.place,
-                labelFor(COVERAGE, organisation.coverage),
-                labelsFor(SOLUTION_KINDS, organisation.serviceKinds)
-                  .slice(0, 3)
-                  .join(", "),
-                organisation.liveListings > 0
-                  ? organisation.liveListings +
-                    (organisation.liveListings === 1
-                      ? " thing open"
-                      : " things open")
-                  : null,
-              ]
-                .filter(Boolean)
-                .map((fact, index) => (
-                  <span key={index}>{fact}</span>
-                ))}
-            </span>
-          </span>
-
-          <ArrowRight
-            size={18}
-            strokeWidth={2}
-            className="mt-1 shrink-0 self-start text-gold-700 transition-transform duration-150 ease-out group-hover:translate-x-1"
-            aria-hidden="true"
-          />
-        </Link>
+        <OrganisationRow key={organisation.id} organisation={organisation} />
       ))}
     </div>
   );

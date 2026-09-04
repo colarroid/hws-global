@@ -284,3 +284,84 @@ export async function getListingsForOrganisation(organisationId: string) {
 
   return data ?? [];
 }
+
+/**
+ * The search term, made safe to interpolate.
+ *
+ * PostgREST parses its filters out of the query string, so a comma or a
+ * bracket typed into a search box is a syntax error at best and somebody
+ * else's filter at worst. `%` and `_` are LIKE wildcards, which would let a
+ * search match things it does not look like it should. None of them are worth
+ * supporting in a name search, so they are dropped rather than escaped.
+ */
+function safeTerm(raw: string) {
+  return raw
+    .replace(/[,.()*\%_"']/g, " ")
+    .trim()
+    .slice(0, 80);
+}
+
+/**
+ * Organisations matching what she typed.
+ *
+ * Searches the name, the one-line description and the mission, because a
+ * woman browsing rarely knows an organisation by name — she knows what it
+ * does. Place is in there too, since "Fife" is a reasonable thing to type
+ * into a box on a page about who works where.
+ *
+ * This is not the matching engine. That lives in three questions and weighs
+ * her situation, her area and her own words; this is a text search over
+ * organisations, and the page says so rather than implying otherwise.
+ */
+export async function searchOrganisations(
+  raw: string,
+): Promise<OrganisationCard[]> {
+  const term = safeTerm(raw);
+  if (!term) return [];
+
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("public_organisation_profiles")
+    .select(
+      "id, name, place, blurb, mission, logo_path, coverage, service_kinds, audiences, live_listings",
+    )
+    .or(
+      [
+        `name.ilike.%${term}%`,
+        `blurb.ilike.%${term}%`,
+        `mission.ilike.%${term}%`,
+        `place.ilike.%${term}%`,
+      ].join(","),
+    )
+    .order("name")
+    .limit(50);
+
+  if (error) throw error;
+
+  type Row = {
+    id: string;
+    name: string;
+    place: string | null;
+    blurb: string | null;
+    logo_path: string | null;
+    coverage: string | null;
+    service_kinds: string[] | null;
+    audiences: string[] | null;
+    live_listings: number | null;
+  };
+
+  return ((data ?? []) as Row[]).map((row) => ({
+    id: row.id,
+    name: row.name,
+    place: row.place,
+    blurb: row.blurb,
+    logoUrl: logoUrl(supabase, row.logo_path),
+    coverage: row.coverage,
+    serviceKinds: row.service_kinds ?? [],
+    audiences: row.audiences ?? [],
+    liveListings: row.live_listings ?? 0,
+    // Meaningless outside a zone page, where it decides the order.
+    isPrimary: false,
+  }));
+}
