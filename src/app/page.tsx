@@ -9,7 +9,7 @@ import {
   MessageSquareText,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
-import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { LanguageMenu } from "@/components/LanguageMenu";
 import { getTranslator } from "@/lib/i18n";
 import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
 
@@ -52,7 +52,7 @@ export default async function Landing() {
           {/* Above the headline, because somebody who cannot read the
               headline needs this before anything else on the page. */}
           <div className="self-end">
-            <LanguageSwitcher label={t("language.label")} current={locale.code} />
+            <LanguageMenu current={locale.code} />
           </div>
 
           <h1 className="m-0 max-w-[17ch] font-display text-[40px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[76px]">
