@@ -149,46 +149,9 @@ export default async function DiscoverPage({
           </div>
         ) : null}
 
-        {/* Needs before zones, deliberately. A zone is how HWS divides the
-            work; a need is a sentence somebody actually says. Both are on the
-            page, in the order she thinks in. */}
         <div className="flex flex-col gap-2">
           <h2 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[34px]">
-            {q ? "Browse by what you need" : "Or browse by what you need"}
-          </h2>
-          <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-            Say it the way you would say it out loud.
-          </p>
-        </div>
-
-        <div className="mt-7 flex flex-wrap gap-[10px]">
-          {needs.map((need) => {
-            const empty = need.organisationCount === 0;
-            return empty ? (
-              <span
-                key={need.slug}
-                className="inline-flex items-center gap-2 rounded-full bg-surface px-[18px] py-[12px] text-[16px] text-ink-60 opacity-70 shadow-hairline"
-              >
-                {need.label}
-              </span>
-            ) : (
-              <Link
-                key={need.slug}
-                href={`/discover/need/${need.slug}`}
-                className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-[18px] py-[12px] text-[16px] font-semibold text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
-              >
-                {need.label}
-                <span className="rounded-full bg-gold-200 px-2 py-[2px] text-[13px] font-bold tabular-nums text-gold-700">
-                  {need.organisationCount}
-                </span>
-              </Link>
-            );
-          })}
-        </div>
-
-        <div className="mt-14 flex flex-col gap-2">
-          <h2 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[34px]">
-            Or browse by Access Zone
+            Browse by Access Zone
           </h2>
           <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
             The eight kinds of support the platform is built around. Each one
@@ -236,6 +199,44 @@ export default async function DiscoverPage({
             );
           })}
         </div>
+
+        {/* Both ways in, zones first. A zone is how HWS divides the work
+            and a need is a sentence somebody says out loud. Either can be
+            the one she recognises, so both are on the page. */}
+        <div className="mt-14 flex flex-col gap-2">
+          <h2 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[34px]">
+            Browse by what you need
+          </h2>
+          <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
+            Say it the way you would say it out loud.
+          </p>
+        </div>
+
+        <div className="mt-7 flex flex-wrap gap-[10px]">
+          {needs.map((need) => {
+            const empty = need.organisationCount === 0;
+            return empty ? (
+              <span
+                key={need.slug}
+                className="inline-flex items-center gap-2 rounded-full bg-surface px-[18px] py-[12px] text-[16px] text-ink-60 opacity-70 shadow-hairline"
+              >
+                {need.label}
+              </span>
+            ) : (
+              <Link
+                key={need.slug}
+                href={`/discover/need/${need.slug}`}
+                className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-[18px] py-[12px] text-[16px] font-semibold text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
+              >
+                {need.label}
+                <span className="rounded-full bg-gold-200 px-2 py-[2px] text-[13px] font-bold tabular-nums text-gold-700">
+                  {need.organisationCount}
+                </span>
+              </Link>
+            );
+          })}
+        </div>
+
       </section>
     </div>
   );
