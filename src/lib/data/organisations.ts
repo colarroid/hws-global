@@ -31,7 +31,8 @@ export async function getAccessZones(): Promise<AccessZone[]> {
 export type MyOrganisation = {
   id: string;
   name: string;
-  type: string;
+  /** One or more, since an organisation is often more than one thing. */
+  types: string[];
   website: string | null;
   place: string | null;
   blurb: string | null;
@@ -59,7 +60,7 @@ export async function getMyOrganisation(): Promise<MyOrganisation | null> {
 
   const { data: org } = await supabase
     .from("organisations")
-    .select("id, name, type, website, place, blurb, status")
+    .select("id, name, types, website, place, blurb, status")
     .eq("id", membership.organisation_id)
     .single();
 
@@ -72,6 +73,7 @@ export async function getMyOrganisation(): Promise<MyOrganisation | null> {
 
   return {
     ...org,
+    types: org.types ?? [],
     primaryZoneId: zones?.find((z) => z.role === "primary")?.zone_id ?? null,
     alsoZoneIds: (zones ?? [])
       .filter((z) => z.role === "also")
