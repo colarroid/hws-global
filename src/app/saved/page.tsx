@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 import { Bookmark } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ButtonLink } from "@/components/ui/Button";
@@ -72,9 +73,23 @@ export const metadata: Metadata = { title: "Your saved list" };
  * This is the version without an account. Everything works, for the session.
  * The account adds one thing, which is making the list outlive the window,
  * and it is offered here rather than demanded anywhere earlier.
+ *
+ * Signed out with nothing saved, this is a sign-in screen instead. There is
+ * genuinely nothing here for that person, and the likeliest reason she is
+ * looking is that she saved things on another visit and wants them back,
+ * which is exactly what an account is for.
+ *
+ * Signed out with things saved, she sees them. That is not an oversight: the
+ * whole flow is save first and account afterwards, the header counts those
+ * saves, and bouncing her to a sign-in page with no explanation of where the
+ * three things she just saved had gone would break the one promise the
+ * platform makes loudest.
  */
 export default async function SavedPage() {
   const [ids, account] = await Promise.all([getSavedIds(), getAccount()]);
+
+  if (!account && ids.length === 0) redirect("/account");
+
   const services = (await Promise.all(ids.map(getService))).filter(
     (s): s is Service => Boolean(s),
   );
@@ -88,6 +103,8 @@ export default async function SavedPage() {
     return a.name.localeCompare(b.name);
   });
 
+  {/* Only reachable signed in now, since signed out with nothing saved
+      redirects above. */}
   if (sorted.length === 0) {
     return (
       <Page width={780} top={72} gap={24}>
