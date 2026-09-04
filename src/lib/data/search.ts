@@ -1,5 +1,11 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import {
+  FALLBACK_SUGGESTIONS,
+  MARKET_SUGGESTIONS,
+  MAX_SUGGESTIONS,
+  SITUATION_SUGGESTIONS,
+} from "@/lib/design/suggestions";
 
 /** A listing women can reach, with everything the ranker and the card need. */
 export type SearchableListing = {
@@ -204,4 +210,66 @@ export async function getMarkets(): Promise<Market[]> {
     label: row.label,
     matchText: [row.label, row.match_phrase].filter(Boolean).join(" "),
   }));
+}
+
+/**
+ * The example sentences to offer under question 1.
+ *
+ * Chosen from what is actually on the platform, so a suggestion never leads
+ * to an empty results page. That is the whole point: the screen exists to
+ * show a woman the kind of thing she can type, and teaching her that the
+ * platform has nothing for it would be worse than showing her nothing.
+ *
+ * Situations first, because a situation with live listings behind it means
+ * there is something open to find. Markets fill the rest, because a market
+ * with organisations behind it means there is somebody to go to even when
+ * nothing is open.
+ *
+ * Ordered by how much sits behind each, so the list leads with what the
+ * platform is strongest at and reorders itself as that changes.
+ */
+export async function getNeedSuggestions(): Promise<string[]> {
+  const supabase = await createClient();
+
+  const [{ data: listings }, { data: organisations }] = await Promise.all([
+    supabase
+      .from("public_listing_cards")
+      .select("situation_slugs")
+      .eq("status", "live"),
+    supabase.from("public_organisation_search").select("market_slugs"),
+  ]);
+
+  const count = (rows: { [k: string]: unknown }[] | null, key: string) => {
+    const tally = new Map<string, number>();
+    for (const row of rows ?? []) {
+      for (const slug of (row[key] as string[] | null) ?? []) {
+        tally.set(slug, (tally.get(slug) ?? 0) + 1);
+      }
+    }
+    return tally;
+  };
+
+  const bySituation = count(listings, "situation_slugs");
+  const byMarket = count(organisations, "market_slugs");
+
+  const ranked = (
+    tally: Map<string, number>,
+    phrases: Record<string, string>,
+  ) =>
+    [...tally.entries()]
+      .filter(([slug, n]) => n > 0 && phrases[slug])
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([slug]) => phrases[slug]);
+
+  // A sentence that appears in both lists is only worth offering once.
+  const suggestions = [
+    ...ranked(bySituation, SITUATION_SUGGESTIONS),
+    ...ranked(byMarket, MARKET_SUGGESTIONS),
+  ];
+
+  const unique = [...new Set(suggestions)].slice(0, MAX_SUGGESTIONS);
+
+  return unique.length > 0
+    ? unique
+    : FALLBACK_SUGGESTIONS.slice(0, MAX_SUGGESTIONS);
 }

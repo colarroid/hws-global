@@ -4,19 +4,19 @@ import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { NextButton } from "@/components/find/NextButton";
 
-/**
- * Shown before she types, not after. These are the five most common ways
- * women describe why they are here, in the words they use rather than ours.
- */
-const COMMON_NEEDS = [
-  "getting back to work after caring for someone",
-  "starting my own business",
-  "finding money for a course",
-  "changing career",
-  "meeting people near me",
-];
-
-export function NeedForm({ initialNeed }: { initialNeed: string }) {
+export function NeedForm({
+  initialNeed,
+  suggestions,
+}: {
+  initialNeed: string;
+  /**
+   * Computed from what is actually on the platform, so pressing one never
+   * leads to an empty results page. Shown before she types rather than
+   * after: a blank box is where digital confidence bites, and seeing the
+   * kind of thing that can be typed is what gets past it.
+   */
+  suggestions: string[];
+}) {
   const router = useRouter();
   const [need, setNeed] = useState(initialNeed);
   const [blankAttempt, setBlankAttempt] = useState(false);
@@ -97,23 +97,23 @@ export function NeedForm({ initialNeed }: { initialNeed: string }) {
         ) : null}
       </div>
 
-      <div className="flex flex-col gap-3">
-        <span className="eyebrow text-ink-60">
-          Suggestions
-        </span>
-        <div className="flex flex-wrap gap-[10px]">
-          {COMMON_NEEDS.map((suggestion) => (
-            <button
-              key={suggestion}
-              type="button"
-              onClick={() => applySuggestion(suggestion)}
-              className="min-h-[44px] rounded-full shadow-hairline bg-surface px-[18px] py-3 text-left text-[16px] text-ink transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
-            >
-              {suggestion}
-            </button>
-          ))}
+      {suggestions.length > 0 ? (
+        <div className="flex flex-col gap-3">
+          <span className="eyebrow text-ink-60">Suggestions</span>
+          <div className="flex flex-wrap gap-[10px]">
+            {suggestions.map((suggestion) => (
+              <button
+                key={suggestion}
+                type="button"
+                onClick={() => applySuggestion(suggestion)}
+                className="min-h-[44px] rounded-full shadow-hairline bg-surface px-[18px] py-3 text-left text-[16px] text-ink transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
+              >
+                {suggestion}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <NextButton
         ready={ready}
