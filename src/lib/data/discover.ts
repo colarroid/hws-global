@@ -482,3 +482,38 @@ export async function getOrganisationsForNeed(
         b.liveListings - a.liveListings || a.name.localeCompare(b.name),
     );
 }
+
+/**
+ * What is actually on the platform, for the landing page.
+ *
+ * Counted rather than written down. A figure in a heading that somebody typed
+ * is a figure that is wrong within a month, and on a page whose whole argument
+ * is "we checked" that is the worst possible thing to be wrong about.
+ */
+export async function getPlatformCounts(): Promise<{
+  organisations: number;
+  listings: number;
+  zones: number;
+}> {
+  const supabase = await createClient();
+
+  const [organisations, listings, zones] = await Promise.all([
+    supabase
+      .from("public_organisation_profiles")
+      .select("id", { count: "exact", head: true }),
+    supabase
+      .from("public_listing_cards")
+      .select("id", { count: "exact", head: true })
+      .eq("status", "live"),
+    supabase
+      .from("access_zones")
+      .select("id", { count: "exact", head: true })
+      .is("retired_at", null),
+  ]);
+
+  return {
+    organisations: organisations.count ?? 0,
+    listings: listings.count ?? 0,
+    zones: zones.count ?? 0,
+  };
+}

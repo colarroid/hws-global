@@ -1,49 +1,245 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  BadgeCheck,
+  Building2,
+  Compass,
+  Lock,
+  MessageSquareText,
+} from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
+import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
+
+export const metadata: Metadata = {
+  title: "Find support for women in Scotland",
+  description:
+    "Tell us what you need in your own words and we will show you a few next steps worth taking. Every organisation is checked. No account needed.",
+};
 
 /**
  * The landing page.
  *
- * Deliberately almost empty. Most traffic arrives from a search engine, and
- * the handoff is blunt about the consequence: if the invitation to search
- * sits below the fold, the platform is a directory to everyone who finds it
- * through Google. So there is one thing on this page, and it is the way in.
+ * It was one line and a button, and the reasoning behind that still holds:
+ * most traffic arrives from a search engine, and the handoff is blunt that if
+ * the invitation to search sits below the fold, the platform is a directory
+ * to everyone who finds it through Google. So the invitation is still the
+ * first thing, still above the fold, and still the largest thing on screen.
  *
- * No sign-in prompt anywhere near it. No account is ever required to search,
- * read or apply.
+ * What has changed is that there is now something behind it worth describing.
+ * Everything under the hero answers questions somebody asks before trusting a
+ * site with a sentence about their own life: who is behind this, how were
+ * these chosen, what happens to what I type, and is anybody paying to be here.
  *
- * Discover sits under the button rather than beside it. It is the answer for
- * a woman who cannot yet name what she needs, which is a real case and a
- * smaller one than the case for typing it.
+ * The figures are counted, not written. A number in a heading that somebody
+ * typed is wrong within a month, and on a page whose whole argument is "we
+ * checked" that is the worst thing to be wrong about.
  */
-export default function Landing() {
+export default async function Landing() {
+  const [counts, zones] = await Promise.all([
+    getPlatformCounts(),
+    getZonesWithCounts(),
+  ]);
+
   return (
-    <div className="flex flex-1 items-center justify-center px-5 py-24 sm:px-10">
-      <div className="flex w-full max-w-[660px] flex-col items-start gap-7">
-        <h1 className="m-0 font-display text-[34px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[52px]">
-          Find support for women in Scotland
-        </h1>
-        <p className="m-0 max-w-[52ch] text-[18px] leading-[1.6] text-ink-70">
-          Tell us what you need in your own words, and we will show you a few
-          next steps worth taking. Three questions, no account needed.
-        </p>
-        <div className="flex flex-wrap items-center gap-4">
-          <ButtonLink href="/find" size="inline" className="px-9 py-[19px] text-[18px]">
-            Find solution
-          </ButtonLink>
-          {/* Second, and quieter. Searching is the front door for almost
-              everybody; browsing is for the woman who cannot yet name what
-              she needs, and offering it as an equal would slow the rest. */}
+    <div className="flex flex-1 flex-col">
+      <section className="px-5 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28">
+        <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
+          <h1 className="m-0 max-w-[17ch] font-display text-[40px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[76px]">
+            Find support for women in Scotland
+          </h1>
+
+          <p className="m-0 max-w-[54ch] text-[19px] leading-[1.6] text-ink-70 sm:text-[21px]">
+            Tell us what you need in your own words, and we will show you a few
+            next steps worth taking. Three questions, no account needed.
+          </p>
+
+          <div className="flex flex-wrap items-center gap-5">
+            <ButtonLink
+              href="/find"
+              size="inline"
+              className="px-9 py-[19px] text-[18px]"
+            >
+              Find solution
+            </ButtonLink>
+            {/* Second, and quieter. Searching is the front door for almost
+                everybody; browsing is for the woman who cannot yet name what
+                she needs, and offering it as an equal would slow the rest. */}
+            <Link
+              href="/discover"
+              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
+            >
+              Or see who is out there
+              <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
+            </Link>
+          </div>
+
+          {counts.listings > 0 ? (
+            <p className="m-0 pt-2 text-[16px] text-ink-60">
+              <strong className="font-semibold text-ink tabular-nums">
+                {counts.listings}
+              </strong>{" "}
+              things open right now, from{" "}
+              <strong className="font-semibold text-ink tabular-nums">
+                {counts.organisations}
+              </strong>{" "}
+              organisations we have checked.
+            </p>
+          ) : null}
+        </div>
+      </section>
+
+      {/* The five things a match is made on. This is the platform's actual
+          argument, so it gets the one dark band on the page. */}
+      <section className="bg-ink px-5 py-16 sm:px-10 sm:py-20">
+        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10">
+          <div className="flex flex-col gap-3">
+            <span className="eyebrow text-gold-300">How it works</span>
+            <h2 className="m-0 max-w-[22ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
+              You should not have to know who to ask
+            </h2>
+            <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-white/70">
+              Say &ldquo;I want to go back to work&rdquo; or &ldquo;I need
+              funding&rdquo; and we do the rest. You never have to pick a
+              category, name an organisation, or work out which scheme you
+              might qualify for.
+            </p>
+          </div>
+
+          <ol className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-3">
+            {[
+              {
+                step: "One",
+                title: "Tell us, in your words",
+                body: "What you need, roughly where you are, and anything about your situation you want us to know. Three questions and none of them are compulsory.",
+              },
+              {
+                step: "Two",
+                title: "We weigh it up",
+                body: "Against what each thing is for, who it is open to, where it runs and how you can reach it. The reasoning is written down and nothing about it can be bought.",
+              },
+              {
+                step: "Three",
+                title: "You get a few real options",
+                body: "A handful, not a hundred, each with why it matched, what it costs, who it is for, and exactly what happens after you apply.",
+              },
+            ].map((item) => (
+              <li key={item.step} className="flex flex-col gap-2">
+                <span className="eyebrow text-gold-300">{item.step}</span>
+                <span className="font-display text-[23px] font-normal leading-[1.2] text-white">
+                  {item.title}
+                </span>
+                <span className="text-[16px] leading-[1.6] text-white/70">
+                  {item.body}
+                </span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
+        <div className="flex flex-col gap-3">
+          <span className="eyebrow text-gold-700">Access Zones</span>
+          <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
+            {counts.zones} kinds of support, one platform
+          </h2>
+          <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-ink-70">
+            Work, money, learning, health, enterprise, having a say. Most women
+            need more than one at a time, and most services only do one — which
+            is the gap this exists to close.
+          </p>
+        </div>
+
+        <div className="mt-9 flex flex-wrap gap-[10px]">
+          {zones.map((zone) => (
+            <Link
+              key={zone.id}
+              href={`/discover/${zone.slug}`}
+              className="inline-flex min-h-[44px] items-center rounded-full bg-surface px-[18px] py-[12px] text-[16px] font-semibold text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
+            >
+              {zone.name}
+            </Link>
+          ))}
+        </div>
+
+        <Link
+          href="/discover"
+          className="mt-8 inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
+        >
+          <Compass size={18} strokeWidth={2} aria-hidden="true" />
+          Browse everyone on the platform
+          <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
+        </Link>
+      </section>
+
+      {/* The questions somebody asks before typing a sentence about her own
+          life into a website. Answering them is the whole job of this block. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 pb-16 sm:px-10 sm:pb-20">
+        <div className="grid grid-cols-1 gap-[14px] sm:grid-cols-3">
+          {[
+            {
+              icon: BadgeCheck,
+              title: "Somebody checked",
+              body: "Every organisation here has been verified against a public register or its funder before it could post anything. Each listing carries the date it was last confirmed.",
+            },
+            {
+              icon: Lock,
+              title: "Nothing is shared",
+              body: "You do not need an account to search, read or apply. What you type is used to rank your results and is not sold, passed on, or used to build a profile of you.",
+            },
+            {
+              icon: MessageSquareText,
+              title: "Nobody pays to appear",
+              body: "There is no paid placement and no advertising. Results are ordered by how well they fit what you told us, and every listing says why it matched.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="flex flex-col gap-3 rounded-card bg-surface p-6 shadow-hairline"
+            >
+              <span className="flex text-gold-700">
+                <item.icon size={22} strokeWidth={2} aria-hidden="true" />
+              </span>
+              <span className="font-display text-[21px] font-normal leading-[1.2]">
+                {item.title}
+              </span>
+              <span className="text-[16px] leading-[1.6] text-ink-70">
+                {item.body}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* The other audience. Kept to one block at the foot, because a woman
+          looking for help should not have to scroll past a pitch to
+          organisations to reach anything that is for her. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-10">
+        <div className="flex flex-col gap-5 rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-center sm:justify-between sm:p-10">
+          <div className="flex flex-col gap-3">
+            <span className="flex text-gold-700">
+              <Building2 size={24} strokeWidth={2} aria-hidden="true" />
+            </span>
+            <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
+              Do you run something women should know about?
+            </h2>
+            <p className="m-0 max-w-[54ch] text-[17px] leading-[1.6] text-ink-70">
+              List it here and it reaches the women it actually suits, rather
+              than whoever happens to find your website. Free, and we check you
+              once rather than checking every listing.
+            </p>
+          </div>
+
           <Link
-            href="/discover"
-            className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
+            href={process.env.ORG_PORTAL_URL ?? "https://organisation.hwspathgrid.com"}
+            className="inline-flex min-h-[44px] shrink-0 items-center gap-2 self-start rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90 sm:self-auto"
           >
-            Or see who is out there
+            List your support
             <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
           </Link>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
