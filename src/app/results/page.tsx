@@ -188,7 +188,7 @@ export default async function ResultsPage({
             whatToExpect: listing.what_to_expect ?? "",
             why,
             verified: listing.last_confirmed_at
-              ? `Verified · last checked ${DATE.format(new Date(listing.last_confirmed_at))}`
+              ? `Verified · last updated ${DATE.format(new Date(listing.last_confirmed_at))}`
               : "Verified",
           };
 

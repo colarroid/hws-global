@@ -230,21 +230,17 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
         )}
 
         <div className="flex flex-wrap items-center justify-between gap-4 rounded-card bg-gold-200 px-[22px] py-5">
+          {/* One date rather than two. The checked date and the updated date
+              were both here, answering a question nobody asked in two parts:
+              she wants to know how current this is, and one line is that
+              answer. */}
           <div className="flex flex-col gap-1">
             <span className="inline-flex items-center gap-2 text-[15px] text-green-700">
               <BadgeCheck size={17} strokeWidth={2} aria-hidden="true" />
               {service.last_confirmed_at
-                ? `Verified · last checked ${LONG.format(new Date(service.last_confirmed_at))}`
+                ? `Verified · last updated ${LONG.format(new Date(service.last_confirmed_at))}`
                 : "Verified"}
             </span>
-            {/* A different promise from the checked date above it. That one
-                says HWS confirmed this is still true; this one says the
-                organisation changed what it says, and when. */}
-            {service.updated_at ? (
-              <span className="text-[14px] text-gold-700">
-                Updated {LONG.format(new Date(service.updated_at))}
-              </span>
-            ) : null}
           </div>
           {/* The reporting loop. The verified stamp is only worth what the
               re-check cadence is worth, and women spot staleness first. */}
