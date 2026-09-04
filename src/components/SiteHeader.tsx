@@ -131,7 +131,20 @@ export async function SiteHeader() {
               somebody who cannot read the page has something to do from the
               moment she arrives, and hiding the way to fix that until she has
               saved a listing is backwards. */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
+            {/* Signed out, this is a way back in for somebody returning to a
+                saved list — not a wall in front of the search. Quiet rather
+                than a filled button for that reason, and gone entirely once
+                she is signed in, when Saved and Settings say it better. */}
+            {account ? null : (
+              <Link
+                href="/account"
+                className="inline-flex min-h-[44px] items-center rounded-full px-3 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:bg-gold-200 sm:px-4"
+              >
+                Sign in
+              </Link>
+            )}
+
             {hasControls ? (
               <>
                 <div className="hidden items-center gap-2 lg:flex">

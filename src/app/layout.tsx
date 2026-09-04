@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
+import { SiteFooter } from "@/components/SiteFooter";
 import { getLocale } from "@/lib/i18n";
 import "./globals.css";
 
@@ -52,6 +53,7 @@ export default async function RootLayout({
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex flex-1 flex-col">{children}</main>
+          <SiteFooter />
         </div>
       </body>
     </html>
