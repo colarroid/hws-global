@@ -56,7 +56,7 @@ const SITUATION_TO_AUDIENCE: Record<string, string[]> = {
   "unpaid-carer": ["carers"],
   "pregnant-or-new-parent": ["single_parents"],
   "new-to-scotland": ["refugees_and_new_scots"],
-  "experiencing-financial-difficulty": ["women_on_low_income"],
+  "financial-difficulty": ["women_on_low_income"],
 };
 
 /**
@@ -70,11 +70,11 @@ const SITUATION_TO_AUDIENCE: Record<string, string[]> = {
 const SITUATION_TO_MARKET: Record<string, string[]> = {
   "returning-to-work": ["return-to-work", "jobs-and-careers"],
   "unpaid-carer": ["carers"],
-  "starting-or-growing-a-business": ["start-and-grow-a-business"],
+  "starting-or-growing": ["start-and-grow-a-business"],
   "looking-for-funding": ["funding-and-investment"],
   "changing-career": ["jobs-and-careers", "skills-and-retraining"],
   "new-to-scotland": ["new-scots-and-inclusion"],
-  "experiencing-financial-difficulty": ["financial-wellbeing"],
+  "financial-difficulty": ["financial-wellbeing"],
   "looking-after-my-health": ["health-and-wellbeing"],
 };
 
