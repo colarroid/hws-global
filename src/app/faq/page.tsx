@@ -18,6 +18,12 @@ export const metadata: Metadata = {
  * rather than something reimplemented and half right. The plus and minus are
  * drawn from the open state in CSS, so nothing has to stay in step.
  *
+ * One shared `name` makes them exclusive: opening any answer closes whichever
+ * was open. That is a browser feature rather than a listener, and on a
+ * browser too old for it they simply all stay open, which is what they did
+ * before. A degradation nobody would notice beats a script that has to be
+ * right about focus, keyboard and the back button to earn its place.
+ *
  * Two groups rather than one list. A woman wants to know whether this is safe
  * and whether it will waste her time; an organisation wants to know what it
  * costs and what happens to what it posts. One list makes both read half a
@@ -29,6 +35,7 @@ function Answers({ questions, first }: { questions: Question[]; first: boolean }
       {questions.map((item, index) => (
         <details
           key={item.q}
+          name="faq"
           // Only the very first on the page, so somebody arriving sees the
           // shape of an answer without having to guess these open at all.
           open={first && index === 0}
@@ -51,8 +58,8 @@ function Answers({ questions, first }: { questions: Question[]; first: boolean }
             </span>
           </summary>
 
-          {/* The rule down the side is what separates an answer from the next
-              question when several are open at once. */}
+          {/* The rule down the side is what ties an answer to the question it
+              belongs to, rather than leaving it floating between two. */}
           <div className="border-s-2 border-gold-300 ps-5 pb-6">
             <p className="m-0 max-w-[64ch] text-[17px] leading-[1.65] text-ink-70">
               {item.a}
