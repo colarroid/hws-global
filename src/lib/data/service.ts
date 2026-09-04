@@ -21,6 +21,8 @@ export type Service = {
   organisationPlace: string | null;
   organisationBlurb: string | null;
   organisationWebsite: string | null;
+  /** Public URL for the organisation logo, or null. */
+  organisationLogoUrl: string | null;
   situationSlugs: string[];
 };
 
@@ -61,6 +63,11 @@ export async function getService(id: string): Promise<Service | null> {
     organisationPlace: data.organisation_place,
     organisationBlurb: data.organisation_blurb,
     organisationWebsite: data.organisation_website,
+    organisationLogoUrl: data.organisation_logo_path
+      ? supabase.storage
+          .from("organisation-logos")
+          .getPublicUrl(data.organisation_logo_path).data.publicUrl
+      : null,
     situationSlugs: data.situation_slugs ?? [],
   };
 }

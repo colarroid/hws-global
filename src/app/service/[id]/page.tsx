@@ -257,14 +257,29 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
           </Link>
         </div>
 
-        {service.organisationBlurb ? (
-          <div className="flex flex-col gap-2 border-t border-hairline pt-6">
-            <span className="eyebrow text-ink-60">
-              About {service.organisationName}
-            </span>
-            <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
-              {service.organisationBlurb}
-            </p>
+        {service.organisationBlurb || service.organisationLogoUrl ? (
+          <div className="flex flex-col gap-3 border-t border-hairline pt-6">
+            <div className="flex items-center gap-3">
+              {service.organisationLogoUrl ? (
+                /* eslint-disable-next-line @next/next/no-img-element */
+                <img
+                  src={service.organisationLogoUrl}
+                  alt=""
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  className="size-[40px] shrink-0 rounded-control object-contain"
+                />
+              ) : null}
+              <span className="eyebrow text-ink-60">
+                About {service.organisationName}
+              </span>
+            </div>
+            {service.organisationBlurb ? (
+              <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
+                {service.organisationBlurb}
+              </p>
+            ) : null}
           </div>
         ) : null}
 
