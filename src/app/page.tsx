@@ -9,6 +9,8 @@ import {
   MessageSquareText,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { getTranslator } from "@/lib/i18n";
 import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
 
 export const metadata: Metadata = {
@@ -36,22 +38,29 @@ export const metadata: Metadata = {
  * checked" that is the worst thing to be wrong about.
  */
 export default async function Landing() {
-  const [counts, zones] = await Promise.all([
+  const [counts, zones, translation] = await Promise.all([
     getPlatformCounts(),
     getZonesWithCounts(),
+    getTranslator(),
   ]);
+  const { t, locale } = translation;
 
   return (
     <div className="flex flex-1 flex-col">
       <section className="px-5 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
+          {/* Above the headline, because somebody who cannot read the
+              headline needs this before anything else on the page. */}
+          <div className="self-end">
+            <LanguageSwitcher label={t("language.label")} current={locale.code} />
+          </div>
+
           <h1 className="m-0 max-w-[17ch] font-display text-[40px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[76px]">
-            Find support for women in Scotland
+            {t("hero.title")}
           </h1>
 
           <p className="m-0 max-w-[54ch] text-[19px] leading-[1.6] text-ink-70 sm:text-[21px]">
-            Tell us what you need in your own words, and we will show you a few
-            next steps worth taking. Three questions, no account needed.
+            {t("hero.body")}
           </p>
 
           <div className="flex flex-wrap items-center gap-5">
@@ -60,7 +69,7 @@ export default async function Landing() {
               size="inline"
               className="px-9 py-[19px] text-[18px]"
             >
-              Find solution
+              {t("hero.cta")}
             </ButtonLink>
             {/* Second, and quieter. Searching is the front door for almost
                 everybody; browsing is for the woman who cannot yet name what
@@ -69,7 +78,7 @@ export default async function Landing() {
               href="/discover"
               className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
             >
-              Or see who is out there
+              {t("hero.browse")}
               <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
             </Link>
           </div>
@@ -79,11 +88,11 @@ export default async function Landing() {
               <strong className="font-semibold text-ink tabular-nums">
                 {counts.listings}
               </strong>{" "}
-              things open right now, from{" "}
+              {t("hero.countMiddle")}{" "}
               <strong className="font-semibold text-ink tabular-nums">
                 {counts.organisations}
               </strong>{" "}
-              organisations we have checked.
+              {t("hero.countEnd")}
             </p>
           ) : null}
         </div>
@@ -94,34 +103,23 @@ export default async function Landing() {
       <section className="bg-ink px-5 py-16 sm:px-10 sm:py-20">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10">
           <div className="flex flex-col gap-3">
-            <span className="eyebrow text-gold-300">How it works</span>
+            <span className="eyebrow text-gold-300">{t("how.eyebrow")}</span>
             <h2 className="m-0 max-w-[22ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
-              You should not have to know who to ask
+              {t("how.title")}
             </h2>
             <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-white/70">
-              Say &ldquo;I want to go back to work&rdquo; or &ldquo;I need
-              funding&rdquo; and we do the rest. You never have to pick a
-              category, name an organisation, or work out which scheme you
-              might qualify for.
+              {t("how.body")}
             </p>
           </div>
 
           <ol className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-3">
             {[
+              { step: t("how.one"), title: t("how.oneTitle"), body: t("how.oneBody") },
+              { step: t("how.two"), title: t("how.twoTitle"), body: t("how.twoBody") },
               {
-                step: "One",
-                title: "Tell us, in your words",
-                body: "What you need, roughly where you are, and anything about your situation you want us to know. Three questions and none of them are compulsory.",
-              },
-              {
-                step: "Two",
-                title: "We weigh it up",
-                body: "Against what each thing is for, who it is open to, where it runs and how you can reach it. The reasoning is written down and nothing about it can be bought.",
-              },
-              {
-                step: "Three",
-                title: "You get a few real options",
-                body: "A handful, not a hundred, each with why it matched, what it costs, who it is for, and exactly what happens after you apply.",
+                step: t("how.three"),
+                title: t("how.threeTitle"),
+                body: t("how.threeBody"),
               },
             ].map((item) => (
               <li key={item.step} className="flex flex-col gap-2">
@@ -140,14 +138,12 @@ export default async function Landing() {
 
       <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
         <div className="flex flex-col gap-3">
-          <span className="eyebrow text-gold-700">Access Zones</span>
+          <span className="eyebrow text-gold-700">{t("zones.eyebrow")}</span>
           <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
-            {counts.zones} kinds of support, one platform
+            {counts.zones} {t("zones.titleEnd")}
           </h2>
           <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-ink-70">
-            Work, money, learning, health, enterprise, having a say. Most women
-            need more than one at a time, and most services only do one — which
-            is the gap this exists to close.
+            {t("zones.body")}
           </p>
         </div>
 
@@ -168,7 +164,7 @@ export default async function Landing() {
           className="mt-8 inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
         >
           <Compass size={18} strokeWidth={2} aria-hidden="true" />
-          Browse everyone on the platform
+          {t("zones.browse")}
           <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
         </Link>
       </section>
@@ -180,18 +176,18 @@ export default async function Landing() {
           {[
             {
               icon: BadgeCheck,
-              title: "Somebody checked",
-              body: "Every organisation here has been verified against a public register or its funder before it could post anything. Each listing carries the date it was last confirmed.",
+              title: t("trust.checkedTitle"),
+              body: t("trust.checkedBody"),
             },
             {
               icon: Lock,
-              title: "Nothing is shared",
-              body: "You do not need an account to search, read or apply. What you type is used to rank your results and is not sold, passed on, or used to build a profile of you.",
+              title: t("trust.privateTitle"),
+              body: t("trust.privateBody"),
             },
             {
               icon: MessageSquareText,
-              title: "Nobody pays to appear",
-              body: "There is no paid placement and no advertising. Results are ordered by how well they fit what you told us, and every listing says why it matched.",
+              title: t("trust.paidTitle"),
+              body: t("trust.paidBody"),
             },
           ].map((item) => (
             <div
@@ -222,12 +218,10 @@ export default async function Landing() {
               <Building2 size={24} strokeWidth={2} aria-hidden="true" />
             </span>
             <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
-              Do you run something women should know about?
+              {t("orgs.title")}
             </h2>
             <p className="m-0 max-w-[54ch] text-[17px] leading-[1.6] text-ink-70">
-              List it here and it reaches the women it actually suits, rather
-              than whoever happens to find your website. Free, and we check you
-              once rather than checking every listing.
+              {t("orgs.body")}
             </p>
           </div>
 
@@ -235,7 +229,7 @@ export default async function Landing() {
             href={process.env.ORG_PORTAL_URL ?? "https://organisation.hwspathgrid.com"}
             className="inline-flex min-h-[44px] shrink-0 items-center gap-2 self-start rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90 sm:self-auto"
           >
-            List your support
+            {t("orgs.cta")}
             <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
           </Link>
         </div>

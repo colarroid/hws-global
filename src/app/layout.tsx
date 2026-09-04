@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
+import { getLocale } from "@/lib/i18n";
 import "./globals.css";
 
 // next/font self-hosts both families at build time, which satisfies the
@@ -36,8 +37,17 @@ export const metadata: Metadata = {
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  // Read on the server so the page arrives in her language. Rendering English
+  // and swapping it on the client shows a flash of a language she may not
+  // read, which is worst for exactly the people this is for.
+  const locale = await getLocale();
+
   return (
-    <html lang="en-GB" className={`${playfair.variable} ${inter.variable}`}>
+    <html
+      lang={locale.code === "en" ? "en-GB" : locale.code}
+      dir={locale.dir}
+      className={`${playfair.variable} ${inter.variable}`}
+    >
       <body>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
