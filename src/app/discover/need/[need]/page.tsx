@@ -72,8 +72,8 @@ export default async function NeedPage({
           </span>
           <p className="m-0 max-w-[52ch] text-[17px] leading-[1.6] text-ink-70">
             Nobody is listed against this yet. That does not mean there is no
-            help — tell us what you need in your own words and we will look
-            across everything we have.
+            help. Tell us what you need in your own words and we will look across
+            everything we have.
           </p>
           <Link
             href="/find"

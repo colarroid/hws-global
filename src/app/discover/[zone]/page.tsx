@@ -71,8 +71,8 @@ export default async function ZonePage({
           </span>
           <p className="m-0 max-w-[52ch] text-[17px] leading-[1.6] text-ink-70">
             Nobody is listed in this zone yet. That does not mean there is no
-            help — tell us what you need and we will look across everything we
-            have, not just this one zone.
+            help. Tell us what you need and we will look across everything we have,
+            not just this one zone.
           </p>
           <Link
             href="/find"

@@ -41,6 +41,12 @@ const PILL =
 
 /* In the panel the sheet is already a raised white surface, so a ringed
    white pill on it reads as flat. Rows there instead. */
+/** Discover and the FAQ, written once for the row and the phone panel. */
+const PLACES = [
+  { href: "/discover", label: "Discover" },
+  { href: "/faq", label: "FAQ" },
+];
+
 const PANEL_ROW =
   "inline-flex w-full min-h-[44px] items-center gap-3 rounded-control px-3 py-[10px] " +
   "text-[15px] font-medium text-ink-70 no-underline " +
@@ -87,7 +93,6 @@ export async function SiteHeader() {
   ]);
 
   const hasSaved = saved.length > 0;
-  const hasControls = hasSaved || Boolean(account);
 
   return (
     <header className="border-b border-hairline bg-ground">
@@ -131,9 +136,27 @@ export async function SiteHeader() {
               somebody who cannot read the page has something to do from the
               moment she arrives, and hiding the way to fix that until she has
               saved a listing is backwards. */}
+          {/* Centre, between the mark and the controls. Two links only: this
+              header stays close to empty on purpose, and anything more turns
+              the way in to the search into one option among several. */}
+          <nav
+            aria-label="Sections"
+            className="hidden items-center gap-1 lg:flex"
+          >
+            {PLACES.map((place) => (
+              <Link
+                key={place.href}
+                href={place.href}
+                className="inline-flex min-h-[44px] items-center rounded-full px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:bg-gold-200"
+              >
+                {place.label}
+              </Link>
+            ))}
+          </nav>
+
           <div className="flex items-center gap-1 sm:gap-2">
             {/* Signed out, this is a way back in for somebody returning to a
-                saved list — not a wall in front of the search. Quiet rather
+                saved list, not a wall in front of the search. Quiet rather
                 than a filled button for that reason, and gone entirely once
                 she is signed in, when Saved and Settings say it better. */}
             {account ? null : (
@@ -145,19 +168,23 @@ export async function SiteHeader() {
               </Link>
             )}
 
-            {hasControls ? (
-              <>
-                <div className="hidden items-center gap-2 lg:flex">
-                  {hasSaved ? <SavedLink count={saved.length} /> : null}
-                  {account ? <SettingsLink /> : null}
-                </div>
+            <div className="hidden items-center gap-2 lg:flex">
+              {hasSaved ? <SavedLink count={saved.length} /> : null}
+              {account ? <SettingsLink /> : null}
+            </div>
 
-                <MobileNav label="menu">
-                  {hasSaved ? <SavedLink count={saved.length} inPanel /> : null}
-                  {account ? <SettingsLink withLabel /> : null}
-                </MobileNav>
-              </>
-            ) : null}
+            {/* Always now, because there are always two places to go. It used
+                to appear only once she had saved something, back when the
+                panel would otherwise have opened onto nothing. */}
+            <MobileNav label="menu">
+              {PLACES.map((place) => (
+                <Link key={place.href} href={place.href} className={PANEL_ROW}>
+                  {place.label}
+                </Link>
+              ))}
+              {hasSaved ? <SavedLink count={saved.length} inPanel /> : null}
+              {account ? <SettingsLink withLabel /> : null}
+            </MobileNav>
 
             <LanguageMenu current={locale.code} />
           </div>

@@ -37,7 +37,7 @@ export function listingRecheck(
     const when = listing.lastConfirmed
       ? `last confirmed ${DATE.format(new Date(listing.lastConfirmed))}`
       : "never confirmed";
-    return `${listing.name} — ${when}.`;
+    return `${listing.name}, ${when}.`;
   });
 
   const opening = one

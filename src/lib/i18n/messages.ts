@@ -31,8 +31,6 @@ export type MessageKey =
   | "hero.body"
   | "hero.cta"
   | "hero.browse"
-  | "hero.countMiddle"
-  | "hero.countEnd"
   | "how.eyebrow"
   | "how.title"
   | "how.body"
@@ -68,8 +66,6 @@ const en: Record<MessageKey, string> = {
     "Tell us what you need in your own words, and we will show you a few next steps worth taking. Three questions, no account needed.",
   "hero.cta": "Find solution",
   "hero.browse": "Or see who is out there",
-  "hero.countMiddle": "things open right now, from",
-  "hero.countEnd": "organisations we have checked.",
   "how.eyebrow": "How it works",
   "how.title": "You should not have to know who to ask",
   "how.body":
@@ -89,7 +85,7 @@ const en: Record<MessageKey, string> = {
   "zones.eyebrow": "Access Zones",
   "zones.titleEnd": "kinds of support, one platform",
   "zones.body":
-    "Work, money, learning, health, enterprise, having a say. Most women need more than one at a time, and most services only do one — which is the gap this exists to close.",
+    "Work, money, learning, health, enterprise, having a say. Most women need more than one at a time, and most services only do one, which is the gap this exists to close.",
   "zones.browse": "Browse everyone on the platform",
   "trust.checkedTitle": "Somebody checked",
   "trust.checkedBody":
@@ -113,8 +109,6 @@ const gd: Catalogue = {
     "Innis dhuinn dè tha a dhìth ort nad fhaclan fhèin, agus seallaidh sinn dhut beagan cheumannan a b’ fhiach a ghabhail. Trì ceistean, gun fheum air cunntas.",
   "hero.cta": "Lorg fuasgladh",
   "hero.browse": "No faic cò tha ann",
-  "hero.countMiddle": "rud fosgailte an-dràsta, bho",
-  "hero.countEnd": "buidhnean a chaidh a dhearbhadh leinn.",
   "how.eyebrow": "Mar a tha e ag obair",
   "how.title": "Cha bu chòir dhut fios a bhith agad cò ris a bhruidhneas tu",
   "how.body":
@@ -134,7 +128,7 @@ const gd: Catalogue = {
   "zones.eyebrow": "Raointean Inntrigidh",
   "zones.titleEnd": "seòrsa taic, aon àrd-ùrlar",
   "zones.body":
-    "Obair, airgead, ionnsachadh, slàinte, gnìomhachas, guth a bhith agad. Feumaidh a’ mhòr-chuid de bhoireannaich barrachd air aon dhiubh aig an aon àm, agus chan eil a’ mhòr-chuid de sheirbheisean a’ dèanamh ach aon — agus is e sin am beàrn a tha seo ann airson a dhùnadh.",
+    "Obair, airgead, ionnsachadh, slàinte, gnìomhachas, guth a bhith agad. Feumaidh a’ mhòr-chuid de bhoireannaich barrachd air aon dhiubh aig an aon àm, agus chan eil a’ mhòr-chuid de sheirbheisean a’ dèanamh ach aon, agus is e sin am beàrn a tha seo ann airson a dhùnadh.",
   "zones.browse": "Rùraich a h-uile duine air an àrd-ùrlar",
   "trust.checkedTitle": "Rinn cuideigin sgrùdadh",
   "trust.checkedBody":
@@ -158,8 +152,6 @@ const sco: Catalogue = {
     "Tell us whit ye need in yer ain wirds, an we’ll shaw ye a wheen o next steps worth takkin. Three questions, nae accoont needit.",
   "hero.cta": "Finn solution",
   "hero.browse": "Or see wha’s oot there",
-  "hero.countMiddle": "things open the noo, frae",
-  "hero.countEnd": "organisations we’ve checkit.",
   "how.eyebrow": "Hoo it warks",
   "how.title": "Ye shouldnae hae tae ken wha tae speir at",
   "how.body":
@@ -179,7 +171,7 @@ const sco: Catalogue = {
   "zones.eyebrow": "Access Zones",
   "zones.titleEnd": "kinds o support, ae platform",
   "zones.body":
-    "Wark, siller, learnin, health, enterprise, haein a say. Maist weemen need mair nor ane at a time, an maist services anly dae ane — an that’s the gap this is here tae steek.",
+    "Wark, siller, learnin, health, enterprise, haein a say. Maist weemen need mair nor ane at a time, an maist services anly dae ane, an that’s the gap this is here tae steek.",
   "zones.browse": "Brouse awbody on the platform",
   "trust.checkedTitle": "Somebody checkit",
   "trust.checkedBody":
@@ -203,8 +195,6 @@ const pl: Catalogue = {
     "Powiedz nam własnymi słowami, czego potrzebujesz, a pokażemy Ci kilka kolejnych kroków wartych podjęcia. Trzy pytania, bez zakładania konta.",
   "hero.cta": "Znajdź rozwiązanie",
   "hero.browse": "Albo zobacz, kto tu jest",
-  "hero.countMiddle": "otwartych możliwości w tej chwili, od",
-  "hero.countEnd": "sprawdzonych przez nas organizacji.",
   "how.eyebrow": "Jak to działa",
   "how.title": "Nie musisz wiedzieć, do kogo się zwrócić",
   "how.body":
@@ -224,7 +214,7 @@ const pl: Catalogue = {
   "zones.eyebrow": "Strefy dostępu",
   "zones.titleEnd": "rodzaje wsparcia, jedna platforma",
   "zones.body":
-    "Praca, pieniądze, nauka, zdrowie, przedsiębiorczość, głos w sprawach publicznych. Większość kobiet potrzebuje więcej niż jednej rzeczy naraz, a większość usług robi tylko jedną — i to jest luka, którą to wypełnia.",
+    "Praca, pieniądze, nauka, zdrowie, przedsiębiorczość, głos w sprawach publicznych. Większość kobiet potrzebuje więcej niż jednej rzeczy naraz, a większość usług robi tylko jedną, i to jest luka, którą to wypełnia.",
   "zones.browse": "Przeglądaj wszystkich na platformie",
   "trust.checkedTitle": "Ktoś to sprawdził",
   "trust.checkedBody":
@@ -248,8 +238,6 @@ const uk: Catalogue = {
     "Розкажіть своїми словами, що вам потрібно, і ми покажемо кілька наступних кроків, які варто зробити. Три питання, обліковий запис не потрібен.",
   "hero.cta": "Знайти рішення",
   "hero.browse": "Або подивіться, хто тут є",
-  "hero.countMiddle": "можливостей відкрито зараз, від",
-  "hero.countEnd": "організацій, які ми перевірили.",
   "how.eyebrow": "Як це працює",
   "how.title": "Вам не треба знати, до кого звертатися",
   "how.body":
@@ -269,7 +257,7 @@ const uk: Catalogue = {
   "zones.eyebrow": "Зони доступу",
   "zones.titleEnd": "види підтримки, одна платформа",
   "zones.body":
-    "Робота, гроші, навчання, здоров’я, підприємництво, право голосу. Більшості жінок потрібно більше ніж одне водночас, а більшість служб робить лише щось одне — саме цю прогалину це й закриває.",
+    "Робота, гроші, навчання, здоров’я, підприємництво, право голосу. Більшості жінок потрібно більше ніж одне водночас, а більшість служб робить лише щось одне, саме цю прогалину це й закриває.",
   "zones.browse": "Переглянути всіх на платформі",
   "trust.checkedTitle": "Хтось це перевірив",
   "trust.checkedBody":
@@ -293,8 +281,6 @@ const ar: Catalogue = {
     "أخبرينا بكلماتك عمّا تحتاجين إليه، وسنعرض عليك بضع خطوات تالية تستحق أن تُتخذ. ثلاثة أسئلة، ولا حاجة إلى حساب.",
   "hero.cta": "ابحثي عن حل",
   "hero.browse": "أو اطّلعي على الجهات الموجودة",
-  "hero.countMiddle": "فرصة متاحة الآن، من",
-  "hero.countEnd": "منظمة تحققنا منها.",
   "how.eyebrow": "كيف يعمل",
   "how.title": "ليس عليك أن تعرفي بمن تتصلين",
   "how.body":
@@ -314,7 +300,7 @@ const ar: Catalogue = {
   "zones.eyebrow": "مجالات الوصول",
   "zones.titleEnd": "أنواع من الدعم، منصة واحدة",
   "zones.body":
-    "العمل، والمال، والتعلّم، والصحة، وريادة الأعمال، وإسماع الصوت. معظم النساء يحتجن إلى أكثر من واحد في الوقت نفسه، ومعظم الخدمات تقدّم واحدًا فقط — وهذه هي الفجوة التي وُجدت هذه المنصة لسدّها.",
+    "العمل، والمال، والتعلّم، والصحة، وريادة الأعمال، وإسماع الصوت. معظم النساء يحتجن إلى أكثر من واحد في الوقت نفسه، ومعظم الخدمات تقدّم واحدًا فقط, وهذه هي الفجوة التي وُجدت هذه المنصة لسدّها.",
   "zones.browse": "تصفّحي جميع الجهات على المنصة",
   "trust.checkedTitle": "هناك من تحقّق",
   "trust.checkedBody":
@@ -338,8 +324,6 @@ const ur: Catalogue = {
     "اپنے الفاظ میں بتائیں کہ آپ کو کیا چاہیے، اور ہم آپ کو چند اگلے قدم دکھائیں گے جو اٹھانے کے قابل ہیں۔ تین سوال، کوئی اکاؤنٹ درکار نہیں۔",
   "hero.cta": "حل تلاش کریں",
   "hero.browse": "یا دیکھیں کون کون موجود ہے",
-  "hero.countMiddle": "مواقع اس وقت کھلے ہیں، از",
-  "hero.countEnd": "ادارے جن کی ہم نے تصدیق کی ہے۔",
   "how.eyebrow": "یہ کیسے کام کرتا ہے",
   "how.title": "آپ کو یہ جاننے کی ضرورت نہیں کہ کس سے پوچھیں",
   "how.body":
@@ -359,7 +343,7 @@ const ur: Catalogue = {
   "zones.eyebrow": "رسائی کے شعبے",
   "zones.titleEnd": "قسم کی مدد، ایک پلیٹ فارم",
   "zones.body":
-    "کام، پیسہ، تعلیم، صحت، کاروبار، اپنی بات کہنے کا حق۔ زیادہ تر خواتین کو ایک وقت میں ایک سے زیادہ کی ضرورت ہوتی ہے، اور زیادہ تر خدمات صرف ایک ہی کام کرتی ہیں — یہی وہ خلا ہے جسے پُر کرنے کے لیے یہ موجود ہے۔",
+    "کام، پیسہ، تعلیم، صحت، کاروبار، اپنی بات کہنے کا حق۔ زیادہ تر خواتین کو ایک وقت میں ایک سے زیادہ کی ضرورت ہوتی ہے، اور زیادہ تر خدمات صرف ایک ہی کام کرتی ہیں, یہی وہ خلا ہے جسے پُر کرنے کے لیے یہ موجود ہے۔",
   "zones.browse": "پلیٹ فارم پر سب کو دیکھیں",
   "trust.checkedTitle": "کسی نے جانچ کی ہے",
   "trust.checkedBody":
@@ -383,8 +367,6 @@ const pa: Catalogue = {
     "ਸਾਨੂੰ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਕੁਝ ਅਗਲੇ ਕਦਮ ਦਿਖਾਵਾਂਗੇ ਜੋ ਚੁੱਕਣ ਯੋਗ ਹਨ। ਤਿੰਨ ਸਵਾਲ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਚਾਹੀਦਾ।",
   "hero.cta": "ਹੱਲ ਲੱਭੋ",
   "hero.browse": "ਜਾਂ ਵੇਖੋ ਕੌਣ ਮੌਜੂਦ ਹੈ",
-  "hero.countMiddle": "ਮੌਕੇ ਇਸ ਵੇਲੇ ਖੁੱਲ੍ਹੇ ਹਨ, ਵੱਲੋਂ",
-  "hero.countEnd": "ਸੰਸਥਾਵਾਂ ਜਿਨ੍ਹਾਂ ਦੀ ਅਸੀਂ ਜਾਂਚ ਕੀਤੀ ਹੈ।",
   "how.eyebrow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "how.title": "ਤੁਹਾਨੂੰ ਇਹ ਜਾਣਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਕਿਸ ਨੂੰ ਪੁੱਛਣਾ ਹੈ",
   "how.body":
@@ -404,7 +386,7 @@ const pa: Catalogue = {
   "zones.eyebrow": "ਪਹੁੰਚ ਖੇਤਰ",
   "zones.titleEnd": "ਕਿਸਮ ਦੀ ਸਹਾਇਤਾ, ਇੱਕ ਪਲੇਟਫਾਰਮ",
   "zones.body":
-    "ਕੰਮ, ਪੈਸਾ, ਸਿੱਖਿਆ, ਸਿਹਤ, ਕਾਰੋਬਾਰ, ਆਪਣੀ ਗੱਲ ਕਹਿਣ ਦਾ ਹੱਕ। ਜ਼ਿਆਦਾਤਰ ਔਰਤਾਂ ਨੂੰ ਇੱਕੋ ਸਮੇਂ ਇੱਕ ਤੋਂ ਵੱਧ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ, ਅਤੇ ਜ਼ਿਆਦਾਤਰ ਸੇਵਾਵਾਂ ਸਿਰਫ਼ ਇੱਕ ਹੀ ਕਰਦੀਆਂ ਹਨ — ਇਹੀ ਉਹ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਭਰਨ ਲਈ ਇਹ ਮੌਜੂਦ ਹੈ।",
+    "ਕੰਮ, ਪੈਸਾ, ਸਿੱਖਿਆ, ਸਿਹਤ, ਕਾਰੋਬਾਰ, ਆਪਣੀ ਗੱਲ ਕਹਿਣ ਦਾ ਹੱਕ। ਜ਼ਿਆਦਾਤਰ ਔਰਤਾਂ ਨੂੰ ਇੱਕੋ ਸਮੇਂ ਇੱਕ ਤੋਂ ਵੱਧ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ, ਅਤੇ ਜ਼ਿਆਦਾਤਰ ਸੇਵਾਵਾਂ ਸਿਰਫ਼ ਇੱਕ ਹੀ ਕਰਦੀਆਂ ਹਨ, ਇਹੀ ਉਹ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਭਰਨ ਲਈ ਇਹ ਮੌਜੂਦ ਹੈ।",
   "zones.browse": "ਪਲੇਟਫਾਰਮ ’ਤੇ ਸਾਰਿਆਂ ਨੂੰ ਵੇਖੋ",
   "trust.checkedTitle": "ਕਿਸੇ ਨੇ ਜਾਂਚ ਕੀਤੀ ਹੈ",
   "trust.checkedBody":
@@ -428,8 +410,6 @@ const zh: Catalogue = {
     "用你自己的话告诉我们你需要什么，我们会为你列出几个值得迈出的下一步。三个问题，无需注册账户。",
   "hero.cta": "寻找方案",
   "hero.browse": "或看看有哪些机构",
-  "hero.countMiddle": "个正在开放的机会，来自",
-  "hero.countEnd": "家经我们核实的机构。",
   "how.eyebrow": "运作方式",
   "how.title": "你不需要知道该去问谁",
   "how.body":
@@ -449,7 +429,7 @@ const zh: Catalogue = {
   "zones.eyebrow": "支持领域",
   "zones.titleEnd": "类支持，一个平台",
   "zones.body":
-    "工作、金钱、学习、健康、创业、发声。大多数女性同时需要不止一项，而大多数服务只做其中一项——这正是这个平台要填补的空白。",
+    "工作、金钱、学习、健康、创业、发声。大多数女性同时需要不止一项，而大多数服务只做其中一项, , 这正是这个平台要填补的空白。",
   "zones.browse": "浏览平台上的所有机构",
   "trust.checkedTitle": "有人核实过",
   "trust.checkedBody":

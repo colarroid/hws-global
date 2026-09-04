@@ -35,7 +35,7 @@ export function deadlineReminder(items: ClosingSoon[], savedUrl: string) {
 
   const lines = items.map(
     (item) =>
-      `${item.name} — ${item.organisationName}. Closes ${DATE.format(new Date(item.deadline))}.`,
+      `${item.name}, ${item.organisationName}. Closes ${DATE.format(new Date(item.deadline))}.`,
   );
 
   const text = [

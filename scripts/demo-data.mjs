@@ -24,7 +24,7 @@ export const ORGANISATIONS = [
     blurb:
       "Free business advice and support for anyone starting or growing a business in Scotland.",
     mission:
-      "We are the national business support service, delivered locally. Whatever stage you are at — a half-formed idea, a first year of trading, or a business ready to take somebody on — there is an adviser in your area whose job is to help you work out the next step. Everything we do is free.",
+      "We are the national business support service, delivered locally. Whatever stage you are at, a half-formed idea, a first year of trading, or a business ready to take somebody on, there is an adviser in your area whose job is to help you work out the next step. Everything we do is free.",
     uniqueOffer:
       "Every local authority in Scotland has a Business Gateway adviser, so support is a bus ride away rather than a webinar.",
     audiences: ["any_woman", "women_returning_to_work", "women_on_low_income"],
@@ -107,7 +107,7 @@ export const ORGANISATIONS = [
     blurb:
       "The national body for women-owned businesses in Scotland: research, advocacy and a network of ambassadors.",
     mission:
-      "Women-owned businesses contribute billions to the Scottish economy and are still under-supported, under-funded and under-counted. We exist to change that — by gathering the evidence, putting it in front of the people who make policy, and connecting women in business to each other.",
+      "Women-owned businesses contribute billions to the Scottish economy and are still under-supported, under-funded and under-counted. We exist to change that, by gathering the evidence, putting it in front of the people who make policy, and connecting women in business to each other.",
     uniqueOffer:
       "We are the only organisation in Scotland whose whole remit is women's enterprise, so the evidence we publish is the evidence policy gets made on.",
     audiences: ["any_woman", "women_over_50", "women_returning_to_work"],
@@ -521,7 +521,7 @@ export const ORGANISATIONS = [
     blurb:
       "Support, advice and a break for unpaid carers across West Lothian.",
     mission:
-      "Around one in eight people in West Lothian is looking after somebody without being paid for it, and most of them do not call themselves carers. We exist to find those people and make sure they are not doing it alone — with advice on money and rights, someone to talk to, and time off.",
+      "Around one in eight people in West Lothian is looking after somebody without being paid for it, and most of them do not call themselves carers. We exist to find those people and make sure they are not doing it alone, with advice on money and rights, someone to talk to, and time off.",
     uniqueOffer:
       "We arrange replacement care so you can actually attend the things we run. Nothing else works without that.",
     audiences: ["carers", "women_over_50", "women_on_low_income", "any_woman"],
@@ -605,7 +605,7 @@ export const ORGANISATIONS = [
     blurb:
       "Scotland's feminist policy and advocacy organisation, working on women's economic equality.",
     mission:
-      "We work on the structural reasons women in Scotland have less money, less power and less time than men. That means research, policy work and putting evidence in front of the Scottish Parliament — not direct services, but the work that changes what services exist.",
+      "We work on the structural reasons women in Scotland have less money, less power and less time than men. We do not run direct services. We do research, policy work and putting evidence in front of the Scottish Parliament, which is the work that changes what services exist.",
     uniqueOffer:
       "Our research is what a lot of Scottish equality policy is built on, and all of it is free to read.",
     audiences: ["any_woman"],
@@ -727,7 +727,7 @@ export const ORGANISATIONS = [
     blurb:
       "Digital skills, confidence and community for Black and minority ethnic women in Scotland.",
     mission:
-      "We started because the digital skills courses on offer were not reaching the women we knew. We run them differently — in community venues, at times that work around children, taught by women who look like the people in the room.",
+      "We started because the digital skills courses on offer were not reaching the women we knew. We run them differently: in community venues, at times that work around children, taught by women who look like the people in the room.",
     uniqueOffer:
       "Everything runs in community venues in the places women already are, not in a university building across the city.",
     audiences: [
@@ -875,7 +875,7 @@ export const ORGANISATIONS = [
     blurb:
       "Scotland's national economic development agency, working with companies that want to grow.",
     mission:
-      "We work with Scottish companies with the ambition and the potential to grow significantly — into new markets, new products, or the investment needed to do either. Our support is hands-on and is aimed at businesses past the start-up stage.",
+      "We work with Scottish companies with the ambition and the potential to grow significantly, into new markets, new products, or the investment needed to do either. Our support is hands-on and is aimed at businesses past the start-up stage.",
     uniqueOffer:
       "We can put a specialist adviser alongside a company for months at a time, which nobody else in Scotland does at no cost.",
     audiences: ["any_woman"],
@@ -1122,7 +1122,7 @@ export const ORGANISATIONS = [
     serviceKinds: ["advice_or_one_to_one", "course_or_programme"],
     accessRoutes: ["online", "in_person"],
     costOptions: ["there_is_a_cost"],
-    costNote: "£70 for the first consultation, £45 after. Reduced rates for anyone on benefits — just ask.",
+    costNote: "£70 for the first consultation, £45 after. Reduced rates for anyone on benefits, just ask.",
     coverage: "one_area",
     coverageNote: "Edinburgh, and online across Scotland.",
     eligibility:
@@ -1162,7 +1162,7 @@ export const ORGANISATIONS = [
     blurb:
       "The business network for West Lothian, with events, training and a route to local procurement.",
     mission:
-      "We connect businesses in West Lothian to each other and to the contracts, people and advice they need. Much of that is unglamorous — an introduction, a room, a conversation with someone who has done it before.",
+      "We connect businesses in West Lothian to each other and to the contracts, people and advice they need. Much of that is unglamorous: an introduction, a room, a conversation with someone who has done it before.",
     uniqueOffer:
       "We know who buys what locally, and we make the introduction rather than publishing a list.",
     audiences: ["any_woman", "women_returning_to_work"],
@@ -1173,7 +1173,7 @@ export const ORGANISATIONS = [
     coverage: "local_authority",
     coverageNote: "West Lothian.",
     eligibility: "Any business based in or trading into West Lothian.",
-    notEligible: "We are not able to help with a business idea that has not started yet — Business Gateway is the right first stop.",
+    notEligible: "We are not able to help with a business idea that has not started yet, Business Gateway is the right first stop.",
     availability: "year_round",
     postingFrequency: "monthly",
     zone: "enterprise-business-growth",
@@ -1475,7 +1475,7 @@ export const LISTING_REWRITES = [
     whoFor:
       "Women in Edinburgh who have been out of work for two years or more. Eight people, no more.",
     whatToExpect:
-      "Thursday mornings for six weeks. Half of it is practical — CVs, interviews — and half is being in a room with people in the same position.",
+      "Thursday mornings for six weeks. Half of it is practical: CVs and interviews. The other half is being in a room with people in the same position.",
     cost: "free",
     formats: ["in_person"],
     place: "Edinburgh",

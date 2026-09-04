@@ -76,18 +76,6 @@ export default async function Landing() {
             </Link>
           </div>
 
-          {counts.listings > 0 ? (
-            <p className="m-0 pt-2 text-[16px] text-ink-60">
-              <strong className="font-semibold text-ink tabular-nums">
-                {counts.listings}
-              </strong>{" "}
-              {t("hero.countMiddle")}{" "}
-              <strong className="font-semibold text-ink tabular-nums">
-                {counts.organisations}
-              </strong>{" "}
-              {t("hero.countEnd")}
-            </p>
-          ) : null}
         </div>
       </section>
 

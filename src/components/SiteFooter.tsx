@@ -30,6 +30,7 @@ export async function SiteFooter() {
     { href: "/find", label: "Find solution" },
     { href: "/discover", label: "Discover organisations" },
     { href: "/saved", label: "Saved" },
+    { href: "/faq", label: "Frequently asked questions" },
     { href: "/help", label: "Help" },
   ];
 
@@ -118,7 +119,7 @@ export async function SiteFooter() {
           <p className="m-0 max-w-[76ch] text-[14px] leading-[1.6] text-ink-60">
             Every organisation here is checked against a public register or its
             funder before it can post. Nobody pays to appear, and what you type
-            is used to rank your results — never sold, passed on, or used to
+            is used to rank your results. It is never sold, passed on, or used to
             build a profile of you.
           </p>
 
