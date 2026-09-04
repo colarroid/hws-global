@@ -9,7 +9,6 @@ import {
   MessageSquareText,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/Button";
-import { LanguageMenu } from "@/components/LanguageMenu";
 import { getTranslator } from "@/lib/i18n";
 import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
 
@@ -43,18 +42,12 @@ export default async function Landing() {
     getZonesWithCounts(),
     getTranslator(),
   ]);
-  const { t, locale } = translation;
+  const { t } = translation;
 
   return (
     <div className="flex flex-1 flex-col">
       <section className="px-5 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
-          {/* Above the headline, because somebody who cannot read the
-              headline needs this before anything else on the page. */}
-          <div className="self-end">
-            <LanguageMenu current={locale.code} />
-          </div>
-
           <h1 className="m-0 max-w-[17ch] font-display text-[40px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[76px]">
             {t("hero.title")}
           </h1>

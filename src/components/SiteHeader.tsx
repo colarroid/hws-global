@@ -4,6 +4,8 @@ import { Bookmark, Settings } from "lucide-react";
 import { MobileNav } from "@/components/ui/MobileNav";
 import { getSavedIds } from "@/lib/saved";
 import { getAccount } from "@/lib/data/account";
+import { LanguageMenu } from "@/components/LanguageMenu";
+import { getLocale } from "@/lib/i18n";
 
 /**
  * Shared by the desktop row and the mobile panel, so the two cannot drift.
@@ -78,7 +80,11 @@ function SettingsLink({ withLabel = false }: { withLabel?: boolean }) {
  * one more thing to wonder about.
  */
 export async function SiteHeader() {
-  const [saved, account] = await Promise.all([getSavedIds(), getAccount()]);
+  const [saved, account, locale] = await Promise.all([
+    getSavedIds(),
+    getAccount(),
+    getLocale(),
+  ]);
 
   const hasSaved = saved.length > 0;
   const hasControls = hasSaved || Boolean(account);
@@ -119,19 +125,29 @@ export async function SiteHeader() {
             />
           </Link>
 
-          {hasControls ? (
-            <>
-              <div className="hidden items-center gap-2 lg:flex">
-                {hasSaved ? <SavedLink count={saved.length} /> : null}
-                {account ? <SettingsLink /> : null}
-              </div>
+          {/* The language control is always here, unlike everything else. The
+              rule for this header is that nothing shows until there is
+              something to show, and this is the exception that proves it:
+              somebody who cannot read the page has something to do from the
+              moment she arrives, and hiding the way to fix that until she has
+              saved a listing is backwards. */}
+          <div className="flex items-center gap-2">
+            {hasControls ? (
+              <>
+                <div className="hidden items-center gap-2 lg:flex">
+                  {hasSaved ? <SavedLink count={saved.length} /> : null}
+                  {account ? <SettingsLink /> : null}
+                </div>
 
-              <MobileNav label="menu">
-                {hasSaved ? <SavedLink count={saved.length} inPanel /> : null}
-                {account ? <SettingsLink withLabel /> : null}
-              </MobileNav>
-            </>
-          ) : null}
+                <MobileNav label="menu">
+                  {hasSaved ? <SavedLink count={saved.length} inPanel /> : null}
+                  {account ? <SettingsLink withLabel /> : null}
+                </MobileNav>
+              </>
+            ) : null}
+
+            <LanguageMenu current={locale.code} />
+          </div>
         </div>
       </div>
     </header>
