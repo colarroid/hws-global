@@ -1,13 +1,11 @@
-import { SkeletonPage } from "@/components/ui/Skeleton";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 /**
  * One listing, waiting.
  *
- * A single thing rather than a list, so one wide block and a couple of
- * panels under it rather than a stack of equal cards.
+ * A single thing rather than a list, so one tall block and a shorter one
+ * under it rather than a stack of equal ones.
  */
 export default function Loading() {
-  return (
-    <SkeletonPage label="Loading this listing" width={780} cards={2} lines={3} />
-  );
+  return <LoadingScreen title="Opening this listing…" count={2} height={150} />;
 }

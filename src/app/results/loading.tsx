@@ -1,4 +1,4 @@
-import { Page } from "@/components/ui/Page";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 /**
  * Screen 4. Working it out.
@@ -9,26 +9,10 @@ import { Page } from "@/components/ui/Page";
  *
  * A named wait rather than a spinner: a spinner could mean anything, and on a
  * patchy connection "anything" reads as broken.
+ *
+ * The screen is unchanged; it now comes from the shared component, because
+ * this was the pattern every other wait on the platform was made to follow.
  */
 export default function Loading() {
-  return (
-    <Page width={780} top={96}>
-      <h1
-        aria-live="polite"
-        className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]"
-      >
-        Looking for support…
-      </h1>
-
-      <div className="flex flex-col gap-[14px]" aria-hidden="true">
-        <div className="h-[120px] rounded-card bg-sage-200" />
-        <div className="h-[120px] rounded-card bg-gold-200" />
-        <div className="h-[120px] rounded-card bg-surface-subtle" />
-      </div>
-
-      <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
-        This usually takes a couple of seconds.
-      </p>
-    </Page>
-  );
+  return <LoadingScreen title="Looking for support…" />;
 }
