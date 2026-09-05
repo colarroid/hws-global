@@ -30,5 +30,6 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules"]
+  "//exclude": "scripts/ is run by node directly, with --experimental-strip-types, so its imports carry the .ts extension node needs and tsc refuses. It is build tooling rather than app code and nothing in src imports it.",
+  "exclude": ["node_modules", "scripts"]
 }

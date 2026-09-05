@@ -10,7 +10,8 @@
     "seed": "node --env-file=.env.local scripts/seed-dev.mjs",
     "seed:clean": "node --env-file=.env.local scripts/seed-clean.mjs",
     "demo": "node --env-file=.env.local scripts/seed-demo.mjs",
-    "demo:clean": "node --env-file=.env.local scripts/demo-clean.mjs"
+    "demo:clean": "node --env-file=.env.local scripts/demo-clean.mjs",
+    "emails:auth": "node --experimental-strip-types scripts/build-auth-emails.ts"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
