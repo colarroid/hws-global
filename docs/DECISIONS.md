@@ -258,6 +258,30 @@ other than `organisation` to `woman`. Admin is granted by hand.
 
 ---
 
+**25. The women's sign-in sends a code, and the email template is the only
+thing that decides that.**
+`signInWithOtp` sends whatever the Supabase "Magic Link" template says, and
+the default template says `{{ .ConfirmationURL }}`. The app has been built for
+a code throughout, and `hws-global` has no route that can receive a link. Left
+on the default, a woman gets a link, clicking it puts tokens in a URL fragment
+that nothing on the site reads, and she lands signed out with no explanation:
+broken in a way that looks like it worked.
+
+A code is also the safer of the two, which is why this is not a preference. A
+magic link sitting in an inbox is a session. Anyone who opens that inbox is
+signed in as her, a fortnight later if they like. These emails land in inboxes
+that are read on shared devices, which is the same reason `sendEmail` insists
+subject lines stay neutral. A code has to be carried back to the device she is
+sitting at.
+
+`supabase/email-templates/` now holds the template and the two settings that
+go with it, because Supabase keeps templates in the project rather than in the
+repository and there was nothing written down anywhere. The organisation
+portal's confirm-signup and reset-password mails are separate templates and
+are untouched by the change.
+
+---
+
 ## Open
 
 - ~~**The four categories with no Access Zone.**~~ **Closed by the admin

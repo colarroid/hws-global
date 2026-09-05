@@ -3,22 +3,43 @@
  *
  * WHAT NEEDS DOING BEFORE LAUNCH
  *
- * Every non-English block below was written without a native speaker. The
- * meaning is right and the register is close, but nobody who speaks Gaelic,
- * Punjabi, Urdu or Scots as a first language has read them. Some of it will
- * be stiff and some of it will be subtly wrong in the way that tells a reader
- * this was not written for her.
+ * Every non-English block below was written without a native speaker, and
+ * that is still true after an editing pass on 5 September 2026. Read this as
+ * a good second draft rather than a finished thing.
  *
- * That matters more here than on most sites. The whole argument of this page
- * is that somebody checked, and a page that is visibly machine-translated
- * undermines it before a word of the content is read. Get each one looked at
- * by somebody who speaks it, and treat what is below as a first draft rather
- * than a finished thing.
+ * It matters more here than on most sites. The whole argument of this page is
+ * that somebody checked, and a page that is visibly machine-translated
+ * undermines that before a word of the content is read.
  *
- * The two hardest to get right without help, in order: Gaelic, where register
- * varies a lot by region and mine is likely too formal; and Scots, where the
- * line between written Scots and English with Scots spellings is a real
- * editorial decision that a Scots speaker should make rather than me.
+ * WHAT THE PASS FIXED, so a reviewer knows where to look hardest:
+ *
+ *   * A numeral-agreement bug that no amount of translating could have
+ *     fixed. The zones heading used to be rendered as a live count followed
+ *     by this file's noun phrase. Polish and Ukrainian change that noun's
+ *     ending above four, Arabic changes it again above ten, and the count
+ *     moves as zones are added. The number now sits in the eyebrow on its
+ *     own and `zones.title` is a whole phrase each language owns.
+ *   * Punctuation from the em-dash sweep. It had put Latin commas into
+ *     Arabic and Urdu sentences and left ", , " visible in the Chinese.
+ *   * Punjabi was addressing a man. Arabic and Urdu use feminine forms
+ *     throughout, which is the point; Punjabi had slipped into masculine
+ *     agreement in four places. That is exactly the kind of thing that tells
+ *     a reader the page was not written for her.
+ *   * Guillemets in Urdu and Punjabi, which neither language uses. They had
+ *     been copied from the Ukrainian and Arabic, where they are correct.
+ *   * Polish step labels. "Raz, dwa, trzy" is how you count out loud; above
+ *     a heading, "Raz" reads as "once".
+ *
+ * WHAT STILL NEEDS A SPEAKER, in order of how likely it is to be wrong:
+ *
+ *   * Scots. Untouched by the pass, because the line between written Scots
+ *     and English with Scots spellings is an editorial decision a Scots
+ *     speaker should make. "Naebody pays tae kythe" is the one to ask about
+ *     first: "kythe" is real but literary, and may read as costume.
+ *   * Gaelic. Untouched for the same reason. Register varies a lot by region
+ *     and this is likely too formal.
+ *   * Everything else. The pass caught what was wrong, not everything that
+ *     is merely stiff, and stiffness is what a reader notices.
  *
  * Keys are namespaced by where they appear. Nothing is interpolated: the two
  * places a number goes are assembled in the component, so no translator has
@@ -44,7 +65,7 @@ export type MessageKey =
   | "how.threeTitle"
   | "how.threeBody"
   | "zones.eyebrow"
-  | "zones.titleEnd"
+  | "zones.title"
   | "zones.body"
   | "zones.browse"
   | "trust.checkedTitle"
@@ -83,7 +104,7 @@ const en: Record<MessageKey, string> = {
   "how.threeBody":
     "A handful, not a hundred, each with why it matched, what it costs, who it is for, and exactly what happens after you apply.",
   "zones.eyebrow": "Access Zones",
-  "zones.titleEnd": "kinds of support, one platform",
+  "zones.title": "Every kind of support, one platform",
   "zones.body":
     "Work, money, learning, health, enterprise, having a say. Most women need more than one at a time, and most services only do one, which is the gap this exists to close.",
   "zones.browse": "Browse everyone on the platform",
@@ -126,7 +147,7 @@ const gd: Catalogue = {
   "how.threeBody":
     "Dòrlach, chan e ceud, gach fear le carson a fhreagair e, dè a chosgas e, cò dha a tha e, agus dè dìreach a thachras às dèidh dhut iarrtas a chur a-steach.",
   "zones.eyebrow": "Raointean Inntrigidh",
-  "zones.titleEnd": "seòrsa taic, aon àrd-ùrlar",
+  "zones.title": "Gach seòrsa taic, aon àrd-ùrlar",
   "zones.body":
     "Obair, airgead, ionnsachadh, slàinte, gnìomhachas, guth a bhith agad. Feumaidh a’ mhòr-chuid de bhoireannaich barrachd air aon dhiubh aig an aon àm, agus chan eil a’ mhòr-chuid de sheirbheisean a’ dèanamh ach aon, agus is e sin am beàrn a tha seo ann airson a dhùnadh.",
   "zones.browse": "Rùraich a h-uile duine air an àrd-ùrlar",
@@ -169,7 +190,7 @@ const sco: Catalogue = {
   "how.threeBody":
     "A haundfu, no a hunner, ilka ane wi why it matched, whit it costs, wha it’s for, an juist whit happens efter ye apply.",
   "zones.eyebrow": "Access Zones",
-  "zones.titleEnd": "kinds o support, ae platform",
+  "zones.title": "Ilka kind o support, ae platform",
   "zones.body":
     "Wark, siller, learnin, health, enterprise, haein a say. Maist weemen need mair nor ane at a time, an maist services anly dae ane, an that’s the gap this is here tae steek.",
   "zones.browse": "Brouse awbody on the platform",
@@ -199,7 +220,7 @@ const pl: Catalogue = {
   "how.title": "Nie musisz wiedzieć, do kogo się zwrócić",
   "how.body":
     "Powiedz „chcę wrócić do pracy” albo „potrzebuję finansowania”, a resztę zrobimy my. Nigdy nie musisz wybierać kategorii, wskazywać organizacji ani ustalać, do którego programu się kwalifikujesz.",
-  "how.one": "Raz",
+  "how.one": "Jeden",
   "how.oneTitle": "Powiedz nam własnymi słowami",
   "how.oneBody":
     "Czego potrzebujesz, mniej więcej gdzie jesteś i cokolwiek o swojej sytuacji, co chcesz nam przekazać. Trzy pytania i żadne nie jest obowiązkowe.",
@@ -212,7 +233,7 @@ const pl: Catalogue = {
   "how.threeBody":
     "Garść, nie setkę, każda z wyjaśnieniem, dlaczego pasuje, ile kosztuje, dla kogo jest i co dokładnie dzieje się po złożeniu wniosku.",
   "zones.eyebrow": "Strefy dostępu",
-  "zones.titleEnd": "rodzaje wsparcia, jedna platforma",
+  "zones.title": "Każdy rodzaj wsparcia, jedna platforma",
   "zones.body":
     "Praca, pieniądze, nauka, zdrowie, przedsiębiorczość, głos w sprawach publicznych. Większość kobiet potrzebuje więcej niż jednej rzeczy naraz, a większość usług robi tylko jedną, i to jest luka, którą to wypełnia.",
   "zones.browse": "Przeglądaj wszystkich na platformie",
@@ -255,7 +276,7 @@ const uk: Catalogue = {
   "how.threeBody":
     "Кілька, а не сотню, кожен із поясненням, чому він підійшов, скільки коштує, для кого він і що саме відбувається після подання заявки.",
   "zones.eyebrow": "Зони доступу",
-  "zones.titleEnd": "види підтримки, одна платформа",
+  "zones.title": "Кожен вид підтримки, одна платформа",
   "zones.body":
     "Робота, гроші, навчання, здоров’я, підприємництво, право голосу. Більшості жінок потрібно більше ніж одне водночас, а більшість служб робить лише щось одне, саме цю прогалину це й закриває.",
   "zones.browse": "Переглянути всіх на платформі",
@@ -281,7 +302,7 @@ const ar: Catalogue = {
     "أخبرينا بكلماتك عمّا تحتاجين إليه، وسنعرض عليك بضع خطوات تالية تستحق أن تُتخذ. ثلاثة أسئلة، ولا حاجة إلى حساب.",
   "hero.cta": "ابحثي عن حل",
   "hero.browse": "أو اطّلعي على الجهات الموجودة",
-  "how.eyebrow": "كيف يعمل",
+  "how.eyebrow": "طريقة العمل",
   "how.title": "ليس عليك أن تعرفي بمن تتصلين",
   "how.body":
     "قولي «أريد العودة إلى العمل» أو «أحتاج إلى تمويل» ونتولى نحن الباقي. لست مضطرة إلى اختيار فئة، أو تسمية منظمة، أو معرفة البرنامج الذي قد تكونين مؤهلة له.",
@@ -298,9 +319,9 @@ const ar: Catalogue = {
   "how.threeBody":
     "حفنة لا مئة، مع سبب المطابقة، والتكلفة، ولمن هو موجَّه، وما يحدث تحديدًا بعد التقديم.",
   "zones.eyebrow": "مجالات الوصول",
-  "zones.titleEnd": "أنواع من الدعم، منصة واحدة",
+  "zones.title": "كل أنواع الدعم، منصة واحدة",
   "zones.body":
-    "العمل، والمال، والتعلّم، والصحة، وريادة الأعمال، وإسماع الصوت. معظم النساء يحتجن إلى أكثر من واحد في الوقت نفسه، ومعظم الخدمات تقدّم واحدًا فقط, وهذه هي الفجوة التي وُجدت هذه المنصة لسدّها.",
+    "العمل، والمال، والتعلّم، والصحة، وريادة الأعمال، وإسماع الصوت. معظم النساء يحتجن إلى أكثر من واحد في الوقت نفسه، ومعظم الخدمات تقدّم واحدًا فقط، وهذه هي الفجوة التي وُجدت هذه المنصة لسدّها.",
   "zones.browse": "تصفّحي جميع الجهات على المنصة",
   "trust.checkedTitle": "هناك من تحقّق",
   "trust.checkedBody":
@@ -327,7 +348,7 @@ const ur: Catalogue = {
   "how.eyebrow": "یہ کیسے کام کرتا ہے",
   "how.title": "آپ کو یہ جاننے کی ضرورت نہیں کہ کس سے پوچھیں",
   "how.body":
-    "کہیں «میں کام پر واپس جانا چاہتی ہوں» یا «مجھے فنڈنگ چاہیے» اور باقی کام ہم کریں گے۔ آپ کو کبھی زمرہ منتخب کرنے، کسی ادارے کا نام لینے، یا یہ سوچنے کی ضرورت نہیں کہ آپ کس اسکیم کے اہل ہیں۔",
+    "کہیں ”میں کام پر واپس جانا چاہتی ہوں“ یا ”مجھے فنڈنگ چاہیے“ اور باقی کام ہم کریں گے۔ آپ کو کبھی زمرہ منتخب کرنے، کسی ادارے کا نام لینے، یا یہ سوچنے کی ضرورت نہیں کہ آپ کس اسکیم کے اہل ہیں۔",
   "how.one": "ایک",
   "how.oneTitle": "اپنے الفاظ میں بتائیں",
   "how.oneBody":
@@ -341,9 +362,9 @@ const ur: Catalogue = {
   "how.threeBody":
     "مٹھی بھر، سو نہیں، ہر ایک کے ساتھ یہ کہ وہ کیوں موزوں ہے، اس کی قیمت کیا ہے، کس کے لیے ہے، اور درخواست کے بعد بالکل کیا ہوتا ہے۔",
   "zones.eyebrow": "رسائی کے شعبے",
-  "zones.titleEnd": "قسم کی مدد، ایک پلیٹ فارم",
+  "zones.title": "ہر قسم کی مدد، ایک پلیٹ فارم",
   "zones.body":
-    "کام، پیسہ، تعلیم، صحت، کاروبار، اپنی بات کہنے کا حق۔ زیادہ تر خواتین کو ایک وقت میں ایک سے زیادہ کی ضرورت ہوتی ہے، اور زیادہ تر خدمات صرف ایک ہی کام کرتی ہیں, یہی وہ خلا ہے جسے پُر کرنے کے لیے یہ موجود ہے۔",
+    "کام، پیسہ، تعلیم، صحت، کاروبار، اپنی بات کہنے کا حق۔ زیادہ تر خواتین کو ایک وقت میں ایک سے زیادہ کی ضرورت ہوتی ہے، اور زیادہ تر خدمات صرف ایک ہی کام کرتی ہیں، یہی وہ خلا ہے جسے پُر کرنے کے لیے یہ موجود ہے۔",
   "zones.browse": "پلیٹ فارم پر سب کو دیکھیں",
   "trust.checkedTitle": "کسی نے جانچ کی ہے",
   "trust.checkedBody":
@@ -370,21 +391,21 @@ const pa: Catalogue = {
   "how.eyebrow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "how.title": "ਤੁਹਾਨੂੰ ਇਹ ਜਾਣਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਕਿਸ ਨੂੰ ਪੁੱਛਣਾ ਹੈ",
   "how.body":
-    "ਕਹੋ «ਮੈਂ ਕੰਮ ’ਤੇ ਵਾਪਸ ਜਾਣਾ ਚਾਹੁੰਦੀ ਹਾਂ» ਜਾਂ «ਮੈਨੂੰ ਫੰਡਿੰਗ ਚਾਹੀਦੀ ਹੈ» ਅਤੇ ਬਾਕੀ ਅਸੀਂ ਕਰਾਂਗੇ। ਤੁਹਾਨੂੰ ਕਦੇ ਸ਼੍ਰੇਣੀ ਚੁਣਨ, ਕਿਸੇ ਸੰਸਥਾ ਦਾ ਨਾਂ ਲੈਣ, ਜਾਂ ਇਹ ਪਤਾ ਕਰਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਤੁਸੀਂ ਕਿਸ ਯੋਜਨਾ ਲਈ ਯੋਗ ਹੋ।",
+    "ਕਹੋ “ਮੈਂ ਕੰਮ ’ਤੇ ਵਾਪਸ ਜਾਣਾ ਚਾਹੁੰਦੀ ਹਾਂ” ਜਾਂ “ਮੈਨੂੰ ਫੰਡਿੰਗ ਚਾਹੀਦੀ ਹੈ” ਅਤੇ ਬਾਕੀ ਅਸੀਂ ਕਰਾਂਗੇ। ਤੁਹਾਨੂੰ ਕਦੇ ਸ਼੍ਰੇਣੀ ਚੁਣਨ, ਕਿਸੇ ਸੰਸਥਾ ਦਾ ਨਾਂ ਲੈਣ, ਜਾਂ ਇਹ ਪਤਾ ਕਰਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਤੁਸੀਂ ਕਿਸ ਯੋਜਨਾ ਲਈ ਯੋਗ ਹੋ।",
   "how.one": "ਇੱਕ",
   "how.oneTitle": "ਸਾਨੂੰ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ",
   "how.oneBody":
-    "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਤੁਸੀਂ ਲਗਭਗ ਕਿੱਥੇ ਹੋ, ਅਤੇ ਆਪਣੀ ਸਥਿਤੀ ਬਾਰੇ ਜੋ ਵੀ ਤੁਸੀਂ ਸਾਨੂੰ ਦੱਸਣਾ ਚਾਹੁੰਦੇ ਹੋ। ਤਿੰਨ ਸਵਾਲ, ਅਤੇ ਕੋਈ ਵੀ ਲਾਜ਼ਮੀ ਨਹੀਂ।",
+    "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਤੁਸੀਂ ਲਗਭਗ ਕਿੱਥੇ ਹੋ, ਅਤੇ ਆਪਣੀ ਸਥਿਤੀ ਬਾਰੇ ਜੋ ਵੀ ਤੁਸੀਂ ਸਾਨੂੰ ਦੱਸਣਾ ਚਾਹੁੰਦੀਆਂ ਹੋ। ਤਿੰਨ ਸਵਾਲ, ਅਤੇ ਕੋਈ ਵੀ ਲਾਜ਼ਮੀ ਨਹੀਂ।",
   "how.two": "ਦੋ",
   "how.twoTitle": "ਅਸੀਂ ਇਸ ਨੂੰ ਤੋਲਦੇ ਹਾਂ",
   "how.twoBody":
-    "ਇਸ ਦੇ ਆਧਾਰ ’ਤੇ ਕਿ ਹਰ ਚੀਜ਼ ਕਿਸ ਲਈ ਹੈ, ਕਿਸ ਲਈ ਖੁੱਲ੍ਹੀ ਹੈ, ਕਿੱਥੇ ਚੱਲਦੀ ਹੈ ਅਤੇ ਤੁਸੀਂ ਉਸ ਤੱਕ ਕਿਵੇਂ ਪਹੁੰਚ ਸਕਦੇ ਹੋ। ਕਾਰਨ ਲਿਖੇ ਹੋਏ ਹਨ ਅਤੇ ਇਸ ਵਿੱਚੋਂ ਕੁਝ ਵੀ ਖਰੀਦਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।",
+    "ਇਸ ਦੇ ਆਧਾਰ ’ਤੇ ਕਿ ਹਰ ਚੀਜ਼ ਕਿਸ ਲਈ ਹੈ, ਕਿਸ ਲਈ ਖੁੱਲ੍ਹੀ ਹੈ, ਕਿੱਥੇ ਚੱਲਦੀ ਹੈ ਅਤੇ ਤੁਸੀਂ ਉਸ ਤੱਕ ਕਿਵੇਂ ਪਹੁੰਚ ਸਕਦੀਆਂ ਹੋ। ਕਾਰਨ ਲਿਖੇ ਹੋਏ ਹਨ ਅਤੇ ਇਸ ਵਿੱਚੋਂ ਕੁਝ ਵੀ ਖਰੀਦਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।",
   "how.three": "ਤਿੰਨ",
   "how.threeTitle": "ਤੁਹਾਨੂੰ ਕੁਝ ਅਸਲੀ ਵਿਕਲਪ ਮਿਲਦੇ ਹਨ",
   "how.threeBody":
     "ਮੁੱਠੀ ਭਰ, ਸੌ ਨਹੀਂ, ਹਰ ਇੱਕ ਦੇ ਨਾਲ ਇਹ ਕਿ ਉਹ ਕਿਉਂ ਢੁਕਵਾਂ ਹੈ, ਕੀ ਖਰਚਾ ਹੈ, ਕਿਸ ਲਈ ਹੈ, ਅਤੇ ਅਰਜ਼ੀ ਤੋਂ ਬਾਅਦ ਬਿਲਕੁਲ ਕੀ ਹੁੰਦਾ ਹੈ।",
   "zones.eyebrow": "ਪਹੁੰਚ ਖੇਤਰ",
-  "zones.titleEnd": "ਕਿਸਮ ਦੀ ਸਹਾਇਤਾ, ਇੱਕ ਪਲੇਟਫਾਰਮ",
+  "zones.title": "ਹਰ ਕਿਸਮ ਦੀ ਸਹਾਇਤਾ, ਇੱਕ ਪਲੇਟਫਾਰਮ",
   "zones.body":
     "ਕੰਮ, ਪੈਸਾ, ਸਿੱਖਿਆ, ਸਿਹਤ, ਕਾਰੋਬਾਰ, ਆਪਣੀ ਗੱਲ ਕਹਿਣ ਦਾ ਹੱਕ। ਜ਼ਿਆਦਾਤਰ ਔਰਤਾਂ ਨੂੰ ਇੱਕੋ ਸਮੇਂ ਇੱਕ ਤੋਂ ਵੱਧ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ, ਅਤੇ ਜ਼ਿਆਦਾਤਰ ਸੇਵਾਵਾਂ ਸਿਰਫ਼ ਇੱਕ ਹੀ ਕਰਦੀਆਂ ਹਨ, ਇਹੀ ਉਹ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਭਰਨ ਲਈ ਇਹ ਮੌਜੂਦ ਹੈ।",
   "zones.browse": "ਪਲੇਟਫਾਰਮ ’ਤੇ ਸਾਰਿਆਂ ਨੂੰ ਵੇਖੋ",
@@ -393,11 +414,11 @@ const pa: Catalogue = {
     "ਇੱਥੇ ਹਰ ਸੰਸਥਾ ਦੀ ਕਿਸੇ ਜਨਤਕ ਰਜਿਸਟਰ ਜਾਂ ਉਸ ਦੇ ਫੰਡ ਦੇਣ ਵਾਲੇ ਰਾਹੀਂ ਪੁਸ਼ਟੀ ਕੀਤੀ ਗਈ ਹੈ, ਇਸ ਤੋਂ ਪਹਿਲਾਂ ਕਿ ਉਹ ਕੁਝ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰ ਸਕੇ। ਹਰ ਇੰਦਰਾਜ਼ ’ਤੇ ਆਖਰੀ ਪੁਸ਼ਟੀ ਦੀ ਤਾਰੀਖ ਹੁੰਦੀ ਹੈ।",
   "trust.privateTitle": "ਕੁਝ ਵੀ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ",
   "trust.privateBody":
-    "ਖੋਜਣ, ਪੜ੍ਹਨ ਜਾਂ ਅਰਜ਼ੀ ਦੇਣ ਲਈ ਤੁਹਾਨੂੰ ਖਾਤੇ ਦੀ ਲੋੜ ਨਹੀਂ। ਤੁਸੀਂ ਜੋ ਲਿਖਦੇ ਹੋ ਉਹ ਸਿਰਫ਼ ਤੁਹਾਡੇ ਨਤੀਜੇ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਵੇਚਿਆ, ਅੱਗੇ ਦਿੱਤਾ ਜਾਂ ਤੁਹਾਡਾ ਪ੍ਰੋਫਾਈਲ ਬਣਾਉਣ ਲਈ ਨਹੀਂ ਵਰਤਿਆ ਜਾਂਦਾ।",
+    "ਖੋਜਣ, ਪੜ੍ਹਨ ਜਾਂ ਅਰਜ਼ੀ ਦੇਣ ਲਈ ਤੁਹਾਨੂੰ ਖਾਤੇ ਦੀ ਲੋੜ ਨਹੀਂ। ਤੁਸੀਂ ਜੋ ਲਿਖਦੀਆਂ ਹੋ ਉਹ ਸਿਰਫ਼ ਤੁਹਾਡੇ ਨਤੀਜੇ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਵੇਚਿਆ, ਅੱਗੇ ਦਿੱਤਾ ਜਾਂ ਤੁਹਾਡਾ ਪ੍ਰੋਫਾਈਲ ਬਣਾਉਣ ਲਈ ਨਹੀਂ ਵਰਤਿਆ ਜਾਂਦਾ।",
   "trust.paidTitle": "ਇੱਥੇ ਦਿਖਣ ਲਈ ਕੋਈ ਪੈਸੇ ਨਹੀਂ ਦਿੰਦਾ",
   "trust.paidBody":
     "ਕੋਈ ਅਦਾਇਗੀ ਵਾਲੀ ਥਾਂ ਜਾਂ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ ਹੈ। ਨਤੀਜੇ ਇਸ ਆਧਾਰ ’ਤੇ ਕ੍ਰਮਬੱਧ ਹੁੰਦੇ ਹਨ ਕਿ ਉਹ ਤੁਹਾਡੀ ਦੱਸੀ ਗੱਲ ਨਾਲ ਕਿੰਨੇ ਮੇਲ ਖਾਂਦੇ ਹਨ, ਅਤੇ ਹਰ ਇੰਦਰਾਜ਼ ਦੱਸਦਾ ਹੈ ਕਿ ਉਹ ਕਿਉਂ ਢੁਕਵਾਂ ਹੈ।",
-  "orgs.title": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਅਜਿਹਾ ਚਲਾ ਰਹੇ ਹੋ ਜਿਸ ਬਾਰੇ ਔਰਤਾਂ ਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ?",
+  "orgs.title": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਅਜਿਹਾ ਚਲਾ ਰਹੀਆਂ ਹੋ ਜਿਸ ਬਾਰੇ ਔਰਤਾਂ ਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ?",
   "orgs.body":
     "ਇਸ ਨੂੰ ਇੱਥੇ ਦਰਜ ਕਰੋ ਅਤੇ ਇਹ ਉਨ੍ਹਾਂ ਔਰਤਾਂ ਤੱਕ ਪਹੁੰਚੇਗਾ ਜਿਨ੍ਹਾਂ ਲਈ ਇਹ ਸੱਚਮੁੱਚ ਢੁਕਵਾਂ ਹੈ, ਨਾ ਕਿ ਜੋ ਕੋਈ ਵੀ ਤੁਹਾਡੀ ਵੈੱਬਸਾਈਟ ’ਤੇ ਪਹੁੰਚ ਜਾਵੇ। ਮੁਫ਼ਤ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਡੀ ਇੱਕ ਵਾਰ ਜਾਂਚ ਕਰਦੇ ਹਾਂ, ਹਰ ਇੰਦਰਾਜ਼ ਦੀ ਨਹੀਂ।",
   "orgs.cta": "ਆਪਣੀ ਸਹਾਇਤਾ ਦਰਜ ਕਰੋ",
@@ -427,9 +448,9 @@ const zh: Catalogue = {
   "how.threeBody":
     "是几个，而不是一百个。每一个都会说明为什么匹配、费用如何、面向谁，以及申请之后究竟会发生什么。",
   "zones.eyebrow": "支持领域",
-  "zones.titleEnd": "类支持，一个平台",
+  "zones.title": "各类支持，一个平台",
   "zones.body":
-    "工作、金钱、学习、健康、创业、发声。大多数女性同时需要不止一项，而大多数服务只做其中一项, , 这正是这个平台要填补的空白。",
+    "工作、金钱、学习、健康、创业、发声。大多数女性同时需要不止一项，而大多数服务只做其中一项，这正是这个平台要填补的空白。",
   "zones.browse": "浏览平台上的所有机构",
   "trust.checkedTitle": "有人核实过",
   "trust.checkedBody":

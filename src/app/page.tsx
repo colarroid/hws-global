@@ -122,9 +122,18 @@ export default async function Landing() {
 
       <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
         <div className="flex flex-col gap-3">
-          <span className="eyebrow text-gold-700">{t("zones.eyebrow")}</span>
+          {/* The count sits in the eyebrow rather than in front of the
+              heading's noun. Glued to the front of a translated phrase it
+              was ungrammatical in three of the nine languages and could not
+              be fixed by translating harder: Polish and Ukrainian change the
+              noun's ending at five, Arabic changes it again at eleven, and
+              the number here is live. Beside the label it agrees with
+              nothing. */}
+          <span className="eyebrow text-gold-700">
+            {t("zones.eyebrow")} · {counts.zones}
+          </span>
           <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
-            {counts.zones} {t("zones.titleEnd")}
+            {t("zones.title")}
           </h2>
           <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-ink-70">
             {t("zones.body")}

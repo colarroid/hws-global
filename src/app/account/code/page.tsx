@@ -8,8 +8,11 @@ import { CodeForm } from "@/components/account/CodeForm";
 
 export const metadata: Metadata = pageMetadata({
   title: "Check your email",
-  description:
-    "We have sent you a link to sign in with.",
+  // A code, not a link, and the wording has to say so. The email is
+  // deliberately link-free: a link in an inbox somebody else can open is a
+  // session handed to whoever opens it, which on this platform is a safety
+  // problem rather than a convenience one.
+  description: "We have sent you a six digit code to sign in with.",
   path: "/account/code",
 });
 
