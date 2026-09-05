@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bookmark, Settings } from "lucide-react";
+import { Bookmark, LogOut, Settings } from "lucide-react";
 import { MobileNav } from "@/components/ui/MobileNav";
 import { AccountMenu } from "@/components/AccountMenu";
 import { getSavedIds } from "@/lib/saved";
+import { signOut } from "@/app/account/actions";
 import { getAccount } from "@/lib/data/account";
 import { LanguageMenu } from "@/components/LanguageMenu";
 import { getLocale } from "@/lib/i18n";
@@ -11,10 +12,11 @@ import { getLocale } from "@/lib/i18n";
 /**
  * Saved, as a row in the phone panel.
  *
- * The panel is the phone's version of the account menu, so it lists the same
- * two places in the same order. It used to have a pill variant for the
- * desktop row as well; that row is now one control, so the pill has gone
- * with it rather than staying as a branch nothing takes.
+ * The panel is the phone's version of the account menu, so it carries the
+ * same rows in the same order: Saved, Settings, then sign out under a rule.
+ * It used to have a pill variant for the desktop row as well; that row is
+ * now one control, so the pill has gone with it rather than staying as a
+ * branch nothing takes.
  */
 function SavedLink({ count }: { count: number }) {
   return (
@@ -59,6 +61,33 @@ function SettingsLink() {
       />
       <span className="flex-1">Reminders and settings</span>
     </Link>
+  );
+}
+
+/**
+ * Sign out, as a row in the phone panel.
+ *
+ * A form rather than a link, because it does something. Ruled off above for
+ * the same reason it is in the account menu: it is the one row here that
+ * does not take her somewhere, and a woman reaching for Settings should not
+ * be able to land on it by a thumb's width.
+ */
+function SignOutRow() {
+  return (
+    <form
+      action={signOut}
+      className="mt-1 w-full border-t border-hairline-soft pt-1"
+    >
+      <button type="submit" className={`${PANEL_ROW} cursor-pointer border-0 bg-transparent text-start`}>
+        <LogOut
+          size={17}
+          strokeWidth={2}
+          className="shrink-0 text-ink-60"
+          aria-hidden="true"
+        />
+        <span className="flex-1">Sign out</span>
+      </button>
+    </form>
   );
 }
 
@@ -182,6 +211,7 @@ export async function SiteHeader() {
                   list was through a page she had no route to. */}
               {account ? <SavedLink count={saved.length} /> : null}
               {account ? <SettingsLink /> : null}
+              {account ? <SignOutRow /> : null}
             </MobileNav>
 
             <LanguageMenu current={locale.code} />

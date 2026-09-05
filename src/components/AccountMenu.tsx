@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Bookmark, ChevronDown, Settings, User } from "lucide-react";
+import { Bookmark, ChevronDown, LogOut, Settings, User } from "lucide-react";
+import { signOut } from "@/app/account/actions";
 
 /**
  * Her account, behind one control.
@@ -147,6 +148,25 @@ export function AccountMenu({ savedCount }: { savedCount: number }) {
                 has the room, so it keeps the fuller wording. */}
             <span className="flex-1">Settings</span>
           </Link>
+
+          {/* Ruled off, because it is the one row that does something rather
+              than going somewhere. Mixing it into the list is how somebody
+              reaching for Settings signs herself out instead. */}
+          <form
+            action={signOut}
+            onSubmit={() => setOpen(false)}
+            className="mt-[2px] border-t border-hairline-soft pt-[6px]"
+          >
+            <button type="submit" role="menuitem" className={`${row} cursor-pointer border-0 bg-transparent text-start`}>
+              <LogOut
+                size={17}
+                strokeWidth={2}
+                className="shrink-0 text-ink-60"
+                aria-hidden="true"
+              />
+              <span className="flex-1">Sign out</span>
+            </button>
+          </form>
         </div>
       ) : null}
     </div>
