@@ -34,6 +34,12 @@ export async function SiteFooter() {
     { href: "/help", label: "Help" },
   ];
 
+  const legal = [
+    { href: "/privacy", label: "Privacy policy" },
+    { href: "/terms", label: "Terms of use" },
+    { href: "/help", label: "Talk to a person" },
+  ];
+
   return (
     <footer className="mt-auto border-t border-hairline bg-surface">
       <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10 px-5 py-12 sm:px-10 sm:py-14">
@@ -123,17 +129,28 @@ export async function SiteFooter() {
             build a profile of you.
           </p>
 
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
             <span className="text-[14px] text-ink-60">
               © {year} The Holistic Wellbeing Summit
             </span>
 
-            <Link
-              href="/help"
-              className="inline-flex min-h-[44px] items-center text-[14px] font-bold text-ink no-underline hover:text-gold-700"
+            {/* The two legal documents live down here rather than in the
+                columns above. Somebody looking for them looks at the bottom
+                of the page, and nobody arrives wanting to read them. */}
+            <nav
+              aria-label="Legal"
+              className="flex flex-wrap items-center gap-x-6"
             >
-              Talk to a person
-            </Link>
+              {legal.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="inline-flex min-h-[44px] items-center text-[14px] font-bold text-ink no-underline hover:text-gold-700"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
           </div>
         </div>
       </div>
