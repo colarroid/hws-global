@@ -162,7 +162,7 @@ export async function SiteHeader() {
             {account ? null : (
               <Link
                 href="/account"
-                className="inline-flex min-h-[44px] items-center rounded-full px-3 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:bg-gold-200 sm:px-4"
+                className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:bg-gold-200 sm:px-4"
               >
                 Sign in
               </Link>
