@@ -73,17 +73,26 @@ export function AccountMenu({ savedCount }: { savedCount: number }) {
             ? `Your account. ${savedCount} saved.`
             : "Your account"
         }
-        className="relative inline-flex min-h-[44px] cursor-pointer items-center gap-[6px] rounded-full border-0 bg-surface px-[10px] py-2 text-ink shadow-hairline transition-[box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
+        /* The language control's button, exactly: no ground, no ring, and
+           the gold wash on hover. They sit next to each other and do the
+           same job, so anything that makes one look heavier than the other
+           reads as one of them being more important. */
+        className="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-full border-0 bg-transparent px-[10px] py-2 text-[14px] font-semibold text-ink transition-colors duration-150 ease-out hover:bg-gold-200"
       >
-        <User size={18} strokeWidth={2} aria-hidden="true" />
-        {savedCount > 0 ? (
-          <span
-            aria-hidden="true"
-            className="absolute end-[7px] top-[7px] size-[7px] rounded-full bg-gold-500"
-          />
-        ) : null}
+        {/* The dot hangs off the icon rather than the button, so it stays on
+            her shoulder rather than drifting into the padding now that there
+            is no pill edge for it to sit against. */}
+        <span className="relative flex">
+          <User size={18} strokeWidth={2} aria-hidden="true" />
+          {savedCount > 0 ? (
+            <span
+              aria-hidden="true"
+              className="absolute -end-[3px] -top-[2px] size-[7px] rounded-full bg-gold-500"
+            />
+          ) : null}
+        </span>
         <ChevronDown
-          size={14}
+          size={15}
           strokeWidth={2.5}
           aria-hidden="true"
           className={`text-ink-60 transition-transform duration-150 ease-out ${
