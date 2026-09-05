@@ -1,8 +1,14 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { PlaceForm } from "@/components/find/PlaceForm";
 
-export const metadata: Metadata = { title: "Where should we look for support?" };
+export const metadata: Metadata = pageMetadata({
+  title: "Where should we look for support?",
+  description:
+    "Tell us where you are so we can put what is near you first, and still show you what is open to everyone.",
+  path: "/find/where",
+});
 
 /**
  * Question 2. Where to look.

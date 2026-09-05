@@ -1,9 +1,15 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { SituationForm } from "@/components/find/SituationForm";
 import { getSituations } from "@/lib/data/situations";
 
-export const metadata: Metadata = { title: "What best describes your situation?" };
+export const metadata: Metadata = pageMetadata({
+  title: "What best describes your situation?",
+  description:
+    "Pick anything that fits. It changes what we put in front of you.",
+  path: "/find/situation",
+});
 
 /**
  * Question 3. Her situation.

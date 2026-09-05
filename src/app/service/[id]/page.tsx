@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, BadgeCheck, Flag } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ColdArrivalBar, ColdArrivalPanel } from "@/components/find/ColdArrival";
@@ -34,12 +35,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
     .filter(Boolean)
     .join(", ");
 
-  return {
+  return pageMetadata({
     title: `${service.name} · ${service.organisationName}`,
     description:
       service.blurb ??
       `Support for women${where ? ` in ${where}` : " in Scotland"}.`,
-  };
+    path: `/service/${service.id}`,
+    indexable: true,
+  });
 }
 
 /** One labelled fact. Empty ones are dropped rather than shown blank. */

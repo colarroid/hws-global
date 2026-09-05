@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Building2 } from "lucide-react";
@@ -15,10 +16,12 @@ export async function generateMetadata({
   const need = await getNeed(slug);
   if (!need) return { title: "Not found" };
 
-  return {
+  return pageMetadata({
     title: `${need.label} · organisations in Scotland`,
-    description: `Organisations across Scotland working on ${need.label.toLowerCase()}.`,
-  };
+    description: `Organisations across Scotland working on ${need.label.toLowerCase()}. Every one of them checked by HWS.`,
+    path: `/discover/need/${need.slug}`,
+    indexable: true,
+  });
 }
 
 /**

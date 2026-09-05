@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Building2 } from "lucide-react";
@@ -15,10 +16,12 @@ export async function generateMetadata({
   const zone = await getZone(slug);
   if (!zone) return { title: "Not found" };
 
-  return {
+  return pageMetadata({
     title: `${zone.name} · organisations in Scotland`,
     description: zone.focus,
-  };
+    path: `/discover/${zone.slug}`,
+    indexable: true,
+  });
 }
 
 /**

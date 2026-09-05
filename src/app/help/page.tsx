@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Phone, TriangleAlert } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { getService } from "@/lib/data/service";
 
-export const metadata: Metadata = { title: "Talk to a person" };
+export const metadata: Metadata = pageMetadata({
+  title: "Talk to a person",
+  description:
+    "If you cannot find what you need, or something here looks wrong, tell us. We would rather hear from you than have you give up on it.",
+  path: "/help",
+  indexable: true,
+});
 
 /**
  * Contact our support, and the "something wrong?" reporting loop.

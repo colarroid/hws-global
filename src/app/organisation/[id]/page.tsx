@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -37,10 +38,15 @@ export async function generateMetadata({
   const organisation = await getOrganisationProfile(id);
   if (!organisation) return { title: "Not found" };
 
-  return {
-    title: `${organisation.name} · HWS Path Grid`,
-    description: organisation.blurb ?? organisation.mission ?? undefined,
-  };
+  return pageMetadata({
+    title: organisation.name,
+    description:
+      organisation.blurb ??
+      organisation.mission ??
+      `${organisation.name}, checked by HWS and working with women in Scotland.`,
+    path: `/organisation/${organisation.id}`,
+    indexable: true,
+  });
 }
 
 /**

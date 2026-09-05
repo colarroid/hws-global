@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ButtonLink } from "@/components/ui/Button";
 
-export const metadata: Metadata = { title: "Start again" };
+export const metadata: Metadata = pageMetadata({
+  title: "Start again",
+  description:
+    "Clear your answers and begin the three questions again.",
+  path: "/start-over",
+});
 
 /**
  * Start over, confirmed once.

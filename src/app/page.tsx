@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -12,11 +13,13 @@ import { ButtonLink } from "@/components/ui/Button";
 import { getTranslator } from "@/lib/i18n";
 import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Find support for women in Scotland",
   description:
     "Tell us what you need in your own words and we will show you a few next steps worth taking. Every organisation is checked. No account needed.",
-};
+  path: "/",
+  indexable: true,
+});
 
 /**
  * The landing page.

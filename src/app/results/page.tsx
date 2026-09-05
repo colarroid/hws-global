@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft, SlidersHorizontal } from "lucide-react";
 import { Page } from "@/components/ui/Page";
@@ -45,7 +46,12 @@ function parseAnswers(params: {
   };
 }
 
-export const metadata: Metadata = { title: "Next steps for you" };
+export const metadata: Metadata = pageMetadata({
+  title: "Next steps for you",
+  description:
+    "The support we found for you, with the reason each one is here.",
+  path: "/results",
+});
 
 /**
  * Screen 5. Next steps.

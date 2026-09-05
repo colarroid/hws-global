@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Minus, Plus } from "lucide-react";
 import { FOR_ORGANISATIONS, FOR_WOMEN, type Question } from "@/lib/design/faq";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Frequently asked questions",
   description:
-    "How HWS Path Grid works, what happens to what you type, how organisations are checked, and what it costs. Answers for women looking for support and for organisations listing it.",
-};
+    "What women ask before they use this site, and what organisations ask before they list on it. Answered plainly.",
+  path: "/faq",
+  indexable: true,
+});
 
 /**
  * The questions people actually ask.

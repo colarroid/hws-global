@@ -1,9 +1,16 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { NeedForm } from "@/components/find/NeedForm";
 import { getNeedSuggestions } from "@/lib/data/search";
 
-export const metadata: Metadata = { title: "What do you need help with?" };
+export const metadata: Metadata = pageMetadata({
+  title: "What do you need help with?",
+  description:
+    "Tell us what you need in your own words. Three questions, no account needed, and we look across every organisation in Scotland we have checked.",
+  path: "/find",
+  indexable: true,
+});
 
 /**
  * Question 1. What she needs, in her own words.
