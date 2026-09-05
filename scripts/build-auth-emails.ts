@@ -70,29 +70,57 @@ const magicLink = emailLayout({
  * registering with a password needs the button, because /auth/confirm is
  * where its account is confirmed and signed out again.
  *
- * So this carries both, code first. It is the version that cannot fail:
- * whoever opens it finds the thing they were sent for. The cost is that a
- * woman's very first email has a link in it as well as her code, which is a
- * compromise rather than a good outcome, and the README says how to remove
- * it once you can test a conditional against a staging project.
+ * It carried both for a while, which was wrong: a woman's sign-in is one
+ * flow whether it is her first time or her fiftieth, and it is a code every
+ * time. A link in her email is a session sitting in an inbox, and putting one
+ * there because an organisation needs it is making her carry somebody else's
+ * requirement.
+ *
+ * So it splits on the role, which both calls already set: `role: "woman"`
+ * from `signInWithOtp` on the women's site, `role: "organisation"` from
+ * `signUp` in the portal. GoTrue renders templates with Go's text/template,
+ * so the `if` is real syntax rather than a Supabase feature.
+ *
+ * The heading and the preheader stay neutral across both branches, because
+ * they are read in the inbox list by whoever is looking over her shoulder.
  */
+/**
+ * `printf "%v"` rather than a bare `eq .Data.role "woman"`.
+ *
+ * Go's `eq` refuses to compare a missing key against a string and fails the
+ * whole render, which would mean no email at all rather than the wrong half
+ * of one. Coercing to a string first cannot error, and anything that is not
+ * exactly "woman" falls to the organisation branch, which is the safer way
+ * round: an organisation seeing a code it does not need is untidy, a woman
+ * seeing a link is the thing we are removing.
+ */
+const roleIs = (role: string) => `{{ if eq (printf "%v" .Data.role) "${role}" }}`;
+const orElse = "{{ else }}";
+const endIf = "{{ end }}";
+
 const confirmSignup = emailLayout({
-  preheader: "Your sign-in code, or the link to confirm your address.",
-  heading: "Confirm your email address",
+  preheader: "Confirming it is you.",
+  heading: "Confirming it is you",
   body:
+    roleIs("woman") +
     emailText(
-      "If you are signing in to look for support, this is your code. Enter it on the page you have open. It works for 15 minutes.",
+      "Here is your code. Enter it on the page you have open. It works for 15 minutes.",
     ) +
     emailCode("{{ .Token }}") +
     emailText(
-      "If you are registering an organisation, use this instead to confirm your address and carry on where you left off.",
+      "If you did not ask to sign in, you can ignore this. Nobody can get in without the code, and we will not email you again about it.",
       "muted",
+    ) +
+    orElse +
+    emailText(
+      "You have started listing your support on HWS Path Grid. Confirm this address and you can carry on where you left off.",
     ) +
     emailButton("Confirm my address", "{{ .ConfirmationURL }}") +
     emailText(
-      "If you did not start either of these, ignore this email. Nothing happens until somebody uses one of them.",
+      "If you did not start this, ignore this email. Nothing happens until the address is confirmed.",
       "muted",
-    ),
+    ) +
+    endIf,
 });
 
 /**
@@ -117,9 +145,37 @@ const resetPassword = emailLayout({
 
 mkdirSync(OUT, { recursive: true });
 
+/**
+ * The version to paste back if the conditional misbehaves.
+ *
+ * Nothing here can fail to render, because there is no template logic in it:
+ * whoever opens it finds the thing they were sent for. It is the fallback
+ * rather than the default because a woman's email should not carry a link,
+ * and this one does.
+ */
+const confirmSignupFallback = emailLayout({
+  preheader: "Confirming it is you.",
+  heading: "Confirming it is you",
+  body:
+    emailText(
+      "If you are signing in to look for support, this is your code. Enter it on the page you have open. It works for 15 minutes.",
+    ) +
+    emailCode("{{ .Token }}") +
+    emailText(
+      "If you are registering an organisation, use this instead to confirm your address.",
+      "muted",
+    ) +
+    emailButton("Confirm my address", "{{ .ConfirmationURL }}") +
+    emailText(
+      "If you did not start either of these, ignore this email. Nothing happens until somebody uses one of them.",
+      "muted",
+    ),
+});
+
 const files: [string, string][] = [
   ["magic-link.html", magicLink],
   ["confirm-signup.html", confirmSignup],
+  ["confirm-signup-fallback.html", confirmSignupFallback],
   ["reset-password.html", resetPassword],
 ];
 

@@ -26,7 +26,7 @@ the women's sign-in a code while the organisation portal keeps its links.
 | Template | Triggered by | Must contain | Subject |
 | --- | --- | --- | --- |
 | **Magic Link** | `signInWithOtp` for an address that **already has an account** | `{{ .Token }}`, and no link at all | Your sign-in code |
-| **Confirm signup** | `signUp` in the portal, **and a woman's first ever sign-in** | both `{{ .Token }}` and `{{ .ConfirmationURL }}` | Confirm your email address |
+| **Confirm signup** | `signUp` in the portal, **and a woman's first ever sign-in** | `{{ .Token }}` or `{{ .ConfirmationURL }}`, branched on the role | Confirming it is you |
 | **Reset password** | `resetPasswordForEmail`, organisation portal | `{{ .ConfirmationURL }}` | Set a new password |
 
 ### Read that second row before changing anything
@@ -43,28 +43,50 @@ Magic Link, request a code twice for the same address. The first mail is
 Confirm signup; the second is Magic Link.
 
 It also means one template has to serve two audiences that want opposite
-things. A woman needs the code. An organisation registering with a password
+things. A woman needs the code, because her sign-in is one flow whether it is
+her first time or her fiftieth. An organisation registering with a password
 needs the button, because `/auth/confirm` is where its address is confirmed
-and the session is closed again. So Confirm signup carries **both**, code
-first, each labelled for who it is for.
+and the session closed again.
 
-That is a compromise, not a good outcome: a woman's very first email has a
-link in it as well as her code, and that link opens a session. Every sign-in
-after it is code-only. Two ways to remove it, in the order worth trying:
+**So the template branches on the role.** Both calls already tag the account:
+`data: { role: "woman" }` from `signInWithOtp` on the women's site,
+`role: "organisation"` from `signUp` in the portal. GoTrue renders templates
+with Go's `text/template`, so the `if` is ordinary template syntax rather
+than a Supabase feature:
 
-1. **A conditional on the role.** Both calls already tag the account:
-   `data: { role: "woman" }` from the women's site, `role: "organisation"`
-   from the portal. GoTrue renders these with Go's `text/template`, so
-   `{{ if eq .Data.role "woman" }}` … `{{ else }}` … `{{ end }}` around the
-   two halves should split them cleanly. Untested here, and a wrong
-   placeholder breaks registration for everybody, so try it on a staging
-   project and register both an organisation and a woman before switching.
-2. **Create the account before asking for the code.** With the service role
-   key, `auth.admin.createUser({ email, email_confirm: true })` followed by
-   `signInWithOtp({ shouldCreateUser: false })` means every woman's mail is
-   Magic Link and never Confirm signup. It works, and it puts a key that
-   bypasses every RLS policy into the public-facing deployment. Only worth it
-   if the conditional turns out not to be supported.
+```
+{{ if eq (printf "%v" .Data.role) "woman" }} … code … {{ else }} … button … {{ end }}
+```
+
+`printf "%v"` rather than a bare `eq .Data.role "woman"` on purpose: Go's
+`eq` refuses to compare a missing key against a string and fails the whole
+render, which would mean no email at all rather than the wrong half of one.
+Coercing to a string first cannot error, and anything that is not exactly
+`woman` falls to the organisation branch. That is the safer way round: an
+organisation seeing a code it does not need is untidy, a woman seeing a link
+is the thing being removed.
+
+### Test this one before you rely on it
+
+It is the only template here with logic in it, and the branch it takes cannot
+be checked from this repository. On a staging project, or carefully on
+production:
+
+1. Register an organisation with a fresh address. Expect the button, no code.
+2. Ask for a sign-in code on the women's site with a fresh address. Expect
+   the code, and **no link anywhere in the email**.
+
+If either comes out wrong, or nothing arrives at all, paste
+`confirm-signup-fallback.html` instead. It has no logic in it and carries
+both, each labelled. That works for everybody, at the cost of a link in a
+woman's first email, and is a holding position rather than the answer.
+
+There is a third option if the conditional turns out to be unusable: create
+the account with the service role key first, `auth.admin.createUser({ email,
+email_confirm: true })` followed by `signInWithOtp({ shouldCreateUser: false
+})`, so a woman's mail is always Magic Link and never Confirm signup. It
+works, and it puts a key that bypasses every RLS policy into the public
+deployment, which is why it is third rather than first.
 
 Three other Supabase templates exist and none of them fire: **Invite user**
 (`inviteUserByEmail` is never called; the portal's colleague invite is our own
