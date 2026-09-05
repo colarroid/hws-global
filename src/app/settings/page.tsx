@@ -27,10 +27,15 @@ export const metadata: Metadata = pageMetadata({
  * organisations, activity history, recommendations. Each would turn the
  * account into a reason to hold data that is not needed.
  */
-export default async function SettingsPage() {
+export default async function SettingsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ email?: string }>;
+}) {
   const account = await getAccount();
   if (!account) redirect("/account");
 
+  const { email: emailState } = await searchParams;
   const saved = await getSavedIds();
 
   return (
@@ -74,10 +79,25 @@ export default async function SettingsPage() {
         <h2 className="m-0 eyebrow text-ink-60">
           Email address
         </h2>
+        {/* Confirmed on the screen she lands back on, because the address
+            below is the only evidence the change took and reading it and
+            recognising it is not the same as being told. */}
+        {emailState === "changed" ? (
+          <p
+            role="status"
+            className="m-0 rounded-card border border-hairline bg-sage-200 px-[18px] py-3 text-[16px] leading-[1.5] text-green-700"
+          >
+            Done. Your account is on this address now, and your saved list came
+            with it.
+          </p>
+        ) : null}
+        {/* This pointed at /account, the sign-in screen, and changed
+            nothing: signed in, she landed on a page headed "Access your
+            account" asking for the address she already had. */}
         <div className="flex flex-wrap items-center justify-between gap-4 rounded-card shadow-hairline bg-surface px-[22px] py-4">
           <span className="text-[17px] break-all">{account.email}</span>
           <Link
-            href="/account"
+            href="/settings/email"
             className="p-1 text-[15px] font-bold text-gold-700 no-underline"
           >
             Change

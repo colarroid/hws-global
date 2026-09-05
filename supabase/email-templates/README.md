@@ -28,6 +28,7 @@ the women's sign-in a code while the organisation portal keeps its links.
 | **Magic Link** | `signInWithOtp` for an address that **already has an account** | `{{ .Token }}`, and no link at all | Your sign-in code |
 | **Confirm signup** | `signUp` in the portal, **and a woman's first ever sign-in** | `{{ .Token }}` or `{{ .ConfirmationURL }}`, branched on the role | Confirming it is you |
 | **Reset password** | `resetPasswordForEmail`, organisation portal | `{{ .ConfirmationURL }}` | Set a new password |
+| **Change email address** | `updateUser({ email })`, women's settings screen | `{{ .Token }}`, and no link | Confirming your new address |
 
 ### Read that second row before changing anything
 
@@ -88,10 +89,15 @@ email_confirm: true })` followed by `signInWithOtp({ shouldCreateUser: false
 works, and it puts a key that bypasses every RLS policy into the public
 deployment, which is why it is third rather than first.
 
-Three other Supabase templates exist and none of them fire: **Invite user**
+Two other Supabase templates exist and neither fires: **Invite user**
 (`inviteUserByEmail` is never called; the portal's colleague invite is our own
-mail, through Resend), **Change email address** (`updateUser` only ever
-changes a password), and **Reauthentication**. Leave them on the defaults.
+mail, through Resend) and **Reauthentication**. Leave them on the defaults.
+
+With **Secure email change** switched on, Supabase renders the change-email
+template twice, once to the old address and once to the new. The wording
+never says which inbox it is sitting in, because it does not know. Leaving
+that setting on is the safer choice: it means an address cannot be moved
+without somebody holding both inboxes.
 
 ## Why the women's sign-in is a code and not a link
 

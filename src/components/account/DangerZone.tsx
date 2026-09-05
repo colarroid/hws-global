@@ -15,8 +15,22 @@ import { deleteAccount, signOut } from "@/app/account/actions";
 export function DangerZone({ savedCount }: { savedCount: number }) {
   const [confirming, setConfirming] = useState(false);
   const [pending, startTransition] = useTransition();
+  const [error, setError] = useState<string | undefined>();
 
   const items = `${savedCount} saved ${savedCount === 1 ? "item" : "items"}`;
+
+  /*
+   * A failed delete has to say so. On success this never returns, because the
+   * action redirects; anything that comes back is a reason it did not happen,
+   * and swallowing it would leave her looking at a settings screen for an
+   * account she believes is gone.
+   */
+  function remove() {
+    startTransition(async () => {
+      const result = await deleteAccount();
+      if (result?.error) setError(result.error);
+    });
+  }
 
   return (
     <>
@@ -34,12 +48,20 @@ export function DangerZone({ savedCount }: { savedCount: number }) {
             <p className="m-0 text-[17px] leading-[1.6] text-red-700">
               Your {items} and your email address. This can&apos;t be undone.
             </p>
+            {error ? (
+              <p
+                role="alert"
+                className="m-0 text-[16px] font-semibold leading-[1.5] text-red-700"
+              >
+                {error}
+              </p>
+            ) : null}
             <div className="flex flex-wrap gap-3">
               <Button
                 variant="destructive"
                 size="inline"
                 disabled={pending}
-                onClick={() => startTransition(() => deleteAccount())}
+                onClick={remove}
               >
                 {pending ? "Deleting…" : "Yes, delete everything"}
               </Button>

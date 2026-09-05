@@ -172,11 +172,37 @@ const confirmSignupFallback = emailLayout({
     ),
 });
 
+/**
+ * Change email address.
+ *
+ * Fires from `updateUser({ email })` on the women's settings screen, which is
+ * the only place on the platform that changes an address. A code, like every
+ * other thing she is sent, verified with `type: "email_change"`.
+ *
+ * With Supabase's "Secure email change" on, this template is rendered twice:
+ * once to the old address and once to the new one. The wording therefore
+ * never says which inbox it is in, because it does not know.
+ */
+const changeEmail = emailLayout({
+  preheader: "Your code for changing the address on your account.",
+  heading: "Confirming your new address",
+  body:
+    emailText(
+      "Somebody asked to move a HWS Path Grid account to this address. If that was you, here is the code.",
+    ) +
+    emailCode("{{ .Token }}") +
+    emailText(
+      "If it was not you, ignore this. Nothing moves without the code, and the account stays exactly where it is.",
+      "muted",
+    ),
+});
+
 const files: [string, string][] = [
   ["magic-link.html", magicLink],
   ["confirm-signup.html", confirmSignup],
   ["confirm-signup-fallback.html", confirmSignupFallback],
   ["reset-password.html", resetPassword],
+  ["change-email.html", changeEmail],
 ];
 
 for (const [name, html] of files) {

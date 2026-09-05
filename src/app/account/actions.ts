@@ -165,9 +165,21 @@ export async function signOut() {
  * no win-back prompt and no survey: making leaving as easy as joining is the
  * thing that makes the rest of the privacy copy believable.
  *
- * Saved items and the profile go with the user row through cascade.
+ * This used to delete the saved_items rows, delete the profiles row and sign
+ * her out, leaving the row in auth.users untouched. The button says "and
+ * everything in it" and the confirmation names her email address, so the one
+ * thing it promised to remove was the one thing that stayed. She could sign
+ * in again on the same address and find the account still there.
+ *
+ * The delete now goes through delete_own_account(), a security-definer
+ * function that can only ever delete auth.uid(). The cascade takes the
+ * profile and the saved items with it, so there is nothing to tidy first.
+ *
+ * If the delete fails, she is not signed out and not redirected to a screen
+ * saying it worked. An account that quietly survives its own deletion is the
+ * bug this replaced.
  */
-export async function deleteAccount() {
+export async function deleteAccount(): Promise<FormState> {
   const supabase = await createClient();
   const {
     data: { user },
@@ -175,10 +187,110 @@ export async function deleteAccount() {
 
   if (!user) redirect("/");
 
-  await supabase.from("saved_items").delete().eq("user_id", user.id);
-  await supabase.from("profiles").delete().eq("id", user.id);
+  const { error } = await supabase.rpc("delete_own_account");
+
+  if (error) {
+    return {
+      error:
+        "We could not delete your account just then. Try again, and if it " +
+        "keeps happening tell us and we will do it by hand.",
+    };
+  }
+
+  // The session is dead with the user row, but the cookies are not: clearing
+  // them is what stops the next request arriving with a token for an account
+  // that no longer exists.
   await supabase.auth.signOut();
   await clearPendingSave();
 
   redirect("/?deleted=1");
+}
+
+/**
+ * Start changing the address on the account.
+ *
+ * Same shape as signing in, because it is the same question asked twice: a
+ * code to the new address, entered on the next screen. She never touches a
+ * link, for the same reason she never does at sign-in.
+ *
+ * The response does not depend on whether the new address already belongs to
+ * somebody. Supabase refuses a duplicate, and saying so here would turn this
+ * form into a way of finding out who has an account, which every other screen
+ * on this platform is written to avoid. So the error is swallowed and the
+ * next screen says what it always says. If the address was taken, no code
+ * arrives and nothing changes, which is the same thing she sees if she
+ * mistypes the address.
+ */
+export async function startEmailChange(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const parsed = email.safeParse(formData.get("email"));
+  if (!parsed.success) return { error: parsed.error.issues[0].message };
+
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) redirect("/account");
+
+  // Nothing to do, and saying "that is already your address" is the one
+  // answer that is safe to give, because she already knows it.
+  if (user.email?.toLowerCase() === parsed.data.toLowerCase()) {
+    return { error: "That is already the address on your account." };
+  }
+
+  await supabase.auth.updateUser({ email: parsed.data });
+
+  redirect(`/settings/email/code?email=${encodeURIComponent(parsed.data)}`);
+}
+
+/**
+ * Finish the change.
+ *
+ * `email_change` rather than `email`: this verifies a pending change on an
+ * account that already exists, and passing the wrong type here fails in a way
+ * that reads like a wrong code.
+ *
+ * Supabase can be set to confirm on both addresses, old and new. Where that
+ * is on, this screen is the second half and the first code went to the old
+ * address; the wording stays true either way because it only ever talks about
+ * the code she is holding.
+ */
+export async function confirmEmailChange(
+  _prev: FormState,
+  formData: FormData,
+): Promise<FormState> {
+  const address = String(formData.get("email") ?? "");
+  const token = String(formData.get("code") ?? "").replace(/\D/g, "");
+
+  if (token.length < 6) {
+    return { error: "That code looks too short. Check it and try again." };
+  }
+
+  const supabase = await createClient();
+  const { error } = await supabase.auth.verifyOtp({
+    email: address,
+    token,
+    type: "email_change",
+  });
+
+  if (error) {
+    return {
+      error: "That code didn't work. Check it, or ask for a new one below.",
+    };
+  }
+
+  revalidatePath("/settings");
+  redirect("/settings?email=changed");
+}
+
+/** Send another code to the address she is moving to. */
+export async function resendEmailChange(address: string) {
+  const parsed = email.safeParse(address);
+  if (!parsed.success) return;
+
+  const supabase = await createClient();
+  await supabase.auth.updateUser({ email: parsed.data });
 }
