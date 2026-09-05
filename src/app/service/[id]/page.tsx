@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { ArrowLeft, BadgeCheck, Flag } from "lucide-react";
-import { Page } from "@/components/ui/Page";
 import { ColdArrivalBar, ColdArrivalPanel } from "@/components/find/ColdArrival";
 import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
@@ -95,6 +94,12 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
       )}`
     : null;
 
+  // Nothing to put in the band means no band, rather than a cream stripe
+  // with nothing on it.
+  const hasFoot =
+    Boolean(service.organisationBlurb || service.organisationLogoUrl) ||
+    !fromSearch;
+
   const closed = service.status === "closed";
   const host = applyHost(service.apply_url);
 
@@ -115,175 +120,201 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
     <>
       {!fromSearch ? <ColdArrivalBar /> : null}
 
-      <Page width={720} top={fromSearch ? 40 : 32} gap={26}>
-        {backToResults ? (
-          <Link
-            href={backToResults}
-            className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
-          >
-            <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-            Back to your results
-          </Link>
-        ) : null}
+      {/*
+        White for the listing, cream for what sits under it, the same split
+        as an organisation profile. Everything above the rule is the thing
+        she came to read and decide on; the band below is context about who
+        runs it and a way back to the search. Two grounds say which is which
+        faster than a heading does.
 
-        <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex flex-col gap-3">
-          {closed ? (
-            <span className="self-start rounded-pill-sm bg-closed px-[11px] py-[7px] text-[13px] font-bold text-ink-65">
-              Closed
-              {service.deadline
-                ? ` ${LONG.format(new Date(service.deadline))}`
-                : ""}
-            </span>
+        Written out rather than using <Page>, only because that component
+        fixes a 24 unit bottom padding, which here would leave a hand's width
+        of empty white above the band.
+      */}
+      <div className="flex flex-1 flex-col bg-surface">
+        <div
+          className="mx-auto flex w-full max-w-[720px] flex-col px-5 pb-14 sm:px-10"
+          style={{ paddingTop: fromSearch ? 40 : 32, gap: 26 }}
+        >
+          {backToResults ? (
+            <Link
+              href={backToResults}
+              className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
+            >
+              <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
+              Back to your results
+            </Link>
           ) : null}
 
-          <h1 className="m-0 font-display text-[32px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
-            {service.name}
-          </h1>
-          <p className="m-0 text-[17px] text-ink-65">
-            {[service.organisationName, service.place].filter(Boolean).join(" · ")}
-          </p>
-        </div>
-
-          <SaveButton
-            listingId={service.id}
-            saved={savedIds.includes(service.id)}
-            name={service.name}
-          />
-        </div>
-
-        {service.blurb ? (
-          <p className="m-0 max-w-[62ch] text-[19px] leading-[1.6]">
-            {service.blurb}
-          </p>
-        ) : null}
-
-        {tags.length > 0 || service.deadline ? (
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-tag bg-sage-200 px-[10px] py-[6px] text-[13px] font-semibold"
-              >
-                {tag}
-              </span>
-            ))}
-            {service.deadline && !closed ? (
-              <span className="rounded-tag bg-gold-200 px-[10px] py-[6px] text-[13px] font-semibold text-gold-700">
-                Closes {LONG.format(new Date(service.deadline))}
+          <div className="flex flex-wrap items-start justify-between gap-4">
+          <div className="flex flex-col gap-3">
+            {closed ? (
+              <span className="self-start rounded-pill-sm bg-closed px-[11px] py-[7px] text-[13px] font-bold text-ink-65">
+                Closed
+                {service.deadline
+                  ? ` ${LONG.format(new Date(service.deadline))}`
+                  : ""}
               </span>
             ) : null}
-          </div>
-        ) : null}
 
-        <dl className="m-0 flex flex-col gap-5">
-          <Fact label="Who it's for" value={service.who_for} />
-          <Fact label="What to expect" value={service.what_to_expect} />
-          <Fact label="Cost" value={labelFor(COSTS, service.cost) || null} />
-          <Fact
-            label="How to take part"
-            value={
-              service.formats.map((f) => labelFor(FORMATS, f)).join(", ") || null
-            }
-          />
-          <Fact label="Where" value={service.place} />
-        </dl>
-
-        {closed ? (
-          /* A closed listing is never a dead end either. */
-          <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline bg-surface p-6">
-            <span className="font-display text-[19px] font-normal">This one has closed</span>
-            <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
-              It may run again. {service.organisationName} can tell you when the
-              next one opens, and there may be something similar available now.
+            <h1 className="m-0 font-display text-[32px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
+              {service.name}
+            </h1>
+            <p className="m-0 text-[17px] text-ink-65">
+              {[service.organisationName, service.place].filter(Boolean).join(" · ")}
             </p>
-            <div className="flex flex-wrap gap-3">
-              {service.organisationWebsite ? (
-                <a
-                  href={service.organisationWebsite}
-                  className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-6 py-4 text-[16px] font-bold text-white no-underline"
-                  rel="noopener noreferrer"
+          </div>
+
+            <SaveButton
+              listingId={service.id}
+              saved={savedIds.includes(service.id)}
+              name={service.name}
+            />
+          </div>
+
+          {service.blurb ? (
+            <p className="m-0 max-w-[62ch] text-[19px] leading-[1.6]">
+              {service.blurb}
+            </p>
+          ) : null}
+
+          {tags.length > 0 || service.deadline ? (
+            <div className="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-tag bg-sage-200 px-[10px] py-[6px] text-[13px] font-semibold"
                 >
-                  Ask when the next one starts
-                </a>
+                  {tag}
+                </span>
+              ))}
+              {service.deadline && !closed ? (
+                <span className="rounded-tag bg-gold-200 px-[10px] py-[6px] text-[13px] font-semibold text-gold-700">
+                  Closes {LONG.format(new Date(service.deadline))}
+                </span>
               ) : null}
-              <Link
-                href={similarHref}
-                className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-6 py-4 text-[16px] font-bold text-ink no-underline"
-              >
-                Find similar support
-              </Link>
             </div>
-          </div>
-        ) : (
-          <div className="flex flex-col gap-3 border-t border-hairline pt-6">
-            <Link
-              href={`/go/${service.id}`}
-              className="inline-flex min-h-[44px] items-center justify-center self-start rounded-control bg-ink px-9 py-[19px] text-[18px] font-bold text-white no-underline"
-            >
-              {host ? `Continue to ${host}` : "How to take part"}
-            </Link>
-            {/* Honesty about limits, next to the button rather than buried. */}
-            <p className="m-0 max-w-[62ch] text-[15px] leading-[1.55] text-ink-60">
-              This takes you to {service.organisationName}, who run it. We
-              can&apos;t decide whether you qualify, and we don&apos;t see
-              anything you send them.
-            </p>
-          </div>
-        )}
+          ) : null}
 
-        <div className="flex flex-wrap items-center justify-between gap-4 rounded-card bg-gold-200 px-[22px] py-5">
-          {/* One date rather than two. The checked date and the updated date
-              were both here, answering a question nobody asked in two parts:
-              she wants to know how current this is, and one line is that
-              answer. */}
-          <div className="flex flex-col gap-1">
-            <span className="inline-flex items-center gap-2 text-[15px] text-green-700">
-              <BadgeCheck size={17} strokeWidth={2} aria-hidden="true" />
-              {service.last_confirmed_at
-                ? `Verified · last updated ${LONG.format(new Date(service.last_confirmed_at))}`
-                : "Verified"}
-            </span>
-          </div>
-          {/* The reporting loop. The verified stamp is only worth what the
-              re-check cadence is worth, and women spot staleness first. */}
-          <Link
-            href={`/help?about=${service.id}`}
-            className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[15px] font-bold text-gold-700 no-underline"
-          >
-            <Flag size={15} strokeWidth={2} aria-hidden="true" />
-            Something wrong with this?
-          </Link>
-        </div>
+          <dl className="m-0 flex flex-col gap-5">
+            <Fact label="Who it's for" value={service.who_for} />
+            <Fact label="What to expect" value={service.what_to_expect} />
+            <Fact label="Cost" value={labelFor(COSTS, service.cost) || null} />
+            <Fact
+              label="How to take part"
+              value={
+                service.formats.map((f) => labelFor(FORMATS, f)).join(", ") || null
+              }
+            />
+            <Fact label="Where" value={service.place} />
+          </dl>
 
-        {service.organisationBlurb || service.organisationLogoUrl ? (
-          <div className="flex flex-col gap-3 border-t border-hairline pt-6">
-            <div className="flex items-center gap-3">
-              {service.organisationLogoUrl ? (
-                /* eslint-disable-next-line @next/next/no-img-element */
-                <img
-                  src={service.organisationLogoUrl}
-                  alt=""
-                  width={40}
-                  height={40}
-                  loading="lazy"
-                  className="size-[40px] shrink-0 rounded-control object-contain"
-                />
-              ) : null}
-              <span className="eyebrow text-ink-60">
-                About {service.organisationName}
+          {closed ? (
+            /* A closed listing is never a dead end either. */
+            <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline bg-surface p-6">
+              <span className="font-display text-[19px] font-normal">This one has closed</span>
+              <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
+                It may run again. {service.organisationName} can tell you when the
+                next one opens, and there may be something similar available now.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                {service.organisationWebsite ? (
+                  <a
+                    href={service.organisationWebsite}
+                    className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-6 py-4 text-[16px] font-bold text-white no-underline"
+                    rel="noopener noreferrer"
+                  >
+                    Ask when the next one starts
+                  </a>
+                ) : null}
+                <Link
+                  href={similarHref}
+                  className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-6 py-4 text-[16px] font-bold text-ink no-underline"
+                >
+                  Find similar support
+                </Link>
+              </div>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3 border-t border-hairline pt-6">
+              <Link
+                href={`/go/${service.id}`}
+                className="inline-flex min-h-[44px] items-center justify-center self-start rounded-control bg-ink px-9 py-[19px] text-[18px] font-bold text-white no-underline"
+              >
+                {host ? `Continue to ${host}` : "How to take part"}
+              </Link>
+              {/* Honesty about limits, next to the button rather than buried. */}
+              <p className="m-0 max-w-[62ch] text-[15px] leading-[1.55] text-ink-60">
+                This takes you to {service.organisationName}, who run it. We
+                can&apos;t decide whether you qualify, and we don&apos;t see
+                anything you send them.
+              </p>
+            </div>
+          )}
+
+          <div className="flex flex-wrap items-center justify-between gap-4 rounded-card bg-gold-200 px-[22px] py-5">
+            {/* One date rather than two. The checked date and the updated date
+                were both here, answering a question nobody asked in two parts:
+                she wants to know how current this is, and one line is that
+                answer. */}
+            <div className="flex flex-col gap-1">
+              <span className="inline-flex items-center gap-2 text-[15px] text-green-700">
+                <BadgeCheck size={17} strokeWidth={2} aria-hidden="true" />
+                {service.last_confirmed_at
+                  ? `Verified · last updated ${LONG.format(new Date(service.last_confirmed_at))}`
+                  : "Verified"}
               </span>
             </div>
-            {service.organisationBlurb ? (
-              <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
-                {service.organisationBlurb}
-              </p>
-            ) : null}
+            {/* The reporting loop. The verified stamp is only worth what the
+                re-check cadence is worth, and women spot staleness first. */}
+            <Link
+              href={`/help?about=${service.id}`}
+              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[15px] font-bold text-gold-700 no-underline"
+            >
+              <Flag size={15} strokeWidth={2} aria-hidden="true" />
+              Something wrong with this?
+            </Link>
+          </div>
+
+        </div>
+
+        {/* The band, on the ground the whole page used to sit on. It takes
+            the slack on a short listing too, so it always closes the page
+            rather than leaving a strip of white under it. */}
+        {hasFoot ? (
+          <div className="flex flex-1 flex-col border-t border-hairline bg-ground">
+            <div className="mx-auto flex w-full max-w-[720px] flex-col gap-7 px-5 py-12 sm:px-10">
+              {service.organisationBlurb || service.organisationLogoUrl ? (
+                <div className="flex flex-col gap-3">
+                  <div className="flex items-center gap-3">
+                    {service.organisationLogoUrl ? (
+                      /* eslint-disable-next-line @next/next/no-img-element */
+                      <img
+                        src={service.organisationLogoUrl}
+                        alt=""
+                        width={40}
+                        height={40}
+                        loading="lazy"
+                        className="size-[40px] shrink-0 rounded-control bg-surface object-contain"
+                      />
+                    ) : null}
+                    <span className="eyebrow text-ink-60">
+                      About {service.organisationName}
+                    </span>
+                  </div>
+                  {service.organisationBlurb ? (
+                    <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
+                      {service.organisationBlurb}
+                    </p>
+                  ) : null}
+                </div>
+              ) : null}
+
+              {!fromSearch ? <ColdArrivalPanel /> : null}
+            </div>
           </div>
         ) : null}
-
-        {!fromSearch ? <ColdArrivalPanel /> : null}
-      </Page>
+      </div>
     </>
   );
 }

@@ -2,45 +2,40 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bookmark, Settings } from "lucide-react";
 import { MobileNav } from "@/components/ui/MobileNav";
+import { AccountMenu } from "@/components/AccountMenu";
 import { getSavedIds } from "@/lib/saved";
 import { getAccount } from "@/lib/data/account";
 import { LanguageMenu } from "@/components/LanguageMenu";
 import { getLocale } from "@/lib/i18n";
 
 /**
- * Shared by the desktop row and the mobile panel, so the two cannot drift.
+ * Saved, as a row in the phone panel.
+ *
+ * The panel is the phone's version of the account menu, so it lists the same
+ * two places in the same order. It used to have a pill variant for the
+ * desktop row as well; that row is now one control, so the pill has gone
+ * with it rather than staying as a branch nothing takes.
  */
-function SavedLink({
-  count,
-  inPanel = false,
-}: {
-  count: number;
-  inPanel?: boolean;
-}) {
+function SavedLink({ count }: { count: number }) {
   return (
-    <Link href="/saved" className={inPanel ? PANEL_ROW : PILL}>
+    <Link href="/saved" className={PANEL_ROW}>
       <Bookmark
         size={17}
         strokeWidth={2}
-        className="text-gold-500"
+        className="shrink-0 text-gold-500"
         fill="currentColor"
         aria-hidden="true"
       />
-      <span>Saved</span>
-      <span className="rounded-full bg-gold-200 px-2 py-[2px] text-[13px] font-bold text-gold-700">
-        {count}
-      </span>
+      <span className="flex-1">Saved</span>
+      {count > 0 ? (
+        <span className="rounded-full bg-gold-200 px-2 py-[2px] text-[13px] font-bold tabular-nums text-gold-700">
+          {count}
+        </span>
+      ) : null}
     </Link>
   );
 }
 
-const PILL =
-  "inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline bg-surface " +
-  "px-4 py-[9px] text-[15px] font-semibold text-ink no-underline " +
-  "transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold";
-
-/* In the panel the sheet is already a raised white surface, so a ringed
-   white pill on it reads as flat. Rows there instead. */
 /** Discover and the FAQ, written once for the row and the phone panel. */
 const PLACES = [
   { href: "/discover", label: "Discover" },
@@ -52,21 +47,17 @@ const PANEL_ROW =
   "text-[15px] font-medium text-ink-70 no-underline " +
   "transition-[color,background-color] duration-150 ease-out hover:bg-gold-200/60 hover:text-ink";
 
-function SettingsLink({ withLabel = false }: { withLabel?: boolean }) {
+/** Settings, as a row in the phone panel. In words: there is room for them. */
+function SettingsLink() {
   return (
-    <Link
-      href="/settings"
-      aria-label={withLabel ? undefined : "Reminders and account settings"}
-      className={
-        withLabel
-          ? PANEL_ROW
-          : "inline-flex min-h-[44px] min-w-[44px] items-center justify-center rounded-full shadow-hairline bg-surface text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
-      }
-    >
-      <Settings size={17} strokeWidth={2} aria-hidden="true" />
-      {/* In the panel there is room for words, so the icon stops carrying
-          the whole meaning on its own. */}
-      {withLabel ? <span>Reminders and settings</span> : null}
+    <Link href="/settings" className={PANEL_ROW}>
+      <Settings
+        size={17}
+        strokeWidth={2}
+        className="shrink-0 text-ink-60"
+        aria-hidden="true"
+      />
+      <span className="flex-1">Reminders and settings</span>
     </Link>
   );
 }
@@ -91,8 +82,6 @@ export async function SiteHeader() {
     getAccount(),
     getLocale(),
   ]);
-
-  const hasSaved = saved.length > 0;
 
   return (
     <header className="border-b border-hairline bg-ground">
@@ -168,10 +157,15 @@ export async function SiteHeader() {
               </Link>
             )}
 
-            <div className="hidden items-center gap-2 lg:flex">
-              {hasSaved ? <SavedLink count={saved.length} /> : null}
-              {account ? <SettingsLink /> : null}
-            </div>
+            {/* One control for both of her places, rather than a Saved pill
+                and a cog beside it. The cog was the weaker half: a gear is
+                what every other site puts configuration behind, so it read
+                as settings-in-general rather than as her account. */}
+            {account ? (
+              <div className="hidden lg:block">
+                <AccountMenu savedCount={saved.length} />
+              </div>
+            ) : null}
 
             {/* Always now, because there are always two places to go. It used
                 to appear only once she had saved something, back when the
@@ -182,8 +176,12 @@ export async function SiteHeader() {
                   {place.label}
                 </Link>
               ))}
-              {hasSaved ? <SavedLink count={saved.length} inPanel /> : null}
-              {account ? <SettingsLink withLabel /> : null}
+              {/* Both when she is signed in, so the panel lists what the
+                  account menu lists. Saved used to appear only once there
+                  was something in it, which meant the way back to an empty
+                  list was through a page she had no route to. */}
+              {account ? <SavedLink count={saved.length} /> : null}
+              {account ? <SettingsLink /> : null}
             </MobileNav>
 
             <LanguageMenu current={locale.code} />
