@@ -1,4 +1,5 @@
-import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { Page } from "@/components/ui/Page";
+import { LoadingBlocks } from "@/components/ui/LoadingScreen";
 
 /**
  * Screen 4. Working it out.
@@ -8,11 +9,30 @@ import { LoadingScreen } from "@/components/ui/LoadingScreen";
  * mid-search trapping her on a loading screen with nowhere to go.
  *
  * A named wait rather than a spinner: a spinner could mean anything, and on a
- * patchy connection "anything" reads as broken.
+ * patchy connection "anything" reads as broken. This is the one screen with
+ * words on it, because this is the one wait somebody is actually sitting
+ * through: she has just answered three questions and is waiting on the
+ * answer. Everywhere else is a page fetch, and a sentence there is something
+ * to read in the half second before it is replaced.
  *
- * The screen is unchanged; it now comes from the shared component, because
- * this was the pattern every other wait on the platform was made to follow.
+ * The blocks come from the shared kit so the colours stay in one place. The
+ * screen is otherwise exactly as it was.
  */
 export default function Loading() {
-  return <LoadingScreen title="Looking for support…" />;
+  return (
+    <Page width={780} top={96}>
+      <h1
+        aria-live="polite"
+        className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]"
+      >
+        Looking for support…
+      </h1>
+
+      <LoadingBlocks count={3} />
+
+      <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
+        This usually takes a couple of seconds.
+      </p>
+    </Page>
+  );
 }
