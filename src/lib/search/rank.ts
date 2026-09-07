@@ -241,6 +241,18 @@ function scoreAll(
 ): RankedListing[] {
   const needStems = new Set(words(answers.need).map(stem));
 
+  /*
+   * Whether she told us anything about what she wants, as opposed to only
+   * where she is.
+   *
+   * This decides whether the floor below applies at all. Every question is
+   * optional, so somebody can arrive at the results having answered only
+   * "where", and for her the nearest things are the right answer. The floor
+   * is about not pretending; it is not about refusing to help somebody who
+   * did not fill anything in.
+   */
+  const askedSomething = needStems.size > 0 || answers.situations.length > 0;
+
   const scored = listings.map((listing) => {
     let score = 0;
 
@@ -264,6 +276,31 @@ function scoreAll(
       matchedWords.length * SCORES.needWord,
       SCORES.needWordCap,
     );
+
+    /*
+     * The floor: being reachable is not the same as being relevant.
+     *
+     * Everything scored so far is about what she asked for. Everything below
+     * is about where it is, and place was being allowed to carry a listing
+     * into her results on its own. An online listing scored 15 for being
+     * online, which cleared the "score above zero" test, so anything running
+     * online matched every search ever made. Typing pure nonsense returned a
+     * best match, with a reason line reading "this one is online, so where
+     * you are doesn't matter", which is true and answers nothing she asked.
+     *
+     * The effect was that the platform almost never said "nothing fits". It
+     * showed her something and wrote a reason for it, which is worse than the
+     * dead end, because the dead end offers her a person and this offers her
+     * a wrong answer with a sentence under it.
+     *
+     * So a listing has to agree with her about something. One situation or
+     * one of her words is enough; the bar is not high, it just has to exist.
+     * Place then decides the order, which is the job it should have had.
+     */
+    const relevance = matchedSituations.length + matchedWords.length;
+    if (askedSomething && relevance === 0) {
+      return { listing, score: -1, why: "" };
+    }
 
     // My area means the town she named. Nearby areas also accepts her council
     // area. All Scotland stops excluding on place entirely. Online only keeps

@@ -175,6 +175,10 @@ export function rankOrganisations(
 ): RankedOrganisation[] {
   const needStems = new Set(words(answers.need).map(stem));
 
+  /* Same rule as the listing ranker: the floor only applies to somebody who
+     told us something to match against. */
+  const askedSomething = needStems.size > 0 || answers.situations.length > 0;
+
   const wantedAudiences = new Set(
     answers.situations.flatMap((slug) => SITUATION_TO_AUDIENCE[slug] ?? []),
   );
@@ -228,6 +232,27 @@ export function rankOrganisations(
     const textStems = new Set(words(text).map(stem));
     const matchedWords = [...needStems].filter((s) => textStems.has(s));
     score += Math.min(matchedWords.length * SCORES.needWord, SCORES.needWordCap);
+
+    /*
+     * The same floor the listing ranker has, and here it catches one more
+     * thing.
+     *
+     * An organisation covering all of Scotland scored 12 for coverage, and
+     * one that serves "any woman" scored a further 6 for that, so eighteen
+     * points were available to an organisation that agreed with nothing she
+     * had said. Both of those are true statements about the organisation and
+     * neither is an answer to her question.
+     *
+     * "Any woman" deliberately does not count as relevance here, for the
+     * reason the comment above it already gives: it is a real answer that
+     * says nothing about her in particular. It can lift an organisation that
+     * already matched; it cannot be the whole of the match.
+     */
+    const relevance =
+      matchedAudiences.length + matchedMarkets.length + matchedWords.length;
+    if (askedSomething && relevance === 0) {
+      return { organisation, score: -1, why: "" };
+    }
 
     const near = placeMatches(organisation, answers.place);
 
