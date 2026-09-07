@@ -17,7 +17,7 @@ the same logo, card, radius, footer and type as the deadline reminder and the
 verification decision, because it is literally the same function. Do not edit
 the HTML in this folder by hand; it will be overwritten.
 
-## The three templates, and what each one has to carry
+## The four templates, and what each one has to carry
 
 All three apps share one Supabase project and therefore one set of templates.
 Each is triggered by a different call, which is what makes it possible to give
@@ -26,95 +26,28 @@ the women's sign-in a code while the organisation portal keeps its links.
 | Template | Triggered by | Must contain | Subject |
 | --- | --- | --- | --- |
 | **Magic Link** | `signInWithOtp` for an address that **already has an account** | `{{ .Token }}`, and no link at all | Your sign-in code |
-| **Confirm signup** | `signUp` in the portal, **and a woman's first ever sign-in** | `{{ .Token }}` or `{{ .ConfirmationURL }}`, branched on the role | Confirming it is you |
+| **Confirm signup** | `signUp` and `resend` in the organisation portal | `{{ .ConfirmationURL }}` | Confirm your email address |
 | **Reset password** | `resetPasswordForEmail`, organisation portal | `{{ .ConfirmationURL }}` | Set a new password |
 | **Change email address** | `updateUser({ email })`, women's settings screen | `{{ .Token }}`, and no link | Confirming your new address |
 
-### Read that second row before changing anything
+### One template, one job, no logic
 
-**`signInWithOtp` does not send the Magic Link template to an address with no
-account yet.** With `shouldCreateUser: true` it is creating the account, so
-GoTrue sends **Confirm signup**, and Magic Link is only reached from her
-second sign-in onwards.
+An earlier version of Confirm signup branched on the role, because
+`signInWithOtp` does not use Magic Link for an address with no account yet:
+it is creating the account, so GoTrue sends Confirm signup instead, and the
+organisation portal's `signUp` uses that same template and needs a link.
 
-This is the single most confusing thing about this setup, and it is what makes
-"I changed the Magic Link template and she still gets a link" a completely
-expected result: on a fresh address that template is never used. To test
-Magic Link, request a code twice for the same address. The first mail is
-Confirm signup; the second is Magic Link.
+That conditional is gone. It was right in theory, could not be tested from
+this repository, and duly sent the wrong half to somebody. The fight is
+settled in code instead: `src/app/account/actions.ts` creates a woman's
+account before asking for her code, so her sign-in always lands on Magic
+Link and never touches Confirm signup.
 
-It also means one template has to serve two audiences that want opposite
-things. A woman needs the code, because her sign-in is one flow whether it is
-her first time or her fiftieth. An organisation registering with a password
-needs the button, because `/auth/confirm` is where its address is confirmed
-and the session closed again.
-
-**So the template branches on the role.** Both calls already tag the account:
-`data: { role: "woman" }` from `signInWithOtp` on the women's site,
-`role: "organisation"` from `signUp` in the portal. GoTrue renders templates
-with Go's `text/template`, so the `if` is ordinary template syntax rather
-than a Supabase feature:
-
-```
-{{ if eq (printf "%v" .Data.role) "woman" }} … code … {{ else }} … button … {{ end }}
-```
-
-`printf "%v"` rather than a bare `eq .Data.role "woman"` on purpose: Go's
-`eq` refuses to compare a missing key against a string and fails the whole
-render, which would mean no email at all rather than the wrong half of one.
-Coercing to a string first cannot error, and anything that is not exactly
-`woman` falls to the organisation branch. That is the safer way round: an
-organisation seeing a code it does not need is untidy, a woman seeing a link
-is the thing being removed.
-
-### Test this one before you rely on it
-
-It is the only template here with logic in it, and the branch it takes cannot
-be checked from this repository. On a staging project, or carefully on
-production:
-
-1. Register an organisation with a fresh address. Expect the button, no code.
-2. Ask for a sign-in code on the women's site with a fresh address. Expect
-   the code, and **no link anywhere in the email**.
-
-If either comes out wrong, or nothing arrives at all, paste
-`confirm-signup-fallback.html` instead. It has no logic in it and carries
-both, each labelled. That works for everybody, at the cost of a link in a
-woman's first email, and is a holding position rather than the answer.
-
-There is a third option if the conditional turns out to be unusable: create
-the account with the service role key first, `auth.admin.createUser({ email,
-email_confirm: true })` followed by `signInWithOtp({ shouldCreateUser: false
-})`, so a woman's mail is always Magic Link and never Confirm signup. It
-works, and it puts a key that bypasses every RLS policy into the public
-deployment, which is why it is third rather than first.
-
-Two other Supabase templates exist and neither fires: **Invite user**
-(`inviteUserByEmail` is never called; the portal's colleague invite is our own
-mail, through Resend) and **Reauthentication**. Leave them on the defaults.
-
-With **Secure email change** switched on, Supabase renders the change-email
-template twice, once to the old address and once to the new. The wording
-never says which inbox it is sitting in, because it does not know. Leaving
-that setting on is the safer choice: it means an address cannot be moved
-without somebody holding both inboxes.
-
-## Why the women's sign-in is a code and not a link
-
-Two reasons, and the first is a safety property rather than a preference.
-
-A magic link in an inbox is a session. Anyone who opens that inbox and clicks
-it is signed in as her, a fortnight later if they like. These emails land in
-inboxes read on shared devices, which is the same reason `src/lib/email.ts`
-insists subject lines stay neutral. A six digit code has to be carried back to
-the device she is sitting at.
-
-The second is that the app is built for a code and has no way to receive a
-link. `src/app/account/actions.ts` calls `signInWithOtp` with no
-`emailRedirectTo`, and `hws-global` has no `/auth/confirm` route. On the
-Supabase default template she receives a link, clicking it sends her to the
-site with tokens in the URL fragment, nothing reads them, and she lands signed
-out. Sign-in is broken in a way that looks like it worked.
+The result is that every template here carries exactly one thing. Magic Link
+and Change email are a code with no link anywhere. Confirm signup and Reset
+password are a link with no code. If you ever see a code in an organisation's
+confirmation email, or a link in a woman's, something has been pasted into
+the wrong slot rather than rendered wrongly.
 
 ## Settings that go with them
 

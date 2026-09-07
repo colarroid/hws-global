@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
 import { clearPendingSave, completePendingSave } from "@/lib/saved";
 
 export type FormState = { error?: string } | null;
@@ -13,6 +14,68 @@ const email = z
   .trim()
   .min(1, "Add your email address.")
   .email("That doesn't look like an email address. Check it and try again.");
+
+/**
+ * Make sure the account exists before asking for a code, so that the code is
+ * what actually arrives.
+ *
+ * This is the fix for a confusing failure. `signInWithOtp` with
+ * `shouldCreateUser` does not send the Magic Link template to an address that
+ * has no account: it is creating the account, so GoTrue sends **Confirm
+ * signup** instead. One Supabase project means the organisation portal's
+ * `signUp` uses that same template and needs a link in it, so the two flows
+ * were fighting over one email, and the answer was a Go conditional on the
+ * role. That worked in theory and could not be tested from this repository,
+ * which is a bad combination on the screen everybody's first sign-in goes
+ * through.
+ *
+ * Creating the account first removes the fight. A woman's address always
+ * exists by the time the code is requested, so she always gets Magic Link,
+ * and Confirm signup belongs entirely to the portal and can be a plain link
+ * with no logic in it at all.
+ *
+ * No new capability and no new secret. `signInWithOtp` already created an
+ * account for any address typed into that box, and the service-role client is
+ * already in this deployment for the reminder job. What is new is only that
+ * the account is confirmed at creation, which changes nothing she can do:
+ * without the code she still cannot get in.
+ *
+ * Failures are swallowed, like everything else on this path. An existing
+ * address comes back as an error here and that is the normal case, not a
+ * problem, and distinguishing the two would leak who has an account.
+ */
+async function ensureAccount(address: string): Promise<boolean> {
+  try {
+    const admin = createAdminClient();
+    await admin.auth.admin.createUser({
+      email: address,
+      email_confirm: true,
+      user_metadata: { role: "woman" },
+    });
+    return true;
+  } catch {
+    // No service-role key configured, or the address already exists. Either
+    // way the caller falls back to letting Supabase create it, which is what
+    // this did before.
+    return false;
+  }
+}
+
+async function requestCode(address: string) {
+  const created = await ensureAccount(address);
+
+  const supabase = await createClient();
+  await supabase.auth.signInWithOtp({
+    email: address,
+    options: {
+      // False once the account is known to exist, which is what keeps this on
+      // the Magic Link template. True only when the admin client was
+      // unavailable, so a deployment without the key still works.
+      shouldCreateUser: !created,
+      data: { role: "woman" },
+    },
+  });
+}
 
 /**
  * Send the one-time passcode.
@@ -29,11 +92,7 @@ export async function sendCode(
   const parsed = email.safeParse(formData.get("email"));
   if (!parsed.success) return { error: parsed.error.issues[0].message };
 
-  const supabase = await createClient();
-  await supabase.auth.signInWithOtp({
-    email: parsed.data,
-    options: { shouldCreateUser: true, data: { role: "woman" } },
-  });
+  await requestCode(parsed.data);
 
   redirect(`/account/code?email=${encodeURIComponent(parsed.data)}`);
 }
@@ -42,11 +101,7 @@ export async function resendCode(address: string) {
   const parsed = email.safeParse(address);
   if (!parsed.success) return;
 
-  const supabase = await createClient();
-  await supabase.auth.signInWithOtp({
-    email: parsed.data,
-    options: { shouldCreateUser: true, data: { role: "woman" } },
-  });
+  await requestCode(parsed.data);
 }
 
 /**
