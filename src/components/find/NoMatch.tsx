@@ -1,6 +1,7 @@
 import Link from "next/link";
-import { ArrowLeft, Phone } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
+import { TalkToSomeone } from "@/components/find/TalkToSomeone";
 import type { Answers } from "@/lib/search/rank";
 
 /**
@@ -18,10 +19,13 @@ export function NoMatch({
   answers,
   widenCount,
   onlineCount,
+  bookingHref,
 }: {
   answers: Answers;
   widenCount: number;
   onlineCount: number;
+  /** Null until NEXT_PUBLIC_BOOKING_URL is set, and then it is the contact page. */
+  bookingHref: string | null;
 }) {
   const base = {
     need: answers.need,
@@ -62,14 +66,25 @@ export function NoMatch({
 
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
-          We haven&apos;t found a close match yet
+          We couldn&apos;t find anything for you right now
         </h1>
-        <p className="m-0 text-[18px] leading-[1.6] text-ink-70">
+        <p className="m-0 max-w-[54ch] text-[18px] leading-[1.6] text-ink-70">
           That doesn&apos;t mean there&apos;s no help. It means we don&apos;t
-          have something that fits your search right now. Here&apos;s what
-          we&apos;d try next.
+          have something that fits what you asked for today.
         </p>
       </div>
+
+      {/*
+        Where this sits is the whole judgement.
+
+        When there is somewhere to widen to, that goes first: a real count of
+        real things she can open now beats a conversation on Thursday, and
+        this screen has always led with a number rather than a hopeful
+        suggestion. When there is nothing to widen to, there is nothing to
+        lead with, and a person is the honest answer rather than the
+        consolation prize at the foot of the page.
+      */}
+      {widenCount === 0 ? <TalkToSomeone bookingHref={bookingHref} /> : null}
 
       {widenCount > 0 ? (
         <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline-ink p-6">
@@ -111,23 +126,8 @@ export function NoMatch({
         ))}
       </div>
 
-      {/* Must reach a person, not another search. */}
-      <div className="flex flex-col gap-3 rounded-card bg-ink p-6 text-white">
-        <span className="font-display text-[19px] font-normal">Rather talk to a person?</span>
-        <p className="m-0 text-[16px] leading-[1.6] text-white/75">
-          We can help with almost anything, and might know who else to ask.
-        </p>
-        <Link
-          href="/help"
-          className="inline-flex min-h-[44px] items-center gap-2 self-start rounded-control bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
-        >
-          <Phone size={17} strokeWidth={2} aria-hidden="true" />
-          Contact our support
-        </Link>
-        <span className="text-[14px] text-white/75">
-          Free, by phone, Monday to Friday
-        </span>
-      </div>
+      {/* Already shown above when there was nothing to widen to. */}
+      {widenCount > 0 ? <TalkToSomeone bookingHref={bookingHref} /> : null}
     </Page>
   );
 }
