@@ -95,15 +95,57 @@ export async function recordUnmetSearch(input: {
   place: string;
   situations: string[];
   resultCount: number;
+  /**
+   * The score of the first result she sees, or null when nothing matched.
+   *
+   * Not quite the maximum: rank.ts sorts open listings above closed ones
+   * before it sorts by score, so a closed listing can score higher and still
+   * sit further down. That is the right number to keep anyway. What matters
+   * is the quality of what she is actually shown first, not the best score
+   * present somewhere in the list.
+   */
+  topScore?: number | null;
+  organisationCount?: number;
 }) {
   const supabase = await createClient();
-  await supabase.from("unmet_searches").insert({
+  const { error } = await supabase.from("unmet_searches").insert({
     need: input.need || null,
     place: input.place || null,
     situations: input.situations,
     result_count: input.resultCount,
+    top_score: input.topScore ?? null,
+    organisation_count: input.organisationCount ?? 0,
   });
+
+  /*
+   * Reported, never thrown. A failure here costs HWS evidence and costs her
+   * nothing, so it must not take down the results screen, but it must not be
+   * silent either: migration 0015 was missed for weeks precisely because the
+   * code that depended on it swallowed the error, and a table that has
+   * quietly stopped recording looks exactly like a platform nobody is
+   * failing to match.
+   */
+  if (error) {
+    console.error("unmet_searches insert failed:", error.message);
+  }
 }
+
+/**
+ * The score below which a search is worth recording even though it returned
+ * something.
+ *
+ * Read against the weights in rank.ts. A single situation is 40 and an exact
+ * place is 25, so anything she agreed with us about clears this on its own.
+ * What falls under it is a result ranked on word overlap and geography with
+ * no agreement about her situation at all: a few of her words appeared in a
+ * listing somewhere near her, which is the weakest thing the ranker can
+ * return while still returning something.
+ *
+ * A guess, and deliberately a recorded one. `top_score` goes into the row, so
+ * once there are real searches behind this the line can be moved to wherever
+ * the data says it belongs rather than wherever it seemed to belong today.
+ */
+export const WEAK_MATCH_SCORE = 45;
 
 /**
  * One verified organisation, with everything the organisation ranker scores.

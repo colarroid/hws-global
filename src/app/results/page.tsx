@@ -12,6 +12,7 @@ import {
   getMarkets,
   getSearchableOrganisations,
   recordUnmetSearch,
+  WEAK_MATCH_SCORE,
 } from "@/lib/data/search";
 import { getSituationLabels, getSituationPhrases } from "@/lib/data/situations";
 import { rank, countForScope, type Answers, type Scope } from "@/lib/search/rank";
@@ -100,7 +101,38 @@ export default async function ResultsPage({
   // answer: who can help when there is nothing open, or nothing that fits.
   const rankedOrganisations = rankOrganisations(organisations, answers, markets);
 
-  if (ranked.length === 0 && rankedOrganisations.length === 0) {
+  const topScore = ranked.length > 0 ? ranked[0].score : null;
+  const nothing = ranked.length === 0 && rankedOrganisations.length === 0;
+
+  /*
+   * Recorded when the search found nothing, and now also when it found
+   * nothing good.
+   *
+   * It used to fire only on the empty case, which meant a total failure was
+   * evidence and a near miss was not: three mediocre results looked exactly
+   * like three right ones. Near misses are the population worth reading,
+   * because a result that scored only on word overlap and geography is a
+   * result the ranking reached without ever agreeing with her about her
+   * situation.
+   *
+   * Not awaited on the weak path. She is waiting on this screen and a write
+   * for our benefit must never be the reason it is slower. The empty path
+   * still awaits, because that render is a dead end anyway.
+   */
+  const weak = !nothing && topScore !== null && topScore < WEAK_MATCH_SCORE;
+
+  if (weak) {
+    void recordUnmetSearch({
+      need: answers.need,
+      place: answers.place,
+      situations: answers.situations,
+      resultCount: ranked.length,
+      topScore,
+      organisationCount: rankedOrganisations.length,
+    });
+  }
+
+  if (nothing) {
     // Counts are computed before the screen renders, so a suggested widening
     // is never itself another dead end.
     const widenCount = countForScope(listings, answers, "all-scotland");
@@ -111,6 +143,8 @@ export default async function ResultsPage({
       place: answers.place,
       situations: answers.situations,
       resultCount: 0,
+      topScore: null,
+      organisationCount: 0,
     });
 
     return (
