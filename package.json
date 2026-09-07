@@ -11,7 +11,8 @@
     "seed:clean": "node --env-file=.env.local scripts/seed-clean.mjs",
     "demo": "node --env-file=.env.local scripts/seed-demo.mjs",
     "demo:clean": "node --env-file=.env.local scripts/demo-clean.mjs",
-    "emails:auth": "node --experimental-strip-types scripts/build-auth-emails.ts"
+    "emails:auth": "node --experimental-strip-types scripts/build-auth-emails.ts",
+    "eval:comprehension": "node --env-file=.env.local scripts/evaluate-comprehension.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",
