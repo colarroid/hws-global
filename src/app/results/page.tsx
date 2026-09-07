@@ -7,7 +7,6 @@ import { ResultCard, type ResultCardData } from "@/components/ResultCard";
 import { NoMatch } from "@/components/find/NoMatch";
 import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
-import { bookingUrl } from "@/lib/booking";
 import {
   getLiveListings,
   getMarkets,
@@ -153,7 +152,6 @@ export default async function ResultsPage({
         answers={answers}
         widenCount={widenCount}
         onlineCount={onlineCount}
-        bookingHref={bookingUrl()}
       />
     );
   }

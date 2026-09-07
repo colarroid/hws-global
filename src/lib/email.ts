@@ -31,11 +31,20 @@ export async function sendEmail({
   subject,
   html,
   text,
+  attachments,
 }: {
   to: string;
   subject: string;
   html: string;
   text: string;
+  /**
+   * Optional files, sent as UTF-8 text. Added for the calendar invitation
+   * that goes with a booking: an .ics is how an appointment reaches the
+   * adviser's own diary and her phone without connecting either of them to
+   * anything. Content is a plain string, because everything this sends is
+   * text and base64 would only be a thing to get wrong.
+   */
+  attachments?: { filename: string; content: string }[];
 }): Promise<{ ok: boolean; error?: string }> {
   const key = process.env.RESEND_API_KEY;
   const from = process.env.EMAIL_FROM;
@@ -56,7 +65,21 @@ export async function sendEmail({
       Authorization: `Bearer ${key}`,
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ from, to, subject, html, text }),
+    body: JSON.stringify({
+      from,
+      to,
+      subject,
+      html,
+      text,
+      ...(attachments?.length
+        ? {
+            attachments: attachments.map((file) => ({
+              filename: file.filename,
+              content: Buffer.from(file.content, "utf8").toString("base64"),
+            })),
+          }
+        : {}),
+    }),
   });
 
   if (!response.ok) {

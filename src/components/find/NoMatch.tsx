@@ -19,13 +19,10 @@ export function NoMatch({
   answers,
   widenCount,
   onlineCount,
-  bookingHref,
 }: {
   answers: Answers;
   widenCount: number;
   onlineCount: number;
-  /** Null until NEXT_PUBLIC_BOOKING_URL is set, and then it is the contact page. */
-  bookingHref: string | null;
 }) {
   const base = {
     need: answers.need,
@@ -84,7 +81,7 @@ export function NoMatch({
         lead with, and a person is the honest answer rather than the
         consolation prize at the foot of the page.
       */}
-      {widenCount === 0 ? <TalkToSomeone bookingHref={bookingHref} /> : null}
+      {widenCount === 0 ? <TalkToSomeone answers={answers} /> : null}
 
       {widenCount > 0 ? (
         <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline-ink p-6">
@@ -127,7 +124,7 @@ export function NoMatch({
       </div>
 
       {/* Already shown above when there was nothing to widen to. */}
-      {widenCount > 0 ? <TalkToSomeone bookingHref={bookingHref} /> : null}
+      {widenCount > 0 ? <TalkToSomeone answers={answers} /> : null}
     </Page>
   );
 }
