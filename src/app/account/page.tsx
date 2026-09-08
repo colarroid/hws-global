@@ -53,9 +53,7 @@ export default async function AccessPage({
 
       <span className="inline-flex items-start gap-2 text-[14px] leading-[1.5] text-ink-60">
         <Lock size={14} strokeWidth={2} aria-hidden="true" className="mt-[3px] shrink-0" />
-        Your email address is used to sign you in and to warn you before
-        something closes. We don&apos;t share it, and we don&apos;t send
-        anything else.
+        Your email is kept private and secure.
       </span>
 
       <Link

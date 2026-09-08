@@ -16,6 +16,21 @@ function isFindFlow(pathname: string) {
 }
 
 /**
+ * Whether a route is the sign-in flow: the email box, the code box, and the
+ * name she is asked for once.
+ *
+ * Bare for the same reason as the questions. Signing in is three screens
+ * with one field each, and this is the point in the platform where somebody
+ * is most likely to give up: a wall of links under the box is a way out of
+ * a task she has already half finished. Unlike the questions it gets no
+ * line at the foot either, because there is no search on the screen to
+ * describe.
+ */
+function isAccountFlow(pathname: string) {
+  return pathname === "/account" || pathname.startsWith("/account/");
+}
+
+/**
  * The line under the three questions.
  *
  * Scoped to the find flow, so it appears beside the thing it describes and
@@ -37,14 +52,17 @@ function SearchCredit() {
 }
 
 /**
- * The foot of the page: the footer everywhere, the search credit on the
- * three questions, never both.
+ * The foot of the page. Three outcomes, one of them nothing at all: the
+ * search credit on the three questions, bare through sign-in, the footer
+ * everywhere else.
  *
  * The footer is a server component that reads the account, so it arrives as
- * a prop rather than an import. This file only decides which of the two to
- * show and knows nothing about what is in either.
+ * a prop rather than an import. This file only decides what to show and
+ * knows nothing about what is in it.
  */
 export function SiteBottom({ footer }: { footer: ReactNode }) {
   const pathname = usePathname();
-  return isFindFlow(pathname) ? <SearchCredit /> : <>{footer}</>;
+  if (isFindFlow(pathname)) return <SearchCredit />;
+  if (isAccountFlow(pathname)) return null;
+  return <>{footer}</>;
 }

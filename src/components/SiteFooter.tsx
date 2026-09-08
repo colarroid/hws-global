@@ -11,9 +11,13 @@ import { getAccount } from "@/lib/data/account";
  * links are the ones a woman might actually want from the bottom of a page,
  * and nothing here competes with what she came to do.
  *
- * The three promises are repeated rather than left on the landing page. Most
- * traffic arrives from a search engine directly onto a service page, so for
- * plenty of people this is the only place they will read them.
+ * The three promises used to be repeated down here as a paragraph, on the
+ * reasoning that most traffic arrives from a search engine straight onto a
+ * service page and would otherwise never meet them. HWS removed it. They now
+ * live on the landing page as the trust cards and nowhere else, so somebody
+ * who arrives on a listing and leaves from it is not told that nothing here
+ * is paid for or that her words are not sold. Worth watching once there are
+ * real arrivals to watch.
  *
  * There is no "leave this site" control here, and there should be one. Some
  * of what this platform links to is read by women who cannot be seen reading
@@ -129,13 +133,6 @@ export async function SiteFooter() {
         </div>
 
         <div className="flex flex-col gap-4 border-t border-hairline-soft pt-8">
-          <p className="m-0 max-w-[76ch] text-[14px] leading-[1.6] text-ink-60">
-            Every organisation here is checked against a public register or its
-            funder before it can post. Nobody pays to appear, and what you type
-            is used to rank your results. It is never sold, passed on, or used to
-            build a profile of you.
-          </p>
-
           <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
             <span className="text-[14px] text-ink-60">
               © {year} The Holistic Wellbeing Summit
