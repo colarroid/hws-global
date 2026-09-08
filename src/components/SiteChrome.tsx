@@ -16,23 +16,11 @@ function isFindFlow(pathname: string) {
 }
 
 /**
- * The footer, minus the find flow.
+ * The line under the three questions.
  *
- * The footer itself is a server component that reads the account, so it is
- * passed in as children rather than imported here: this file only decides
- * whether to show it, and knows nothing about what is in it.
- */
-export function FooterSlot({ children }: { children: ReactNode }) {
-  const pathname = usePathname();
-  return isFindFlow(pathname) ? null : <>{children}</>;
-}
-
-/**
- * The line at the foot of every page.
- *
- * Sits outside FooterSlot on purpose, so it survives on the find flow where
- * the footer does not — the search is what it is describing, and the search
- * is what those three screens are.
+ * Scoped to the find flow, so it appears beside the thing it describes and
+ * nowhere else. On a page about an organisation, or the privacy policy, it
+ * would read as a claim about the platform rather than about the search.
  *
  * On the claim itself: the ranker is deterministic. It stems her sentence,
  * scores word overlap against each listing, and adds nothing a model has
@@ -40,10 +28,23 @@ export function FooterSlot({ children }: { children: ReactNode }) {
  * it is theirs to ask for, but it is not true yet, and the honest versions
  * are a one-line change here.
  */
-export function SearchCredit() {
+function SearchCredit() {
   return (
     <div className="border-t border-hairline-soft px-5 py-6 text-center">
       <span className="eyebrow text-ink-60">Search powered by AI</span>
     </div>
   );
+}
+
+/**
+ * The foot of the page: the footer everywhere, the search credit on the
+ * three questions, never both.
+ *
+ * The footer is a server component that reads the account, so it arrives as
+ * a prop rather than an import. This file only decides which of the two to
+ * show and knows nothing about what is in either.
+ */
+export function SiteBottom({ footer }: { footer: ReactNode }) {
+  const pathname = usePathname();
+  return isFindFlow(pathname) ? <SearchCredit /> : <>{footer}</>;
 }
