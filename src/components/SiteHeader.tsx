@@ -41,6 +41,7 @@ function SavedLink({ count }: { count: number }) {
 /** Discover and the FAQ, written once for the row and the phone panel. */
 const PLACES = [
   { href: "/discover", label: "Discover" },
+  { href: "/community", label: "Community" },
   { href: "/faq", label: "FAQ" },
 ];
 

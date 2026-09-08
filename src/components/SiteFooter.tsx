@@ -110,6 +110,14 @@ export async function SiteFooter() {
                 </li>
                 <li>
                   <Link
+                    href="/community"
+                    className="inline-flex min-h-[44px] items-center text-[16px] font-medium text-ink no-underline hover:text-gold-700"
+                  >
+                    Why list with us
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/discover"
                     className="inline-flex min-h-[44px] items-center text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
