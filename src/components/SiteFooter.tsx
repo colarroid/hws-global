@@ -29,7 +29,6 @@ export async function SiteFooter() {
   const forYou = [
     { href: "/find", label: "Find solution" },
     { href: "/discover", label: "Discover organisations" },
-    { href: "/saved", label: "Saved" },
     { href: "/faq", label: "Frequently asked questions" },
     { href: "/help", label: "Help" },
   ];
@@ -110,7 +109,7 @@ export async function SiteFooter() {
                 </li>
                 <li>
                   <Link
-                    href="/community"
+                    href="/for-organisations"
                     className="inline-flex min-h-[44px] items-center text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
                     Why list with us

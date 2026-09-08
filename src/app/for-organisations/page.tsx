@@ -17,7 +17,7 @@ export const metadata: Metadata = pageMetadata({
   title: "For organisations",
   description:
     "List what you run on HWS Path Grid and reach the women it actually suits. Free, checked once, and nobody pays to appear.",
-  path: "/community",
+  path: "/for-organisations",
   indexable: true,
 });
 
@@ -25,7 +25,14 @@ const portal = () =>
   process.env.ORG_PORTAL_URL ?? "https://organisation.hwspathgrid.com";
 
 /**
- * The community page: the platform, explained to the organisations in it.
+ * The organisations page: the platform, explained to the people who run
+ * things in it.
+ *
+ * It lived at /community and was called Community in the nav, which was the
+ * wrong word twice over. On a platform for women, "Community" reads as other
+ * women -- a forum, peer support, somewhere she is not alone -- and this is a
+ * pitch to charities. The one person who must never be sent down a corridor
+ * marked with somebody else's name is her.
  *
  * Everything else on this site is written to a woman. This is the one page
  * written to the people who run things, and the difference is what it has to
