@@ -26,8 +26,16 @@ export function NextButton({
   ready: boolean;
   /** Called on every press. Handle the not-ready case yourself. */
   onNext: () => void;
-  /** Shown while inactive. Say what to do, not what is wrong. */
-  hint: string;
+  /**
+   * Shown while inactive. Say what to do, not what is wrong.
+   *
+   * Optional, because question one no longer carries one: the box is the
+   * only thing on that screen and the suggestions sit right above the
+   * button, so a line saying to use them was restating the screen. Pressing
+   * Next while it is empty still answers in the alert at the top, which is
+   * where somebody who needs telling actually is.
+   */
+  hint?: string;
   label?: string;
 }) {
   const hintId = useId();
@@ -37,12 +45,12 @@ export function NextButton({
       <Button
         onClick={onNext}
         aria-disabled={!ready}
-        aria-describedby={!ready ? hintId : undefined}
+        aria-describedby={!ready && hint ? hintId : undefined}
         className={!ready ? "opacity-40" : undefined}
       >
         {label}
       </Button>
-      {!ready ? (
+      {!ready && hint ? (
         <span id={hintId} className="text-[14px] leading-[1.5] text-ink-60">
           {hint}
         </span>

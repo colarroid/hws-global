@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { FooterSlot, SearchCredit } from "@/components/SiteChrome";
 import { CookieNotice } from "@/components/CookieNotice";
 import { getLocale } from "@/lib/i18n";
 import { SITE_NAME, indexingAllowed, siteUrl } from "@/lib/seo";
@@ -88,7 +89,10 @@ export default async function RootLayout({
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex flex-1 flex-col">{children}</main>
-          <SiteFooter />
+          <FooterSlot>
+            <SiteFooter />
+          </FooterSlot>
+          <SearchCredit />
           {/* Last in the document and sticky rather than fixed, so it is the
               last thing a screen reader reaches and the last thing in the tab
               order. A box about cookies is not what anybody came for. */}

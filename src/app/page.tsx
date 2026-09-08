@@ -82,6 +82,40 @@ export default async function Landing() {
         </div>
       </section>
 
+      {/* Positioning, and the only part of this page written at an objection
+          rather than at a question.
+
+          The objection is "why would she not just ask a chatbot", and it is
+          a fair one: a general model will happily describe every fund in
+          Scotland. What it cannot do is know that one closed in March. That
+          is the whole difference and it is worth stating plainly, so this
+          says it without naming a competitor — putting the alternative in
+          her head on our own front page argues for it.
+
+          The second paragraph is Ifeyinwa's, near enough verbatim: any woman
+          at any life stage, and she does not have to arrive knowing the name
+          of her own problem. It reads as reassurance. It is also the
+          product: the three questions exist to turn a sentence into
+          something that can be searched, which is the one thing a woman who
+          cannot name her situation cannot do for herself. */}
+      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-16 sm:px-10 sm:py-20">
+        <div className="flex flex-col gap-3">
+          <span className="eyebrow text-gold-700">{t("why.eyebrow")}</span>
+          <h2 className="m-0 max-w-[26ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
+            {t("why.title")}
+          </h2>
+        </div>
+
+        <div className="mt-7 grid grid-cols-1 gap-x-12 gap-y-5 sm:grid-cols-2">
+          <p className="m-0 max-w-[52ch] text-[18px] leading-[1.6] text-ink-70">
+            {t("why.body")}
+          </p>
+          <p className="m-0 max-w-[52ch] text-[18px] leading-[1.6] text-ink-70">
+            {t("why.audience")}
+          </p>
+        </div>
+      </section>
+
       {/* The five things a match is made on. This is the platform's actual
           argument, so it gets the one dark band on the page. */}
       <section className="bg-ink px-5 py-16 sm:px-10 sm:py-20">

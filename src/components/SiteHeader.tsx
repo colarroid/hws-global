@@ -38,8 +38,9 @@ function SavedLink({ count }: { count: number }) {
   );
 }
 
-/** Discover and the FAQ, written once for the row and the phone panel. */
+/** The places in the header, written once for the row and the phone panel. */
 const PLACES = [
+  { href: "/", label: "Home" },
   { href: "/discover", label: "Discover" },
   { href: "/for-organisations", label: "For organisations" },
   { href: "/faq", label: "FAQ" },

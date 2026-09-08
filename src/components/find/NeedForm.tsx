@@ -115,11 +115,7 @@ export function NeedForm({
         </div>
       ) : null}
 
-      <NextButton
-        ready={ready}
-        onNext={go}
-        hint="Add a few words, or pick one of the suggestions above."
-      />
+      <NextButton ready={ready} onNext={go} />
     </div>
   );
 }
