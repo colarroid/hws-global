@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
-import { Phone, TriangleAlert } from "lucide-react";
+import { CalendarDays } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { getService } from "@/lib/data/service";
 
@@ -21,9 +21,13 @@ export const metadata: Metadata = pageMetadata({
  * platform has run out of things it can do on its own, so this page has to
  * reach a person rather than another search.
  *
- * The emergency line sits above everything else. The brief is explicit that
- * the platform must distinguish navigation from crisis support, and must
- * never imply HWS is monitoring anyone or providing an emergency response.
+ * The red 999 panel that used to head the page has gone, at HWS's request.
+ * What it was doing has not: the brief is explicit that the platform must
+ * distinguish navigation from crisis support and must never imply HWS is
+ * monitoring anyone, so that statement now sits in plain text under "What we
+ * cannot do". It matters more here than it did, not less — the page offers a
+ * booked call rather than a phone number, and "talk to somebody" would
+ * otherwise read as somebody being there now.
  */
 export default async function HelpPage({
   searchParams,
@@ -42,18 +46,6 @@ export default async function HelpPage({
         <p className="m-0 max-w-[62ch] text-[18px] leading-[1.6] text-ink-70">
           If you cannot find what you need, or something here looks wrong, we
           would rather hear from you than have you give up on it.
-        </p>
-      </div>
-
-      {/* Never buried. This is the one thing on the page that cannot wait. */}
-      <div className="flex flex-col gap-2 rounded-card border border-red-200 bg-red-50 px-[22px] py-5">
-        <span className="inline-flex items-center gap-2 text-[16px] font-bold text-red-700">
-          <TriangleAlert size={18} strokeWidth={2} aria-hidden="true" />
-          If you are in danger right now
-        </span>
-        <p className="m-0 text-[16px] leading-[1.6] text-red-700">
-          Call 999. We are not an emergency service, nobody here is monitoring
-          this page, and we cannot help quickly enough if you are at risk.
         </p>
       </div>
 
@@ -77,19 +69,29 @@ export default async function HelpPage({
         </div>
       ) : null}
 
+      {/* A time she can actually pick, instead of a number that was never
+          filled in. "Phone number to be confirmed" is worse than nothing: it
+          is the platform admitting, on the page somebody reaches when
+          everything else has failed, that there is nobody at the end of it.
+          The calendar is real, so this is real. */}
       <div className="flex flex-col items-start gap-3 rounded-card bg-ink p-6 text-white">
-        <span className="font-display text-[19px] font-normal">Contact our support</span>
+        <span className="font-display text-[19px] font-normal">
+          Talk to somebody
+        </span>
         <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-white/75">
           We can help with almost anything, and might know who else to ask. If
           what you need is not on the platform yet, telling us is how it gets
           there.
         </p>
-        <span className="inline-flex min-h-[44px] items-center gap-2 rounded-control bg-surface px-5 py-3 text-[16px] font-bold text-ink">
-          <Phone size={17} strokeWidth={2} aria-hidden="true" />
-          Phone number to be confirmed
-        </span>
+        <Link
+          href="/talk"
+          className="inline-flex min-h-[44px] items-center gap-2 rounded-control bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
+        >
+          <CalendarDays size={17} strokeWidth={2} aria-hidden="true" />
+          Book an appointment
+        </Link>
         <span className="text-[14px] text-white/75">
-          Free, Monday to Friday. Hours to be confirmed.
+          Free. Pick a time that suits you and we will call.
         </span>
       </div>
 
@@ -102,6 +104,16 @@ export default async function HelpPage({
           We cannot decide whether you qualify for anything, and we do not
           apply on your behalf. Each organisation decides that themselves. What
           we can do is help you work out where to go next.
+        </p>
+        {/* Kept, and moved here in plain text rather than left as the red
+            panel above. It is a different thing from a warning: the page now
+            offers a booked call rather than a number, so saying that nobody
+            is sitting here waiting is what stops "talk to somebody" reading
+            as "somebody is listening now". */}
+        <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-ink-70">
+          We are not an emergency service and nobody is monitoring this page.
+          An appointment is a time we call you, not somebody waiting at the
+          other end of it.
         </p>
       </div>
 
