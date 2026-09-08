@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
 import { Page } from "@/components/ui/Page";
+import { SearchCredit } from "@/components/find/SearchCredit";
 
 const TOTAL = 3;
 
@@ -68,6 +69,8 @@ export function QuestionShell({
         </div>
 
         {children}
+
+        <SearchCredit />
       </Page>
     </>
   );
