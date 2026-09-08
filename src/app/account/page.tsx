@@ -51,7 +51,12 @@ export default async function AccessPage({
 
       <AccessForm />
 
-      <span className="inline-flex items-start gap-2 text-[14px] leading-[1.5] text-ink-60">
+      {/* self-center rather than text-center: Page is a flex column, so the
+          span stretches the full width and its own content sits left no
+          matter what the text alignment says. Centring the box is what puts
+          the padlock and the sentence under the middle of the button, level
+          with the link below. */}
+      <span className="inline-flex items-start gap-2 self-center text-[14px] leading-[1.5] text-ink-60">
         <Lock size={14} strokeWidth={2} aria-hidden="true" className="mt-[3px] shrink-0" />
         Your email is kept private and secure.
       </span>
