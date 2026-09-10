@@ -7,7 +7,6 @@ import organisationsFigure from "@/images/organisations-figure.webp";
 import {
   ArrowRight,
   BadgeCheck,
-  Building2,
   Compass,
   Lock,
   MessageSquareText,
@@ -360,7 +359,7 @@ export default async function Landing() {
           ].map((item) => (
             <div
               key={item.title}
-              className="flex flex-col gap-3 rounded-card bg-surface p-6 shadow-hairline"
+              className="flex flex-col gap-3 rounded-card p-6 shadow-hairline"
             >
               <span className="flex text-gold-700">
                 <item.icon size={22} strokeWidth={2} aria-hidden="true" />
@@ -385,15 +384,12 @@ export default async function Landing() {
           looking for help should not have to scroll past a pitch to
           organisations to reach anything that is for her. */}
       <section className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-10">
-        {/* items-end and no bottom padding on the card from sm up, so the
-            drawing stands on the card's own edge rather than floating above
-            it with a strip of white underneath. The text column puts its
-            own padding back. */}
-        <div className="flex flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-end sm:justify-between sm:gap-10 sm:p-10 sm:pb-0">
-          <div className="flex flex-col items-start gap-3 sm:pb-10">
-            <span className="flex text-gold-700">
-              <Building2 size={24} strokeWidth={2} aria-hidden="true" />
-            </span>
+        {/* The card keeps even padding and the words sit centred in it. The
+            drawing is pulled down by exactly that padding so it still stands
+            on the card's edge — bottom-aligning the whole row instead put
+            all the slack above the heading and none under the button. */}
+        <div className="flex flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-stretch sm:justify-between sm:gap-10 sm:p-10">
+          <div className="flex flex-col items-start justify-center gap-3">
             <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
               {t("orgs.title")}
             </h2>
@@ -425,7 +421,7 @@ export default async function Landing() {
             src={organisationsFigure}
             alt=""
             sizes="(min-width: 1024px) 320px, 240px"
-            className="hidden h-auto w-[240px] shrink-0 self-end sm:block lg:w-[320px]"
+            className="-mb-8 hidden h-auto w-[240px] shrink-0 self-end sm:-mb-10 sm:block lg:w-[320px]"
           />
         </div>
       </section>

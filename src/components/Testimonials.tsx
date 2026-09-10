@@ -67,7 +67,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
       onFocusCapture={() => setHeld(true)}
       onBlurCapture={() => setHeld(false)}
     >
-      <div className="relative overflow-hidden rounded-card bg-surface px-7 py-10 shadow-hairline sm:px-12 sm:py-14">
+      <div className="relative overflow-hidden rounded-card px-7 py-10 shadow-hairline sm:px-12 sm:py-14">
         {/* The mark sits behind the words rather than above them, big and
             faint, so it reads as texture and not as punctuation somebody
             forgot to remove. */}
@@ -129,7 +129,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
               type="button"
               onClick={() => go(at - 1)}
               aria-label="Previous quote"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-surface text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
             >
               <ArrowLeft size={17} strokeWidth={2} aria-hidden="true" />
             </button>
@@ -137,7 +137,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
               type="button"
               onClick={() => go(at + 1)}
               aria-label="Next quote"
-              className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-surface text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
+              className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
             >
               <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
             </button>
