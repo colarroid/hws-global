@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import organisationsFigure from "@/images/organisations-figure.webp";
 import {
+  ArrowRight,
   ArrowUpRight,
   BadgeCheck,
   BarChart3,
   Ban,
-  Compass,
   Users,
 } from "lucide-react";
 import { pageMetadata } from "@/lib/seo";
@@ -102,49 +104,32 @@ export default async function CommunityPage() {
 
   return (
     <div className="flex flex-1 flex-col">
-      {/* The hero, in the landing page's language rather than its own:
-          the headline at a 1.3 line-height instead of a tight 1.03, a short
-          sans paragraph on a 512px measure, and the two ways in as a ruled
-          question over two equal cards.
-
-          No photograph behind it, per HWS. The landing hero was built to
-          hold on the cream before the picture arrived, so the same structure
-          works here unchanged — the type stays ink and the cards keep the
-          platform's own surface and hairline instead of frosted glass, which
-          only reads as glass over an image. */}
-      <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
-        <div className="flex max-w-[576px] flex-col gap-6">
+      <section className="px-5 pb-14 pt-16 sm:px-10 sm:pb-20 sm:pt-24">
+        <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
           <span className="eyebrow text-gold-700">For organisations</span>
 
-          <h1 className="m-0 font-display text-[38px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[60px] sm:leading-[1.3]">
+          <h1 className="m-0 max-w-[19ch] font-display text-[38px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[68px]">
             The women you are for, without them having to find you
           </h1>
 
-          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
+          <p className="m-0 max-w-[60ch] text-[19px] leading-[1.6] text-ink-70 sm:text-[21px]">
             You already do the work. The problem is that a woman has to know
             your name to find your website. Here she describes her situation,
             and we put you in front of her because you are the right answer,
             not because she guessed.
           </p>
 
-          <div className="mt-2 flex items-center gap-4">
-            <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
-            <span className="font-display text-[16px] font-normal italic text-ink-70">
-              Where would you like to begin?
-            </span>
-            <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
-          </div>
-
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
+          <div className="mt-1 flex flex-wrap items-center gap-4">
             <a
               href={portalLink("/sign-up")}
-              className="flex min-h-[52px] items-center justify-center rounded-card bg-surface px-4 py-3 text-center font-display text-[20px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold sm:min-h-[64px] sm:px-5 sm:py-4 sm:text-[22px]"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[18px] font-bold text-white no-underline"
             >
               Meet the women
+              <ArrowUpRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
             <a
               href={portalUrl()}
-              className="flex min-h-[52px] items-center justify-center rounded-card bg-surface px-4 py-3 text-center font-display text-[20px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold sm:min-h-[64px] sm:px-5 sm:py-4 sm:text-[22px]"
+              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-700 no-underline"
             >
               I already have an account
             </a>
@@ -247,33 +232,44 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-5 pb-32 sm:px-10">
-        <div className="mx-auto flex max-w-[880px] flex-col items-start gap-5 rounded-card bg-ink p-8 text-white sm:p-11">
-          <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[34px]">
-            Do you run something women should know about?
-          </h2>
-          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/75">
-            Ten minutes to sign up, one check by a person, and then it reaches
-            the women it actually suits rather than whoever happens to find
-            your website.
-          </p>
+      {/* The same closing card the landing page ends on, so an organisation
+          that arrives here from there is asked in the same words and by the
+          same object rather than by a dark panel that appears nowhere else.
 
-          <div className="flex flex-wrap items-center gap-4">
+          The copy is written out rather than read from the orgs.* keys the
+          landing page uses. This page is hardcoded English throughout, and
+          one translated block inside it would switch language on its own
+          when somebody chose Polish. If this page is ever translated, these
+          three strings should become those keys. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-10">
+        <div className="mx-auto flex max-w-[880px] flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-stretch sm:justify-between sm:gap-10 sm:p-10">
+          <div className="flex flex-col items-start justify-center gap-3">
+            <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
+              Do you run something women should know about?
+            </h2>
+            <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
+              List it here and it reaches the women it actually suits, rather
+              than whoever happens to find your website. Free, and we check you
+              once rather than checking every listing.
+            </p>
+
             <a
               href={portalLink("/sign-up")}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-7 py-[15px] text-[17px] font-bold text-ink no-underline"
+              className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90"
             >
               Meet the women
-              <ArrowUpRight size={17} strokeWidth={2} aria-hidden="true" />
+              <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
-            <Link
-              href="/discover"
-              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-300 no-underline"
-            >
-              <Compass size={17} strokeWidth={2} aria-hidden="true" />
-              See who is already listed
-            </Link>
           </div>
+
+          {/* Decorative, so alt is empty, and hidden on a phone: it is the
+              last block on a long page and it is ornament. */}
+          <Image
+            src={organisationsFigure}
+            alt=""
+            sizes="(min-width: 1024px) 215px, 160px"
+            className="-mb-8 hidden h-auto w-[160px] shrink-0 self-end sm:-mb-10 sm:block lg:w-[215px]"
+          />
         </div>
       </section>
     </div>
