@@ -64,9 +64,7 @@ export type MessageKey =
   | "why.title"
   | "why.body"
   | "why.audience"
-  | "how.eyebrow"
   | "how.title"
-  | "how.body"
   | "how.forWomen"
   | "how.forOrgs"
   | "how.oneTitle"
@@ -114,30 +112,27 @@ const en: Record<MessageKey, string> = {
   "hero.begin": "Where would you like to start?",
   "hero.beginFind": "Find your next step",
   "hero.beginBrowse": "See who is out there",
-  "how.eyebrow": "How it works",
-  "how.title": "You should not have to know who to ask",
-  "how.body":
-    "Say “I want to go back to work” or “I need funding” and we do the rest. You never have to pick a category, name an organisation, or work out which scheme you might qualify for.",
+  "how.title": "How it works",
   "how.oneTitle": "Tell us, in your words",
   "how.oneBody":
-    "What you need, roughly where you are, and anything about your situation you want us to know. Three questions and none of them are compulsory.",
+    "What you need, roughly where you are, and anything about your situation. Just three questions.",
   "how.twoTitle": "We weigh it up",
   "how.twoBody":
-    "Against what each thing is for, who it is open to, where it runs and how you can reach it. The reasoning is written down and nothing about it can be bought.",
+    "Against what each thing is for, who it is open to, where it runs and how you can reach it. The result is AI powered.",
   "how.threeTitle": "You get a few real options",
   "how.threeBody":
-    "A handful, not a hundred, each with why it matched, what it costs, who it is for, and exactly what happens after you apply.",
+    "A handful, not a hundred, each with why it matched, what it costs, who it is for, and exactly what happens after you engage.",
   "how.forWomen": "For women",
   "how.forOrgs": "For organisations",
   "how.orgOneTitle": "Tell us who you are",
   "how.orgOneBody":
-    "A few questions about what you do, who you serve and where. Ten minutes, and you can stop partway and come back.",
+    "A few questions about what you do, people you want to provide solutions to and where. Onboarding is swift.",
   "how.orgTwoTitle": "We check you, once",
   "how.orgTwoBody":
-    "Against a public register or your funder, by a person. After that you post what you like, when you like.",
+    "Against a public register or based on your track record. After that verification, you post what you like, when you like.",
   "how.orgThreeTitle": "She finds it when it fits",
   "how.orgThreeBody":
-    "Not because she searched your name, but because what she described matched what you run.",
+    "Not because she searched your name, but because what she described matched the solution you are offering.",
   "zones.eyebrow": "Access Zones",
   "zones.title": "Every kind of support, one platform",
   "zones.body":
@@ -175,30 +170,27 @@ const gd: Catalogue = {
   "hero.begin": "Càite am bu toil leat tòiseachadh?",
   "hero.beginFind": "Lorg do chiad cheum",
   "hero.beginBrowse": "Faic cò tha ann",
-  "how.eyebrow": "Mar a tha e ag obair",
-  "how.title": "Cha bu chòir dhut fios a bhith agad cò ris a bhruidhneas tu",
-  "how.body":
-    "Can “tha mi ag iarraidh tilleadh a dh’obair” no “tha airgead a dhìth orm” agus nì sinne an còrr. Cha leig thu leas roinn a thaghadh, buidheann ainmeachadh, no obrachadh a-mach dè an sgeama dhan tèid thu.",
+  "how.title": "Mar a tha e ag obair",
   "how.oneTitle": "Innis dhuinn nad fhaclan fhèin",
   "how.oneBody":
-    "Dè tha a dhìth ort, càite a bheil thu gu ìre mhòr, agus rud sam bith mu do shuidheachadh a tha thu airson innse dhuinn. Trì ceistean, agus chan eil gin dhiubh èigneachail.",
+    "Na tha a dhìth ort, gu ìre mhath càite a bheil thu, agus rud sam bith mun t-suidheachadh agad. Dìreach trì ceistean.",
   "how.twoTitle": "Bidh sinn ga mheasadh",
   "how.twoBody":
-    "An aghaidh dè tha gach rud air a shon, cò dha a tha e fosgailte, càite a bheil e a’ ruith agus mar a ruigeas tu e. Tha an reusanachadh sgrìobhte sìos agus chan urrainn dad dheth a cheannach.",
+    "An aghaidh na tha gach rud air a shon, cò dha a tha e fosgailte, càite an ruith e agus mar a ruigeas tu e. Tha an toradh air a chumhachdachadh le IF.",
   "how.threeTitle": "Gheibh thu beagan roghainnean fìor",
   "how.threeBody":
-    "Dòrlach, chan e ceud, gach fear le carson a fhreagair e, dè a chosgas e, cò dha a tha e, agus dè dìreach a thachras às dèidh dhut iarrtas a chur a-steach.",
+    "Dòrlach, chan e ceud, gach fear le carson a fhreagair e, dè a chosgas e, cò dha a tha e, agus dè dìreach a thachras às dèidh dhut dol an sàs.",
   "how.forWomen": "Do bhoireannaich",
   "how.forOrgs": "Do bhuidhnean",
   "how.orgOneTitle": "Innis dhuinn cò sibh",
   "how.orgOneBody":
-    "Beagan cheistean mu na nì sibh, cò dha, agus càite. Deich mionaidean, agus faodaidh sibh stad is tilleadh.",
+    "Beagan cheistean mu na nì sibh, cò dha a tha sibh airson fuasglaidhean a thoirt, agus càite. Tha an clàradh luath.",
   "how.orgTwoTitle": "Bidh sinn gur dearbhadh, aon turas",
   "how.orgTwoBody":
-    "An aghaidh clàr poblach no ur maoinichear, le duine. Às dèidh sin postaichidh sibh na thogras sibh, cuin a thogras sibh.",
+    "An aghaidh clàr poblach no stèidhichte air ur clàr-obrach. Às dèidh an dearbhaidh sin, postaichidh sibh na thogras sibh, cuin a thogras sibh.",
   "how.orgThreeTitle": "Lorgaidh i e nuair a fhreagras e",
   "how.orgThreeBody":
-    "Chan ann air sgàth gun do lorg i ur n-ainm, ach air sgàth gu robh na thuirt i a' freagairt air na tha sibh a' ruith.",
+    "Chan ann air sgàth gun do lorg i ur n-ainm, ach air sgàth gu robh na thuirt i a' freagairt air an fhuasgladh a tha sibh a' tabhann.",
   "zones.eyebrow": "Raointean Inntrigidh",
   "zones.title": "Gach seòrsa taic, aon àrd-ùrlar",
   "zones.body":
@@ -236,30 +228,27 @@ const sco: Catalogue = {
   "hero.begin": "Whaur wad ye like tae stert?",
   "hero.beginFind": "Finn yer neist step",
   "hero.beginBrowse": "See wha's oot there",
-  "how.eyebrow": "Hoo it warks",
-  "how.title": "Ye shouldnae hae tae ken wha tae speir at",
-  "how.body":
-    "Say “A want tae gang back tae wark” or “A need siller” an we dae the lave. Ye niver hae tae pick a category, name an organisation, or wark oot whit scheme ye micht qualify for.",
+  "how.title": "Hoo it warks",
   "how.oneTitle": "Tell us, in yer ain wirds",
   "how.oneBody":
-    "Whit ye need, roughly whaur ye are, an onythin aboot yer situation ye want us tae ken. Three questions an nane o thaim are compulsory.",
+    "Whit ye need, roughly whaur ye are, an onythin aboot yer situation. Jist three questions.",
   "how.twoTitle": "We wey it up",
   "how.twoBody":
-    "Agin whit ilka thing is for, wha it’s open tae, whaur it rins an hoo ye can reach it. The reasonin is written doon an naethin aboot it can be bocht.",
+    "Agin whit ilka thing is for, wha it's open tae, whaur it rins an hou ye can win tae it. The result is AI pouered.",
   "how.threeTitle": "Ye get a wheen o real options",
   "how.threeBody":
-    "A haundfu, no a hunner, ilka ane wi why it matched, whit it costs, wha it’s for, an juist whit happens efter ye apply.",
+    "A haundfu, no a hunner, ilka ane wi why it matched, whit it costs, wha it's for, an exactly whit happens efter ye engage.",
   "how.forWomen": "For weemen",
   "how.forOrgs": "For organisations",
   "how.orgOneTitle": "Tell us wha ye are",
   "how.orgOneBody":
-    "A wheen o questions aboot whit ye dae, wha ye serve an whaur. Ten meenits, an ye can stap hauf wey an come back.",
+    "A wheen o questions aboot whit ye dae, the fowk ye want tae gie solutions tae, an whaur. Onboardin is swith.",
   "how.orgTwoTitle": "We check ye, the ance",
   "how.orgTwoBody":
-    "Agin a public register or yer funder, by a body. Efter that ye post whit ye like, whan ye like.",
+    "Agin a public register or on yer track record. Efter that verification, ye post whit ye like, whan ye like.",
   "how.orgThreeTitle": "She finns it whan it fits",
   "how.orgThreeBody":
-    "No acause she socht yer name, but acause whit she describit matched whit ye rin.",
+    "No acause she socht yer name, but acause whit she describit matched the solution ye're offerin.",
   "zones.eyebrow": "Access Zones",
   "zones.title": "Ilka kind o support, ae platform",
   "zones.body":
@@ -297,30 +286,27 @@ const pl: Catalogue = {
   "hero.begin": "Od czego chcesz zacząć?",
   "hero.beginFind": "Znajdź swój następny krok",
   "hero.beginBrowse": "Zobacz, kto tu jest",
-  "how.eyebrow": "Jak to działa",
-  "how.title": "Nie musisz wiedzieć, do kogo się zwrócić",
-  "how.body":
-    "Powiedz „chcę wrócić do pracy” albo „potrzebuję finansowania”, a resztę zrobimy my. Nigdy nie musisz wybierać kategorii, wskazywać organizacji ani ustalać, do którego programu się kwalifikujesz.",
+  "how.title": "Jak to działa",
   "how.oneTitle": "Powiedz nam własnymi słowami",
   "how.oneBody":
-    "Czego potrzebujesz, mniej więcej gdzie jesteś i cokolwiek o swojej sytuacji, co chcesz nam przekazać. Trzy pytania i żadne nie jest obowiązkowe.",
+    "Czego potrzebujesz, mniej więcej gdzie jesteś i cokolwiek o twojej sytuacji. Tylko trzy pytania.",
   "how.twoTitle": "Rozważamy to",
   "how.twoBody":
-    "Biorąc pod uwagę, do czego służy każda rzecz, dla kogo jest dostępna, gdzie się odbywa i jak możesz do niej dotrzeć. Uzasadnienie jest spisane i nic z tego nie da się kupić.",
+    "Pod kątem tego, czemu służy każda rzecz, dla kogo jest otwarta, gdzie działa i jak możesz z niej skorzystać. Wynik wspiera sztuczna inteligencja.",
   "how.threeTitle": "Dostajesz kilka realnych opcji",
   "how.threeBody":
-    "Garść, nie setkę, każda z wyjaśnieniem, dlaczego pasuje, ile kosztuje, dla kogo jest i co dokładnie dzieje się po złożeniu wniosku.",
+    "Kilka propozycji, nie sto, każda z informacją, dlaczego pasuje, ile kosztuje, dla kogo jest i co dokładnie dzieje się po nawiązaniu kontaktu.",
   "how.forWomen": "Dla kobiet",
   "how.forOrgs": "Dla organizacji",
   "how.orgOneTitle": "Powiedzcie nam, kim jesteście",
   "how.orgOneBody":
-    "Kilka pytań o to, czym się zajmujecie, komu pomagacie i gdzie. Dziesięć minut, można przerwać i wrócić.",
+    "Kilka pytań o to, czym się zajmujecie, komu chcecie oferować rozwiązania i gdzie. Rejestracja jest szybka.",
   "how.orgTwoTitle": "Sprawdzamy was raz",
   "how.orgTwoBody":
-    "W publicznym rejestrze albo u waszego grantodawcy, przez człowieka. Potem publikujecie, co chcecie i kiedy chcecie.",
+    "W publicznym rejestrze albo na podstawie waszego dorobku. Po tej weryfikacji publikujecie, co chcecie i kiedy chcecie.",
   "how.orgThreeTitle": "Znajdzie was, gdy będziecie pasować",
   "how.orgThreeBody":
-    "Nie dlatego, że szukała waszej nazwy, ale dlatego, że to, co opisała, pasuje do tego, co prowadzicie.",
+    "Nie dlatego, że szukała waszej nazwy, ale dlatego, że to, co opisała, pasuje do rozwiązania, które oferujecie.",
   "zones.eyebrow": "Strefy dostępu",
   "zones.title": "Każdy rodzaj wsparcia, jedna platforma",
   "zones.body":
@@ -358,30 +344,27 @@ const uk: Catalogue = {
   "hero.begin": "З чого хочете почати?",
   "hero.beginFind": "Знайдіть наступний крок",
   "hero.beginBrowse": "Подивіться, хто тут є",
-  "how.eyebrow": "Як це працює",
-  "how.title": "Вам не треба знати, до кого звертатися",
-  "how.body":
-    "Скажіть «я хочу повернутися до роботи» або «мені потрібне фінансування», а решту зробимо ми. Вам не доведеться обирати категорію, називати організацію чи з’ясовувати, під яку програму ви підходите.",
+  "how.title": "Як це працює",
   "how.oneTitle": "Розкажіть своїми словами",
   "how.oneBody":
-    "Що вам потрібно, приблизно де ви живете, і будь-що про вашу ситуацію, чим хочете поділитися. Три питання, і жодне не обов’язкове.",
+    "Що вам потрібно, приблизно де ви є, і будь-що про вашу ситуацію. Лише три запитання.",
   "how.twoTitle": "Ми це зважуємо",
   "how.twoBody":
-    "З огляду на те, для чого призначена кожна пропозиція, для кого вона відкрита, де діє і як до неї дістатися. Обґрунтування записане, і жодну його частину неможливо купити.",
+    "За тим, для чого призначена кожна річ, кому вона доступна, де діє і як до неї звернутися. Результат працює на основі ШІ.",
   "how.threeTitle": "Ви отримуєте кілька справжніх варіантів",
   "how.threeBody":
-    "Кілька, а не сотню, кожен із поясненням, чому він підійшов, скільки коштує, для кого він і що саме відбувається після подання заявки.",
+    "Кілька варіантів, не сотня, кожен із поясненням, чому він підійшов, скільки коштує, для кого він і що саме буде після звернення.",
   "how.forWomen": "Для жінок",
   "how.forOrgs": "Для організацій",
   "how.orgOneTitle": "Розкажіть, хто ви",
   "how.orgOneBody":
-    "Кілька запитань про те, чим ви займаєтеся, кому допомагаєте і де. Десять хвилин, можна перервати й повернутися.",
+    "Кілька запитань про те, чим ви займаєтеся, кому хочете пропонувати рішення і де. Реєстрація швидка.",
   "how.orgTwoTitle": "Ми перевіряємо вас один раз",
   "how.orgTwoBody":
-    "За публічним реєстром або вашим донором, і робить це людина. Далі ви публікуєте що хочете й коли хочете.",
+    "За публічним реєстром або на основі вашого досвіду. Після цієї перевірки ви публікуєте що хочете й коли хочете.",
   "how.orgThreeTitle": "Вона знайде вас, коли ви підійдете",
   "how.orgThreeBody":
-    "Не тому, що шукала вашу назву, а тому, що описане нею збіглося з тим, що ви робите.",
+    "Не тому, що шукала вашу назву, а тому, що описане нею збіглося з рішенням, яке ви пропонуєте.",
   "zones.eyebrow": "Зони доступу",
   "zones.title": "Кожен вид підтримки, одна платформа",
   "zones.body":
@@ -419,30 +402,27 @@ const ar: Catalogue = {
   "hero.begin": "من أين تحبين أن تبدئي؟",
   "hero.beginFind": "ابحثي عن خطوتك التالية",
   "hero.beginBrowse": "اطّلعي على الجهات الموجودة",
-  "how.eyebrow": "طريقة العمل",
-  "how.title": "ليس عليك أن تعرفي بمن تتصلين",
-  "how.body":
-    "قولي «أريد العودة إلى العمل» أو «أحتاج إلى تمويل» ونتولى نحن الباقي. لست مضطرة إلى اختيار فئة، أو تسمية منظمة، أو معرفة البرنامج الذي قد تكونين مؤهلة له.",
+  "how.title": "طريقة العمل",
   "how.oneTitle": "أخبرينا بكلماتك",
   "how.oneBody":
-    "ما تحتاجين إليه، وأين تقيمين تقريبًا، وأي شيء عن وضعك تودّين إخبارنا به. ثلاثة أسئلة، وليس أي منها إلزاميًا.",
+    "ما تحتاجينه، وأين أنتِ تقريبًا، وأي شيء عن وضعك. ثلاثة أسئلة فقط.",
   "how.twoTitle": "ندرس الأمر",
   "how.twoBody":
-    "مقارنةً بالغرض من كل خيار، ولمن هو متاح، وأين يُقدَّم، وكيف يمكنك الوصول إليه. المعايير مكتوبة، ولا يمكن شراء أي جزء منها.",
+    "وفق ما وُضع له كل خيار، ولمن هو متاح، وأين يعمل، وكيف تصلين إليه. النتيجة مدعومة بالذكاء الاصطناعي.",
   "how.threeTitle": "تحصلين على بضعة خيارات حقيقية",
   "how.threeBody":
-    "حفنة لا مئة، مع سبب المطابقة، والتكلفة، ولمن هو موجَّه، وما يحدث تحديدًا بعد التقديم.",
+    "حفنة، لا مئة، لكل منها سبب تطابقه وكلفته ولمن هو وما الذي يحدث تحديدًا بعد تواصلك.",
   "how.forWomen": "للنساء",
   "how.forOrgs": "للجهات والمؤسسات",
   "how.orgOneTitle": "أخبرونا من أنتم",
   "how.orgOneBody":
-    "أسئلة قليلة عمّا تقدّمونه، ولمن، وأين. عشر دقائق، ويمكنكم التوقف والعودة لاحقًا.",
+    "أسئلة قليلة عمّا تقدّمونه، ولمن تريدون تقديم الحلول، وأين. التسجيل سريع.",
   "how.orgTwoTitle": "نتحقّق منكم مرة واحدة",
   "how.orgTwoBody":
-    "عبر سجل عام أو الجهة الممولة، ويقوم بذلك شخص. بعدها تنشرون ما تشاؤون ومتى تشاؤون.",
+    "عبر سجل عام أو استنادًا إلى سجل أعمالكم. بعد هذا التحقق تنشرون ما تشاؤون ومتى تشاؤون.",
   "how.orgThreeTitle": "تجدكم حين تناسبونها",
   "how.orgThreeBody":
-    "ليس لأنها بحثت عن اسمكم، بل لأن ما وصفته يطابق ما تقدّمونه.",
+    "ليس لأنها بحثت عن اسمكم، بل لأن ما وصفته يطابق الحل الذي تقدّمونه.",
   "zones.eyebrow": "مجالات الوصول",
   "zones.title": "كل أنواع الدعم، منصة واحدة",
   "zones.body":
@@ -480,30 +460,27 @@ const ur: Catalogue = {
   "hero.begin": "آپ کہاں سے شروع کرنا چاہیں گی؟",
   "hero.beginFind": "اپنا اگلا قدم تلاش کریں",
   "hero.beginBrowse": "دیکھیں کون کون موجود ہے",
-  "how.eyebrow": "یہ کیسے کام کرتا ہے",
-  "how.title": "آپ کو یہ جاننے کی ضرورت نہیں کہ کس سے پوچھیں",
-  "how.body":
-    "کہیں ”میں کام پر واپس جانا چاہتی ہوں“ یا ”مجھے فنڈنگ چاہیے“ اور باقی کام ہم کریں گے۔ آپ کو کبھی زمرہ منتخب کرنے، کسی ادارے کا نام لینے، یا یہ سوچنے کی ضرورت نہیں کہ آپ کس اسکیم کے اہل ہیں۔",
+  "how.title": "یہ کیسے کام کرتا ہے",
   "how.oneTitle": "اپنے الفاظ میں بتائیں",
   "how.oneBody":
-    "آپ کو کیا چاہیے، آپ تقریباً کہاں ہیں، اور اپنی صورتحال کے بارے میں جو کچھ آپ بتانا چاہیں۔ تین سوال، اور کوئی بھی لازمی نہیں۔",
+    "آپ کو کیا چاہیے، تقریباً آپ کہاں ہیں، اور آپ کی صورتحال کے بارے میں کچھ بھی۔ صرف تین سوالات۔",
   "how.twoTitle": "ہم اسے پرکھتے ہیں",
   "how.twoBody":
-    "اس بنیاد پر کہ ہر چیز کس مقصد کے لیے ہے، کن کے لیے کھلی ہے، کہاں چلتی ہے اور آپ اس تک کیسے پہنچ سکتی ہیں۔ وجوہات لکھی ہوئی ہیں اور ان میں سے کچھ بھی خریدا نہیں جا سکتا۔",
+    "اس بنیاد پر کہ ہر چیز کس لیے ہے، کن کے لیے کھلی ہے، کہاں چلتی ہے اور آپ اس تک کیسے پہنچ سکتی ہیں۔ نتیجہ اے آئی سے چلتا ہے۔",
   "how.threeTitle": "آپ کو چند حقیقی اختیارات ملتے ہیں",
   "how.threeBody":
-    "مٹھی بھر، سو نہیں، ہر ایک کے ساتھ یہ کہ وہ کیوں موزوں ہے، اس کی قیمت کیا ہے، کس کے لیے ہے، اور درخواست کے بعد بالکل کیا ہوتا ہے۔",
+    "مٹھی بھر، سو نہیں، ہر ایک کے ساتھ یہ کہ وہ کیوں موزوں ہے، اس کی لاگت، کن کے لیے ہے، اور رابطہ کرنے کے بعد بالکل کیا ہوتا ہے۔",
   "how.forWomen": "خواتین کے لیے",
   "how.forOrgs": "اداروں کے لیے",
   "how.orgOneTitle": "ہمیں بتائیں آپ کون ہیں",
   "how.orgOneBody":
-    "چند سوالات کہ آپ کیا کرتے ہیں، کن کے لیے، اور کہاں۔ دس منٹ، اور آپ درمیان میں رک کر واپس آ سکتے ہیں۔",
+    "چند سوالات کہ آپ کیا کرتے ہیں، کن لوگوں کو حل فراہم کرنا چاہتے ہیں، اور کہاں۔ رجسٹریشن تیز ہے۔",
   "how.orgTwoTitle": "ہم ایک بار آپ کی جانچ کرتے ہیں",
   "how.orgTwoBody":
-    "کسی سرکاری رجسٹر یا آپ کے فنڈر کے ذریعے، ایک شخص کی جانب سے۔ اس کے بعد آپ جو چاہیں، جب چاہیں شائع کریں۔",
+    "کسی سرکاری رجسٹر کے ذریعے یا آپ کے سابقہ کام کی بنیاد پر۔ اس تصدیق کے بعد آپ جو چاہیں، جب چاہیں شائع کریں۔",
   "how.orgThreeTitle": "وہ آپ کو تب پائے گی جب آپ موزوں ہوں",
   "how.orgThreeBody":
-    "اس لیے نہیں کہ اس نے آپ کا نام تلاش کیا، بلکہ اس لیے کہ اس نے جو بیان کیا وہ آپ کے کام سے میل کھاتا ہے۔",
+    "اس لیے نہیں کہ اس نے آپ کا نام تلاش کیا، بلکہ اس لیے کہ اس نے جو بیان کیا وہ آپ کے پیش کردہ حل سے میل کھاتا ہے۔",
   "zones.eyebrow": "رسائی کے شعبے",
   "zones.title": "ہر قسم کی مدد، ایک پلیٹ فارم",
   "zones.body":
@@ -541,30 +518,27 @@ const pa: Catalogue = {
   "hero.begin": "ਤੁਸੀਂ ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰਨਾ ਚਾਹੋਗੇ?",
   "hero.beginFind": "ਆਪਣਾ ਅਗਲਾ ਕਦਮ ਲੱਭੋ",
   "hero.beginBrowse": "ਵੇਖੋ ਕੌਣ ਮੌਜੂਦ ਹੈ",
-  "how.eyebrow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
-  "how.title": "ਤੁਹਾਨੂੰ ਇਹ ਜਾਣਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਕਿਸ ਨੂੰ ਪੁੱਛਣਾ ਹੈ",
-  "how.body":
-    "ਕਹੋ “ਮੈਂ ਕੰਮ ’ਤੇ ਵਾਪਸ ਜਾਣਾ ਚਾਹੁੰਦੀ ਹਾਂ” ਜਾਂ “ਮੈਨੂੰ ਫੰਡਿੰਗ ਚਾਹੀਦੀ ਹੈ” ਅਤੇ ਬਾਕੀ ਅਸੀਂ ਕਰਾਂਗੇ। ਤੁਹਾਨੂੰ ਕਦੇ ਸ਼੍ਰੇਣੀ ਚੁਣਨ, ਕਿਸੇ ਸੰਸਥਾ ਦਾ ਨਾਂ ਲੈਣ, ਜਾਂ ਇਹ ਪਤਾ ਕਰਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਤੁਸੀਂ ਕਿਸ ਯੋਜਨਾ ਲਈ ਯੋਗ ਹੋ।",
+  "how.title": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "how.oneTitle": "ਸਾਨੂੰ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ",
   "how.oneBody":
-    "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਤੁਸੀਂ ਲਗਭਗ ਕਿੱਥੇ ਹੋ, ਅਤੇ ਆਪਣੀ ਸਥਿਤੀ ਬਾਰੇ ਜੋ ਵੀ ਤੁਸੀਂ ਸਾਨੂੰ ਦੱਸਣਾ ਚਾਹੁੰਦੀਆਂ ਹੋ। ਤਿੰਨ ਸਵਾਲ, ਅਤੇ ਕੋਈ ਵੀ ਲਾਜ਼ਮੀ ਨਹੀਂ।",
+    "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਲਗਭਗ ਤੁਸੀਂ ਕਿੱਥੇ ਹੋ, ਅਤੇ ਤੁਹਾਡੀ ਸਥਿਤੀ ਬਾਰੇ ਕੁਝ ਵੀ। ਸਿਰਫ਼ ਤਿੰਨ ਸਵਾਲ।",
   "how.twoTitle": "ਅਸੀਂ ਇਸ ਨੂੰ ਤੋਲਦੇ ਹਾਂ",
   "how.twoBody":
-    "ਇਸ ਦੇ ਆਧਾਰ ’ਤੇ ਕਿ ਹਰ ਚੀਜ਼ ਕਿਸ ਲਈ ਹੈ, ਕਿਸ ਲਈ ਖੁੱਲ੍ਹੀ ਹੈ, ਕਿੱਥੇ ਚੱਲਦੀ ਹੈ ਅਤੇ ਤੁਸੀਂ ਉਸ ਤੱਕ ਕਿਵੇਂ ਪਹੁੰਚ ਸਕਦੀਆਂ ਹੋ। ਕਾਰਨ ਲਿਖੇ ਹੋਏ ਹਨ ਅਤੇ ਇਸ ਵਿੱਚੋਂ ਕੁਝ ਵੀ ਖਰੀਦਿਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।",
+    "ਇਸ ਆਧਾਰ ਉੱਤੇ ਕਿ ਹਰ ਚੀਜ਼ ਕਿਸ ਲਈ ਹੈ, ਕਿਸ ਲਈ ਖੁੱਲ੍ਹੀ ਹੈ, ਕਿੱਥੇ ਚੱਲਦੀ ਹੈ ਤੇ ਤੁਸੀਂ ਉਸ ਤੱਕ ਕਿਵੇਂ ਪਹੁੰਚ ਸਕਦੇ ਹੋ। ਨਤੀਜਾ ਏਆਈ ਨਾਲ ਚੱਲਦਾ ਹੈ।",
   "how.threeTitle": "ਤੁਹਾਨੂੰ ਕੁਝ ਅਸਲੀ ਵਿਕਲਪ ਮਿਲਦੇ ਹਨ",
   "how.threeBody":
-    "ਮੁੱਠੀ ਭਰ, ਸੌ ਨਹੀਂ, ਹਰ ਇੱਕ ਦੇ ਨਾਲ ਇਹ ਕਿ ਉਹ ਕਿਉਂ ਢੁਕਵਾਂ ਹੈ, ਕੀ ਖਰਚਾ ਹੈ, ਕਿਸ ਲਈ ਹੈ, ਅਤੇ ਅਰਜ਼ੀ ਤੋਂ ਬਾਅਦ ਬਿਲਕੁਲ ਕੀ ਹੁੰਦਾ ਹੈ।",
+    "ਮੁੱਠੀ ਭਰ, ਸੌ ਨਹੀਂ, ਹਰ ਇੱਕ ਨਾਲ ਇਹ ਕਿ ਉਹ ਕਿਉਂ ਮੇਲ ਖਾਂਦਾ ਹੈ, ਕੀ ਖ਼ਰਚ ਹੈ, ਕਿਸ ਲਈ ਹੈ, ਅਤੇ ਸੰਪਰਕ ਕਰਨ ਤੋਂ ਬਾਅਦ ਬਿਲਕੁਲ ਕੀ ਹੁੰਦਾ ਹੈ।",
   "how.forWomen": "ਔਰਤਾਂ ਲਈ",
   "how.forOrgs": "ਸੰਸਥਾਵਾਂ ਲਈ",
   "how.orgOneTitle": "ਸਾਨੂੰ ਦੱਸੋ ਤੁਸੀਂ ਕੌਣ ਹੋ",
   "how.orgOneBody":
-    "ਕੁਝ ਸਵਾਲ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰਦੇ ਹੋ, ਕਿਸ ਲਈ, ਤੇ ਕਿੱਥੇ। ਦਸ ਮਿੰਟ, ਤੇ ਤੁਸੀਂ ਵਿਚਾਲੇ ਰੁਕ ਕੇ ਵਾਪਸ ਆ ਸਕਦੇ ਹੋ।",
+    "ਕੁਝ ਸਵਾਲ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰਦੇ ਹੋ, ਕਿਨ੍ਹਾਂ ਨੂੰ ਹੱਲ ਦੇਣਾ ਚਾਹੁੰਦੇ ਹੋ, ਤੇ ਕਿੱਥੇ। ਰਜਿਸਟਰੇਸ਼ਨ ਤੇਜ਼ ਹੈ।",
   "how.orgTwoTitle": "ਅਸੀਂ ਇੱਕ ਵਾਰ ਤੁਹਾਡੀ ਜਾਂਚ ਕਰਦੇ ਹਾਂ",
   "how.orgTwoBody":
-    "ਕਿਸੇ ਜਨਤਕ ਰਜਿਸਟਰ ਜਾਂ ਤੁਹਾਡੇ ਫੰਡਰ ਰਾਹੀਂ, ਇੱਕ ਵਿਅਕਤੀ ਵੱਲੋਂ। ਉਸ ਤੋਂ ਬਾਅਦ ਜੋ ਚਾਹੋ, ਜਦੋਂ ਚਾਹੋ ਪੋਸਟ ਕਰੋ।",
+    "ਕਿਸੇ ਜਨਤਕ ਰਜਿਸਟਰ ਰਾਹੀਂ ਜਾਂ ਤੁਹਾਡੇ ਕੰਮ ਦੇ ਰਿਕਾਰਡ ਦੇ ਆਧਾਰ ਉੱਤੇ। ਉਸ ਪੁਸ਼ਟੀ ਤੋਂ ਬਾਅਦ ਜੋ ਚਾਹੋ, ਜਦੋਂ ਚਾਹੋ ਪੋਸਟ ਕਰੋ।",
   "how.orgThreeTitle": "ਉਹ ਤੁਹਾਨੂੰ ਉਦੋਂ ਲੱਭੇਗੀ ਜਦੋਂ ਤੁਸੀਂ ਢੁਕਵੇਂ ਹੋਵੋਗੇ",
   "how.orgThreeBody":
-    "ਇਸ ਲਈ ਨਹੀਂ ਕਿ ਉਸ ਨੇ ਤੁਹਾਡਾ ਨਾਂ ਖੋਜਿਆ, ਸਗੋਂ ਇਸ ਲਈ ਕਿ ਉਸ ਦੀ ਦੱਸੀ ਗੱਲ ਤੁਹਾਡੇ ਕੰਮ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ।",
+    "ਇਸ ਲਈ ਨਹੀਂ ਕਿ ਉਸ ਨੇ ਤੁਹਾਡਾ ਨਾਂ ਖੋਜਿਆ, ਸਗੋਂ ਇਸ ਲਈ ਕਿ ਉਸ ਦੀ ਦੱਸੀ ਗੱਲ ਤੁਹਾਡੇ ਪੇਸ਼ ਕੀਤੇ ਹੱਲ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ।",
   "zones.eyebrow": "ਪਹੁੰਚ ਖੇਤਰ",
   "zones.title": "ਹਰ ਕਿਸਮ ਦੀ ਸਹਾਇਤਾ, ਇੱਕ ਪਲੇਟਫਾਰਮ",
   "zones.body":
@@ -601,30 +575,27 @@ const zh: Catalogue = {
   "hero.begin": "你想从哪里开始？",
   "hero.beginFind": "找到你的下一步",
   "hero.beginBrowse": "看看有哪些机构",
-  "how.eyebrow": "运作方式",
-  "how.title": "你不需要知道该去问谁",
-  "how.body":
-    "说一句「我想重返职场」或「我需要资金」，其余的交给我们。你无需选择分类、说出机构名称，也不必弄清楚自己符合哪个计划的条件。",
+  "how.title": "运作方式",
   "how.oneTitle": "用你自己的话告诉我们",
   "how.oneBody":
-    "你需要什么、大致住在哪里，以及任何你愿意让我们知道的情况。三个问题，没有一个是必答的。",
+    "你需要什么、你大概在哪里，以及关于你处境的任何情况。只有三个问题。",
   "how.twoTitle": "我们来权衡",
   "how.twoBody":
-    "根据每一项的用途、面向的对象、开展的地点，以及你可以如何接触到它。评判依据都写在明处，其中没有任何一项可以用钱买到。",
+    "依据每一项支持的用途、面向谁开放、在哪里运作，以及你如何联系。结果由 AI 驱动。",
   "how.threeTitle": "你会得到几个真正可行的选择",
   "how.threeBody":
-    "是几个，而不是一百个。每一个都会说明为什么匹配、费用如何、面向谁，以及申请之后究竟会发生什么。",
+    "几个，而不是一百个，每一个都说明为什么匹配、费用多少、面向谁，以及你联系之后具体会发生什么。",
   "how.forWomen": "为女性",
   "how.forOrgs": "为机构",
   "how.orgOneTitle": "告诉我们你们是谁",
   "how.orgOneBody":
-    "几个问题：你们做什么、为谁服务、在哪里。十分钟，中途可以停下再回来。",
+    "几个问题：你们做什么、想为哪些人提供解决方案、在哪里。入驻很快。",
   "how.orgTwoTitle": "我们只核实你们一次",
   "how.orgTwoBody":
-    "通过公开登记或你们的资助方，由人来核实。之后你们想发什么、什么时候发，都可以。",
+    "通过公开登记，或依据你们过往的记录。完成核实后，你们想发什么、什么时候发，都可以。",
   "how.orgThreeTitle": "她会在合适的时候找到你们",
   "how.orgThreeBody":
-    "不是因为她搜索了你们的名字，而是因为她描述的情况与你们所做的相符。",
+    "不是因为她搜索了你们的名字，而是因为她描述的情况与你们提供的解决方案相符。",
   "zones.eyebrow": "支持领域",
   "zones.title": "各类支持，一个平台",
   "zones.body":

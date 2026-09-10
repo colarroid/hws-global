@@ -247,20 +247,23 @@ export default async function Landing() {
           anything reaches hers, which is the argument the whole platform
           rests on and is hard to make in a sentence. */}
       <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
-        <div className="flex flex-col items-center gap-3 text-center">
-          <span className="eyebrow text-gold-700">{t("how.eyebrow")}</span>
+        {/* The heading alone. It carried an eyebrow saying "How it works"
+            above a line saying something else, and a paragraph under that;
+            the tree below explains itself, so the heading is the only part
+            of the three that was doing work. */}
+        <div className="flex flex-col items-center text-center">
           <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[38px]">
             {t("how.title")}
           </h2>
-          <p className="m-0 max-w-[56ch] text-[17px] leading-[1.6] text-ink-70">
-            {t("how.body")}
-          </p>
         </div>
 
         {/* The fork. Drawn rather than decorated: a stem down from the
             heading, a bar spanning the two column centres, and a drop onto
             each. It is hidden below the breakpoint because there is nothing
-            to fork into once the branches stack. */}
+            to fork into once the branches stack.
+
+            The drops stay on the column centres while the text under them is
+            ranged left. They point at the columns, not at the words. */}
         <div className="mt-9 hidden sm:block" aria-hidden="true">
           <span className="mx-auto block h-8 w-px bg-ink/25" />
           <div className="relative mx-auto h-8 w-1/2">
@@ -293,7 +296,7 @@ export default async function Landing() {
           ].map((branch, index) => (
             <div
               key={branch.key}
-              className={`flex flex-col items-center gap-8 sm:px-8 ${
+              className={`flex flex-col items-start gap-8 sm:px-8 ${
                 // The rule between them is dashed and only drawn on the
                 // second, so it is one line between two columns rather than
                 // an edge on each.
@@ -310,7 +313,7 @@ export default async function Landing() {
                 {branch.steps.map((step, position) => (
                   <li
                     key={step.title}
-                    className="flex flex-col items-center gap-2 text-center"
+                    className="flex flex-col items-start gap-2"
                   >
                     <span className="text-[16px] font-bold text-ink">
                       {position + 1}. {step.title}
