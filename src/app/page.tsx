@@ -14,6 +14,7 @@ import {
 import { getTranslator } from "@/lib/i18n";
 import { getZonesWithCounts } from "@/lib/data/discover";
 import { portalUrl } from "@/lib/portal";
+import { SummitPhotos } from "@/components/SummitPhotos";
 import { Testimonials } from "@/components/Testimonials";
 import { TESTIMONIALS } from "@/lib/design/testimonials";
 
@@ -98,7 +99,7 @@ export default async function Landing() {
             priority because this is the largest thing above the fold and
             therefore the LCP element; without it Next lazy-loads the hero and
             the page scores itself badly for the one image that matters. The
-            21MB PNG is a 131KB WebP at 2560 wide, and Next derives AVIF and
+            24MB PNG is a 173KB WebP at 2560 wide, and Next derives AVIF and
             every smaller width from it per request, so a phone is served a
             fraction of that. */}
         <Image
@@ -108,12 +109,13 @@ export default async function Landing() {
           priority
           placeholder="blur"
           sizes="100vw"
-          // The four of them stand right of centre with their faces in the
-          // upper third. A wide viewport crops the frame vertically, so what
-          // matters there is holding the faces above the crop; a phone crops
-          // it horizontally instead, so it has to hold further right or the
-          // hero becomes a photograph of an empty sofa.
-          className="-z-20 object-cover object-[75%_38%] sm:object-[60%_34%]"
+          // The three of them stand between 44% and 90% across, faces a
+          // little above the middle. The frame is 16:9, so an ordinary
+          // laptop crops it horizontally and barely at all; a phone keeps
+          // only about a quarter of the width, which is why that one holds
+          // at 72% — centred on the group rather than on the frame, or the
+          // hero becomes a photograph of an empty foyer.
+          className="-z-20 object-cover object-[72%_45%] sm:object-[60%_42%]"
         />
 
         {/* One scrim, and which one depends on the shape of the screen. They
@@ -127,26 +129,29 @@ export default async function Landing() {
             texture behind a scrim.
 
             Narrow: the text crosses the whole frame, so the shading has to be
-            even. Stacking the horizontal gradient and a flat overlay was the
-            first attempt and it came to 0.97 at the left edge, which is not a
-            photograph at all — it is a black rectangle that costs 131KB. */}
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.60)_0%,rgba(18,9,2,0.74)_100%)] sm:hidden"
-        />
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.90)_0%,rgba(18,9,2,0.64)_32%,rgba(18,9,2,0.18)_54%,rgba(18,9,2,0)_74%)] sm:block"
-        />
+            even.
 
-        {/* A flat layer over both gradients rather than steeper gradients.
-            The gradients protect the words, which is a job that only applies
-            where the words are; this one lowers the whole frame so the room
-            sits behind the page instead of competing with it, and so the
-            paragraph stays readable where it runs past the column and over
-            the group. Same value at every width, so what changes between
-            screens is only the shading that follows the text. */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/12" />
+            These numbers are much lower than the ones they replaced, and the
+            reason is the photograph rather than a change of mind. Measured
+            across the band the type sits in, the previous image ran to a mean
+            luminance of about 150 of 255 and needed 0.90 at the left edge to
+            hold white text. This one is a dark foyer: 22 to 78 over almost
+            all of that band, and the single bright patch is the daylight in
+            the glass doors at the far left, which reads about 140. 0.62 there
+            brings that patch to 53 and leaves everything past a third of the
+            way across nearly untouched. Carrying the old values over would
+            have crushed a photograph that was already dark to begin with —
+            which is a thing worth checking every time one of these is
+            swapped, because the scrim is tuned to an image and not to a
+            layout. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.38)_0%,rgba(18,9,2,0.58)_100%)] sm:hidden"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.62)_0%,rgba(18,9,2,0.44)_30%,rgba(18,9,2,0.12)_55%,rgba(18,9,2,0)_75%)] sm:block"
+        />
 
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="flex max-w-[576px] flex-col gap-6">
@@ -280,6 +285,74 @@ export default async function Landing() {
               </ol>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* Where it came from.
+
+          Everything above this is the platform explaining itself: what it
+          does, and the order it does it in. This is the only part of the page
+          that answers why anybody built it, and it is placed here because the
+          section above ends on the claim that knowing a thing exists is not
+          knowing it is open to you. That claim is abstract until somebody has
+          watched it happen in a room, which is what the paragraphs describe
+          and what the photographs are evidence of.
+
+          White rather than the page's cream, between a cream section and the
+          dark band. It is the one place on the page where the ground changes
+          under a light section, and it earns that by being the one place that
+          is about the summit rather than about the platform.
+
+          The photographs are the summit's own, of women who were actually
+          there — see the note in SummitPhotos, which has a consent question
+          in it that is HWS's to answer before launch. */}
+      <section className="border-y border-hairline bg-surface">
+        {/* The padding is on the inner box rather than on the section, which
+            looks like a detail and is the difference between this heading
+            lining up with the one above it and sitting 40px to its left.
+
+            The page has two section shapes. A container section carries
+            max-w-[1180px] and its own padding, so its content starts 40px
+            inside 1180. A full-bleed one — the hero, the dark band — puts the
+            padding on the section so the background reaches the edges, and
+            its content starts at 1180 exactly. The two do not line up, and
+            they have not lined up for a while.
+
+            This band needs a full-bleed background and a container left edge,
+            so it takes the background from one and the measure from the
+            other. Placed as it is, directly under a container section, that
+            puts the only edge that shows against a change of colour at the
+            dark band below, where it is nearly invisible.
+
+            The underlying mismatch is still there and is worth fixing across
+            the page one day. Doing it here would have moved two sections
+            nobody asked about and reflowed their columns. */}
+        <div className="mx-auto grid w-full max-w-[1180px] grid-cols-1 items-center gap-12 px-5 py-24 sm:px-10 sm:py-32 lg:grid-cols-2 lg:gap-16">
+          <div>
+            {/* Same gap between eyebrow and heading as the section above, and
+                the same two sizes, because the two are peers: one states the
+                problem, this one says where we watched it happen. */}
+            <div className="flex flex-col gap-3">
+              <span className="eyebrow text-gold-700">{t("origin.eyebrow")}</span>
+              <h2 className="m-0 max-w-[20ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
+                {t("origin.title")}
+              </h2>
+            </div>
+
+            {/* 1.6 rather than the 1.5 the hero and the zones paragraphs use.
+                Those are one paragraph each and this is two, and two stacked
+                paragraphs at 1.5 read as a wall. */}
+            <div className="mt-7 flex max-w-[512px] flex-col gap-5">
+              <p className="m-0 text-[16px] leading-[1.6] text-ink-70">
+                {t("origin.bodyOne")}
+              </p>
+              <p className="m-0 text-[16px] leading-[1.6] text-ink-70">
+                {t("origin.bodyTwo")}
+              </p>
+            </div>
+          </div>
+
+          <SummitPhotos />
         </div>
       </section>
 

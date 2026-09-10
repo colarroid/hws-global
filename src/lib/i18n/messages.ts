@@ -35,6 +35,13 @@
  * carry the platform's argument for existing at all, so they are the block
  * where a stiff translation costs most. Read them first.
  *
+ * NEWER STILL: the four `origin.*` keys were added on 10 September 2026,
+ * also with no speaker for anything but the English. They are the origin
+ * story, so they carry a voice rather than an instruction, and a voice is
+ * the thing that goes stiffest in translation. The English is deliberately
+ * plainer in sentence shape than it wants to be, so that the other eight had
+ * less to lose.
+ *
  * WHAT STILL NEEDS A SPEAKER, in order of how likely it is to be wrong:
  *
  *   * Scots. Untouched by the pass, because the line between written Scots
@@ -76,6 +83,10 @@ export type MessageKey =
   | "how.orgTwoBody"
   | "how.orgThreeTitle"
   | "how.orgThreeBody"
+  | "origin.eyebrow"
+  | "origin.title"
+  | "origin.bodyOne"
+  | "origin.bodyTwo"
   | "zones.eyebrow"
   | "zones.title"
   | "zones.body"
@@ -125,6 +136,12 @@ const en: Record<MessageKey, string> = {
   "how.orgThreeTitle": "She finds it when it fits",
   "how.orgThreeBody":
     "Not because she searched your name, but because what she described matched the solution you are offering.",
+  "origin.eyebrow": "Why this exists",
+  "origin.title": "It started in a room like this one",
+  "origin.bodyOne":
+    "The Holistic Wellbeing Summit puts women in a room with the people who can actually help them. Somebody makes an introduction. Somebody says the name of a fund you had never heard of, and now you know it is there.",
+  "origin.bodyTwo":
+    "Then the room empties. The organisations go back to their work, and the women still need it. This platform is that room with the doors left open, for every woman who was never in it.",
   "zones.eyebrow": "Access Zones",
   "zones.title": "Every kind of support, one platform",
   "zones.body":
@@ -178,6 +195,12 @@ const gd: Catalogue = {
   "how.orgThreeTitle": "Lorgaidh i e nuair a fhreagras e",
   "how.orgThreeBody":
     "Chan ann air sgàth gun do lorg i ur n-ainm, ach air sgàth gu robh na thuirt i a' freagairt air an fhuasgladh a tha sibh a' tabhann.",
+  "origin.eyebrow": "Carson a tha seo ann",
+  "origin.title": "Thòisich e ann an seòmar mar seo",
+  "origin.bodyOne":
+    "Bidh an Holistic Wellbeing Summit a' toirt bhoireannach còmhla ris na daoine as urrainn dhaibh cuideachadh. Bidh cuideigin a' dèanamh ceangal. Bidh cuideigin ag ainmeachadh maoin nach cuala tu roimhe, agus a-nis tha fios agad gu bheil i ann.",
+  "origin.bodyTwo":
+    "An uairsin bidh an seòmar falamh. Tillidh na buidhnean gu an obair, agus tha na boireannaich fhathast feumach oirre. Is e an t-àrd-ùrlar seo an seòmar sin leis na dorsan fosgailte, do gach boireannach nach robh a-riamh ann.",
   "zones.eyebrow": "Raointean Inntrigidh",
   "zones.title": "Gach seòrsa taic, aon àrd-ùrlar",
   "zones.body":
@@ -231,6 +254,12 @@ const sco: Catalogue = {
   "how.orgThreeTitle": "She finns it whan it fits",
   "how.orgThreeBody":
     "No acause she socht yer name, but acause whit she describit matched the solution ye're offerin.",
+  "origin.eyebrow": "Whit wey this is here",
+  "origin.title": "It stertit in a room like this ane",
+  "origin.bodyOne":
+    "The Holistic Wellbeing Summit pits weemen in a room wi the fowk that can actually help thaim. Somebody maks an introduction. Somebody says the name o a fund ye niver kent aboot, an nou ye ken it's there.",
+  "origin.bodyTwo":
+    "Syne the room teems. The organisations gang back tae thair wark, an the weemen still need it. This platform is that same room wi the doors left open, for ilka wumman that wis niver in it.",
   "zones.eyebrow": "Access Zones",
   "zones.title": "Ilka kind o support, ae platform",
   "zones.body":
@@ -284,6 +313,12 @@ const pl: Catalogue = {
   "how.orgThreeTitle": "Znajdzie was, gdy będziecie pasować",
   "how.orgThreeBody":
     "Nie dlatego, że szukała waszej nazwy, ale dlatego, że to, co opisała, pasuje do rozwiązania, które oferujecie.",
+  "origin.eyebrow": "Dlaczego to powstało",
+  "origin.title": "Zaczęło się w takiej sali jak ta",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit gromadzi kobiety w jednej sali z ludźmi, którzy naprawdę mogą im pomóc. Ktoś kogoś przedstawia. Ktoś wymienia nazwę programu, o którym nigdy nie słyszałaś, i teraz już wiesz, że istnieje.",
+  "origin.bodyTwo":
+    "Potem sala pustoszeje. Organizacje wracają do swojej pracy, a kobiety nadal potrzebują wsparcia. Ta platforma to ta sama sala z otwartymi drzwiami, dla każdej kobiety, której na niej nie było.",
   "zones.eyebrow": "Strefy dostępu",
   "zones.title": "Każdy rodzaj wsparcia, jedna platforma",
   "zones.body":
@@ -337,6 +372,12 @@ const uk: Catalogue = {
   "how.orgThreeTitle": "Вона знайде вас, коли ви підійдете",
   "how.orgThreeBody":
     "Не тому, що шукала вашу назву, а тому, що описане нею збіглося з рішенням, яке ви пропонуєте.",
+  "origin.eyebrow": "Навіщо це існує",
+  "origin.title": "Усе почалося в такій самій залі",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit збирає жінок в одній залі з людьми, які справді можуть допомогти. Хтось когось знайомить. Хтось називає програму, про яку ви ніколи не чули, і тепер ви знаєте, що вона є.",
+  "origin.bodyTwo":
+    "Потім зала порожніє. Організації повертаються до своєї роботи, а жінкам підтримка потрібна й далі. Ця платформа і є та сама зала з відчиненими дверима, для кожної жінки, якої там не було.",
   "zones.eyebrow": "Зони доступу",
   "zones.title": "Кожен вид підтримки, одна платформа",
   "zones.body":
@@ -390,6 +431,12 @@ const ar: Catalogue = {
   "how.orgThreeTitle": "تجدكم حين تناسبونها",
   "how.orgThreeBody":
     "ليس لأنها بحثت عن اسمكم، بل لأن ما وصفته يطابق الحل الذي تقدّمونه.",
+  "origin.eyebrow": "لماذا وُجد هذا",
+  "origin.title": "بدأ الأمر في قاعة مثل هذه",
+  "origin.bodyOne":
+    "يجمع Holistic Wellbeing Summit النساء في قاعة واحدة مع من يستطيعون مساعدتهن فعلاً. تعرّفكِ إحداهن على شخص. وتذكر إحداهن اسم برنامج لم تسمعي به من قبل، فتعرفين الآن أنه موجود.",
+  "origin.bodyTwo":
+    "ثم تفرغ القاعة. تعود المنظمات إلى عملها، وتبقى النساء بحاجة إلى الدعم. هذه المنصة هي القاعة نفسها وقد تُركت أبوابها مفتوحة، لكل امرأة لم تكن فيها.",
   "zones.eyebrow": "مجالات الوصول",
   "zones.title": "كل أنواع الدعم، منصة واحدة",
   "zones.body":
@@ -443,6 +490,12 @@ const ur: Catalogue = {
   "how.orgThreeTitle": "وہ آپ کو تب پائے گی جب آپ موزوں ہوں",
   "how.orgThreeBody":
     "اس لیے نہیں کہ اس نے آپ کا نام تلاش کیا، بلکہ اس لیے کہ اس نے جو بیان کیا وہ آپ کے پیش کردہ حل سے میل کھاتا ہے۔",
+  "origin.eyebrow": "یہ کیوں موجود ہے",
+  "origin.title": "اس کی شروعات ایسے ہی ایک کمرے سے ہوئی",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit خواتین کو ایک کمرے میں ان لوگوں کے ساتھ لاتی ہے جو واقعی مدد کر سکتے ہیں۔ کوئی آپ کا تعارف کراتی ہے۔ کوئی ایسے پروگرام کا نام لیتی ہے جس کے بارے میں آپ نے کبھی نہیں سنا، اور اب آپ کو معلوم ہے کہ وہ موجود ہے۔",
+  "origin.bodyTwo":
+    "پھر کمرہ خالی ہو جاتا ہے۔ ادارے اپنے کام پر لوٹ جاتے ہیں، اور خواتین کو مدد کی ضرورت باقی رہتی ہے۔ یہ پلیٹ فارم وہی کمرہ ہے جس کے دروازے کھلے چھوڑ دیے گئے ہیں، ہر اُس عورت کے لیے جو وہاں کبھی نہیں تھی۔",
   "zones.eyebrow": "رسائی کے شعبے",
   "zones.title": "ہر قسم کی مدد، ایک پلیٹ فارم",
   "zones.body":
@@ -496,6 +549,12 @@ const pa: Catalogue = {
   "how.orgThreeTitle": "ਉਹ ਤੁਹਾਨੂੰ ਉਦੋਂ ਲੱਭੇਗੀ ਜਦੋਂ ਤੁਸੀਂ ਢੁਕਵੇਂ ਹੋਵੋਗੇ",
   "how.orgThreeBody":
     "ਇਸ ਲਈ ਨਹੀਂ ਕਿ ਉਸ ਨੇ ਤੁਹਾਡਾ ਨਾਂ ਖੋਜਿਆ, ਸਗੋਂ ਇਸ ਲਈ ਕਿ ਉਸ ਦੀ ਦੱਸੀ ਗੱਲ ਤੁਹਾਡੇ ਪੇਸ਼ ਕੀਤੇ ਹੱਲ ਨਾਲ ਮੇਲ ਖਾਂਦੀ ਹੈ।",
+  "origin.eyebrow": "ਇਹ ਕਿਉਂ ਹੈ",
+  "origin.title": "ਇਸ ਦੀ ਸ਼ੁਰੂਆਤ ਅਜਿਹੇ ਹੀ ਇੱਕ ਕਮਰੇ ਤੋਂ ਹੋਈ",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit ਔਰਤਾਂ ਨੂੰ ਉਨ੍ਹਾਂ ਲੋਕਾਂ ਨਾਲ ਇੱਕ ਕਮਰੇ ਵਿੱਚ ਲਿਆਉਂਦਾ ਹੈ ਜੋ ਸੱਚਮੁੱਚ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ। ਕੋਈ ਤੁਹਾਡੀ ਜਾਣ-ਪਛਾਣ ਕਰਾਉਂਦੀ ਹੈ। ਕੋਈ ਅਜਿਹੀ ਸਕੀਮ ਦਾ ਨਾਂ ਲੈਂਦੀ ਹੈ ਜਿਸ ਬਾਰੇ ਤੁਸੀਂ ਕਦੇ ਨਹੀਂ ਸੁਣਿਆ, ਅਤੇ ਹੁਣ ਤੁਹਾਨੂੰ ਪਤਾ ਹੈ ਕਿ ਉਹ ਮੌਜੂਦ ਹੈ।",
+  "origin.bodyTwo":
+    "ਫਿਰ ਕਮਰਾ ਖਾਲੀ ਹੋ ਜਾਂਦਾ ਹੈ। ਸੰਸਥਾਵਾਂ ਆਪਣੇ ਕੰਮ 'ਤੇ ਵਾਪਸ ਚਲੀਆਂ ਜਾਂਦੀਆਂ ਹਨ, ਅਤੇ ਔਰਤਾਂ ਨੂੰ ਮਦਦ ਦੀ ਲੋੜ ਬਣੀ ਰਹਿੰਦੀ ਹੈ। ਇਹ ਪਲੇਟਫਾਰਮ ਉਹੀ ਕਮਰਾ ਹੈ ਜਿਸ ਦੇ ਦਰਵਾਜ਼ੇ ਖੁੱਲ੍ਹੇ ਛੱਡ ਦਿੱਤੇ ਗਏ ਹਨ, ਹਰ ਉਸ ਔਰਤ ਲਈ ਜੋ ਕਦੇ ਉੱਥੇ ਨਹੀਂ ਸੀ।",
   "zones.eyebrow": "ਪਹੁੰਚ ਖੇਤਰ",
   "zones.title": "ਹਰ ਕਿਸਮ ਦੀ ਸਹਾਇਤਾ, ਇੱਕ ਪਲੇਟਫਾਰਮ",
   "zones.body":
@@ -548,6 +607,12 @@ const zh: Catalogue = {
   "how.orgThreeTitle": "她会在合适的时候找到你们",
   "how.orgThreeBody":
     "不是因为她搜索了你们的名字，而是因为她描述的情况与你们提供的解决方案相符。",
+  "origin.eyebrow": "我们为什么做这件事",
+  "origin.title": "一切始于这样一个房间",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit 把女性和真正能帮到她们的人聚在同一个房间里。有人为你引荐。有人提到一个你从未听说过的资助项目，你这才知道它存在。",
+  "origin.bodyTwo":
+    "然后房间空了。机构回到各自的工作，而女性依然需要帮助。这个平台就是那个房间，只是门一直开着，为每一位当时不在场的女性而开。",
   "zones.eyebrow": "支持领域",
   "zones.title": "各类支持，一个平台",
   "zones.body":
