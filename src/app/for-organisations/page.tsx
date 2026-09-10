@@ -104,32 +104,49 @@ export default async function CommunityPage() {
 
   return (
     <div className="flex flex-1 flex-col">
-      <section className="px-5 pb-14 pt-16 sm:px-10 sm:pb-20 sm:pt-24">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
+      {/* The hero, in the landing page's language rather than its own:
+          the headline at a 1.3 line-height instead of a tight 1.03, a short
+          sans paragraph on a 512px measure, and the two ways in as a ruled
+          question over two equal cards.
+
+          No photograph behind it, per HWS. The landing hero was built to
+          hold on the cream before the picture arrived, so the same structure
+          works here unchanged — the type stays ink and the cards keep the
+          platform's own surface and hairline instead of frosted glass, which
+          only reads as glass over an image. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
+        <div className="flex max-w-[576px] flex-col gap-6">
           <span className="eyebrow text-gold-700">For organisations</span>
 
-          <h1 className="m-0 max-w-[19ch] font-display text-[38px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[68px]">
+          <h1 className="m-0 font-display text-[38px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[60px] sm:leading-[1.3]">
             The women you are for, without them having to find you
           </h1>
 
-          <p className="m-0 max-w-[60ch] text-[19px] leading-[1.6] text-ink-70 sm:text-[21px]">
+          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
             You already do the work. The problem is that a woman has to know
             your name to find your website. Here she describes her situation,
             and we put you in front of her because you are the right answer,
             not because she guessed.
           </p>
 
-          <div className="mt-1 flex flex-wrap items-center gap-4">
+          <div className="mt-2 flex items-center gap-4">
+            <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
+            <span className="font-display text-[16px] font-normal italic text-ink-70">
+              Where would you like to begin?
+            </span>
+            <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
+          </div>
+
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-8">
             <a
               href={portalLink("/sign-up")}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[18px] font-bold text-white no-underline"
+              className="flex min-h-[52px] items-center justify-center rounded-card bg-surface px-4 py-3 text-center font-display text-[20px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold sm:min-h-[64px] sm:px-5 sm:py-4 sm:text-[22px]"
             >
               List your support
-              <ArrowUpRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
             <a
               href={portalUrl()}
-              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-700 no-underline"
+              className="flex min-h-[52px] items-center justify-center rounded-card bg-surface px-4 py-3 text-center font-display text-[20px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold sm:min-h-[64px] sm:px-5 sm:py-4 sm:text-[22px]"
             >
               I already have an account
             </a>
@@ -142,11 +159,14 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      <section className="bg-ink px-5 py-16 sm:px-10 sm:py-20">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10">
+      {/* Off the dark band. The page now spends that contrast on the zones,
+          the way the landing page does, and two dark bands on one page is a
+          page that shouts twice. */}
+      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
+        <div className="flex w-full flex-col gap-12">
           <div className="flex flex-col gap-3">
-            <span className="eyebrow text-gold-300">What you get</span>
-            <h2 className="m-0 max-w-[22ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
+            <span className="eyebrow text-gold-700">What you get</span>
+            <h2 className="m-0 max-w-[22ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
               Reach, and a way to prove it
             </h2>
           </div>
@@ -157,13 +177,13 @@ export default async function CommunityPage() {
                 <gain.icon
                   size={22}
                   strokeWidth={1.75}
-                  className="text-gold-300"
+                  className="text-gold-700"
                   aria-hidden="true"
                 />
-                <span className="font-display text-[22px] font-normal leading-[1.2] text-white">
+                <span className="font-display text-[22px] font-normal leading-[1.2] text-ink">
                   {gain.title}
                 </span>
-                <p className="m-0 max-w-[46ch] text-[17px] leading-[1.6] text-white/70">
+                <p className="m-0 max-w-[46ch] text-[16px] leading-[1.5] text-ink-70">
                   {gain.body}
                 </p>
               </div>
@@ -172,7 +192,7 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
+      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
         <div className="flex flex-col gap-3">
           <span className="eyebrow text-gold-700">How it works</span>
           <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
@@ -180,16 +200,15 @@ export default async function CommunityPage() {
           </h2>
         </div>
 
-        <ol className="m-0 mt-10 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-2 lg:grid-cols-4">
+        <ol className="m-0 mt-[62px] grid list-none grid-cols-1 gap-x-12 gap-y-9 p-0 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
-            <li key={step.title} className="flex flex-col gap-3">
-              <span className="eyebrow text-gold-700">
-                {["One", "Two", "Three", "Four"][index]}
+            <li key={step.title} className="flex flex-col gap-2">
+              {/* Numbered in the component, as the landing page's tree is, so
+                  the word "One" never has to be translated. */}
+              <span className="text-[16px] font-bold text-ink">
+                {index + 1}. {step.title}
               </span>
-              <span className="font-display text-[21px] font-normal leading-[1.2] text-ink">
-                {step.title}
-              </span>
-              <p className="m-0 text-[16px] leading-[1.6] text-ink-70">
+              <p className="m-0 max-w-[38ch] text-[15px] leading-[1.6] text-ink-70">
                 {step.body}
               </p>
             </li>
@@ -197,15 +216,19 @@ export default async function CommunityPage() {
         </ol>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-5 pb-16 sm:px-10 sm:pb-20">
+      {/* The page's one dark band, on the same section as the landing
+          page's, with the same chips: the ring lights and the fill sweeps in
+          from the left over 600ms. The count comes off the eyebrow for the
+          reason it came off there — glued to a translated phrase it was
+          ungrammatical in three of the nine languages. */}
+      <section className="bg-ink px-5 py-24 sm:px-10 sm:py-32">
+        <div className="mx-auto w-full max-w-[1180px]">
         <div className="flex flex-col gap-3">
-          <span className="eyebrow text-gold-700">
-            Access Zones · {zones.length}
-          </span>
-          <h2 className="m-0 max-w-[26ch] font-display text-[28px] font-normal leading-[1.12] tracking-[-0.01em] sm:text-[36px]">
+          <span className="eyebrow text-gold-300">Access Zones</span>
+          <h2 className="m-0 max-w-[26ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
             Where you would sit
           </h2>
-          <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
+          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/80">
             You pick your own, one main and up to two others. Most women need
             more than one at a time and most services only do one, which is the
             gap this exists to close.
@@ -217,19 +240,20 @@ export default async function CommunityPage() {
             <Link
               key={zone.id}
               href={`/discover/${zone.slug}`}
-              className="inline-flex min-h-[44px] items-center rounded-full bg-surface px-[18px] py-[12px] text-[16px] font-semibold text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
+              className="zone-chip inline-flex min-h-[44px] items-center rounded-full px-[18px] py-[12px] text-[16px] font-semibold text-white no-underline"
             >
               {zone.name}
             </Link>
           ))}
+        </div>
         </div>
       </section>
 
       {/* Said before they sign up rather than after. An organisation that will
           not keep a listing current is one whose entry sends a woman to a
           closed door, and it is fairer to everybody to say so here. */}
-      <section className="mx-auto w-full max-w-[1180px] px-5 pb-16 sm:px-10 sm:pb-20">
-        <div className="flex flex-col gap-6 rounded-card bg-surface p-7 shadow-hairline sm:p-9">
+      <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
+        <div className="flex flex-col gap-8">
           <div className="flex items-center gap-3">
             <ClipboardCheck
               size={22}
@@ -242,12 +266,12 @@ export default async function CommunityPage() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-7 sm:grid-cols-2">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-12">
             <div className="flex flex-col gap-2">
               <span className="text-[17px] font-bold text-ink">
                 Keep it current
               </span>
-              <p className="m-0 max-w-[46ch] text-[16px] leading-[1.6] text-ink-70">
+              <p className="m-0 max-w-[46ch] text-[16px] leading-[1.5] text-ink-70">
                 Every listing carries the date it was last confirmed, and she
                 can see it. We will email you when something needs a look. A
                 listing nobody has confirmed in months ranks below one that has
@@ -258,7 +282,7 @@ export default async function CommunityPage() {
               <span className="text-[17px] font-bold text-ink">
                 Be straight about who you cannot help
               </span>
-              <p className="m-0 max-w-[46ch] text-[16px] leading-[1.6] text-ink-70">
+              <p className="m-0 max-w-[46ch] text-[16px] leading-[1.5] text-ink-70">
                 It is a field on your profile and it is shown plainly. It saves
                 a woman an afternoon and saves you an enquiry you were only
                 going to turn down.
@@ -268,12 +292,12 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-10">
-        <div className="flex flex-col items-start gap-5 rounded-card bg-ink p-8 text-white sm:p-11">
+      <section className="mx-auto w-full max-w-[1180px] px-5 pb-32 sm:px-10">
+        <div className="mx-auto flex max-w-[880px] flex-col items-start gap-5 rounded-card bg-ink p-8 text-white sm:p-11">
           <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[34px]">
             Do you run something women should know about?
           </h2>
-          <p className="m-0 max-w-[56ch] text-[17px] leading-[1.6] text-white/75">
+          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/75">
             Ten minutes to sign up, one check by a person, and then it reaches
             the women it actually suits rather than whoever happens to find
             your website.

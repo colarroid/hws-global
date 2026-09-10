@@ -142,7 +142,7 @@ const en: Record<MessageKey, string> = {
   "orgs.title": "Do you run something women should know about?",
   "orgs.body":
     "List it here and it reaches the women it actually suits, rather than whoever happens to find your website. Free, and we check you once rather than checking every listing.",
-  "orgs.cta": "List your support",
+  "orgs.cta": "Meet the women",
 };
 
 const gd: Catalogue = {
@@ -195,7 +195,7 @@ const gd: Catalogue = {
   "orgs.title": "A bheil thu a’ ruith rudeigin a bu chòir fios a bhith aig boireannaich mu dheidhinn?",
   "orgs.body":
     "Cuir an liosta e an seo agus ruigidh e na boireannaich dhan freagair e, seach ge bith cò a lorgas an làrach-lìn agad. An-asgaidh, agus bidh sinn gad dhearbhadh aon turas seach a bhith a’ sgrùdadh gach liosta.",
-  "orgs.cta": "Cuir do thaic air an liosta",
+  "orgs.cta": "Coinnich na boireannaich",
 };
 
 const sco: Catalogue = {
@@ -248,7 +248,7 @@ const sco: Catalogue = {
   "orgs.title": "Dae ye rin somethin weemen should ken aboot?",
   "orgs.body":
     "List it here an it reaches the weemen it actually suits, raither nor whaever happens tae finn yer wabsite. Free, an we check ye the aince raither nor checkin ilka listin.",
-  "orgs.cta": "List yer support",
+  "orgs.cta": "Meet the weemen",
 };
 
 const pl: Catalogue = {
@@ -301,7 +301,7 @@ const pl: Catalogue = {
   "orgs.title": "Prowadzisz coś, o czym kobiety powinny wiedzieć?",
   "orgs.body":
     "Dodaj to tutaj, a dotrze do kobiet, którym faktycznie odpowiada, zamiast do przypadkowych osób, które trafią na Twoją stronę. Bezpłatnie, i sprawdzamy Cię raz, a nie każde ogłoszenie osobno.",
-  "orgs.cta": "Dodaj swoje wsparcie",
+  "orgs.cta": "Poznaj te kobiety",
 };
 
 const uk: Catalogue = {
@@ -354,7 +354,7 @@ const uk: Catalogue = {
   "orgs.title": "Ви керуєте чимось, про що жінкам варто знати?",
   "orgs.body":
     "Додайте це сюди, і воно дійде до жінок, яким справді підходить, а не до випадкових відвідувачів вашого сайту. Безкоштовно, і ми перевіряємо вас один раз, а не кожну пропозицію окремо.",
-  "orgs.cta": "Додати вашу підтримку",
+  "orgs.cta": "Познайомтеся з жінками",
 };
 
 const ar: Catalogue = {
@@ -407,7 +407,7 @@ const ar: Catalogue = {
   "orgs.title": "هل تديرين شيئًا ينبغي أن تعرف عنه النساء؟",
   "orgs.body":
     "أدرجيه هنا ليصل إلى النساء اللواتي يناسبهن فعلًا، بدلًا من أي شخص يصادف موقعك. مجانًا، ونتحقق منك مرة واحدة بدلًا من التحقق من كل إعلان.",
-  "orgs.cta": "أدرجي الدعم الذي تقدمينه",
+  "orgs.cta": "تعرّفوا على النساء",
 };
 
 const ur: Catalogue = {
@@ -460,7 +460,7 @@ const ur: Catalogue = {
   "orgs.title": "کیا آپ کچھ ایسا چلا رہی ہیں جس کے بارے میں خواتین کو معلوم ہونا چاہیے؟",
   "orgs.body":
     "اسے یہاں درج کریں اور یہ ان خواتین تک پہنچے گا جن کے لیے یہ واقعی موزوں ہے، نہ کہ جو اتفاق سے آپ کی ویب سائٹ تک پہنچ جائے۔ مفت، اور ہم آپ کی ایک بار تصدیق کرتے ہیں، ہر اندراج کی نہیں۔",
-  "orgs.cta": "اپنی خدمات درج کریں",
+  "orgs.cta": "خواتین سے ملیں",
 };
 
 const pa: Catalogue = {
@@ -513,7 +513,7 @@ const pa: Catalogue = {
   "orgs.title": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਅਜਿਹਾ ਚਲਾ ਰਹੀਆਂ ਹੋ ਜਿਸ ਬਾਰੇ ਔਰਤਾਂ ਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ?",
   "orgs.body":
     "ਇਸ ਨੂੰ ਇੱਥੇ ਦਰਜ ਕਰੋ ਅਤੇ ਇਹ ਉਨ੍ਹਾਂ ਔਰਤਾਂ ਤੱਕ ਪਹੁੰਚੇਗਾ ਜਿਨ੍ਹਾਂ ਲਈ ਇਹ ਸੱਚਮੁੱਚ ਢੁਕਵਾਂ ਹੈ, ਨਾ ਕਿ ਜੋ ਕੋਈ ਵੀ ਤੁਹਾਡੀ ਵੈੱਬਸਾਈਟ ’ਤੇ ਪਹੁੰਚ ਜਾਵੇ। ਮੁਫ਼ਤ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਡੀ ਇੱਕ ਵਾਰ ਜਾਂਚ ਕਰਦੇ ਹਾਂ, ਹਰ ਇੰਦਰਾਜ਼ ਦੀ ਨਹੀਂ।",
-  "orgs.cta": "ਆਪਣੀ ਸਹਾਇਤਾ ਦਰਜ ਕਰੋ",
+  "orgs.cta": "ਔਰਤਾਂ ਨੂੰ ਮਿਲੋ",
 };
 
 const zh: Catalogue = {
@@ -565,7 +565,7 @@ const zh: Catalogue = {
   "orgs.title": "你是否在做一些女性应该知道的事？",
   "orgs.body":
     "把它登记在这里，它就能触达真正合适的女性，而不是碰巧找到你网站的人。免费，而且我们只核实你一次，不必逐条审核。",
-  "orgs.cta": "登记你的支持",
+  "orgs.cta": "认识这些女性",
 };
 
 export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, string> } = {
