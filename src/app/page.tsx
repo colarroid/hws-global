@@ -14,6 +14,8 @@ import {
 import { getTranslator } from "@/lib/i18n";
 import { getZonesWithCounts } from "@/lib/data/discover";
 import { portalUrl } from "@/lib/portal";
+import { Testimonials } from "@/components/Testimonials";
+import { TESTIMONIALS } from "@/lib/design/testimonials";
 
 export const metadata: Metadata = pageMetadata({
   title: "Find support for women in Scotland",
@@ -328,8 +330,15 @@ export default async function Landing() {
       </section>
 
       {/* The questions somebody asks before typing a sentence about her own
-          life into a website. Answering them is the whole job of this block. */}
-      <section className="mx-auto w-full max-w-[1180px] px-5 pb-16 sm:px-10 sm:pb-20">
+          life into a website, and then the people who typed one.
+
+          A proper section now, on the same padding as the rest of the page:
+          it was a stray block hanging off the bottom of the dark band with
+          only its own bottom margin. The three promises answer the questions
+          in our voice; the quotes under them are the same three claims in
+          somebody else's, which is the only reason they are in the same
+          section rather than a new one. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
         <div className="grid grid-cols-1 gap-[14px] sm:grid-cols-3">
           {[
             {
@@ -364,6 +373,11 @@ export default async function Landing() {
             </div>
           ))}
         </div>
+
+        {/* Renders nothing while the array is empty, which is how this ships
+            the day the placeholder quotes come out and the real ones are not
+            ready yet. */}
+        <Testimonials items={TESTIMONIALS} />
       </section>
 
       {/* The other audience. Kept to one block at the foot, because a woman
