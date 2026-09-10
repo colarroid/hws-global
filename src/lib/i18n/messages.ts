@@ -94,7 +94,7 @@ type Catalogue = Partial<Record<MessageKey, string>>;
 
 const en: Record<MessageKey, string> = {
   "language.label": "Language",
-  "hero.title": "Find support for women in Scotland",
+  "hero.title": "Helping women with the support they need",
   "hero.body":
     "Tell us what you need in your own words, and we will show you a few next steps worth taking. Three questions, no account needed.",
   "hero.cta": "Find solution",
@@ -147,7 +147,7 @@ const en: Record<MessageKey, string> = {
 
 const gd: Catalogue = {
   "language.label": "Cànan",
-  "hero.title": "Lorg taic do bhoireannaich an Alba",
+  "hero.title": "A' cuideachadh bhoireannach leis an taic a tha a dhìth orra",
   "hero.body":
     "Innis dhuinn dè tha a dhìth ort nad fhaclan fhèin, agus seallaidh sinn dhut beagan cheumannan a b’ fhiach a ghabhail. Trì ceistean, gun fheum air cunntas.",
   "hero.cta": "Lorg fuasgladh",
@@ -200,7 +200,7 @@ const gd: Catalogue = {
 
 const sco: Catalogue = {
   "language.label": "Leid",
-  "hero.title": "Finn support for weemen in Scotland",
+  "hero.title": "Helpin weemen wi the support they need",
   "hero.body":
     "Tell us whit ye need in yer ain wirds, an we’ll shaw ye a wheen o next steps worth takkin. Three questions, nae accoont needit.",
   "hero.cta": "Finn solution",
@@ -253,7 +253,7 @@ const sco: Catalogue = {
 
 const pl: Catalogue = {
   "language.label": "Język",
-  "hero.title": "Znajdź wsparcie dla kobiet w Szkocji",
+  "hero.title": "Pomagamy kobietom znaleźć wsparcie, którego potrzebują",
   "hero.body":
     "Powiedz nam własnymi słowami, czego potrzebujesz, a pokażemy Ci kilka kolejnych kroków wartych podjęcia. Trzy pytania, bez zakładania konta.",
   "hero.cta": "Znajdź rozwiązanie",
@@ -306,7 +306,7 @@ const pl: Catalogue = {
 
 const uk: Catalogue = {
   "language.label": "Мова",
-  "hero.title": "Знайдіть підтримку для жінок у Шотландії",
+  "hero.title": "Допомагаємо жінкам отримати підтримку, якої вони потребують",
   "hero.body":
     "Розкажіть своїми словами, що вам потрібно, і ми покажемо кілька наступних кроків, які варто зробити. Три питання, обліковий запис не потрібен.",
   "hero.cta": "Знайти рішення",
@@ -359,7 +359,7 @@ const uk: Catalogue = {
 
 const ar: Catalogue = {
   "language.label": "اللغة",
-  "hero.title": "ابحثي عن الدعم للنساء في اسكتلندا",
+  "hero.title": "نساعد النساء على الحصول على الدعم الذي يحتجن إليه",
   "hero.body":
     "أخبرينا بكلماتك عمّا تحتاجين إليه، وسنعرض عليك بضع خطوات تالية تستحق أن تُتخذ. ثلاثة أسئلة، ولا حاجة إلى حساب.",
   "hero.cta": "ابحثي عن حل",
@@ -412,7 +412,7 @@ const ar: Catalogue = {
 
 const ur: Catalogue = {
   "language.label": "زبان",
-  "hero.title": "اسکاٹ لینڈ میں خواتین کے لیے مدد تلاش کریں",
+  "hero.title": "خواتین کو وہ مدد دلانے میں معاون جس کی انہیں ضرورت ہے",
   "hero.body":
     "اپنے الفاظ میں بتائیں کہ آپ کو کیا چاہیے، اور ہم آپ کو چند اگلے قدم دکھائیں گے جو اٹھانے کے قابل ہیں۔ تین سوال، کوئی اکاؤنٹ درکار نہیں۔",
   "hero.cta": "حل تلاش کریں",
@@ -465,7 +465,7 @@ const ur: Catalogue = {
 
 const pa: Catalogue = {
   "language.label": "ਭਾਸ਼ਾ",
-  "hero.title": "ਸਕਾਟਲੈਂਡ ਵਿੱਚ ਔਰਤਾਂ ਲਈ ਸਹਾਇਤਾ ਲੱਭੋ",
+  "hero.title": "ਔਰਤਾਂ ਨੂੰ ਉਹ ਸਹਾਇਤਾ ਦਿਵਾਉਣਾ ਜਿਸ ਦੀ ਉਨ੍ਹਾਂ ਨੂੰ ਲੋੜ ਹੈ",
   "hero.body":
     "ਸਾਨੂੰ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਕੁਝ ਅਗਲੇ ਕਦਮ ਦਿਖਾਵਾਂਗੇ ਜੋ ਚੁੱਕਣ ਯੋਗ ਹਨ। ਤਿੰਨ ਸਵਾਲ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਚਾਹੀਦਾ।",
   "hero.cta": "ਹੱਲ ਲੱਭੋ",
@@ -518,7 +518,7 @@ const pa: Catalogue = {
 
 const zh: Catalogue = {
   "language.label": "语言",
-  "hero.title": "为苏格兰的女性寻找支持",
+  "hero.title": "帮助女性获得她们需要的支持",
   "hero.body":
     "用你自己的话告诉我们你需要什么，我们会为你列出几个值得迈出的下一步。三个问题，无需注册账户。",
   "hero.cta": "寻找方案",
