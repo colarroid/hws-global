@@ -388,7 +388,7 @@ export default async function Landing() {
             drawing is pulled down by exactly that padding so it still stands
             on the card's edge — bottom-aligning the whole row instead put
             all the slack above the heading and none under the button. */}
-        <div className="flex flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-stretch sm:justify-between sm:gap-10 sm:p-10">
+        <div className="flex max-w-[880px] flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-stretch sm:justify-between sm:gap-10 sm:p-10">
           <div className="flex flex-col items-start justify-center gap-3">
             <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
               {t("orgs.title")}
@@ -420,8 +420,8 @@ export default async function Landing() {
           <Image
             src={organisationsFigure}
             alt=""
-            sizes="(min-width: 1024px) 320px, 240px"
-            className="-mb-8 hidden h-auto w-[240px] shrink-0 self-end sm:-mb-10 sm:block lg:w-[320px]"
+            sizes="(min-width: 1024px) 215px, 160px"
+            className="-mb-8 hidden h-auto w-[160px] shrink-0 self-end sm:-mb-10 sm:block lg:w-[215px]"
           />
         </div>
       </section>
