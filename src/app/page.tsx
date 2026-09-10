@@ -12,7 +12,7 @@ import {
   MessageSquareText,
 } from "lucide-react";
 import { getTranslator } from "@/lib/i18n";
-import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
+import { getZonesWithCounts } from "@/lib/data/discover";
 import { portalUrl } from "@/lib/portal";
 
 export const metadata: Metadata = pageMetadata({
@@ -42,8 +42,7 @@ export const metadata: Metadata = pageMetadata({
  * checked" that is the worst thing to be wrong about.
  */
 export default async function Landing() {
-  const [counts, zones, translation] = await Promise.all([
-    getPlatformCounts(),
+  const [zones, translation] = await Promise.all([
     getZonesWithCounts(),
     getTranslator(),
   ]);
@@ -282,22 +281,25 @@ export default async function Landing() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
+      {/* The one dark band on the page, back where the how-it-works section
+          used to sit. The zones are the platform's own vocabulary — the eight
+          words everything on it is filed under — and they are worth the
+          contrast in a way that a list of steps was not. */}
+      <section className="bg-ink px-5 py-24 sm:px-10 sm:py-32">
+        <div className="mx-auto w-full max-w-[1180px]">
         <div className="flex flex-col gap-3">
-          {/* The count sits in the eyebrow rather than in front of the
-              heading's noun. Glued to the front of a translated phrase it
-              was ungrammatical in three of the nine languages and could not
-              be fixed by translating harder: Polish and Ukrainian change the
-              noun's ending at five, Arabic changes it again at eleven, and
-              the number here is live. Beside the label it agrees with
-              nothing. */}
-          <span className="eyebrow text-gold-700">
-            {t("zones.eyebrow")} · {counts.zones}
-          </span>
-          <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
+          {/* The count used to sit here, beside the label rather than in
+              front of the heading's noun, because glued to a translated
+              phrase it was ungrammatical in three of the nine languages.
+              HWS has taken it off entirely, which settles that. */}
+          <span className="eyebrow text-gold-300">{t("zones.eyebrow")}</span>
+          <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
             {t("zones.title")}
           </h2>
-          <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-ink-70">
+          {/* Set exactly as the hero's paragraph is: 16px on a 512px measure
+              at 1.5, white at 80%. The two are the same kind of sentence
+              doing the same job, and they were two different sizes. */}
+          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/80">
             {t("zones.body")}
           </p>
         </div>
@@ -307,7 +309,7 @@ export default async function Landing() {
             <Link
               key={zone.id}
               href={`/discover/${zone.slug}`}
-              className="inline-flex min-h-[44px] items-center rounded-full bg-surface px-[18px] py-[12px] text-[16px] font-semibold text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
+              className="zone-chip inline-flex min-h-[44px] items-center rounded-full px-[18px] py-[12px] text-[16px] font-semibold text-white no-underline"
             >
               {zone.name}
             </Link>
@@ -316,12 +318,13 @@ export default async function Landing() {
 
         <Link
           href="/discover"
-          className="mt-8 inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
+          className="mt-8 inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-300 no-underline"
         >
           <Compass size={18} strokeWidth={2} aria-hidden="true" />
           {t("zones.browse")}
           <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
         </Link>
+        </div>
       </section>
 
       {/* The questions somebody asks before typing a sentence about her own
