@@ -24,6 +24,11 @@ const THRESHOLD = 24;
  * With JavaScript off this stays transparent, which is the safe failure: the
  * top of the hero is dark, so a light bar on it is still readable. The bar
  * only has to change because the cream arrives underneath it.
+ *
+ * Sticky rather than in flow everywhere else, so the phone sheet — which is
+ * positioned 60px from the top of the window — always meets the bottom of a
+ * bar that is actually there. In flow, opening the menu part-way down a page
+ * left the sheet hanging under a header that had scrolled away.
  */
 export function HeaderShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -49,7 +54,7 @@ export function HeaderShell({ children }: { children: ReactNode }) {
       data-chrome={transparent ? "overlay" : "solid"}
       className={[
         "z-50 border-b transition-[background-color,border-color,box-shadow] duration-200 ease-out",
-        overlay ? "fixed inset-x-0 top-0" : "relative",
+        overlay ? "fixed inset-x-0 top-0" : "sticky top-0",
         transparent
           ? "border-transparent bg-transparent"
           : "border-hairline bg-ground",

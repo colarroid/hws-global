@@ -187,19 +187,28 @@
    --------------------------------------------------------------- */
 
 header[data-chrome="overlay"],
-header[data-chrome="overlay"] :is(a, button) {
+header[data-chrome="overlay"]
+  :is(a, button):not([role="menu"] *):not(.nav-sheet *) {
   color: #fff;
 }
 
-/* Icons only, and only where they are the control's own child. The flags in
+/* The exclusions matter: both the language menu and the phone sheet are
+   white panels that live inside the header, so without them every row in
+   an open dropdown was white text on white. What should go light is the
+   bar's own controls, not everything the bar happens to contain.
+
+   Icons only, and only where they are the control's own child. The flags in
    the language picker are drawn with explicit fills rather than
    currentColor, so this cannot reach them, and the lettered fallback badge
    keeps its gold because it is a span with a ground of its own. */
-header[data-chrome="overlay"] :is(a, button) > svg {
+header[data-chrome="overlay"]
+  :is(a, button):not([role="menu"] *):not(.nav-sheet *)
+  > svg {
   color: inherit;
 }
 
-header[data-chrome="overlay"] :is(a, button):hover {
+header[data-chrome="overlay"]
+  :is(a, button):not([role="menu"] *):not(.nav-sheet *):hover {
   background-color: rgba(255, 255, 255, 0.16);
 }
 
@@ -236,4 +245,45 @@ header[data-chrome="overlay"] .menu-trigger[data-open="false"]:hover {
 
 header[data-chrome="overlay"] .menu-trigger[data-open="true"] > svg {
   color: var(--color-ink);
+}
+
+/* ---------------------------------------------------------------
+   While the phone sheet is open.
+
+   Two things follow from a sheet that covers the page rather than
+   pushing it down. The page behind it must stop moving, or a scroll
+   that starts on the sheet carries on in the document underneath it.
+   And on the landing page the bar is transparent over a photograph,
+   so with a white sheet under it the mark and the close button would
+   be white on white: the header takes its ground back for as long as
+   the sheet is open.
+   --------------------------------------------------------------- */
+
+html[data-nav-open="true"],
+html[data-nav-open="true"] body {
+  overflow: hidden;
+}
+
+html[data-nav-open="true"] header[data-chrome="overlay"] {
+  background-color: var(--color-ground);
+  border-bottom-color: var(--color-hairline);
+}
+
+/* One :not() heavier than the rule above it, deliberately. The white-text
+   rule carries two of them, and a specificity that loses is a rule that
+   silently does nothing — which is exactly how the close button ended up
+   white on a white sheet. */
+html[data-nav-open="true"] header[data-chrome="overlay"],
+html[data-nav-open="true"]
+  header[data-chrome="overlay"]
+  :is(a, button):not([role="menu"] *):not(.nav-sheet *),
+html[data-nav-open="true"]
+  header[data-chrome="overlay"]
+  :is(a, button):not([role="menu"] *):not(.nav-sheet *)
+  > svg {
+  color: var(--color-ink);
+}
+
+html[data-nav-open="true"] header[data-chrome="overlay"] img[src$=".svg"] {
+  filter: none;
 }

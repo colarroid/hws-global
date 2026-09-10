@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Bookmark, LogOut, Settings } from "lucide-react";
 import { MobileNav } from "@/components/ui/MobileNav";
 import { HeaderShell } from "@/components/HeaderShell";
 import { AccountMenu } from "@/components/AccountMenu";
@@ -23,16 +22,9 @@ import { getLocale } from "@/lib/i18n";
 function SavedLink({ count }: { count: number }) {
   return (
     <Link href="/saved" className={PANEL_ROW}>
-      <Bookmark
-        size={17}
-        strokeWidth={2}
-        className="shrink-0 text-gold-500"
-        fill="currentColor"
-        aria-hidden="true"
-      />
       <span className="flex-1">Saved</span>
       {count > 0 ? (
-        <span className="rounded-full bg-gold-200 px-2 py-[2px] text-[13px] font-bold tabular-nums text-gold-700">
+        <span className="rounded-full bg-gold-200 px-[10px] py-[3px] text-[15px] font-bold tabular-nums text-gold-700">
           {count}
         </span>
       ) : null}
@@ -48,48 +40,50 @@ const PLACES = [
   { href: "/faq", label: "FAQ" },
 ];
 
+/*
+ * The sheet's rows, in the style HWS pointed at: set large, ruled off from
+ * each other, and tall enough to hit without aiming. Sans rather than the
+ * display face, because a navigation list is a set of controls and not a
+ * piece of writing, however big the type is.
+ *
+ * The rule is on the bottom of every row, so the list reads as one ruled
+ * block rather than as rows that each own an edge.
+ */
 const PANEL_ROW =
-  "inline-flex w-full min-h-[44px] items-center gap-3 rounded-control px-3 py-[10px] " +
-  "text-[15px] font-medium text-ink-70 no-underline " +
-  "transition-[color,background-color] duration-150 ease-out hover:bg-gold-200/60 hover:text-ink";
+  "flex w-full min-h-[62px] items-center gap-3 border-b border-hairline " +
+  "text-[26px] font-normal leading-[1.15] tracking-[-0.015em] text-ink no-underline " +
+  "transition-colors duration-150 ease-out active:text-gold-700";
+
+/** The two things to do, at the foot where her thumb already is. */
+const SHEET_BUTTON =
+  "flex min-h-[52px] w-full items-center justify-center rounded-control " +
+  "text-[16px] font-bold no-underline transition-opacity duration-150 ease-out";
 
 /** Settings, as a row in the phone panel. In words: there is room for them. */
 function SettingsLink() {
   return (
     <Link href="/settings" className={PANEL_ROW}>
-      <Settings
-        size={17}
-        strokeWidth={2}
-        className="shrink-0 text-ink-60"
-        aria-hidden="true"
-      />
       <span className="flex-1">Reminders and settings</span>
     </Link>
   );
 }
 
 /**
- * Sign out, as a row in the phone panel.
+ * Sign out, as the sheet's quiet button rather than a row.
  *
- * A form rather than a link, because it does something. Ruled off above for
- * the same reason it is in the account menu: it is the one row here that
- * does not take her somewhere, and a woman reaching for Settings should not
- * be able to land on it by a thumb's width.
+ * A form rather than a link, because it does something. Down with the
+ * buttons for the same reason it was ruled off in the list: it is the one
+ * control here that does not take her somewhere, and a woman reaching for
+ * Settings should not be able to land on it by a thumb's width.
  */
-function SignOutRow() {
+function SignOutButton() {
   return (
-    <form
-      action={signOut}
-      className="mt-1 w-full border-t border-hairline-soft pt-1"
-    >
-      <button type="submit" className={`${PANEL_ROW} cursor-pointer border-0 bg-transparent text-start`}>
-        <LogOut
-          size={17}
-          strokeWidth={2}
-          className="shrink-0 text-ink-60"
-          aria-hidden="true"
-        />
-        <span className="flex-1">Sign out</span>
+    <form action={signOut} className="w-full">
+      <button
+        type="submit"
+        className={`${SHEET_BUTTON} cursor-pointer border-0 bg-transparent text-ink shadow-hairline`}
+      >
+        Sign out
       </button>
     </form>
   );
@@ -209,15 +203,38 @@ export async function SiteHeader() {
                   {place.label}
                 </Link>
               ))}
-              {/* Both when she is signed in, so the panel lists what the
+              {/* Both when she is signed in, so the sheet lists what the
                   account menu lists. Saved used to appear only once there
                   was something in it, which meant the way back to an empty
                   list was through a page she had no route to. */}
               {account ? <SavedLink count={saved.length} /> : null}
               {account ? <SettingsLink /> : null}
-              {account ? <SignOutRow /> : null}
-              {/* Last in the panel, under a rule: it is the one group here
-                  that is not a place to go. */}
+
+              {/* The two things to do, under the list. Searching is the
+                  filled one on every screen of this platform and this is no
+                  exception; the quiet one is whichever half of the account
+                  she is on. */}
+              <div className="flex flex-col gap-3 pt-7">
+                <Link
+                  href="/find"
+                  className={`${SHEET_BUTTON} bg-ink text-white`}
+                >
+                  Find your next step
+                </Link>
+                {account ? (
+                  <SignOutButton />
+                ) : (
+                  <Link
+                    href="/account"
+                    className={`${SHEET_BUTTON} bg-transparent text-ink shadow-hairline`}
+                  >
+                    Sign in
+                  </Link>
+                )}
+              </div>
+
+              {/* Last, under a rule: it is the one group here that is not a
+                  place to go and not a thing to do. */}
               <LanguageRows current={locale.code} />
             </MobileNav>
 
