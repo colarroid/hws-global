@@ -184,7 +184,7 @@ export default async function Landing() {
                 <Link
                   key={card.href}
                   href={card.href}
-                  className="flex min-h-[104px] items-center justify-center rounded-card bg-white/75 px-4 py-6 sm:min-h-[128px] sm:px-5 text-center font-display text-[20px] font-normal leading-[1.33] text-ink sm:text-[22px] no-underline shadow-[0_0_0_1px_rgba(255,255,255,0.9)] backdrop-blur-[4px] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-[1px] hover:bg-white/90"
+                  className="flex min-h-[52px] items-center justify-center rounded-card bg-white/75 px-4 py-3 sm:min-h-[64px] sm:px-5 sm:py-4 text-center font-display text-[20px] font-normal leading-[1.33] text-ink sm:text-[22px] no-underline shadow-[0_0_0_1px_rgba(255,255,255,0.9)] backdrop-blur-[4px] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-[1px] hover:bg-white/90"
                 >
                   {card.label}
                 </Link>
