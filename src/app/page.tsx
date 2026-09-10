@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
+import Image from "next/image";
+import heroImage from "@/images/hero-shadows.webp";
 import {
   ArrowRight,
   BadgeCheck,
@@ -64,35 +66,91 @@ export default async function Landing() {
           pick, which is worth more here than a heading would be. The rules
           either side are what stop it reading as a third button.
 
-          No background image: HWS asked for the structure without it, and the
-          photograph is what made the original's text white. On the cream the
-          type goes back to ink, and the cards become the platform's own card —
-          surface, 12px, hairline ring — rather than the frosted glass that
-          only works over a photo. */}
-      <section className="px-5 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28">
+          The photograph came after the structure did, which is the right way
+          round: the hero was built to hold on the cream first, so nothing on
+          it depends on the image being there. Take the picture away and the
+          only edits are the type going back to ink and the cards back to
+          surface. That matters because a hero whose legibility rests on one
+          file is a hero that breaks the day the file does. */}
+      <section className="relative isolate flex min-h-[560px] items-center overflow-hidden px-5 py-20 sm:min-h-[640px] sm:px-10 sm:py-28">
+        {/* Decorative, so alt is empty: the photograph carries no information
+            the page depends on, and describing it to a screen reader would
+            only put furniture between her and the headline.
+
+            priority because this is the largest thing above the fold and
+            therefore the LCP element; without it Next lazy-loads the hero and
+            the page scores itself badly for the one image that matters. The
+            24MB PNG is a 251KB WebP at 2560 wide, and Next derives AVIF and
+            every smaller width from it per request, so a phone is served a
+            fraction of that. */}
+        <Image
+          src={heroImage}
+          alt=""
+          fill
+          priority
+          placeholder="blur"
+          sizes="100vw"
+          // She sits right of centre and the light falls across her face in
+          // the upper third, so a straight centre crop cuts the subject's
+          // eyes on a wide viewport.
+          // A phone crops the frame horizontally rather than vertically, so
+          // it needs a different point held: further right, or she is cropped
+          // out of her own portrait and the hero is a picture of a wall.
+          className="-z-20 object-cover object-[72%_40%] sm:object-[62%_38%]"
+        />
+
+        {/* One scrim, and which one depends on the shape of the screen. They
+            are separate elements rather than one with responsive background
+            utilities because two backgrounds on a single element resolve by
+            stylesheet order in this codebase, not by the order written.
+
+            Wide: the gradient runs left to right because the type does. It is
+            heaviest where the words are and has cleared by the time it
+            reaches her, so the photograph stays a photograph rather than a
+            texture behind a scrim.
+
+            Narrow: the text crosses the whole frame, so the shading has to be
+            even. Stacking the horizontal gradient and a flat overlay was the
+            first attempt and it came to 0.97 at the left edge, which is not a
+            photograph at all — it is a black rectangle that costs 251KB. */}
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.62)_0%,rgba(18,9,2,0.78)_100%)] sm:hidden"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.94)_0%,rgba(18,9,2,0.82)_34%,rgba(18,9,2,0.42)_58%,rgba(18,9,2,0.20)_100%)] sm:block"
+        />
+
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="flex max-w-[576px] flex-col gap-6">
-            <h1 className="m-0 font-display text-[38px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[60px] sm:leading-[1.3]">
+            <h1 className="m-0 font-display text-[38px] font-normal leading-[1.15] tracking-[-0.01em] text-white sm:text-[60px] sm:leading-[1.3]">
               {t("hero.title")}
             </h1>
 
-            <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
+            <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/80">
               {t("hero.body")}
             </p>
 
             {/* Asked, rather than announced. The rules either side are what
                 keep it a label and not a third thing to press. */}
             <div className="mt-2 flex items-center gap-4">
-              <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
-              <span className="font-display text-[16px] font-normal italic text-ink-70">
+              <span className="h-px flex-1 bg-white/25" aria-hidden="true" />
+              <span className="font-display text-[16px] font-normal italic text-white/80">
                 {t("hero.begin")}
               </span>
-              <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
+              <span className="h-px flex-1 bg-white/25" aria-hidden="true" />
             </div>
 
             {/* 256 + 40 + 256 is the original's measure, kept. They stack
                 below that, because two cards of half the width would be two
-                cards nobody can read the label of. */}
+                cards nobody can read the label of.
+
+                Frosted glass, which is what the reference used and what was
+                dropped when there was no photograph for it to sit on. It
+                works here for the same reason it worked there: the blur keeps
+                the ink legible over whatever part of the image lands behind
+                it, without hiding the image. */}
             <div className="grid grid-cols-1 gap-[40px] sm:grid-cols-2">
               {[
                 { href: "/find", label: t("hero.beginFind") },
@@ -101,7 +159,7 @@ export default async function Landing() {
                 <Link
                   key={card.href}
                   href={card.href}
-                  className="flex min-h-[128px] items-center justify-center rounded-card bg-surface p-8 text-center font-display text-[24px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
+                  className="flex min-h-[128px] items-center justify-center rounded-card bg-white/75 p-8 text-center font-display text-[24px] font-normal leading-[1.33] text-ink no-underline shadow-[0_0_0_1px_rgba(255,255,255,0.9)] backdrop-blur-[4px] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-[1px] hover:bg-white/90"
                 >
                   {card.label}
                 </Link>
