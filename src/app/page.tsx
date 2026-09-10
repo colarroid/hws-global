@@ -9,7 +9,6 @@ import {
   Lock,
   MessageSquareText,
 } from "lucide-react";
-import { ButtonLink } from "@/components/ui/Button";
 import { getTranslator } from "@/lib/i18n";
 import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
 import { portalUrl } from "@/lib/portal";
@@ -50,36 +49,65 @@ export default async function Landing() {
 
   return (
     <div className="flex flex-1 flex-col">
+      {/* The hero, rebuilt to the structure HWS pointed at: a left-aligned
+          column, a serif headline at a 1.3 line-height rather than the tight
+          1.03 it had, a short sans paragraph on a narrower measure, then a
+          ruled label introducing two equal cards.
+
+          The two cards replace a filled button beside a quiet text link. That
+          pairing said one of these is the real route and the other is for
+          people who could not manage it, which was never true — browsing is
+          for the woman who cannot yet name what she needs, and that is not a
+          lesser way in. Two cards of the same size say so.
+
+          What the ruled label does is ask her a question before she has to
+          pick, which is worth more here than a heading would be. The rules
+          either side are what stop it reading as a third button.
+
+          No background image: HWS asked for the structure without it, and the
+          photograph is what made the original's text white. On the cream the
+          type goes back to ink, and the cards become the platform's own card —
+          surface, 12px, hairline ring — rather than the frosted glass that
+          only works over a photo. */}
       <section className="px-5 pb-16 pt-20 sm:px-10 sm:pb-24 sm:pt-28">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
-          <h1 className="m-0 max-w-[17ch] font-display text-[40px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[76px]">
-            {t("hero.title")}
-          </h1>
+        <div className="mx-auto w-full max-w-[1180px]">
+          <div className="flex max-w-[576px] flex-col gap-6">
+            <h1 className="m-0 font-display text-[38px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[60px] sm:leading-[1.3]">
+              {t("hero.title")}
+            </h1>
 
-          <p className="m-0 max-w-[54ch] text-[19px] leading-[1.6] text-ink-70 sm:text-[21px]">
-            {t("hero.body")}
-          </p>
+            <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
+              {t("hero.body")}
+            </p>
 
-          <div className="flex flex-wrap items-center gap-5">
-            <ButtonLink
-              href="/find"
-              size="inline"
-              className="px-9 py-[19px] text-[18px]"
-            >
-              {t("hero.cta")}
-            </ButtonLink>
-            {/* Second, and quieter. Searching is the front door for almost
-                everybody; browsing is for the woman who cannot yet name what
-                she needs, and offering it as an equal would slow the rest. */}
-            <Link
-              href="/discover"
-              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[17px] font-bold text-gold-700 no-underline"
-            >
-              {t("hero.browse")}
-              <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
-            </Link>
+            {/* Asked, rather than announced. The rules either side are what
+                keep it a label and not a third thing to press. */}
+            <div className="mt-2 flex items-center gap-4">
+              <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
+              <span className="font-display text-[16px] font-normal italic text-ink-70">
+                {t("hero.begin")}
+              </span>
+              <span className="h-px flex-1 bg-hairline" aria-hidden="true" />
+            </div>
+
+            {/* 256 + 40 + 256 is the original's measure, kept. They stack
+                below that, because two cards of half the width would be two
+                cards nobody can read the label of. */}
+            <div className="grid grid-cols-1 gap-[40px] sm:grid-cols-2">
+              {[
+                { href: "/find", label: t("hero.beginFind") },
+                { href: "/discover", label: t("hero.beginBrowse") },
+              ].map((card) => (
+                <Link
+                  key={card.href}
+                  href={card.href}
+                  className="flex min-h-[128px] items-center justify-center rounded-card bg-surface p-8 text-center font-display text-[24px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold"
+                >
+                  {card.label}
+                </Link>
+              ))}
+            </div>
           </div>
-
         </div>
       </section>
 

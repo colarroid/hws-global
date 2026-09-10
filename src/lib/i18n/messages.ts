@@ -57,6 +57,9 @@ export type MessageKey =
   | "hero.body"
   | "hero.cta"
   | "hero.browse"
+  | "hero.begin"
+  | "hero.beginFind"
+  | "hero.beginBrowse"
   | "why.eyebrow"
   | "why.title"
   | "why.body"
@@ -103,6 +106,9 @@ const en: Record<MessageKey, string> = {
     "A search will tell you a fund exists. It will not tell you that it closed in March, or that you are not eligible, or what happens after you apply. Everything here was chosen and checked by people who do this work, and every listing carries the date somebody last confirmed it.",
   "why.audience":
     "It is for any woman at any point — starting out, starting again, or starting something. You do not have to know what your problem is called. Most people arrive with a sentence rather than a category, and turning one into the other is the job.",
+  "hero.begin": "Where would you like to start?",
+  "hero.beginFind": "Find your next step",
+  "hero.beginBrowse": "See who is out there",
   "how.eyebrow": "How it works",
   "how.title": "You should not have to know who to ask",
   "how.body":
@@ -153,6 +159,9 @@ const gd: Catalogue = {
     "Innsidh lorg dhut gu bheil maoin ann. Chan innis e dhut gun do dhùin i sa Mhàrt, no nach eil thu airidh oirre, no dè thachras às dèidh dhut iarrtas a chur a-steach. Chaidh a h-uile càil an seo a thaghadh agus a dhearbhadh le daoine a tha ag obair san raon seo, agus tha an ceann-latha mu dheireadh a dhearbh cuideigin e air gach clàr.",
   "why.audience":
     "Tha e do bhoireannach sam bith aig àm sam bith — a' tòiseachadh a-mach, a' tòiseachadh a-rithist, no a' tòiseachadh rudeigin. Chan fheum fios a bhith agad dè an t-ainm a th' air an duilgheadas agad. Bidh a' mhòr-chuid a' tighinn le seantans seach le roinn, agus 's e an obair againn tè a thionndadh na tè eile.",
+  "hero.begin": "Càite am bu toil leat tòiseachadh?",
+  "hero.beginFind": "Lorg do chiad cheum",
+  "hero.beginBrowse": "Faic cò tha ann",
   "how.eyebrow": "Mar a tha e ag obair",
   "how.title": "Cha bu chòir dhut fios a bhith agad cò ris a bhruidhneas tu",
   "how.body":
@@ -203,6 +212,9 @@ const sco: Catalogue = {
     "A search will tell ye a fund exists. It'll no tell ye it steekit in Mairch, or that ye're no eligible, or whit happens efter ye apply. Awthing here wis waled an checkit by fowk that dae this wark, an ilka listin cairries the date somebody last confirmed it.",
   "why.audience":
     "It's for ony wumman at ony pynt — stertin oot, stertin again, or stertin somethin. Ye dinna hae tae ken whit yer problem is cawed. Maist fowk arrive wi a sentence raither nor a category, an turnin the tane intae the tither is the job.",
+  "hero.begin": "Whaur wad ye like tae stert?",
+  "hero.beginFind": "Finn yer neist step",
+  "hero.beginBrowse": "See wha's oot there",
   "how.eyebrow": "Hoo it warks",
   "how.title": "Ye shouldnae hae tae ken wha tae speir at",
   "how.body":
@@ -253,6 +265,9 @@ const pl: Catalogue = {
     "Wyszukiwarka powie ci, że dany fundusz istnieje. Nie powie ci, że nabór zamknięto w marcu, że nie spełniasz warunków ani co dzieje się po złożeniu wniosku. Wszystko, co tu znajdziesz, zostało wybrane i sprawdzone przez osoby, które pracują w tej dziedzinie, a każdy wpis nosi datę ostatniego potwierdzenia.",
   "why.audience":
     "To miejsce dla każdej kobiety w każdym momencie życia — gdy zaczynasz, zaczynasz od nowa albo zaczynasz coś swojego. Nie musisz wiedzieć, jak nazywa się twój problem. Większość osób przychodzi ze zdaniem, a nie z kategorią, i naszym zadaniem jest zamienić jedno w drugie.",
+  "hero.begin": "Od czego chcesz zacząć?",
+  "hero.beginFind": "Znajdź swój następny krok",
+  "hero.beginBrowse": "Zobacz, kto tu jest",
   "how.eyebrow": "Jak to działa",
   "how.title": "Nie musisz wiedzieć, do kogo się zwrócić",
   "how.body":
@@ -303,6 +318,9 @@ const uk: Catalogue = {
     "Пошук скаже вам, що фонд існує. Він не скаже, що набір закрився у березні, що ви не відповідаєте умовам або що буде після подання заявки. Усе тут обрано й перевірено людьми, які працюють у цій сфері, а кожен запис має дату останнього підтвердження.",
   "why.audience":
     "Це для будь-якої жінки на будь-якому етапі — коли ви починаєте, починаєте заново або починаєте щось своє. Вам не треба знати, як називається ваша проблема. Більшість приходить із реченням, а не з категорією, і наша робота — перетворити одне на інше.",
+  "hero.begin": "З чого хочете почати?",
+  "hero.beginFind": "Знайдіть наступний крок",
+  "hero.beginBrowse": "Подивіться, хто тут є",
   "how.eyebrow": "Як це працює",
   "how.title": "Вам не треба знати, до кого звертатися",
   "how.body":
@@ -353,6 +371,9 @@ const ar: Catalogue = {
     "البحث سيخبرك بوجود صندوق تمويل، لكنه لن يخبرك بأنه أُغلق في آذار، ولا بأنكِ غير مؤهّلة، ولا بما يحدث بعد التقديم. كل ما هنا اختاره وتحقّق منه أشخاص يعملون في هذا المجال، وكل إدراج يحمل تاريخ آخر تأكيد له.",
   "why.audience":
     "هذا لكل امرأة في أي مرحلة من حياتها، سواء كنتِ تبدئين، أو تبدئين من جديد، أو تبدئين مشروعًا خاصًا بكِ. لستِ مضطرة إلى معرفة اسم مشكلتك. معظم النساء يأتين بجملة لا بتصنيف، ومهمتنا أن نحوّل الأولى إلى الثانية.",
+  "hero.begin": "من أين تحبين أن تبدئي؟",
+  "hero.beginFind": "ابحثي عن خطوتك التالية",
+  "hero.beginBrowse": "اطّلعي على الجهات الموجودة",
   "how.eyebrow": "طريقة العمل",
   "how.title": "ليس عليك أن تعرفي بمن تتصلين",
   "how.body":
@@ -403,6 +424,9 @@ const ur: Catalogue = {
     "تلاش آپ کو بتا دے گی کہ کوئی فنڈ موجود ہے۔ وہ یہ نہیں بتائے گی کہ وہ مارچ میں بند ہو گیا، یا یہ کہ آپ اہل نہیں، یا درخواست کے بعد کیا ہوتا ہے۔ یہاں موجود ہر چیز کو اُن لوگوں نے چنا اور جانچا ہے جو اسی شعبے میں کام کرتے ہیں، اور ہر اندراج پر آخری تصدیق کی تاریخ درج ہوتی ہے۔",
   "why.audience":
     "یہ ہر عورت کے لیے ہے، زندگی کے ہر موڑ پر۔ چاہے آپ شروعات کر رہی ہوں، دوبارہ شروع کر رہی ہوں، یا اپنا کچھ شروع کر رہی ہوں۔ آپ کو یہ جاننے کی ضرورت نہیں کہ آپ کے مسئلے کا نام کیا ہے۔ زیادہ تر خواتین ایک جملہ لے کر آتی ہیں، کوئی زمرہ نہیں، اور ہمارا کام پہلے کو دوسرے میں بدلنا ہے۔",
+  "hero.begin": "آپ کہاں سے شروع کرنا چاہیں گی؟",
+  "hero.beginFind": "اپنا اگلا قدم تلاش کریں",
+  "hero.beginBrowse": "دیکھیں کون کون موجود ہے",
   "how.eyebrow": "یہ کیسے کام کرتا ہے",
   "how.title": "آپ کو یہ جاننے کی ضرورت نہیں کہ کس سے پوچھیں",
   "how.body":
@@ -453,6 +477,9 @@ const pa: Catalogue = {
     "ਖੋਜ ਤੁਹਾਨੂੰ ਦੱਸ ਦੇਵੇਗੀ ਕਿ ਕੋਈ ਫੰਡ ਮੌਜੂਦ ਹੈ। ਉਹ ਇਹ ਨਹੀਂ ਦੱਸੇਗੀ ਕਿ ਉਹ ਮਾਰਚ ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ, ਜਾਂ ਤੁਸੀਂ ਯੋਗ ਨਹੀਂ ਹੋ, ਜਾਂ ਅਰਜ਼ੀ ਤੋਂ ਬਾਅਦ ਕੀ ਹੁੰਦਾ ਹੈ। ਇੱਥੇ ਹਰ ਚੀਜ਼ ਉਨ੍ਹਾਂ ਲੋਕਾਂ ਨੇ ਚੁਣੀ ਤੇ ਪਰਖੀ ਹੈ ਜੋ ਇਸੇ ਖੇਤਰ ਵਿੱਚ ਕੰਮ ਕਰਦੇ ਹਨ, ਅਤੇ ਹਰ ਸੂਚੀ ਉੱਤੇ ਆਖ਼ਰੀ ਪੁਸ਼ਟੀ ਦੀ ਤਾਰੀਖ਼ ਦਰਜ ਹੁੰਦੀ ਹੈ।",
   "why.audience":
     "ਇਹ ਹਰ ਔਰਤ ਲਈ ਹੈ, ਜ਼ਿੰਦਗੀ ਦੇ ਹਰ ਮੋੜ ਉੱਤੇ। ਭਾਵੇਂ ਤੁਸੀਂ ਸ਼ੁਰੂ ਕਰ ਰਹੀ ਹੋ, ਮੁੜ ਸ਼ੁਰੂ ਕਰ ਰਹੀ ਹੋ, ਜਾਂ ਆਪਣਾ ਕੁਝ ਸ਼ੁਰੂ ਕਰ ਰਹੀ ਹੋ। ਤੁਹਾਨੂੰ ਇਹ ਜਾਣਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਤੁਹਾਡੀ ਮੁਸ਼ਕਲ ਦਾ ਨਾਂ ਕੀ ਹੈ। ਬਹੁਤੀਆਂ ਔਰਤਾਂ ਇੱਕ ਵਾਕ ਲੈ ਕੇ ਆਉਂਦੀਆਂ ਹਨ, ਕੋਈ ਸ਼੍ਰੇਣੀ ਨਹੀਂ, ਅਤੇ ਸਾਡਾ ਕੰਮ ਪਹਿਲੇ ਨੂੰ ਦੂਜੇ ਵਿੱਚ ਬਦਲਣਾ ਹੈ।",
+  "hero.begin": "ਤੁਸੀਂ ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰਨਾ ਚਾਹੋਗੇ?",
+  "hero.beginFind": "ਆਪਣਾ ਅਗਲਾ ਕਦਮ ਲੱਭੋ",
+  "hero.beginBrowse": "ਵੇਖੋ ਕੌਣ ਮੌਜੂਦ ਹੈ",
   "how.eyebrow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "how.title": "ਤੁਹਾਨੂੰ ਇਹ ਜਾਣਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਕਿਸ ਨੂੰ ਪੁੱਛਣਾ ਹੈ",
   "how.body":
@@ -502,6 +529,9 @@ const zh: Catalogue = {
     "搜索能告诉你有这样一笔资金，却不会告诉你它三月就已截止、你并不符合条件，也不会告诉你申请之后会发生什么。这里的每一项都由从事这一行的人挑选并核实，每条信息都标有最近一次确认的日期。",
   "why.audience":
     "它面向每一位女性，人生的任何阶段：无论你是刚起步、重新开始，还是想做点自己的事。你不需要知道自己的问题该怎么称呼。大多数人带来的是一句话，而不是一个类别，把前者变成后者正是我们的工作。",
+  "hero.begin": "你想从哪里开始？",
+  "hero.beginFind": "找到你的下一步",
+  "hero.beginBrowse": "看看有哪些机构",
   "how.eyebrow": "运作方式",
   "how.title": "你不需要知道该去问谁",
   "how.body":
