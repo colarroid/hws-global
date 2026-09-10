@@ -209,8 +209,31 @@ header[data-chrome="overlay"] img[src$=".svg"] {
   filter: brightness(0) invert(1);
 }
 
-/* The phone menu button wears a hairline ring drawn for the cream. */
-header[data-chrome="overlay"] .menu-trigger {
-  background-color: rgba(255, 255, 255, 0.14);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+/* The phone menu button carries no ground of its own until it is opened: on
+   the landing page it sits on a photograph, and a box drawn round it there
+   is furniture the mark does not need.
+
+   Both states live here rather than as a conditional class list on the
+   button. Tailwind resolved that ternary's utilities onto the element but
+   they did not take, while the same class on the panel two lines below did;
+   rather than keep guessing at why, the two states are written where they
+   can be read. */
+.menu-trigger[data-open="false"]:hover {
+  background-color: var(--color-gold-200);
+}
+
+.menu-trigger[data-open="true"] {
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-hairline);
+}
+
+/* Over the photograph the icon is white until the button takes the panel's
+   ground under it, at which point it has to come back to ink or it is a
+   white glyph on a white button. */
+header[data-chrome="overlay"] .menu-trigger[data-open="false"]:hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+header[data-chrome="overlay"] .menu-trigger[data-open="true"] > svg {
+  color: var(--color-ink);
 }

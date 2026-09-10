@@ -8,6 +8,7 @@ import { getSavedIds } from "@/lib/saved";
 import { signOut } from "@/app/account/actions";
 import { getAccount } from "@/lib/data/account";
 import { LanguageMenu } from "@/components/LanguageMenu";
+import { LanguageRows } from "@/components/LanguageRows";
 import { getLocale } from "@/lib/i18n";
 
 /**
@@ -215,9 +216,17 @@ export async function SiteHeader() {
               {account ? <SavedLink count={saved.length} /> : null}
               {account ? <SettingsLink /> : null}
               {account ? <SignOutRow /> : null}
+              {/* Last in the panel, under a rule: it is the one group here
+                  that is not a place to go. */}
+              <LanguageRows current={locale.code} />
             </MobileNav>
 
-            <LanguageMenu current={locale.code} />
+            {/* The bar keeps a language control only where there is no panel
+                to put it in. Below lg it lives inside the list, so the phone
+                header is a mark and one button. */}
+            <div className="hidden lg:block">
+              <LanguageMenu current={locale.code} />
+            </div>
           </div>
         </div>
       </div>
