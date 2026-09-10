@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "@/images/hero-shadows.webp";
+import heroImage from "@/images/hero-women.webp";
 import {
   ArrowRight,
   BadgeCheck,
@@ -72,7 +72,24 @@ export default async function Landing() {
           only edits are the type going back to ink and the cards back to
           surface. That matters because a hero whose legibility rests on one
           file is a hero that breaks the day the file does. */}
-      <section className="relative isolate flex min-h-[560px] items-center overflow-hidden px-5 py-20 sm:min-h-[640px] sm:px-10 sm:py-28">
+      {/* svh, not vh: on a phone vh is the height with the browser chrome
+          hidden, so a 100vh hero is taller than the screen it is on and the
+          cards sit under the address bar until she scrolls. svh is the small
+          viewport — the height she actually has with the toolbars showing —
+          and dvh would resize the hero as they slide away, moving the cards
+          under her thumb as she reaches for one.
+
+          The header is out of flow above this, so the section already runs
+          under it and there is nothing to subtract.
+
+          The padding is smaller than it looks like it should be because it
+          only ever bites on a short screen. Tall ones centre the column and
+          never reach it; a 620px laptop window reaches it immediately, and
+          at the old spacing the two cards were cut off by the bottom of the
+          screen. The handoff is blunt that if the invitation to search is
+          below the fold the platform is a directory, and a card you have to
+          scroll to find is below the fold. */}
+      <section className="relative isolate flex min-h-svh items-center overflow-hidden px-5 py-14 sm:px-10 sm:py-20">
         {/* Decorative, so alt is empty: the photograph carries no information
             the page depends on, and describing it to a screen reader would
             only put furniture between her and the headline.
@@ -80,7 +97,7 @@ export default async function Landing() {
             priority because this is the largest thing above the fold and
             therefore the LCP element; without it Next lazy-loads the hero and
             the page scores itself badly for the one image that matters. The
-            24MB PNG is a 251KB WebP at 2560 wide, and Next derives AVIF and
+            21MB PNG is a 131KB WebP at 2560 wide, and Next derives AVIF and
             every smaller width from it per request, so a phone is served a
             fraction of that. */}
         <Image
@@ -90,13 +107,12 @@ export default async function Landing() {
           priority
           placeholder="blur"
           sizes="100vw"
-          // She sits right of centre and the light falls across her face in
-          // the upper third, so a straight centre crop cuts the subject's
-          // eyes on a wide viewport.
-          // A phone crops the frame horizontally rather than vertically, so
-          // it needs a different point held: further right, or she is cropped
-          // out of her own portrait and the hero is a picture of a wall.
-          className="-z-20 object-cover object-[72%_40%] sm:object-[62%_38%]"
+          // The four of them stand right of centre with their faces in the
+          // upper third. A wide viewport crops the frame vertically, so what
+          // matters there is holding the faces above the crop; a phone crops
+          // it horizontally instead, so it has to hold further right or the
+          // hero becomes a photograph of an empty sofa.
+          className="-z-20 object-cover object-[75%_38%] sm:object-[60%_34%]"
         />
 
         {/* One scrim, and which one depends on the shape of the screen. They
@@ -112,14 +128,14 @@ export default async function Landing() {
             Narrow: the text crosses the whole frame, so the shading has to be
             even. Stacking the horizontal gradient and a flat overlay was the
             first attempt and it came to 0.97 at the left edge, which is not a
-            photograph at all — it is a black rectangle that costs 251KB. */}
+            photograph at all — it is a black rectangle that costs 131KB. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.62)_0%,rgba(18,9,2,0.78)_100%)] sm:hidden"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.68)_0%,rgba(18,9,2,0.82)_100%)] sm:hidden"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.85)_0%,rgba(18,9,2,0.72)_40%,rgba(18,9,2,0.45)_62%,rgba(18,9,2,0.28)_100%)] sm:block"
+          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.88)_0%,rgba(18,9,2,0.60)_32%,rgba(18,9,2,0.18)_54%,rgba(18,9,2,0)_74%)] sm:block"
         />
 
         <div className="mx-auto w-full max-w-[1180px]">
@@ -151,7 +167,7 @@ export default async function Landing() {
                 works here for the same reason it worked there: the blur keeps
                 the ink legible over whatever part of the image lands behind
                 it, without hiding the image. */}
-            <div className="grid grid-cols-1 gap-[40px] sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-[40px]">
               {[
                 { href: "/find", label: t("hero.beginFind") },
                 { href: "/discover", label: t("hero.beginBrowse") },
@@ -159,7 +175,7 @@ export default async function Landing() {
                 <Link
                   key={card.href}
                   href={card.href}
-                  className="flex min-h-[128px] items-center justify-center rounded-card bg-white/75 p-8 text-center font-display text-[24px] font-normal leading-[1.33] text-ink no-underline shadow-[0_0_0_1px_rgba(255,255,255,0.9)] backdrop-blur-[4px] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-[1px] hover:bg-white/90"
+                  className="flex min-h-[104px] items-center justify-center rounded-card bg-white/75 p-6 sm:min-h-[128px] sm:p-8 text-center font-display text-[24px] font-normal leading-[1.33] text-ink no-underline shadow-[0_0_0_1px_rgba(255,255,255,0.9)] backdrop-blur-[4px] transition-[background-color,transform] duration-150 ease-out hover:-translate-y-[1px] hover:bg-white/90"
                 >
                   {card.label}
                 </Link>
