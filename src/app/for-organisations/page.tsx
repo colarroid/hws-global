@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import organisationsFigure from "@/images/organisations-figure.webp";
+import { Testimonials } from "@/components/Testimonials";
+import { TESTIMONIALS } from "@/lib/design/testimonials";
 import {
   ArrowRight,
   ArrowUpRight,
   BadgeCheck,
   BarChart3,
   Ban,
+  Lock,
+  MessageSquareText,
   Users,
 } from "lucide-react";
 import { pageMetadata } from "@/lib/seo";
@@ -230,6 +234,58 @@ export default async function CommunityPage() {
           ))}
         </div>
         </div>
+      </section>
+
+      {/* The three promises and the quotes, as the landing page carries
+          them, so an organisation reads the same undertakings a woman does
+          rather than a version written for it.
+
+          Worth knowing that they are in her voice, not theirs: "you do not
+          need an account to search" is addressed to her. On this page that
+          is the point — it is what an organisation is being told the women
+          get — but it does mean the middle promise reads slightly oddly to
+          somebody who is here to list a service.
+
+          Written out rather than read from the trust.* keys for the same
+          reason as the card below: this page is hardcoded English, and one
+          translated block inside it would change language on its own. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-12">
+          {[
+            {
+              icon: BadgeCheck,
+              title: "Verified content",
+              body: "Every organisation here has been verified against a public register or its funder before it could post anything. Each listing carries the date it was last confirmed.",
+            },
+            {
+              icon: Lock,
+              title: "Information is private",
+              body: "You do not need an account to search, read or apply. What you type is used to rank your results and is not sold, passed on, or used to build a profile of you.",
+            },
+            {
+              icon: MessageSquareText,
+              title: "No sponsored content",
+              body: "There is no paid placement and no advertising. Results are ordered by how well they fit what you told us, and every listing says why it matched.",
+            },
+          ].map((item) => (
+            <div key={item.title} className="flex flex-col gap-3">
+              <span className="flex text-gold-700">
+                <item.icon size={22} strokeWidth={2} aria-hidden="true" />
+              </span>
+              <span className="font-display text-[21px] font-normal leading-[1.2]">
+                {item.title}
+              </span>
+              <span className="text-[16px] leading-[1.6] text-ink-70">
+                {item.body}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        {/* Renders nothing while the array is empty, which is how this ships
+            the day the placeholder quotes come out and the real ones are not
+            ready yet. */}
+        <Testimonials items={TESTIMONIALS} />
       </section>
 
       {/* The same closing card the landing page ends on, so an organisation
