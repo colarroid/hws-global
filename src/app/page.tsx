@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import heroImage from "@/images/hero-women.webp";
+import organisationsFigure from "@/images/organisations-figure.webp";
 import {
   ArrowRight,
   BadgeCheck,
@@ -384,26 +385,48 @@ export default async function Landing() {
           looking for help should not have to scroll past a pitch to
           organisations to reach anything that is for her. */}
       <section className="mx-auto w-full max-w-[1180px] px-5 pb-24 sm:px-10">
-        <div className="flex flex-col gap-5 rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-center sm:justify-between sm:p-10">
-          <div className="flex flex-col gap-3">
+        {/* items-end and no bottom padding on the card from sm up, so the
+            drawing stands on the card's own edge rather than floating above
+            it with a strip of white underneath. The text column puts its
+            own padding back. */}
+        <div className="flex flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-end sm:justify-between sm:gap-10 sm:p-10 sm:pb-0">
+          <div className="flex flex-col items-start gap-3 sm:pb-10">
             <span className="flex text-gold-700">
               <Building2 size={24} strokeWidth={2} aria-hidden="true" />
             </span>
             <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
               {t("orgs.title")}
             </h2>
-            <p className="m-0 max-w-[54ch] text-[17px] leading-[1.6] text-ink-70">
+            {/* Set as the Access Zones paragraph is: 16px on a 512px measure
+                at 1.5. They are the same kind of sentence and they were two
+                different sizes. */}
+            <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
               {t("orgs.body")}
             </p>
+
+            <Link
+              href={portalUrl()}
+              className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90"
+            >
+              {t("orgs.cta")}
+              <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
+            </Link>
           </div>
 
-          <Link
-            href={portalUrl()}
-            className="inline-flex min-h-[44px] shrink-0 items-center gap-2 self-start rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90 sm:self-auto"
-          >
-            {t("orgs.cta")}
-            <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
-          </Link>
+          {/* Decorative, so alt is empty. The drawing is white-on-white line
+              art sitting on the card's own surface, which is why it needs no
+              frame and no rounding of its own — the card's overflow does the
+              cropping where it meets the edge.
+
+              Hidden on a phone. It is the last block on a long page and it
+              is ornament: another 200px of scroll between her and the footer
+              is a poor trade for it. */}
+          <Image
+            src={organisationsFigure}
+            alt=""
+            sizes="(min-width: 1024px) 320px, 240px"
+            className="hidden h-auto w-[240px] shrink-0 self-end sm:block lg:w-[320px]"
+          />
         </div>
       </section>
     </div>
