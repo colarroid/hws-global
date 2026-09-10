@@ -228,41 +228,101 @@ export default async function Landing() {
         </div>
       </section>
 
-      {/* The five things a match is made on. This is the platform's actual
-          argument, so it gets the one dark band on the page. */}
-      <section className="bg-ink px-5 py-16 sm:px-10 sm:py-20">
-        <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-10">
-          <div className="flex flex-col gap-3">
-            <span className="eyebrow text-gold-300">{t("how.eyebrow")}</span>
-            <h2 className="m-0 max-w-[22ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
-              {t("how.title")}
-            </h2>
-            <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-white/70">
-              {t("how.body")}
-            </p>
-          </div>
+      {/* How it works, as a tree: one question splitting into the two people
+          who ask it.
 
-          <ol className="m-0 grid list-none grid-cols-1 gap-x-10 gap-y-8 p-0 sm:grid-cols-3">
-            {[
-              { step: t("how.one"), title: t("how.oneTitle"), body: t("how.oneBody") },
-              { step: t("how.two"), title: t("how.twoTitle"), body: t("how.twoBody") },
-              {
-                step: t("how.three"),
-                title: t("how.threeTitle"),
-                body: t("how.threeBody"),
-              },
-            ].map((item) => (
-              <li key={item.step} className="flex flex-col gap-2">
-                <span className="eyebrow text-gold-300">{item.step}</span>
-                <span className="font-display text-[23px] font-normal leading-[1.2] text-white">
-                  {item.title}
-                </span>
-                <span className="text-[16px] leading-[1.6] text-white/70">
-                  {item.body}
-                </span>
-              </li>
-            ))}
-          </ol>
+          The section used to be three steps in a row, and those three steps
+          were hers. That made the organisation's side of the platform
+          invisible on the page where an organisation is most likely to be
+          deciding whether to bother — the two audiences are the whole shape
+          of this thing, and a single column said there was one.
+
+          The steps are numbered because they are a sequence, and they are
+          numbered in the component rather than in nine catalogues, so nobody
+          has to translate the word "One".
+
+          The branches are set to run in parallel: her first step and their
+          first step sit level, and the pair reads across as well as down.
+          What that shows is that the checking happens on their side before
+          anything reaches hers, which is the argument the whole platform
+          rests on and is hard to make in a sentence. */}
+      <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
+        <div className="flex flex-col items-center gap-3 text-center">
+          <span className="eyebrow text-gold-700">{t("how.eyebrow")}</span>
+          <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[38px]">
+            {t("how.title")}
+          </h2>
+          <p className="m-0 max-w-[56ch] text-[17px] leading-[1.6] text-ink-70">
+            {t("how.body")}
+          </p>
+        </div>
+
+        {/* The fork. Drawn rather than decorated: a stem down from the
+            heading, a bar spanning the two column centres, and a drop onto
+            each. It is hidden below the breakpoint because there is nothing
+            to fork into once the branches stack. */}
+        <div className="mt-9 hidden sm:block" aria-hidden="true">
+          <span className="mx-auto block h-8 w-px bg-ink/25" />
+          <div className="relative mx-auto h-8 w-1/2">
+            <span className="absolute inset-x-0 top-0 h-px bg-ink/25" />
+            <span className="absolute left-0 top-0 h-8 w-px bg-ink/25" />
+            <span className="absolute right-0 top-0 h-8 w-px bg-ink/25" />
+          </div>
+        </div>
+
+        <div className="mt-10 grid grid-cols-1 gap-12 sm:mt-0 sm:grid-cols-2 sm:gap-0">
+          {[
+            {
+              key: "women",
+              title: t("how.forWomen"),
+              steps: [
+                { title: t("how.oneTitle"), body: t("how.oneBody") },
+                { title: t("how.twoTitle"), body: t("how.twoBody") },
+                { title: t("how.threeTitle"), body: t("how.threeBody") },
+              ],
+            },
+            {
+              key: "organisations",
+              title: t("how.forOrgs"),
+              steps: [
+                { title: t("how.orgOneTitle"), body: t("how.orgOneBody") },
+                { title: t("how.orgTwoTitle"), body: t("how.orgTwoBody") },
+                { title: t("how.orgThreeTitle"), body: t("how.orgThreeBody") },
+              ],
+            },
+          ].map((branch, index) => (
+            <div
+              key={branch.key}
+              className={`flex flex-col items-center gap-8 sm:px-8 ${
+                // The rule between them is dashed and only drawn on the
+                // second, so it is one line between two columns rather than
+                // an edge on each.
+                index === 1
+                  ? "sm:border-l sm:border-dashed sm:border-ink/20"
+                  : ""
+              }`}
+            >
+              <h3 className="m-0 font-display text-[24px] font-normal leading-[1.2]">
+                {branch.title}
+              </h3>
+
+              <ol className="m-0 flex list-none flex-col gap-9 p-0">
+                {branch.steps.map((step, position) => (
+                  <li
+                    key={step.title}
+                    className="flex flex-col items-center gap-2 text-center"
+                  >
+                    <span className="text-[16px] font-bold text-ink">
+                      {position + 1}. {step.title}
+                    </span>
+                    <p className="m-0 max-w-[38ch] text-[15px] leading-[1.6] text-ink-70">
+                      {step.body}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          ))}
         </div>
       </section>
 
