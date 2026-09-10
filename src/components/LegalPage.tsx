@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FileText } from "lucide-react";
+import { FileText, PencilLine } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { anchorFor, type LegalDocument } from "@/lib/design/legal";
 
@@ -26,7 +26,7 @@ export function LegalPage({
   title: string;
   document: LegalDocument;
 }) {
-  const { updated, lead, sections } = document;
+  const { updated, draft, lead, sections } = document;
 
   return (
     <Page width={760} top={56} gap={30}>
@@ -42,6 +42,38 @@ export function LegalPage({
           <p className="m-0 text-[15px] text-ink-60">Last updated {updated}</p>
         ) : null}
       </div>
+
+      {/* Written but not signed off. Said at the top rather than in a
+          footnote: somebody reading a privacy policy is deciding whether to
+          trust us with something, and a document that reads as in force when
+          nobody has approved it is a worse answer than an empty page. */}
+      {draft && sections.length > 0 ? (
+        <div className="flex gap-3 rounded-card bg-gold-200 p-6 shadow-hairline">
+          <PencilLine
+            size={20}
+            strokeWidth={2}
+            className="mt-[3px] shrink-0 text-gold-700"
+            aria-hidden="true"
+          />
+          <div className="flex flex-col gap-2">
+            <span className="text-[16px] font-bold text-ink">
+              This is a draft
+            </span>
+            <p className="m-0 max-w-[58ch] text-[16px] leading-[1.6] text-ink-70">
+              The wording below describes exactly how the platform works today,
+              but it has not yet been through a final review. It is published
+              so you can read it and hold us to it, not because it is finished.
+            </p>
+            <p className="m-0 max-w-[58ch] text-[16px] leading-[1.6] text-ink-70">
+              If anything here matters to a decision you are making,{" "}
+              <Link href="/help" className="font-bold text-gold-700">
+                ask us
+              </Link>{" "}
+              and we will answer plainly.
+            </p>
+          </div>
+        </div>
+      ) : null}
 
       {sections.length === 0 ? (
         <div className="flex gap-3 rounded-card bg-surface p-6 shadow-hairline">

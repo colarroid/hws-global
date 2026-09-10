@@ -12,6 +12,7 @@ import {
 import { ButtonLink } from "@/components/ui/Button";
 import { getTranslator } from "@/lib/i18n";
 import { getPlatformCounts, getZonesWithCounts } from "@/lib/data/discover";
+import { portalUrl } from "@/lib/portal";
 
 export const metadata: Metadata = pageMetadata({
   title: "Find support for women in Scotland",
@@ -253,7 +254,7 @@ export default async function Landing() {
           </div>
 
           <Link
-            href={process.env.ORG_PORTAL_URL ?? "https://organisation.hwspathgrid.com"}
+            href={portalUrl()}
             className="inline-flex min-h-[44px] shrink-0 items-center gap-2 self-start rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90 sm:self-auto"
           >
             {t("orgs.cta")}

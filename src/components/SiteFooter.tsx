@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getAccount } from "@/lib/data/account";
+import { portalUrl } from "@/lib/portal";
 
 /**
  * The foot of every page.
@@ -101,10 +102,7 @@ export async function SiteFooter() {
               <ul className="m-0 flex list-none flex-col gap-[2px] p-0">
                 <li>
                   <a
-                    href={
-                      process.env.ORG_PORTAL_URL ??
-                      "https://organisation.hwspathgrid.com"
-                    }
+                    href={portalUrl()}
                     className="inline-flex min-h-[44px] items-center gap-[6px] text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
                     List your support

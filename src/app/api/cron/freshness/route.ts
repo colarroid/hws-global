@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { sendEmail } from "@/lib/email";
 import { listingRecheck, type StaleListing } from "@/emails/listing-recheck";
+import { portalUrl } from "@/lib/portal";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -30,13 +31,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Not authorised" }, { status: 401 });
   }
 
-  const portal = process.env.ORG_PORTAL_URL;
-  if (!portal) {
-    return NextResponse.json(
-      { error: "ORG_PORTAL_URL is not set." },
-      { status: 500 },
-    );
-  }
+  const portal = portalUrl();
 
   const supabase = createAdminClient();
 

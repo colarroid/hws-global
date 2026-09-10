@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { pageMetadata } from "@/lib/seo";
 import { getZonesWithCounts } from "@/lib/data/discover";
+import { portalLink, portalUrl } from "@/lib/portal";
 
 export const metadata: Metadata = pageMetadata({
   title: "For organisations",
@@ -20,9 +21,6 @@ export const metadata: Metadata = pageMetadata({
   path: "/for-organisations",
   indexable: true,
 });
-
-const portal = () =>
-  process.env.ORG_PORTAL_URL ?? "https://organisation.hwspathgrid.com";
 
 /**
  * The organisations page: the platform, explained to the people who run
@@ -123,14 +121,14 @@ export default async function CommunityPage() {
 
           <div className="mt-1 flex flex-wrap items-center gap-4">
             <a
-              href={`${portal()}/sign-up`}
+              href={portalLink("/sign-up")}
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[18px] font-bold text-white no-underline"
             >
               List your support
               <ArrowUpRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
             <a
-              href={portal()}
+              href={portalUrl()}
               className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-700 no-underline"
             >
               I already have an account
@@ -283,7 +281,7 @@ export default async function CommunityPage() {
 
           <div className="flex flex-wrap items-center gap-4">
             <a
-              href={`${portal()}/sign-up`}
+              href={portalLink("/sign-up")}
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-7 py-[15px] text-[17px] font-bold text-ink no-underline"
             >
               List your support
