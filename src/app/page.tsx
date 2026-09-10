@@ -213,7 +213,7 @@ export default async function Landing() {
           The steps are numbered because they are a sequence, and numbered in
           the component rather than in nine catalogues, so nobody has to
           translate the word "One". */}
-      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-16 sm:px-10 sm:py-20">
+      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
         <div className="flex flex-col gap-3">
           <span className="eyebrow text-gold-700">{t("why.eyebrow")}</span>
           <h2 className="m-0 max-w-[26ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
@@ -221,7 +221,7 @@ export default async function Landing() {
           </h2>
         </div>
 
-        <div className="mt-22 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-0">
+        <div className="mt-[62px] grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-0">
           {[
             {
               key: "women",
