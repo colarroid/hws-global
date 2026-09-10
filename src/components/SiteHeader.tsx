@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Bookmark, LogOut, Settings } from "lucide-react";
 import { MobileNav } from "@/components/ui/MobileNav";
+import { HeaderShell } from "@/components/HeaderShell";
 import { AccountMenu } from "@/components/AccountMenu";
 import { getSavedIds } from "@/lib/saved";
 import { signOut } from "@/app/account/actions";
@@ -115,7 +116,7 @@ export async function SiteHeader() {
   ]);
 
   return (
-    <header className="border-b border-hairline bg-ground">
+    <HeaderShell>
       {/* relative so the mobile panel can hang off the bottom edge. */}
       <div className="relative">
         {/*
@@ -220,6 +221,6 @@ export async function SiteHeader() {
           </div>
         </div>
       </div>
-    </header>
+    </HeaderShell>
   );
 }

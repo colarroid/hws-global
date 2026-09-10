@@ -119,7 +119,7 @@ export default async function Landing() {
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.94)_0%,rgba(18,9,2,0.82)_34%,rgba(18,9,2,0.42)_58%,rgba(18,9,2,0.20)_100%)] sm:block"
+          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.85)_0%,rgba(18,9,2,0.72)_40%,rgba(18,9,2,0.45)_62%,rgba(18,9,2,0.28)_100%)] sm:block"
         />
 
         <div className="mx-auto w-full max-w-[1180px]">

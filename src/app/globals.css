@@ -171,3 +171,46 @@
     animation: none;
   }
 }
+
+/* ---------------------------------------------------------------
+   The overlay header.
+
+   Only the landing page sets data-chrome="overlay", and only until the
+   page has scrolled 24px. Its hero is a dark photograph running to the
+   top of the document, so the bar sits on the picture rather than above
+   it, and everything in the bar has to stop taking its colour from the
+   cream it is no longer on.
+
+   Done here rather than as an `overlay` prop threaded through the header,
+   the phone panel, the account menu and the language picker: four
+   components would each carry a branch that one page ever takes.
+   --------------------------------------------------------------- */
+
+header[data-chrome="overlay"],
+header[data-chrome="overlay"] :is(a, button) {
+  color: #fff;
+}
+
+/* Icons only, and only where they are the control's own child. The flags in
+   the language picker are drawn with explicit fills rather than
+   currentColor, so this cannot reach them, and the lettered fallback badge
+   keeps its gold because it is a span with a ground of its own. */
+header[data-chrome="overlay"] :is(a, button) > svg {
+  color: inherit;
+}
+
+header[data-chrome="overlay"] :is(a, button):hover {
+  background-color: rgba(255, 255, 255, 0.16);
+}
+
+/* The mark is a fixed dark vector. Inverting it is cheaper than shipping a
+   second file and cannot fall out of sync with the first. */
+header[data-chrome="overlay"] img[src$=".svg"] {
+  filter: brightness(0) invert(1);
+}
+
+/* The phone menu button wears a hairline ring drawn for the cream. */
+header[data-chrome="overlay"] .menu-trigger {
+  background-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.5);
+}
