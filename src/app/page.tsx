@@ -339,7 +339,7 @@ export default async function Landing() {
           somebody else's, which is the only reason they are in the same
           section rather than a new one. */}
       <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
-        <div className="grid grid-cols-1 gap-[14px] sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-12">
           {[
             {
               icon: BadgeCheck,
@@ -359,7 +359,7 @@ export default async function Landing() {
           ].map((item) => (
             <div
               key={item.title}
-              className="flex flex-col gap-3 rounded-card p-6 shadow-hairline"
+              className="flex flex-col gap-3"
             >
               <span className="flex text-gold-700">
                 <item.icon size={22} strokeWidth={2} aria-hidden="true" />

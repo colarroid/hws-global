@@ -67,7 +67,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
       onFocusCapture={() => setHeld(true)}
       onBlurCapture={() => setHeld(false)}
     >
-      <div className="relative overflow-hidden rounded-card px-7 py-10 shadow-hairline sm:px-12 sm:py-14">
+      <div className="relative overflow-hidden py-10 sm:py-12">
         {/* The mark sits behind the words rather than above them, big and
             faint, so it reads as texture and not as punctuation somebody
             forgot to remove. */}
@@ -75,7 +75,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
           size={128}
           strokeWidth={1}
           aria-hidden="true"
-          className="pointer-events-none absolute -left-4 -top-6 text-gold-300/25 sm:-left-2"
+          className="pointer-events-none absolute -top-4 left-0 text-gold-300/25"
         />
 
         {/* Stacked, not swapped: the first slide holds the height and the
