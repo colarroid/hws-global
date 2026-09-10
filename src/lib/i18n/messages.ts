@@ -130,13 +130,13 @@ const en: Record<MessageKey, string> = {
   "zones.body":
     "Work, money, learning, health, enterprise, having a say. Most women need more than one at a time, and most services only do one, which is the gap this exists to close.",
   "zones.browse": "Browse everyone on the platform",
-  "trust.checkedTitle": "Somebody checked",
+  "trust.checkedTitle": "Verified content",
   "trust.checkedBody":
     "Every organisation here has been verified against a public register or its funder before it could post anything. Each listing carries the date it was last confirmed.",
-  "trust.privateTitle": "Nothing is shared",
+  "trust.privateTitle": "Information is private",
   "trust.privateBody":
     "You do not need an account to search, read or apply. What you type is used to rank your results and is not sold, passed on, or used to build a profile of you.",
-  "trust.paidTitle": "Nobody pays to appear",
+  "trust.paidTitle": "No sponsored content",
   "trust.paidBody":
     "There is no paid placement and no advertising. Results are ordered by how well they fit what you told us, and every listing says why it matched.",
   "orgs.title": "Do you run something women should know about?",
@@ -183,13 +183,13 @@ const gd: Catalogue = {
   "zones.body":
     "Obair, airgead, ionnsachadh, slàinte, gnìomhachas, guth a bhith agad. Feumaidh a’ mhòr-chuid de bhoireannaich barrachd air aon dhiubh aig an aon àm, agus chan eil a’ mhòr-chuid de sheirbheisean a’ dèanamh ach aon, agus is e sin am beàrn a tha seo ann airson a dhùnadh.",
   "zones.browse": "Rùraich a h-uile duine air an àrd-ùrlar",
-  "trust.checkedTitle": "Rinn cuideigin sgrùdadh",
+  "trust.checkedTitle": "Susbaint dhearbhte",
   "trust.checkedBody":
     "Chaidh gach buidheann an seo a dhearbhadh an aghaidh clàr poblach no am maoinichear mus b’ urrainn dhaibh dad a phostadh. Tha an ceann-latha mu dheireadh a chaidh a dhearbhadh air gach liosta.",
-  "trust.privateTitle": "Cha tèid dad a cho-roinn",
+  "trust.privateTitle": "Tha am fiosrachadh prìobhaideach",
   "trust.privateBody":
     "Chan fheum thu cunntas gus sireadh, leughadh no iarrtas a chur a-steach. Thathar a’ cleachdadh na sgrìobhas tu gus na toraidhean agad a rangachadh, agus cha tèid a reic, a thoirt seachad, no a chleachdadh gus pròifil a thogail mu do dhèidhinn.",
-  "trust.paidTitle": "Chan eil duine a’ pàigheadh airson nochdadh",
+  "trust.paidTitle": "Gun susbaint phàighte",
   "trust.paidBody":
     "Chan eil suidheachadh pàighte no sanasachd ann. Tha na toraidhean air an òrdachadh a rèir cho math ’s a fhreagras iad na dh’innis thu dhuinn, agus tha gach liosta ag innse carson a fhreagair e.",
   "orgs.title": "A bheil thu a’ ruith rudeigin a bu chòir fios a bhith aig boireannaich mu dheidhinn?",
@@ -236,13 +236,13 @@ const sco: Catalogue = {
   "zones.body":
     "Wark, siller, learnin, health, enterprise, haein a say. Maist weemen need mair nor ane at a time, an maist services anly dae ane, an that’s the gap this is here tae steek.",
   "zones.browse": "Brouse awbody on the platform",
-  "trust.checkedTitle": "Somebody checkit",
+  "trust.checkedTitle": "Verifeed content",
   "trust.checkedBody":
     "Ilka organisation here has been verified agin a public register or its funder afore it could post onythin. Ilka listin cairries the date it wis last confirmed.",
-  "trust.privateTitle": "Naethin is shared",
+  "trust.privateTitle": "Information is private",
   "trust.privateBody":
     "Ye dinnae need an accoont tae seek, read or apply. Whit ye type is uised tae rank yer results an isnae selt, passed on, or uised tae build a profile o ye.",
-  "trust.paidTitle": "Naebody pays tae kythe",
+  "trust.paidTitle": "Nae sponsort content",
   "trust.paidBody":
     "There’s nae paid placement an nae advertisin. Results are ordert by hoo weel they fit whit ye telt us, an ilka listin says why it matched.",
   "orgs.title": "Dae ye rin somethin weemen should ken aboot?",
@@ -289,13 +289,13 @@ const pl: Catalogue = {
   "zones.body":
     "Praca, pieniądze, nauka, zdrowie, przedsiębiorczość, głos w sprawach publicznych. Większość kobiet potrzebuje więcej niż jednej rzeczy naraz, a większość usług robi tylko jedną, i to jest luka, którą to wypełnia.",
   "zones.browse": "Przeglądaj wszystkich na platformie",
-  "trust.checkedTitle": "Ktoś to sprawdził",
+  "trust.checkedTitle": "Zweryfikowane treści",
   "trust.checkedBody":
     "Każda organizacja została zweryfikowana w publicznym rejestrze albo u swojego finansującego, zanim mogła cokolwiek opublikować. Każde ogłoszenie zawiera datę ostatniego potwierdzenia.",
-  "trust.privateTitle": "Nic nie jest udostępniane",
+  "trust.privateTitle": "Twoje dane są prywatne",
   "trust.privateBody":
     "Nie potrzebujesz konta, żeby szukać, czytać ani składać wniosków. To, co wpiszesz, służy do uszeregowania wyników i nie jest sprzedawane, przekazywane ani używane do budowania Twojego profilu.",
-  "trust.paidTitle": "Nikt nie płaci za obecność",
+  "trust.paidTitle": "Żadnych treści sponsorowanych",
   "trust.paidBody":
     "Nie ma płatnych miejsc ani reklam. Wyniki są uporządkowane według tego, jak dobrze pasują do tego, co nam powiedziałaś, a każde ogłoszenie mówi, dlaczego zostało dopasowane.",
   "orgs.title": "Prowadzisz coś, o czym kobiety powinny wiedzieć?",
@@ -342,13 +342,13 @@ const uk: Catalogue = {
   "zones.body":
     "Робота, гроші, навчання, здоров’я, підприємництво, право голосу. Більшості жінок потрібно більше ніж одне водночас, а більшість служб робить лише щось одне, саме цю прогалину це й закриває.",
   "zones.browse": "Переглянути всіх на платформі",
-  "trust.checkedTitle": "Хтось це перевірив",
+  "trust.checkedTitle": "Перевірений вміст",
   "trust.checkedBody":
     "Кожну організацію перевірено за публічним реєстром або через її донора, перш ніж вона змогла щось опублікувати. У кожній пропозиції вказано дату останнього підтвердження.",
-  "trust.privateTitle": "Нічим не діляться",
+  "trust.privateTitle": "Інформація залишається приватною",
   "trust.privateBody":
     "Обліковий запис не потрібен, щоб шукати, читати чи подавати заявку. Написане вами використовується лише для впорядкування результатів і не продається, не передається і не використовується для створення вашого профілю.",
-  "trust.paidTitle": "Ніхто не платить за появу тут",
+  "trust.paidTitle": "Жодного спонсорованого вмісту",
   "trust.paidBody":
     "Немає платного розміщення й реклами. Результати впорядковані за тим, наскільки вони відповідають сказаному вами, і кожна пропозиція пояснює, чому вона підійшла.",
   "orgs.title": "Ви керуєте чимось, про що жінкам варто знати?",
@@ -395,13 +395,13 @@ const ar: Catalogue = {
   "zones.body":
     "العمل، والمال، والتعلّم، والصحة، وريادة الأعمال، وإسماع الصوت. معظم النساء يحتجن إلى أكثر من واحد في الوقت نفسه، ومعظم الخدمات تقدّم واحدًا فقط، وهذه هي الفجوة التي وُجدت هذه المنصة لسدّها.",
   "zones.browse": "تصفّحي جميع الجهات على المنصة",
-  "trust.checkedTitle": "هناك من تحقّق",
+  "trust.checkedTitle": "محتوى موثّق",
   "trust.checkedBody":
     "كل منظمة هنا جرى التحقق منها في سجل عام أو لدى الجهة الممولة قبل أن تتمكن من نشر أي شيء. وكل إعلان يحمل تاريخ آخر تأكيد له.",
-  "trust.privateTitle": "لا شيء يُشارَك",
+  "trust.privateTitle": "معلوماتك خاصة",
   "trust.privateBody":
     "لا تحتاجين إلى حساب للبحث أو القراءة أو التقديم. ما تكتبينه يُستخدم لترتيب نتائجك فقط، ولا يُباع ولا يُمرَّر ولا يُستخدم لبناء ملف عنك.",
-  "trust.paidTitle": "لا أحد يدفع للظهور",
+  "trust.paidTitle": "لا محتوى مموّل",
   "trust.paidBody":
     "لا يوجد إدراج مدفوع ولا إعلانات. تُرتَّب النتائج حسب مدى ملاءمتها لما أخبرتِنا به، وكل إعلان يوضّح سبب مطابقته.",
   "orgs.title": "هل تديرين شيئًا ينبغي أن تعرف عنه النساء؟",
@@ -448,13 +448,13 @@ const ur: Catalogue = {
   "zones.body":
     "کام، پیسہ، تعلیم، صحت، کاروبار، اپنی بات کہنے کا حق۔ زیادہ تر خواتین کو ایک وقت میں ایک سے زیادہ کی ضرورت ہوتی ہے، اور زیادہ تر خدمات صرف ایک ہی کام کرتی ہیں، یہی وہ خلا ہے جسے پُر کرنے کے لیے یہ موجود ہے۔",
   "zones.browse": "پلیٹ فارم پر سب کو دیکھیں",
-  "trust.checkedTitle": "کسی نے جانچ کی ہے",
+  "trust.checkedTitle": "تصدیق شدہ مواد",
   "trust.checkedBody":
     "یہاں ہر ادارے کی کسی عوامی رجسٹر یا اس کے فنڈ دینے والے کے ذریعے تصدیق کی گئی ہے، اس سے پہلے کہ وہ کچھ شائع کر سکے۔ ہر اندراج پر آخری تصدیق کی تاریخ درج ہے۔",
-  "trust.privateTitle": "کچھ بھی شیئر نہیں کیا جاتا",
+  "trust.privateTitle": "معلومات نجی رہتی ہیں",
   "trust.privateBody":
     "تلاش کرنے، پڑھنے یا درخواست دینے کے لیے آپ کو اکاؤنٹ کی ضرورت نہیں۔ آپ جو لکھتی ہیں وہ صرف آپ کے نتائج ترتیب دینے کے لیے استعمال ہوتا ہے، اسے بیچا، آگے دیا، یا آپ کا پروفائل بنانے کے لیے استعمال نہیں کیا جاتا۔",
-  "trust.paidTitle": "یہاں آنے کے لیے کوئی ادائیگی نہیں کرتا",
+  "trust.paidTitle": "کوئی سپانسر شدہ مواد نہیں",
   "trust.paidBody":
     "کوئی ادا شدہ جگہ یا اشتہار نہیں ہے۔ نتائج اس بنیاد پر ترتیب دیے جاتے ہیں کہ وہ آپ کی بتائی ہوئی بات سے کتنے مطابق ہیں، اور ہر اندراج بتاتا ہے کہ وہ کیوں موزوں ہے۔",
   "orgs.title": "کیا آپ کچھ ایسا چلا رہی ہیں جس کے بارے میں خواتین کو معلوم ہونا چاہیے؟",
@@ -501,13 +501,13 @@ const pa: Catalogue = {
   "zones.body":
     "ਕੰਮ, ਪੈਸਾ, ਸਿੱਖਿਆ, ਸਿਹਤ, ਕਾਰੋਬਾਰ, ਆਪਣੀ ਗੱਲ ਕਹਿਣ ਦਾ ਹੱਕ। ਜ਼ਿਆਦਾਤਰ ਔਰਤਾਂ ਨੂੰ ਇੱਕੋ ਸਮੇਂ ਇੱਕ ਤੋਂ ਵੱਧ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ, ਅਤੇ ਜ਼ਿਆਦਾਤਰ ਸੇਵਾਵਾਂ ਸਿਰਫ਼ ਇੱਕ ਹੀ ਕਰਦੀਆਂ ਹਨ, ਇਹੀ ਉਹ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਭਰਨ ਲਈ ਇਹ ਮੌਜੂਦ ਹੈ।",
   "zones.browse": "ਪਲੇਟਫਾਰਮ ’ਤੇ ਸਾਰਿਆਂ ਨੂੰ ਵੇਖੋ",
-  "trust.checkedTitle": "ਕਿਸੇ ਨੇ ਜਾਂਚ ਕੀਤੀ ਹੈ",
+  "trust.checkedTitle": "ਪ੍ਰਮਾਣਿਤ ਸਮੱਗਰੀ",
   "trust.checkedBody":
     "ਇੱਥੇ ਹਰ ਸੰਸਥਾ ਦੀ ਕਿਸੇ ਜਨਤਕ ਰਜਿਸਟਰ ਜਾਂ ਉਸ ਦੇ ਫੰਡ ਦੇਣ ਵਾਲੇ ਰਾਹੀਂ ਪੁਸ਼ਟੀ ਕੀਤੀ ਗਈ ਹੈ, ਇਸ ਤੋਂ ਪਹਿਲਾਂ ਕਿ ਉਹ ਕੁਝ ਪ੍ਰਕਾਸ਼ਿਤ ਕਰ ਸਕੇ। ਹਰ ਇੰਦਰਾਜ਼ ’ਤੇ ਆਖਰੀ ਪੁਸ਼ਟੀ ਦੀ ਤਾਰੀਖ ਹੁੰਦੀ ਹੈ।",
-  "trust.privateTitle": "ਕੁਝ ਵੀ ਸਾਂਝਾ ਨਹੀਂ ਕੀਤਾ ਜਾਂਦਾ",
+  "trust.privateTitle": "ਜਾਣਕਾਰੀ ਨਿੱਜੀ ਰਹਿੰਦੀ ਹੈ",
   "trust.privateBody":
     "ਖੋਜਣ, ਪੜ੍ਹਨ ਜਾਂ ਅਰਜ਼ੀ ਦੇਣ ਲਈ ਤੁਹਾਨੂੰ ਖਾਤੇ ਦੀ ਲੋੜ ਨਹੀਂ। ਤੁਸੀਂ ਜੋ ਲਿਖਦੀਆਂ ਹੋ ਉਹ ਸਿਰਫ਼ ਤੁਹਾਡੇ ਨਤੀਜੇ ਕ੍ਰਮਬੱਧ ਕਰਨ ਲਈ ਵਰਤਿਆ ਜਾਂਦਾ ਹੈ, ਵੇਚਿਆ, ਅੱਗੇ ਦਿੱਤਾ ਜਾਂ ਤੁਹਾਡਾ ਪ੍ਰੋਫਾਈਲ ਬਣਾਉਣ ਲਈ ਨਹੀਂ ਵਰਤਿਆ ਜਾਂਦਾ।",
-  "trust.paidTitle": "ਇੱਥੇ ਦਿਖਣ ਲਈ ਕੋਈ ਪੈਸੇ ਨਹੀਂ ਦਿੰਦਾ",
+  "trust.paidTitle": "ਕੋਈ ਸਪਾਂਸਰ ਕੀਤੀ ਸਮੱਗਰੀ ਨਹੀਂ",
   "trust.paidBody":
     "ਕੋਈ ਅਦਾਇਗੀ ਵਾਲੀ ਥਾਂ ਜਾਂ ਇਸ਼ਤਿਹਾਰ ਨਹੀਂ ਹੈ। ਨਤੀਜੇ ਇਸ ਆਧਾਰ ’ਤੇ ਕ੍ਰਮਬੱਧ ਹੁੰਦੇ ਹਨ ਕਿ ਉਹ ਤੁਹਾਡੀ ਦੱਸੀ ਗੱਲ ਨਾਲ ਕਿੰਨੇ ਮੇਲ ਖਾਂਦੇ ਹਨ, ਅਤੇ ਹਰ ਇੰਦਰਾਜ਼ ਦੱਸਦਾ ਹੈ ਕਿ ਉਹ ਕਿਉਂ ਢੁਕਵਾਂ ਹੈ।",
   "orgs.title": "ਕੀ ਤੁਸੀਂ ਕੁਝ ਅਜਿਹਾ ਚਲਾ ਰਹੀਆਂ ਹੋ ਜਿਸ ਬਾਰੇ ਔਰਤਾਂ ਨੂੰ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ?",
@@ -553,13 +553,13 @@ const zh: Catalogue = {
   "zones.body":
     "工作、金钱、学习、健康、创业、发声。大多数女性同时需要不止一项，而大多数服务只做其中一项，这正是这个平台要填补的空白。",
   "zones.browse": "浏览平台上的所有机构",
-  "trust.checkedTitle": "有人核实过",
+  "trust.checkedTitle": "经过核实的内容",
   "trust.checkedBody":
     "这里的每一家机构，在能够发布任何内容之前，都已通过公开登记册或其资助方核实。每条信息都标有最近一次确认的日期。",
-  "trust.privateTitle": "不会外传任何信息",
+  "trust.privateTitle": "你的信息是私密的",
   "trust.privateBody":
     "搜索、阅读或申请都不需要账户。你输入的内容仅用于为你排序结果，不会被出售、转交，也不会用来建立关于你的档案。",
-  "trust.paidTitle": "没有人靠付费出现在这里",
+  "trust.paidTitle": "没有赞助内容",
   "trust.paidBody":
     "没有付费推广，也没有广告。结果按照与你所述的契合程度排序，每条信息都会说明它为何匹配。",
   "orgs.title": "你是否在做一些女性应该知道的事？",

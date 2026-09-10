@@ -1,7 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, Quote } from "lucide-react";
+import { Quote } from "lucide-react";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@/components/ui/ChevronIcons";
 import {
   MAX_TESTIMONIALS,
   type Testimonial,
@@ -131,7 +135,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
               aria-label="Previous quote"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
             >
-              <ArrowLeft size={17} strokeWidth={2} aria-hidden="true" />
+              <ChevronLeftIcon />
             </button>
             <button
               type="button"
@@ -139,7 +143,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
               aria-label="Next quote"
               className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
             >
-              <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
+              <ChevronRightIcon />
             </button>
           </div>
 
