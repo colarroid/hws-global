@@ -27,6 +27,15 @@ import { hasSeenCookieNotice, markCookieNoticeSeen } from "@/lib/cookies";
  * focus, traps nothing, and covers nothing at the top of the page, because a
  * woman who arrived here in a hurry should not have to dismiss a box about
  * cookies before she can read why she is here.
+ *
+ * It covers something at the bottom, though, and that got worse when the
+ * landing page's hero grew to fill the screen: the two cards she is meant to
+ * press now sit at the foot of the first screenful, which is where this
+ * lands. Stacked, it was a 195px box on a phone and it sat on top of them.
+ * One row and a shorter sentence takes it to the height of its own button.
+ *
+ * The honest fix would be to not need it. It shows once and is dismissed
+ * from the server, so it is not worth a fifth of the first screen either way.
  */
 export async function CookieNotice() {
   if (await hasSeenCookieNotice()) return null;
@@ -43,7 +52,7 @@ export async function CookieNotice() {
       aria-label="About cookies"
       className="pointer-events-none sticky bottom-0 z-40 flex justify-center px-3 pb-3 sm:px-5 sm:pb-5"
     >
-      <div className="panel-in pointer-events-auto flex w-full max-w-[760px] flex-col gap-3 rounded-card bg-surface p-4 shadow-panel sm:flex-row sm:items-center sm:gap-6 sm:p-6">
+      <div className="panel-in pointer-events-auto flex w-full max-w-[760px] items-center gap-3 rounded-card bg-surface p-3 shadow-panel sm:gap-6 sm:p-6">
         <Cookie
           size={22}
           strokeWidth={1.75}
@@ -53,23 +62,37 @@ export async function CookieNotice() {
 
         {/* Short on purpose. On a phone this sits over the page, and every
             extra line is more of what she came for covered up by a box about
-            cookies. */}
-        <p className="m-0 flex-1 text-[14px] leading-[1.5] text-ink-70 sm:text-[15px] sm:leading-[1.55]">
+            cookies. The landing page's hero now fills the screen with the two
+            cards at the bottom of it, which is exactly where this lands, so
+            the middle clause goes on a narrow screen rather than burying the
+            thing she arrived to press.
+
+            What survives on a phone is the claim and the link. What goes is
+            the elaboration of it — which is the right half to lose, because
+            the privacy policy carries the same detail at more length and is
+            one tap away. */}
+        <p className="m-0 flex-1 text-[13px] leading-[1.45] text-ink-70 sm:text-[15px] sm:leading-[1.55]">
           <strong className="font-semibold text-ink">
             We use a few cookies, and none of them watch you.
           </strong>{" "}
-          They keep you signed in and remember your language. Nothing is
-          tracked or sold.{" "}
+          <span className="hidden sm:inline">
+            They keep you signed in and remember your language. Nothing is
+            tracked or sold.{" "}
+          </span>
           <Link href="/privacy" className="font-bold text-gold-700">
             More in the privacy policy
           </Link>
           .
         </p>
 
+        {/* Beside the text rather than under it. Stacked, this was a 195px
+            box on a phone; alongside, it is the height of the button. The
+            44px floor stays — it is the one measurement here that is not a
+            layout preference. */}
         <form action={acknowledge} className="shrink-0">
           <button
             type="submit"
-            className="inline-flex min-h-[44px] w-full items-center justify-center rounded-full border-0 bg-ink px-7 py-[13px] text-[15px] font-bold text-white sm:w-auto"
+            className="inline-flex min-h-[44px] items-center justify-center rounded-full border-0 bg-ink px-5 py-[11px] text-[14px] font-bold text-white sm:px-7 sm:py-[13px] sm:text-[15px]"
           >
             Okay
           </button>
