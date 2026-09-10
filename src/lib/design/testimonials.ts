@@ -1,31 +1,38 @@
 /**
- * The testimonials on the landing page.
+ * The testimonials on the landing page and the organisations page.
  *
  * ────────────────────────────────────────────────────────────────────
- * EVERY QUOTE BELOW IS INVENTED. NOBODY SAID ANY OF IT.
+ * READ THIS BEFORE LAUNCH.
  *
- * The platform has no users yet, so there is nothing real to quote. These
- * exist so HWS can see and approve the design, in the same way the demo
- * organisations exist, and they carry the same obligation: they must be
- * replaced with real, permitted quotes or deleted before anybody outside
- * the team is sent to the site.
+ * EVERY QUOTE BELOW IS INVENTED. NOBODY SAID ANY OF IT. The names are
+ * invented too. The platform has no users yet, so there is nothing real to
+ * quote, and these exist only so the design can be seen and approved.
  *
- * A fabricated testimonial is worse than fabricated demo data. Demo data
- * misrepresents a service; this misrepresents a person, on a platform whose
- * entire argument is that somebody checked. If real quotes are not ready by
- * launch, empty the array — the section then renders the three promises on
- * their own and nothing looks unfinished.
+ * They used to be attributed to "Placeholder, not a real quote", which made
+ * that obvious on the page itself. HWS asked for realistic content instead,
+ * so nothing on the page now says these are invented. That warning lives
+ * here and only here.
+ *
+ * They must be replaced with real, permitted quotes or deleted before
+ * anybody outside the team is sent to the site. If real ones are not ready,
+ * empty the array: both sections then render the three promises on their
+ * own and nothing looks unfinished.
+ *
+ * A fabricated testimonial is worse than the fabricated demo listings in the
+ * database. Those misrepresent a service. These misrepresent a person, on a
+ * platform whose entire argument is that somebody checked.
  * ────────────────────────────────────────────────────────────────────
  *
  * When the real ones arrive:
  *
- *   * Get written permission, and keep it. A woman who used this platform
- *     is by definition someone who was looking for help, and her name next
- *     to that fact is disclosure whether or not she thinks of it that way.
- *   * A first name and a place is usually enough attribution and is a lot
- *     safer than a full name. Ask what she wants shown.
- *   * Four is the maximum the slider will show. Any more are ignored, so
- *     the strongest four go at the top.
+ *   * Get written permission and keep it. A woman who used this platform is
+ *     by definition somebody who was looking for help, and her name beside
+ *     that fact is a disclosure whether or not she thinks of it that way.
+ *   * A first name and a place is enough, and is a great deal safer than a
+ *     full name. Ask her what she wants shown. The shape below is already
+ *     that shape.
+ *   * Four is the maximum the slider shows. Any more are ignored, so the
+ *     strongest four go at the top.
  */
 
 export type Testimonial = {
@@ -43,26 +50,26 @@ export const MAX_TESTIMONIALS = 4;
 export const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "I had been looking for months and kept landing on pages that were out of date. Here it told me the date somebody last checked, so I knew which ones were worth an afternoon.",
-    name: "Placeholder — not a real quote",
+      "I had been looking for months and kept landing on pages that were out of date. This one told me when somebody last checked, so I knew which ones were worth an afternoon.",
+    name: "Amara, Glasgow",
     context: "Returning to work",
   },
   {
     quote:
-      "I did not know what to call what I needed. I typed it the way I would say it out loud and it still found things.",
-    name: "Placeholder — not a real quote",
+      "I did not know what to call what I needed. I typed it the way I would have said it out loud, and it still found things.",
+    name: "Shona, Dundee",
     context: "Money is tight",
   },
   {
     quote:
-      "It told me who each thing was not for, which sounds small. It meant I stopped applying for things that were never going to take me.",
-    name: "Placeholder — not a real quote",
+      "It told me who each thing was not for. That sounds like a small thing. It meant I stopped applying for schemes that were never going to take me.",
+    name: "Priya, Paisley",
     context: "Starting a business",
   },
   {
     quote:
-      "Nothing came back the first time, and instead of an empty page it offered me a call. Somebody rang when they said they would.",
-    name: "Placeholder — not a real quote",
+      "Nothing came back the first time I searched. Instead of an empty page it offered me a call, and somebody rang when they said they would.",
+    name: "Kateryna, Aberdeen",
     context: "New to Scotland",
   },
 ];
