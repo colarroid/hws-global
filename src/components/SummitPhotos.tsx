@@ -99,12 +99,16 @@ export function SummitPhotos() {
       onMouseLeave={() => setHeld(false)}
       onFocusCapture={() => setHeld(true)}
       onBlurCapture={() => setHeld(false)}
-      className="flex flex-col gap-5"
+      className="relative aspect-[3/2] w-full overflow-hidden bg-ink/5 lg:aspect-auto lg:h-full"
     >
-      {/* 3:2, which is the shape the camera gave them. Cropping to something
-          squarer would take a slice off each side, and the watermark sits in
-          the bottom right corner of every one of them. */}
-      <div className="relative aspect-[3/2] w-full overflow-hidden rounded-card bg-ink/5">
+      {/* 3:2 on a phone, which is the shape the camera gave them, and the
+          height of its half of the section on a wide screen — where the
+          frame comes out near square and object-cover keeps the middle 70
+          percent or so of each. That is a real crop, and it is the price of
+          the photograph reaching the edge of the screen rather than sitting
+          in a card. It also takes the watermark off the right edge, which is
+          what the caption further down is for. */}
+      <div className="absolute inset-0">
         {FRAMES.map((frame, index) => (
           <Image
             key={frame.image.src}
@@ -116,7 +120,10 @@ export function SummitPhotos() {
             // DOM from the start, so the other three would be three more
             // base64 blobs in the HTML for a shimmer nobody is looking at.
             placeholder={index === 0 ? "blur" : "empty"}
-            sizes="(min-width: 1024px) 560px, (min-width: 640px) 90vw, 100vw"
+            // Half the viewport on a wide screen and all of it below that,
+            // which is now literally true: the frame is a grid half that
+            // runs to the edge of the screen, not a box inside a container.
+            sizes="(min-width: 1024px) 50vw, 100vw"
             className={`object-cover transition-opacity duration-700 ease-out motion-reduce:transition-none ${
               index === at ? "opacity-100" : "opacity-0"
             }`}
@@ -124,35 +131,50 @@ export function SummitPhotos() {
         ))}
       </div>
 
-      {/* Side by side from sm up, stacked below it. On a 375px screen the
-          caption and the dots on one row leaves the caption about 200px, and
-          it wraps to two lines with the dots floating beside the first. */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        {/* Each dot is its own control, so the photographs can be reached in
-            any order. The button is padded well past the dot it draws and
-            pulls the padding back out of the layout, because a 7px target is
-            not a target on a phone. */}
+      {/* The dots are on the photograph now rather than under it, because
+          there is no longer an "under it" — the frame runs to the bottom of
+          the section. This is what pays for that: enough shading in the last
+          fifth to hold a white dot over whatever the picture is doing down
+          there, and nothing at all above it.
+
+          The caption beside them is back, and only from lg up, which is a
+          consequence of the crop rather than a design preference. Every one
+          of these carries the summit's watermark in its bottom right corner.
+          A phone shows the whole 3:2 frame, so the watermark is there and a
+          caption would be the same credit twice. A wide screen keeps about
+          72 percent of the width, and the watermark sits in the outer three,
+          so it is cut off and the credit has to be set in type instead. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(180deg,rgba(18,9,2,0)_0%,rgba(18,9,2,0.55)_100%)]"
+      />
+
+      {/* Each dot is its own control, so the photographs can be reached in
+          any order. The button is padded well past the dot it draws and
+          pulls the padding back out of the layout, because a 7px target is
+          not a target on a phone. */}
+      <div className="absolute bottom-5 left-5 flex items-center gap-1 sm:bottom-7 sm:left-10">
         <div className="flex items-center gap-1">
-          {FRAMES.map((frame, index) => (
-            <button
-              key={frame.image.src}
-              type="button"
-              onClick={() => setAt(index)}
-              aria-label={`Photograph ${index + 1} of ${count}`}
-              aria-current={index === at ? "true" : undefined}
-              className="-my-[18px] -mx-1 px-1 py-[18px]"
-            >
-              <span
-                className={`block h-[7px] rounded-full transition-[width,background-color] duration-300 ease-out ${
-                  index === at ? "w-7 bg-gold-500" : "w-[7px] bg-ink/20"
-                }`}
-              />
-            </button>
-          ))}
+        {FRAMES.map((frame, index) => (
+          <button
+            key={frame.image.src}
+            type="button"
+            onClick={() => setAt(index)}
+            aria-label={`Photograph ${index + 1} of ${count}`}
+            aria-current={index === at ? "true" : undefined}
+            className="-my-[18px] -mx-1 px-1 py-[18px]"
+          >
+            <span
+              className={`block h-[7px] rounded-full transition-[width,background-color] duration-300 ease-out ${
+                index === at ? "w-7 bg-white" : "w-[7px] bg-white/50"
+              }`}
+            />
+          </button>
+        ))}
         </div>
 
         {/* A proper noun, so it is not translated and does not need a key. */}
-        <span className="eyebrow text-ink-60">
+        <span className="eyebrow ml-5 hidden text-white/85 lg:inline">
           The Holistic Wellbeing Summit
         </span>
       </div>

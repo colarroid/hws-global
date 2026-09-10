@@ -131,27 +131,41 @@ export default async function Landing() {
             Narrow: the text crosses the whole frame, so the shading has to be
             even.
 
-            These numbers are much lower than the ones they replaced, and the
-            reason is the photograph rather than a change of mind. Measured
-            across the band the type sits in, the previous image ran to a mean
-            luminance of about 150 of 255 and needed 0.90 at the left edge to
-            hold white text. This one is a dark foyer: 22 to 78 over almost
-            all of that band, and the single bright patch is the daylight in
-            the glass doors at the far left, which reads about 140. 0.62 there
-            brings that patch to 53 and leaves everything past a third of the
-            way across nearly untouched. Carrying the old values over would
-            have crushed a photograph that was already dark to begin with —
-            which is a thing worth checking every time one of these is
-            swapped, because the scrim is tuned to an image and not to a
-            layout. */}
+            The numbers were measured against this photograph rather than
+            carried over from the last one, and then raised at HWS's request.
+
+            The band the type sits in reads 22 to 78 of 255 over almost all
+            of its width, with one bright patch of daylight in the glass
+            doors at the far left that reads about 140. The first pass put
+            0.62 at that edge, which took the patch to 53 — enough for the
+            headline on paper. It was not enough in the room: a phone at an
+            angle, or a laptop with the brightness down, is a different
+            screen from the one this was measured on, and the headline is the
+            only thing on the page that has to survive both.
+
+            0.82 there, and a flat 0.10 over everything. Together they take
+            the bright patch to 23 and the rest of the text band into the
+            teens, while the women at 60 to 90 percent across only lose the
+            flat layer, because the gradient has cleared by then.
+
+            The lesson from doing this twice is the same either way: the
+            scrim is tuned to an image, not to a layout, so it gets measured
+            again every time the photograph is swapped. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.38)_0%,rgba(18,9,2,0.58)_100%)] sm:hidden"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.52)_0%,rgba(18,9,2,0.70)_100%)] sm:hidden"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.62)_0%,rgba(18,9,2,0.44)_30%,rgba(18,9,2,0.12)_55%,rgba(18,9,2,0)_75%)] sm:block"
+          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.82)_0%,rgba(18,9,2,0.66)_30%,rgba(18,9,2,0.34)_55%,rgba(18,9,2,0.10)_78%)] sm:block"
         />
+
+        {/* A flat layer under the gradients, at every width. The gradients
+            protect the words, which is a job that only applies where the
+            words are; this one lowers the whole frame by a little so the
+            foyer sits behind the page rather than beside it, and so the
+            paragraph stays readable where it runs past the column. */}
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/10" />
 
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="flex max-w-[576px] flex-col gap-6">
@@ -307,28 +321,37 @@ export default async function Landing() {
           there — see the note in SummitPhotos, which has a consent question
           in it that is HWS's to answer before launch. */}
       <section className="border-y border-hairline bg-surface">
-        {/* The padding is on the inner box rather than on the section, which
-            looks like a detail and is the difference between this heading
-            lining up with the one above it and sitting 40px to its left.
+        {/* Two halves of the viewport, so the photograph reaches the right
+            edge of the screen instead of stopping at a container it shares
+            with the words. There is no container here at all, which is what
+            makes that possible and what the arithmetic below is paying for.
 
-            The page has two section shapes. A container section carries
-            max-w-[1180px] and its own padding, so its content starts 40px
-            inside 1180. A full-bleed one — the hero, the dark band — puts the
-            padding on the section so the background reaches the edges, and
-            its content starts at 1180 exactly. The two do not line up, and
-            they have not lined up for a while.
+            THE LEFT EDGE. The heading still has to line up with the section
+            above it, and that section is an ordinary centred container: its
+            text starts at (W - 1180) / 2 + 40, where W is the content width.
+            This half is exactly W / 2 wide, so the same point is W / 2 - 550
+            from its own left edge — which is what a 550px box pushed to the
+            right of the half puts it at, with no reference to W anywhere.
+            The min() is for viewports under 1180, where the container stops
+            being centred and its text sits at a flat 40px: there the box is
+            narrower than 550 and lands on 40 by itself.
 
-            This band needs a full-bleed background and a container left edge,
-            so it takes the background from one and the measure from the
-            other. Placed as it is, directly under a container section, that
-            puts the only edge that shows against a change of colour at the
-            dark band below, where it is nearly invisible.
+            That is the whole reason the text box is a fixed width with its
+            own padding inside it rather than the obvious cell padding. Cell
+            padding on the right would push the box left by exactly as much
+            and put the heading out of line again.
 
-            The underlying mismatch is still there and is worth fixing across
-            the page one day. Doing it here would have moved two sections
-            nobody asked about and reflowed their columns. */}
-        <div className="mx-auto grid w-full max-w-[1180px] grid-cols-1 items-center gap-12 px-5 py-24 sm:px-10 sm:py-32 lg:grid-cols-2 lg:gap-16">
-          <div>
+            THE HEIGHT. The section used to be as tall as a 3:2 photograph
+            plus its padding. Now the photograph is as tall as the section,
+            so the padding sets the height, and 176px of it gives a frame of
+            roughly 1.08:1. The photographs are 3:2, so object-cover keeps
+            about 70 percent of their width. That is the number to watch if
+            this padding ever grows: the group at the sponsor board is the
+            widest composition of the four, and it is the one that loses
+            people first. */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:items-stretch">
+          <div className="flex flex-col justify-center px-5 py-24 sm:px-10 sm:py-32 lg:py-44 lg:pl-10 lg:pr-0">
+          <div className="mx-auto w-full max-w-[1180px] lg:ml-auto lg:mr-0 lg:w-[min(550px,100%)] lg:max-w-none lg:pr-14">
             {/* Same gap between eyebrow and heading as the section above, and
                 the same two sizes, because the two are peers: one states the
                 problem, this one says where we watched it happen. */}
@@ -350,6 +373,7 @@ export default async function Landing() {
                 {t("origin.bodyTwo")}
               </p>
             </div>
+          </div>
           </div>
 
           <SummitPhotos />
