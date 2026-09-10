@@ -194,22 +194,25 @@ export default async function Landing() {
         </div>
       </section>
 
-      {/* Positioning, and the only part of this page written at an objection
-          rather than at a question.
+      {/* How it works: the claim, and then the two people it is a claim
+          about.
 
-          The objection is "why would she not just ask a chatbot", and it is
-          a fair one: a general model will happily describe every fund in
-          Scotland. What it cannot do is know that one closed in March. That
-          is the whole difference and it is worth stating plainly, so this
-          says it without naming a competitor — putting the alternative in
-          her head on our own front page argues for it.
+          These were two sections. The first argued that knowing a thing
+          exists is not knowing it is open to you; the second showed the
+          steps that close that gap. Split, the argument sat above a heading
+          that repeated it, and the reader met two headings before any
+          content. Together the heading states the problem and the columns
+          under it are the answer, which is what both sections were for.
 
-          The second paragraph is Ifeyinwa's, near enough verbatim: any woman
-          at any life stage, and she does not have to arrive knowing the name
-          of her own problem. It reads as reassurance. It is also the
-          product: the three questions exist to turn a sentence into
-          something that can be searched, which is the one thing a woman who
-          cannot name her situation cannot do for herself. */}
+          The branches run in parallel, so her first step and their first
+          step sit level and the pair reads across as well as down. What that
+          shows is that the checking happens on their side before anything
+          reaches hers, which is the argument the platform rests on and is
+          hard to make in a sentence.
+
+          The steps are numbered because they are a sequence, and numbered in
+          the component rather than in nine catalogues, so nobody has to
+          translate the word "One". */}
       <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-16 sm:px-10 sm:py-20">
         <div className="flex flex-col gap-3">
           <span className="eyebrow text-gold-700">{t("why.eyebrow")}</span>
@@ -218,62 +221,7 @@ export default async function Landing() {
           </h2>
         </div>
 
-        <div className="mt-7 grid grid-cols-1 gap-x-12 gap-y-5 sm:grid-cols-2">
-          <p className="m-0 max-w-[52ch] text-[18px] leading-[1.6] text-ink-70">
-            {t("why.body")}
-          </p>
-          <p className="m-0 max-w-[52ch] text-[18px] leading-[1.6] text-ink-70">
-            {t("why.audience")}
-          </p>
-        </div>
-      </section>
-
-      {/* How it works, as a tree: one question splitting into the two people
-          who ask it.
-
-          The section used to be three steps in a row, and those three steps
-          were hers. That made the organisation's side of the platform
-          invisible on the page where an organisation is most likely to be
-          deciding whether to bother — the two audiences are the whole shape
-          of this thing, and a single column said there was one.
-
-          The steps are numbered because they are a sequence, and they are
-          numbered in the component rather than in nine catalogues, so nobody
-          has to translate the word "One".
-
-          The branches are set to run in parallel: her first step and their
-          first step sit level, and the pair reads across as well as down.
-          What that shows is that the checking happens on their side before
-          anything reaches hers, which is the argument the whole platform
-          rests on and is hard to make in a sentence. */}
-      <section className="mx-auto w-full max-w-[1180px] px-5 py-16 sm:px-10 sm:py-20">
-        {/* The heading alone. It carried an eyebrow saying "How it works"
-            above a line saying something else, and a paragraph under that;
-            the tree below explains itself, so the heading is the only part
-            of the three that was doing work. */}
-        <div className="flex flex-col items-center text-center">
-          <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[38px]">
-            {t("how.title")}
-          </h2>
-        </div>
-
-        {/* The fork. Drawn rather than decorated: a stem down from the
-            heading, a bar spanning the two column centres, and a drop onto
-            each. It is hidden below the breakpoint because there is nothing
-            to fork into once the branches stack.
-
-            The drops stay on the column centres while the text under them is
-            ranged left. They point at the columns, not at the words. */}
-        <div className="mt-9 hidden sm:block" aria-hidden="true">
-          <span className="mx-auto block h-8 w-px bg-ink/25" />
-          <div className="relative mx-auto h-8 w-1/2">
-            <span className="absolute inset-x-0 top-0 h-px bg-ink/25" />
-            <span className="absolute left-0 top-0 h-8 w-px bg-ink/25" />
-            <span className="absolute right-0 top-0 h-8 w-px bg-ink/25" />
-          </div>
-        </div>
-
-        <div className="mt-10 grid grid-cols-1 gap-12 sm:mt-0 sm:grid-cols-2 sm:gap-0">
+        <div className="mt-11 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-0">
           {[
             {
               key: "women",

@@ -62,9 +62,6 @@ export type MessageKey =
   | "hero.beginBrowse"
   | "why.eyebrow"
   | "why.title"
-  | "why.body"
-  | "why.audience"
-  | "how.title"
   | "how.forWomen"
   | "how.forOrgs"
   | "how.oneTitle"
@@ -102,17 +99,12 @@ const en: Record<MessageKey, string> = {
     "Tell us what you need in your own words, and we will show you a few next steps worth taking. Three questions, no account needed.",
   "hero.cta": "Find solution",
   "hero.browse": "Or see who is out there",
-  "why.eyebrow": "Why this exists",
+  "why.eyebrow": "How it works",
   "why.title":
     "Knowing something exists is not the same as knowing it is open to you",
-  "why.body":
-    "A search will tell you a fund exists. It will not tell you that it closed in March, or that you are not eligible, or what happens after you apply. Everything here was chosen and checked by people who do this work, and every listing carries the date somebody last confirmed it.",
-  "why.audience":
-    "It is for any woman at any point — starting out, starting again, or starting something. You do not have to know what your problem is called. Most people arrive with a sentence rather than a category, and turning one into the other is the job.",
   "hero.begin": "Where would you like to start?",
   "hero.beginFind": "Find your next step",
   "hero.beginBrowse": "See who is out there",
-  "how.title": "How it works",
   "how.oneTitle": "Tell us, in your words",
   "how.oneBody":
     "What you need, roughly where you are, and anything about your situation. Just three questions.",
@@ -160,17 +152,12 @@ const gd: Catalogue = {
     "Innis dhuinn dè tha a dhìth ort nad fhaclan fhèin, agus seallaidh sinn dhut beagan cheumannan a b’ fhiach a ghabhail. Trì ceistean, gun fheum air cunntas.",
   "hero.cta": "Lorg fuasgladh",
   "hero.browse": "No faic cò tha ann",
-  "why.eyebrow": "Carson a tha seo ann",
+  "why.eyebrow": "Mar a tha e ag obair",
   "why.title":
     "Chan ionann fios gu bheil rudeigin ann agus fios gu bheil e fosgailte dhut",
-  "why.body":
-    "Innsidh lorg dhut gu bheil maoin ann. Chan innis e dhut gun do dhùin i sa Mhàrt, no nach eil thu airidh oirre, no dè thachras às dèidh dhut iarrtas a chur a-steach. Chaidh a h-uile càil an seo a thaghadh agus a dhearbhadh le daoine a tha ag obair san raon seo, agus tha an ceann-latha mu dheireadh a dhearbh cuideigin e air gach clàr.",
-  "why.audience":
-    "Tha e do bhoireannach sam bith aig àm sam bith — a' tòiseachadh a-mach, a' tòiseachadh a-rithist, no a' tòiseachadh rudeigin. Chan fheum fios a bhith agad dè an t-ainm a th' air an duilgheadas agad. Bidh a' mhòr-chuid a' tighinn le seantans seach le roinn, agus 's e an obair againn tè a thionndadh na tè eile.",
   "hero.begin": "Càite am bu toil leat tòiseachadh?",
   "hero.beginFind": "Lorg do chiad cheum",
   "hero.beginBrowse": "Faic cò tha ann",
-  "how.title": "Mar a tha e ag obair",
   "how.oneTitle": "Innis dhuinn nad fhaclan fhèin",
   "how.oneBody":
     "Na tha a dhìth ort, gu ìre mhath càite a bheil thu, agus rud sam bith mun t-suidheachadh agad. Dìreach trì ceistean.",
@@ -218,17 +205,12 @@ const sco: Catalogue = {
     "Tell us whit ye need in yer ain wirds, an we’ll shaw ye a wheen o next steps worth takkin. Three questions, nae accoont needit.",
   "hero.cta": "Finn solution",
   "hero.browse": "Or see wha’s oot there",
-  "why.eyebrow": "Whit wey this is here",
+  "why.eyebrow": "Hoo it warks",
   "why.title":
     "Kennin somethin exists isna the same as kennin it's open tae ye",
-  "why.body":
-    "A search will tell ye a fund exists. It'll no tell ye it steekit in Mairch, or that ye're no eligible, or whit happens efter ye apply. Awthing here wis waled an checkit by fowk that dae this wark, an ilka listin cairries the date somebody last confirmed it.",
-  "why.audience":
-    "It's for ony wumman at ony pynt — stertin oot, stertin again, or stertin somethin. Ye dinna hae tae ken whit yer problem is cawed. Maist fowk arrive wi a sentence raither nor a category, an turnin the tane intae the tither is the job.",
   "hero.begin": "Whaur wad ye like tae stert?",
   "hero.beginFind": "Finn yer neist step",
   "hero.beginBrowse": "See wha's oot there",
-  "how.title": "Hoo it warks",
   "how.oneTitle": "Tell us, in yer ain wirds",
   "how.oneBody":
     "Whit ye need, roughly whaur ye are, an onythin aboot yer situation. Jist three questions.",
@@ -276,17 +258,12 @@ const pl: Catalogue = {
     "Powiedz nam własnymi słowami, czego potrzebujesz, a pokażemy Ci kilka kolejnych kroków wartych podjęcia. Trzy pytania, bez zakładania konta.",
   "hero.cta": "Znajdź rozwiązanie",
   "hero.browse": "Albo zobacz, kto tu jest",
-  "why.eyebrow": "Po co to jest",
+  "why.eyebrow": "Jak to działa",
   "why.title":
     "Wiedzieć, że coś istnieje, to nie to samo, co wiedzieć, że jest dla ciebie",
-  "why.body":
-    "Wyszukiwarka powie ci, że dany fundusz istnieje. Nie powie ci, że nabór zamknięto w marcu, że nie spełniasz warunków ani co dzieje się po złożeniu wniosku. Wszystko, co tu znajdziesz, zostało wybrane i sprawdzone przez osoby, które pracują w tej dziedzinie, a każdy wpis nosi datę ostatniego potwierdzenia.",
-  "why.audience":
-    "To miejsce dla każdej kobiety w każdym momencie życia — gdy zaczynasz, zaczynasz od nowa albo zaczynasz coś swojego. Nie musisz wiedzieć, jak nazywa się twój problem. Większość osób przychodzi ze zdaniem, a nie z kategorią, i naszym zadaniem jest zamienić jedno w drugie.",
   "hero.begin": "Od czego chcesz zacząć?",
   "hero.beginFind": "Znajdź swój następny krok",
   "hero.beginBrowse": "Zobacz, kto tu jest",
-  "how.title": "Jak to działa",
   "how.oneTitle": "Powiedz nam własnymi słowami",
   "how.oneBody":
     "Czego potrzebujesz, mniej więcej gdzie jesteś i cokolwiek o twojej sytuacji. Tylko trzy pytania.",
@@ -334,17 +311,12 @@ const uk: Catalogue = {
     "Розкажіть своїми словами, що вам потрібно, і ми покажемо кілька наступних кроків, які варто зробити. Три питання, обліковий запис не потрібен.",
   "hero.cta": "Знайти рішення",
   "hero.browse": "Або подивіться, хто тут є",
-  "why.eyebrow": "Навіщо це існує",
+  "why.eyebrow": "Як це працює",
   "why.title":
     "Знати, що щось існує, — не те саме, що знати, що воно доступне вам",
-  "why.body":
-    "Пошук скаже вам, що фонд існує. Він не скаже, що набір закрився у березні, що ви не відповідаєте умовам або що буде після подання заявки. Усе тут обрано й перевірено людьми, які працюють у цій сфері, а кожен запис має дату останнього підтвердження.",
-  "why.audience":
-    "Це для будь-якої жінки на будь-якому етапі — коли ви починаєте, починаєте заново або починаєте щось своє. Вам не треба знати, як називається ваша проблема. Більшість приходить із реченням, а не з категорією, і наша робота — перетворити одне на інше.",
   "hero.begin": "З чого хочете почати?",
   "hero.beginFind": "Знайдіть наступний крок",
   "hero.beginBrowse": "Подивіться, хто тут є",
-  "how.title": "Як це працює",
   "how.oneTitle": "Розкажіть своїми словами",
   "how.oneBody":
     "Що вам потрібно, приблизно де ви є, і будь-що про вашу ситуацію. Лише три запитання.",
@@ -392,17 +364,12 @@ const ar: Catalogue = {
     "أخبرينا بكلماتك عمّا تحتاجين إليه، وسنعرض عليك بضع خطوات تالية تستحق أن تُتخذ. ثلاثة أسئلة، ولا حاجة إلى حساب.",
   "hero.cta": "ابحثي عن حل",
   "hero.browse": "أو اطّلعي على الجهات الموجودة",
-  "why.eyebrow": "لماذا وُجد هذا",
+  "why.eyebrow": "طريقة العمل",
   "why.title":
     "أن تعرفي بوجود شيء ما ليس كأن تعرفي أنه متاح لكِ",
-  "why.body":
-    "البحث سيخبرك بوجود صندوق تمويل، لكنه لن يخبرك بأنه أُغلق في آذار، ولا بأنكِ غير مؤهّلة، ولا بما يحدث بعد التقديم. كل ما هنا اختاره وتحقّق منه أشخاص يعملون في هذا المجال، وكل إدراج يحمل تاريخ آخر تأكيد له.",
-  "why.audience":
-    "هذا لكل امرأة في أي مرحلة من حياتها، سواء كنتِ تبدئين، أو تبدئين من جديد، أو تبدئين مشروعًا خاصًا بكِ. لستِ مضطرة إلى معرفة اسم مشكلتك. معظم النساء يأتين بجملة لا بتصنيف، ومهمتنا أن نحوّل الأولى إلى الثانية.",
   "hero.begin": "من أين تحبين أن تبدئي؟",
   "hero.beginFind": "ابحثي عن خطوتك التالية",
   "hero.beginBrowse": "اطّلعي على الجهات الموجودة",
-  "how.title": "طريقة العمل",
   "how.oneTitle": "أخبرينا بكلماتك",
   "how.oneBody":
     "ما تحتاجينه، وأين أنتِ تقريبًا، وأي شيء عن وضعك. ثلاثة أسئلة فقط.",
@@ -450,17 +417,12 @@ const ur: Catalogue = {
     "اپنے الفاظ میں بتائیں کہ آپ کو کیا چاہیے، اور ہم آپ کو چند اگلے قدم دکھائیں گے جو اٹھانے کے قابل ہیں۔ تین سوال، کوئی اکاؤنٹ درکار نہیں۔",
   "hero.cta": "حل تلاش کریں",
   "hero.browse": "یا دیکھیں کون کون موجود ہے",
-  "why.eyebrow": "یہ کیوں موجود ہے",
+  "why.eyebrow": "یہ کیسے کام کرتا ہے",
   "why.title":
     "کسی چیز کے موجود ہونے کا علم اور اس کے آپ کے لیے دستیاب ہونے کا علم ایک بات نہیں",
-  "why.body":
-    "تلاش آپ کو بتا دے گی کہ کوئی فنڈ موجود ہے۔ وہ یہ نہیں بتائے گی کہ وہ مارچ میں بند ہو گیا، یا یہ کہ آپ اہل نہیں، یا درخواست کے بعد کیا ہوتا ہے۔ یہاں موجود ہر چیز کو اُن لوگوں نے چنا اور جانچا ہے جو اسی شعبے میں کام کرتے ہیں، اور ہر اندراج پر آخری تصدیق کی تاریخ درج ہوتی ہے۔",
-  "why.audience":
-    "یہ ہر عورت کے لیے ہے، زندگی کے ہر موڑ پر۔ چاہے آپ شروعات کر رہی ہوں، دوبارہ شروع کر رہی ہوں، یا اپنا کچھ شروع کر رہی ہوں۔ آپ کو یہ جاننے کی ضرورت نہیں کہ آپ کے مسئلے کا نام کیا ہے۔ زیادہ تر خواتین ایک جملہ لے کر آتی ہیں، کوئی زمرہ نہیں، اور ہمارا کام پہلے کو دوسرے میں بدلنا ہے۔",
   "hero.begin": "آپ کہاں سے شروع کرنا چاہیں گی؟",
   "hero.beginFind": "اپنا اگلا قدم تلاش کریں",
   "hero.beginBrowse": "دیکھیں کون کون موجود ہے",
-  "how.title": "یہ کیسے کام کرتا ہے",
   "how.oneTitle": "اپنے الفاظ میں بتائیں",
   "how.oneBody":
     "آپ کو کیا چاہیے، تقریباً آپ کہاں ہیں، اور آپ کی صورتحال کے بارے میں کچھ بھی۔ صرف تین سوالات۔",
@@ -508,17 +470,12 @@ const pa: Catalogue = {
     "ਸਾਨੂੰ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਅਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਕੁਝ ਅਗਲੇ ਕਦਮ ਦਿਖਾਵਾਂਗੇ ਜੋ ਚੁੱਕਣ ਯੋਗ ਹਨ। ਤਿੰਨ ਸਵਾਲ, ਕੋਈ ਖਾਤਾ ਨਹੀਂ ਚਾਹੀਦਾ।",
   "hero.cta": "ਹੱਲ ਲੱਭੋ",
   "hero.browse": "ਜਾਂ ਵੇਖੋ ਕੌਣ ਮੌਜੂਦ ਹੈ",
-  "why.eyebrow": "ਇਹ ਕਿਉਂ ਹੈ",
+  "why.eyebrow": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "why.title":
     "ਕਿਸੇ ਚੀਜ਼ ਦੇ ਹੋਣ ਦਾ ਪਤਾ ਹੋਣਾ ਤੇ ਉਸ ਦੇ ਤੁਹਾਡੇ ਲਈ ਖੁੱਲ੍ਹੀ ਹੋਣ ਦਾ ਪਤਾ ਹੋਣਾ ਇੱਕੋ ਗੱਲ ਨਹੀਂ",
-  "why.body":
-    "ਖੋਜ ਤੁਹਾਨੂੰ ਦੱਸ ਦੇਵੇਗੀ ਕਿ ਕੋਈ ਫੰਡ ਮੌਜੂਦ ਹੈ। ਉਹ ਇਹ ਨਹੀਂ ਦੱਸੇਗੀ ਕਿ ਉਹ ਮਾਰਚ ਵਿੱਚ ਬੰਦ ਹੋ ਗਿਆ, ਜਾਂ ਤੁਸੀਂ ਯੋਗ ਨਹੀਂ ਹੋ, ਜਾਂ ਅਰਜ਼ੀ ਤੋਂ ਬਾਅਦ ਕੀ ਹੁੰਦਾ ਹੈ। ਇੱਥੇ ਹਰ ਚੀਜ਼ ਉਨ੍ਹਾਂ ਲੋਕਾਂ ਨੇ ਚੁਣੀ ਤੇ ਪਰਖੀ ਹੈ ਜੋ ਇਸੇ ਖੇਤਰ ਵਿੱਚ ਕੰਮ ਕਰਦੇ ਹਨ, ਅਤੇ ਹਰ ਸੂਚੀ ਉੱਤੇ ਆਖ਼ਰੀ ਪੁਸ਼ਟੀ ਦੀ ਤਾਰੀਖ਼ ਦਰਜ ਹੁੰਦੀ ਹੈ।",
-  "why.audience":
-    "ਇਹ ਹਰ ਔਰਤ ਲਈ ਹੈ, ਜ਼ਿੰਦਗੀ ਦੇ ਹਰ ਮੋੜ ਉੱਤੇ। ਭਾਵੇਂ ਤੁਸੀਂ ਸ਼ੁਰੂ ਕਰ ਰਹੀ ਹੋ, ਮੁੜ ਸ਼ੁਰੂ ਕਰ ਰਹੀ ਹੋ, ਜਾਂ ਆਪਣਾ ਕੁਝ ਸ਼ੁਰੂ ਕਰ ਰਹੀ ਹੋ। ਤੁਹਾਨੂੰ ਇਹ ਜਾਣਨ ਦੀ ਲੋੜ ਨਹੀਂ ਕਿ ਤੁਹਾਡੀ ਮੁਸ਼ਕਲ ਦਾ ਨਾਂ ਕੀ ਹੈ। ਬਹੁਤੀਆਂ ਔਰਤਾਂ ਇੱਕ ਵਾਕ ਲੈ ਕੇ ਆਉਂਦੀਆਂ ਹਨ, ਕੋਈ ਸ਼੍ਰੇਣੀ ਨਹੀਂ, ਅਤੇ ਸਾਡਾ ਕੰਮ ਪਹਿਲੇ ਨੂੰ ਦੂਜੇ ਵਿੱਚ ਬਦਲਣਾ ਹੈ।",
   "hero.begin": "ਤੁਸੀਂ ਕਿੱਥੋਂ ਸ਼ੁਰੂ ਕਰਨਾ ਚਾਹੋਗੇ?",
   "hero.beginFind": "ਆਪਣਾ ਅਗਲਾ ਕਦਮ ਲੱਭੋ",
   "hero.beginBrowse": "ਵੇਖੋ ਕੌਣ ਮੌਜੂਦ ਹੈ",
-  "how.title": "ਇਹ ਕਿਵੇਂ ਕੰਮ ਕਰਦਾ ਹੈ",
   "how.oneTitle": "ਸਾਨੂੰ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ",
   "how.oneBody":
     "ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ, ਲਗਭਗ ਤੁਸੀਂ ਕਿੱਥੇ ਹੋ, ਅਤੇ ਤੁਹਾਡੀ ਸਥਿਤੀ ਬਾਰੇ ਕੁਝ ਵੀ। ਸਿਰਫ਼ ਤਿੰਨ ਸਵਾਲ।",
@@ -566,16 +523,11 @@ const zh: Catalogue = {
     "用你自己的话告诉我们你需要什么，我们会为你列出几个值得迈出的下一步。三个问题，无需注册账户。",
   "hero.cta": "寻找方案",
   "hero.browse": "或看看有哪些机构",
-  "why.eyebrow": "为什么会有这个平台",
+  "why.eyebrow": "运作方式",
   "why.title": "知道某项支持存在，不等于知道它对你开放",
-  "why.body":
-    "搜索能告诉你有这样一笔资金，却不会告诉你它三月就已截止、你并不符合条件，也不会告诉你申请之后会发生什么。这里的每一项都由从事这一行的人挑选并核实，每条信息都标有最近一次确认的日期。",
-  "why.audience":
-    "它面向每一位女性，人生的任何阶段：无论你是刚起步、重新开始，还是想做点自己的事。你不需要知道自己的问题该怎么称呼。大多数人带来的是一句话，而不是一个类别，把前者变成后者正是我们的工作。",
   "hero.begin": "你想从哪里开始？",
   "hero.beginFind": "找到你的下一步",
   "hero.beginBrowse": "看看有哪些机构",
-  "how.title": "运作方式",
   "how.oneTitle": "用你自己的话告诉我们",
   "how.oneBody":
     "你需要什么、你大概在哪里，以及关于你处境的任何情况。只有三个问题。",
