@@ -221,7 +221,7 @@ export default async function Landing() {
           </h2>
         </div>
 
-        <div className="mt-11 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-0">
+        <div className="mt-22 grid grid-cols-1 gap-12 sm:grid-cols-2 sm:gap-0">
           {[
             {
               key: "women",
@@ -244,13 +244,18 @@ export default async function Landing() {
           ].map((branch, index) => (
             <div
               key={branch.key}
-              className={`flex flex-col items-start gap-8 sm:px-8 ${
+              className={`flex flex-col items-start gap-8 ${
                 // The rule between them is dashed and only drawn on the
                 // second, so it is one line between two columns rather than
                 // an edge on each.
+                //
+                // The padding is on the inside edges only. Padding both
+                // columns evenly indented the first one, which put "For
+                // women" a third of an inch right of the heading it sits
+                // under and lost the section its left edge.
                 index === 1
-                  ? "sm:border-l sm:border-dashed sm:border-ink/20"
-                  : ""
+                  ? "sm:border-l sm:border-dashed sm:border-ink/20 sm:pl-10"
+                  : "sm:pr-10"
               }`}
             >
               <h3 className="m-0 font-display text-[24px] font-normal leading-[1.2]">
