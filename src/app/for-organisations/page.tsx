@@ -7,7 +7,6 @@ import {
   Ban,
   ClipboardCheck,
   Compass,
-  MessageSquareText,
   Users,
 } from "lucide-react";
 import { pageMetadata } from "@/lib/seo";
@@ -319,14 +318,6 @@ export default async function CommunityPage() {
               See who is already listed
             </Link>
           </div>
-
-          <p className="m-0 flex items-center gap-2 text-[15px] text-white/70">
-            <MessageSquareText size={16} strokeWidth={2} aria-hidden="true" />
-            Not sure it is for you?{" "}
-            <Link href="/faq" className="font-bold text-white underline">
-              The questions organisations ask
-            </Link>
-          </p>
         </div>
       </section>
     </div>
