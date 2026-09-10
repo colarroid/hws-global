@@ -105,7 +105,7 @@ export async function SiteFooter() {
                     href={portalUrl()}
                     className="inline-flex min-h-[44px] items-center gap-[6px] text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
-                    List your support
+                    Meet the women
                     <ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" />
                   </a>
                 </li>

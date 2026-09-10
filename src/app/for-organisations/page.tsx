@@ -5,7 +5,6 @@ import {
   BadgeCheck,
   BarChart3,
   Ban,
-  ClipboardCheck,
   Compass,
   Users,
 } from "lucide-react";
@@ -141,7 +140,7 @@ export default async function CommunityPage() {
               href={portalLink("/sign-up")}
               className="flex min-h-[52px] items-center justify-center rounded-card bg-surface px-4 py-3 text-center font-display text-[20px] font-normal leading-[1.33] text-ink no-underline shadow-hairline transition-[box-shadow,transform] duration-150 ease-out hover:-translate-y-[1px] hover:shadow-hairline-gold sm:min-h-[64px] sm:px-5 sm:py-4 sm:text-[22px]"
             >
-              List your support
+              Meet the women
             </a>
             <a
               href={portalUrl()}
@@ -248,49 +247,6 @@ export default async function CommunityPage() {
         </div>
       </section>
 
-      {/* Said before they sign up rather than after. An organisation that will
-          not keep a listing current is one whose entry sends a woman to a
-          closed door, and it is fairer to everybody to say so here. */}
-      <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
-        <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-3">
-            <ClipboardCheck
-              size={22}
-              strokeWidth={1.75}
-              className="shrink-0 text-gold-700"
-              aria-hidden="true"
-            />
-            <h2 className="m-0 font-display text-[24px] font-normal leading-[1.2] sm:text-[28px]">
-              What we ask of you
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 sm:gap-x-12">
-            <div className="flex flex-col gap-2">
-              <span className="text-[17px] font-bold text-ink">
-                Keep it current
-              </span>
-              <p className="m-0 max-w-[46ch] text-[16px] leading-[1.5] text-ink-70">
-                Every listing carries the date it was last confirmed, and she
-                can see it. We will email you when something needs a look. A
-                listing nobody has confirmed in months ranks below one that has
-                been.
-              </p>
-            </div>
-            <div className="flex flex-col gap-2">
-              <span className="text-[17px] font-bold text-ink">
-                Be straight about who you cannot help
-              </span>
-              <p className="m-0 max-w-[46ch] text-[16px] leading-[1.5] text-ink-70">
-                It is a field on your profile and it is shown plainly. It saves
-                a woman an afternoon and saves you an enquiry you were only
-                going to turn down.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="mx-auto w-full max-w-[1180px] px-5 pb-32 sm:px-10">
         <div className="mx-auto flex max-w-[880px] flex-col items-start gap-5 rounded-card bg-ink p-8 text-white sm:p-11">
           <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[34px]">
@@ -307,7 +263,7 @@ export default async function CommunityPage() {
               href={portalLink("/sign-up")}
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-7 py-[15px] text-[17px] font-bold text-ink no-underline"
             >
-              List your support
+              Meet the women
               <ArrowUpRight size={17} strokeWidth={2} aria-hidden="true" />
             </a>
             <Link
