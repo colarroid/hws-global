@@ -132,11 +132,11 @@ export default async function Landing() {
             photograph at all — it is a black rectangle that costs 131KB. */}
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.55)_0%,rgba(18,9,2,0.70)_100%)] sm:hidden"
+          className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(18,9,2,0.60)_0%,rgba(18,9,2,0.74)_100%)] sm:hidden"
         />
         <div
           aria-hidden="true"
-          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.88)_0%,rgba(18,9,2,0.60)_32%,rgba(18,9,2,0.18)_54%,rgba(18,9,2,0)_74%)] sm:block"
+          className="absolute inset-0 -z-10 hidden bg-[linear-gradient(100deg,rgba(18,9,2,0.90)_0%,rgba(18,9,2,0.64)_32%,rgba(18,9,2,0.18)_54%,rgba(18,9,2,0)_74%)] sm:block"
         />
 
         {/* A flat layer over both gradients rather than steeper gradients.
@@ -146,7 +146,7 @@ export default async function Landing() {
             paragraph stays readable where it runs past the column and over
             the group. Same value at every width, so what changes between
             screens is only the shading that follows the text. */}
-        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/25" />
+        <div aria-hidden="true" className="absolute inset-0 -z-10 bg-ink/12" />
 
         <div className="mx-auto w-full max-w-[1180px]">
           <div className="flex max-w-[576px] flex-col gap-6">
