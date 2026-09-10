@@ -30,9 +30,20 @@ const THRESHOLD = 24;
  * bar that is actually there. In flow, opening the menu part-way down a page
  * left the sheet hanging under a header that had scrolled away.
  */
+/**
+ * The pages whose first screen is dark enough to hold a light bar on it.
+ *
+ * A list rather than a flag on the page, because the header renders in the
+ * root layout and cannot ask the page it is sitting above what colour it is.
+ * The cost is that a new dark hero has to be added here too — which is why
+ * the failure is visible rather than silent: forget, and the bar is ink on
+ * ink, which is the first thing anybody notices.
+ */
+const OVERLAY_ROUTES = ["/", "/for-organisations"];
+
 export function HeaderShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
-  const overlay = pathname === "/";
+  const overlay = OVERLAY_ROUTES.includes(pathname);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

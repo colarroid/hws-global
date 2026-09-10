@@ -108,15 +108,22 @@ export default async function CommunityPage() {
 
   return (
     <div className="flex flex-1 flex-col">
-      <section className="px-5 pb-14 pt-16 sm:px-10 sm:pb-20 sm:pt-24">
+      {/* Dark, and full bleed, so the bar can float on it. The header is
+          fixed over this page now, which is why the top padding is larger
+          than it looks like it needs to be: it is clearing a 60px bar that
+          is no longer taking up any room of its own. */}
+      <section className="bg-ink px-5 pb-20 pt-28 sm:px-10 sm:pb-28 sm:pt-36">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
-          <span className="eyebrow text-gold-700">For organisations</span>
+          <span className="eyebrow text-gold-300">For organisations</span>
 
-          <h1 className="m-0 max-w-[19ch] font-display text-[38px] font-normal leading-[1.03] tracking-[-0.02em] sm:text-[68px]">
+          <h1 className="m-0 max-w-[19ch] font-display text-[38px] font-normal leading-[1.03] tracking-[-0.02em] text-white sm:text-[68px]">
             The women you are for, without them having to find you
           </h1>
 
-          <p className="m-0 max-w-[60ch] text-[19px] leading-[1.6] text-ink-70 sm:text-[21px]">
+          {/* Set as the landing hero's paragraph is: 16px on a 512px measure
+              at 1.5. They are the same sentence doing the same job to two
+              different audiences and they were two different sizes. */}
+          <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/80">
             You already do the work. The problem is that a woman has to know
             your name to find your website. Here she describes her situation,
             and we put you in front of her because you are the right answer,
@@ -126,20 +133,20 @@ export default async function CommunityPage() {
           <div className="mt-1 flex flex-wrap items-center gap-4">
             <a
               href={portalLink("/sign-up")}
-              className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[18px] font-bold text-white no-underline"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-8 py-[17px] text-[18px] font-bold text-ink no-underline transition-opacity duration-150 ease-out hover:opacity-90"
             >
               Meet the women
               <ArrowUpRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
             <a
               href={portalUrl()}
-              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-700 no-underline"
+              className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-300 no-underline"
             >
               I already have an account
             </a>
           </div>
 
-          <p className="m-0 text-[15px] leading-[1.6] text-ink-60">
+          <p className="m-0 text-[15px] leading-[1.6] text-white/60">
             Free. No paid placement, no advertising, and nobody pays to appear
             higher.
           </p>
