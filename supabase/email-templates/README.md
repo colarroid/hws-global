@@ -30,6 +30,25 @@ the women's sign-in a code while the organisation portal keeps its links.
 | **Reset password** | `resetPasswordForEmail`, organisation portal | `{{ .ConfirmationURL }}` | Set a new password |
 | **Change email address** | `updateUser({ email })`, women's settings screen | `{{ .Token }}`, and no link | Confirming your new address |
 
+### The subject is a separate field, and it goes stale on its own
+
+Pasting the body does not touch the subject. On 11 September 2026 the Magic
+Link slot was serving this repo's body correctly under the subject **"Your
+sign-in link"**, which is the one thing in that email that is not true: there
+is no link in it, by design, and the subject was sending women to look for
+one.
+
+**If an edit does not show up in the next email, you edited a different
+slot.** Which slot is in use is decided by the call, not by the name, and the
+arriving subject line is the fastest way to identify it: whatever the received
+email says is what is saved on the slot you actually want. Search the four
+templates for that string, and edit that one.
+
+For the women's sign-in that slot is **Magic Link**, always, because
+`src/app/account/actions.ts` makes sure the account exists before asking for a
+code. Confirm signup belongs to the organisation portal and editing it will
+never change anything a woman receives.
+
 ### One template, one job, no logic
 
 An earlier version of Confirm signup branched on the role, because
