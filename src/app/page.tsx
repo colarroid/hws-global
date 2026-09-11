@@ -4,6 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import heroImage from "@/images/hero-women.webp";
 import organisationsFigure from "@/images/organisations-figure.webp";
+import stepTell from "@/images/step-tell.png";
+import stepWeigh from "@/images/step-weigh.png";
+import stepOptions from "@/images/step-options.png";
+import orgTell from "@/images/org-tell.png";
+import orgCheck from "@/images/org-check.png";
+import orgFinds from "@/images/org-finds.png";
 import {
   ArrowRight,
   BadgeCheck,
@@ -250,6 +256,16 @@ export default async function Landing() {
             {
               key: "women",
               title: t("how.forWomen"),
+              // One per step, in step order. HWS supplied each branch its own
+              // set, named for the step it belongs above, so the pairing is
+              // theirs rather than something inferred here.
+              //
+              // They arrived as flat artwork on transparent — two sets of
+              // white strokes and one near-black — which is either invisible
+              // or off-palette on this page. Only the colour was changed, to
+              // the gold-700 the three promises further down already use. The
+              // drawings are untouched.
+              icons: [stepTell, stepWeigh, stepOptions],
               steps: [
                 { title: t("how.oneTitle"), body: t("how.oneBody") },
                 { title: t("how.twoTitle"), body: t("how.twoBody") },
@@ -259,6 +275,7 @@ export default async function Landing() {
             {
               key: "organisations",
               title: t("how.forOrgs"),
+              icons: [orgTell, orgCheck, orgFinds],
               steps: [
                 { title: t("how.orgOneTitle"), body: t("how.orgOneBody") },
                 { title: t("how.orgTwoTitle"), body: t("how.orgTwoBody") },
@@ -292,6 +309,24 @@ export default async function Landing() {
                     key={step.title}
                     className="flex flex-col items-start gap-2"
                   >
+                    {/* Decorative, so alt is empty: the step is named in the
+                        line underneath and a screen reader gains nothing from
+                        being told there is a picture of it.
+
+                        64 rather than the 22 the promises further down use,
+                        because these are halftone rather than line art. Below
+                        about 60 the dots stop resolving and the shape turns
+                        to grain — checked at 48, 56, 64 and 80 against this
+                        section's own background. 64 is also exactly half the
+                        source, so it lands on whole pixels at 1x and uses the
+                        file at its native size at 2x. */}
+                    <Image
+                      src={branch.icons[position]}
+                      alt=""
+                      width={64}
+                      height={64}
+                      className="mb-1"
+                    />
                     <span className="text-[16px] font-bold text-ink">
                       {position + 1}. {step.title}
                     </span>
