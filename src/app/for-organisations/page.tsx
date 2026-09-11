@@ -257,7 +257,13 @@ export default async function CommunityPage() {
           reason as the card below: this page is hardcoded English, and one
           translated block inside it would change language on its own. */}
       <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-12">
+        {/* Three up from 768 rather than 640. At 640 the container is 600
+            wide and three columns with a 48px gap are 168px each, which is
+            about 21 characters a line for a paragraph of 180: a ribbon, not a
+            column. Below that breakpoint one column runs 75 to 90 characters,
+            which is long but readable, and that is the better of the two
+            failures. */}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-x-12">
           {[
             {
               icon: BadgeCheck,

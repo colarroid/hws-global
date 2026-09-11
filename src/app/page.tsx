@@ -233,14 +233,11 @@ export default async function Landing() {
           The steps are numbered because they are a sequence, and numbered in
           the component rather than in nine catalogues, so nobody has to
           translate the word "One". */}
-      {/* Ruled top and bottom. The rule underneath is doing a different job
-          from the one above it: the section below has no ground of its own
-          any more, so without this the two run together and the only thing
-          marking the change is a photograph appearing on the right. The rule
-          is the container's width rather than the screen's, which is what
-          keeps it a divider between two sections rather than a band across
-          the page. */}
-      <section className="mx-auto w-full max-w-[1180px] border-y border-hairline px-5 py-24 sm:px-10 sm:py-32">
+      {/* Ruled on top at the container's width, which is the rule that was
+          always here. The one underneath belongs to the section below and is
+          drawn there, because it has to reach both edges of the screen and
+          this element stops at 1180. */}
+      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
         <div className="flex flex-col gap-3">
           <span className="eyebrow text-gold-700">{t("why.eyebrow")}</span>
           <h2 className="m-0 max-w-[26ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
@@ -328,10 +325,17 @@ export default async function Landing() {
           separates this from the section above it now is 176px of air and a
           photograph where there was none. That is enough.
 
+          The rule on top is the divider under the section above, drawn here
+          rather than there. That section is a centred 1180px container, so a
+          border on it stops 170px short of each edge on a wide screen; this
+          one is full-bleed, so its top edge is the screen's full width. It
+          sits above the photograph because the photograph starts at this
+          element's content box, which begins under the border.
+
           The photographs are the summit's own, of women who were actually
           there — see the note in SummitPhotos, which has a consent question
           in it that is HWS's to answer before launch. */}
-      <section>
+      <section className="border-t border-hairline">
         {/* Two halves of the viewport, so the photograph reaches the right
             edge of the screen instead of stopping at a container it shares
             with the words. There is no container here at all, which is what
@@ -447,7 +451,13 @@ export default async function Landing() {
           somebody else's, which is the only reason they are in the same
           section rather than a new one. */}
       <section className="mx-auto w-full max-w-[1180px] px-5 py-24 sm:px-10 sm:py-32">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 sm:gap-x-12">
+        {/* Three up from 768 rather than 640. At 640 the container is 600
+            wide and three columns with a 48px gap are 168px each, which is
+            about 21 characters a line for a paragraph of 180: a ribbon, not a
+            column. Below that breakpoint one column runs 75 to 90 characters,
+            which is long but readable, and that is the better of the two
+            failures. */}
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-x-12">
           {[
             {
               icon: BadgeCheck,

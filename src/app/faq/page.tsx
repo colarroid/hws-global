@@ -85,10 +85,16 @@ export default function FaqPage() {
         */}
         <aside className="relative overflow-hidden rounded-card bg-ink p-8 text-white sm:p-10 lg:sticky lg:top-8 lg:w-[360px] lg:shrink-0">
           {/* Set behind the text rather than beside it, and low enough in
-              contrast that it never competes with a word of it. */}
+              contrast that it never competes with a word of it.
+
+              Two sizes, because 170px is wider than the card it sits in once
+              the screen is down to 320: the panel's overflow clips it at both
+              ends and what is left is the middle of an A. Texture bleeding
+              off one edge is the intent; a letter cropped on both sides is
+              just a word that did not fit. */}
           <span
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-6 end-2 select-none font-display text-[170px] leading-none text-white/[0.04]"
+            className="pointer-events-none absolute -bottom-6 end-2 select-none font-display text-[110px] leading-none text-white/[0.04] sm:text-[170px]"
           >
             FAQ
           </span>
