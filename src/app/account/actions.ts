@@ -144,12 +144,24 @@ async function discardAccount(id: string) {
  * An account created a moment ago for an address that cannot receive mail is
  * deleted again. Otherwise every typo leaves a permanent confirmed account
  * that nobody can ever sign in to.
+ *
+ * WHEN ensureAccount CANNOT ANSWER, the send is still attempted rather than
+ * abandoned, and that is deliberate. `shouldCreateUser: false` needs the
+ * account to exist; it does not need us to have been the ones who checked. So
+ * with no service-role key a woman who has signed in before still gets her
+ * code, exactly as she always did, and only somebody arriving for the first
+ * time is stuck — GoTrue answers `otp_disabled`, because it has been told not
+ * to create the account and there is nothing to send to.
+ *
+ * The first shape of this returned early instead, which meant one missing
+ * environment variable took the sign-in down for everybody rather than for
+ * the people it actually blocks. Both are broken and want the same fix; one
+ * is a great deal smaller while it waits for it.
  */
 type Sent = "sent" | "undeliverable" | "unavailable";
 
 async function requestCode(address: string): Promise<Sent> {
   const account = await ensureAccount(address);
-  if (account.state !== "ready") return "unavailable";
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
@@ -159,6 +171,15 @@ async function requestCode(address: string): Promise<Sent> {
 
   if (!error) return "sent";
 
+  // No account, and we were not able to make one. Only reachable when
+  // ensureAccount could not answer, which in practice means the key.
+  if (error.code === "otp_disabled") {
+    console.error(
+      "[sign-in] no account for that address and none could be created, so no code was sent. This is the SUPABASE_SERVICE_ROLE_KEY path.",
+    );
+    return "unavailable";
+  }
+
   // The address, never her address's contents, and never at info level. This
   // is the line that says whether a woman who reported getting nothing hit a
   // refused recipient or something worse.
@@ -166,7 +187,9 @@ async function requestCode(address: string): Promise<Sent> {
     `[sign-in] the code was not sent: ${error.status} ${error.code ?? ""} ${error.message}`,
   );
 
-  if (account.created && account.id) await discardAccount(account.id);
+  if (account.state === "ready" && account.created && account.id) {
+    await discardAccount(account.id);
+  }
   return "undeliverable";
 }
 
