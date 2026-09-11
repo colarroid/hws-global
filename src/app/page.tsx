@@ -260,6 +260,14 @@ export default async function Landing() {
               // set, named for the step it belongs above, so the pairing is
               // theirs rather than something inferred here.
               //
+              // Two of the women's three were reassigned after HWS saw them on
+              // the page: the weigh step has the branching drawing and the
+              // options step has the circled tick, which is the other way
+              // round from the files they arrived in. The files here are named
+              // for where they sit and hold the right drawing, so this array
+              // needs no special case — but anybody diffing against the
+              // originals will find the two swapped, and that is why.
+              //
               // They arrived as flat artwork on transparent — two sets of
               // white strokes and one near-black — which is either invisible
               // or off-palette on this page. Only the colour was changed, to
