@@ -41,25 +41,39 @@ const email = z
  * without the code she still cannot get in.
  *
  * "Already registered" is the normal case, not a failure: it means the
- * address is ready, which is all the caller needs to know. Anything else is
- * not ready, and the difference matters — see requestCode.
+ * address is ready, which is all the caller needs to know.
+ *
+ * The three answers are separate because the caller has to undo this one.
+ * "created" is the only case where an account exists solely because somebody
+ * typed something into a box, so it is the only case that may be deleted
+ * again when the code turns out to be unsendable. Deleting on "existed" would
+ * close a real woman's account because her mail bounced once.
  */
-async function ensureAccount(address: string): Promise<"ready" | "unknown"> {
+type Account = { state: "ready"; created: boolean; id?: string } | { state: "unknown" };
+
+async function ensureAccount(address: string): Promise<Account> {
   let admin;
   try {
     admin = createAdminClient();
   } catch {
-    // No service-role key in this deployment.
-    return "unknown";
+    // No service-role key in this deployment, which takes the whole women's
+    // sign-in down: without it we cannot guarantee the code template, and
+    // sending the link template instead is the thing this function exists to
+    // prevent. Logged loudly and by name, because from the outside it looks
+    // like an email problem and it is a missing environment variable.
+    console.error(
+      "[sign-in] SUPABASE_SERVICE_ROLE_KEY is not set. No sign-in code can be sent: set it in this deployment's environment.",
+    );
+    return { state: "unknown" };
   }
 
-  const { error } = await admin.auth.admin.createUser({
+  const { data, error } = await admin.auth.admin.createUser({
     email: address,
     email_confirm: true,
     user_metadata: { role: "woman" },
   });
 
-  if (!error) return "ready";
+  if (!error) return { state: "ready", created: true, id: data.user?.id };
 
   // The Supabase client returns this rather than throwing, which is the whole
   // reason this function used to get it wrong: it caught throws, saw none,
@@ -69,9 +83,24 @@ async function ensureAccount(address: string): Promise<"ready" | "unknown"> {
   // check is a belt on the braces, because the code has been renamed once
   // already and a rename here would silently turn every returning woman into
   // the "unknown" case.
-  if (error.code === "email_exists" || error.status === 422) return "ready";
+  if (error.code === "email_exists" || error.status === 422) {
+    return { state: "ready", created: false };
+  }
 
-  return "unknown";
+  console.error(
+    `[sign-in] could not confirm the account exists: ${error.status} ${error.code ?? ""} ${error.message}`,
+  );
+  return { state: "unknown" };
+}
+
+/** Undo an account we made a moment ago and could not send a code to. */
+async function discardAccount(id: string) {
+  try {
+    await createAdminClient().auth.admin.deleteUser(id);
+  } catch {
+    // Nothing to do about it here, and nothing she needs to know. The worst
+    // case is an unusable row nobody can sign in to.
+  }
 }
 
 /**
@@ -89,15 +118,38 @@ async function ensureAccount(address: string): Promise<"ready" | "unknown"> {
  * woman a link: not a wrong template, a different template, reached because
  * of what this flag was set to.
  *
- * So when the address is not known to be ready, nothing is sent at all. That
- * only happens when the service-role key is missing or Supabase refused the
- * create for some reason of its own, both of which are faults on our side
- * rather than anything about her address, and both of which fail the same way
- * for every address. Telling her plainly leaks nothing and is a great deal
- * better than a code screen waiting on an email that was never sent.
+ * So when the address is not known to be ready, nothing is sent at all.
+ *
+ * THE THREE ANSWERS, and why a failure is not one thing:
+ *
+ *   "sent"          a code is on its way.
+ *   "undeliverable" the mail server refused this recipient. GoTrue returns a
+ *                   500 with "Error sending magic link email" for it, which
+ *                   reads like an outage and is usually a typo: a domain that
+ *                   does not exist, or one the provider will not accept.
+ *                   Confirmed by testing — the same call to a real address
+ *                   sends, and to example.com returns that 500.
+ *   "unavailable"   our fault. No service-role key, or Supabase refused to
+ *                   confirm the address exists.
+ *
+ * The first two are indistinguishable from a 500 alone, so both produce the
+ * same sentence to her: check it for a typo, then try again. Saying only "try
+ * again" sends somebody who mistyped their address into a loop that cannot
+ * succeed, which is the single worst outcome on this screen.
+ *
+ * Neither message leaks whether an account exists. Deliverability is a fact
+ * about the address, and it is the same fact whether or not she has ever been
+ * here before.
+ *
+ * An account created a moment ago for an address that cannot receive mail is
+ * deleted again. Otherwise every typo leaves a permanent confirmed account
+ * that nobody can ever sign in to.
  */
-async function requestCode(address: string): Promise<boolean> {
-  if ((await ensureAccount(address)) !== "ready") return false;
+type Sent = "sent" | "undeliverable" | "unavailable";
+
+async function requestCode(address: string): Promise<Sent> {
+  const account = await ensureAccount(address);
+  if (account.state !== "ready") return "unavailable";
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithOtp({
@@ -105,7 +157,17 @@ async function requestCode(address: string): Promise<boolean> {
     options: { shouldCreateUser: false, data: { role: "woman" } },
   });
 
-  return !error;
+  if (!error) return "sent";
+
+  // The address, never her address's contents, and never at info level. This
+  // is the line that says whether a woman who reported getting nothing hit a
+  // refused recipient or something worse.
+  console.error(
+    `[sign-in] the code was not sent: ${error.status} ${error.code ?? ""} ${error.message}`,
+  );
+
+  if (account.created && account.id) await discardAccount(account.id);
+  return "undeliverable";
 }
 
 /**
@@ -126,7 +188,16 @@ export async function sendCode(
   // Not redirected when nothing was sent. She would arrive at six empty boxes
   // and wait for an email that is not coming, and the only thing worse than a
   // failure is a failure that looks like success.
-  if (!(await requestCode(parsed.data))) {
+  const sent = await requestCode(parsed.data);
+
+  if (sent === "undeliverable") {
+    return {
+      error:
+        "We could not send a code to that address. Check it for a typo, and if it is right, try again in a moment.",
+    };
+  }
+
+  if (sent === "unavailable") {
     return {
       error:
         "We could not send your code just now. Try again in a moment, and if it keeps happening let us know.",
