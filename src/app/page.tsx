@@ -312,15 +312,19 @@ export default async function Landing() {
           watched it happen in a room, which is what the paragraphs describe
           and what the photographs are evidence of.
 
-          White rather than the page's cream, between a cream section and the
-          dark band. It is the one place on the page where the ground changes
-          under a light section, and it earns that by being the one place that
-          is about the summit rather than about the platform.
+          No background of its own and no rules top or bottom. It had both:
+          white on the page's cream, closed off with a hairline at each end.
+          That was fine while the photograph sat in a card, and stopped being
+          fine once the photograph ran to the edge of the screen — a white
+          band under a cream page reads as a frame around the section rather
+          than as a section, and the rules were the frame's edges. What
+          separates this from the section above it now is 176px of air and a
+          photograph where there was none. That is enough.
 
           The photographs are the summit's own, of women who were actually
           there — see the note in SummitPhotos, which has a consent question
           in it that is HWS's to answer before launch. */}
-      <section className="border-y border-hairline bg-surface">
+      <section>
         {/* Two halves of the viewport, so the photograph reaches the right
             edge of the screen instead of stopping at a container it shares
             with the words. There is no container here at all, which is what
