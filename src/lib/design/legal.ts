@@ -20,6 +20,32 @@
  * `updated` is deliberately still null, so neither page claims a date it does
  * not have. Set it when a reviewer approves the wording, and not before.
  *
+ * ON AI, added 11 September 2026 and the one part of these documents written
+ * about something that has not happened yet.
+ *
+ * HWS asked for the phrase "AI-assisted discovery, with structured
+ * eligibility, geography and accessibility rules" in the legal pages, ahead of
+ * integrating AI, so that the change is not a shock. It is in both documents.
+ *
+ * It is written as what the approach is plus where it currently stands, not as
+ * something already running, and that distinction is load-bearing. There is no
+ * model anywhere in this repository: the ranker in src/lib/search/rank.ts
+ * strips stop words and scores word overlap. A privacy policy describing
+ * processing that does not occur is a misrepresentation in the one document
+ * whose entire value is being accurate, and it is the document a regulator or
+ * an institutional reviewer reads first. Saying "this is coming, here is what
+ * it will and will not do" familiarises people just as well and is true.
+ *
+ * When the model does land, the edits are: delete the "no AI model is
+ * involved" paragraph, move the two "will" paragraphs into the present tense,
+ * and set `updated`.
+ *
+ * STILL INCONSISTENT, and not ours to fix here: the landing page says "The
+ * result is AI powered" and the find flow says "Search powered by AI", both at
+ * HWS's request. Those are present tense about something these documents now
+ * correctly place in the future. The gap is narrower than it was, but a
+ * reviewer who reads both will still find it.
+ *
  * WHAT A REVIEWER HAS TO SUPPLY, because it is not knowable from the code:
  *
  *   * A postal address for the controller. UK GDPR Article 13 requires the
@@ -169,14 +195,26 @@ export const PRIVACY: LegalDocument = {
       body: [
         "We will never sell what you tell us, to anyone, for any amount.",
         "We will never use what you searched for to build a profile of you, or to target advertising at you here or anywhere else.",
+        "We will never use what you type to train an AI model, ours or anybody else's, and we will never send it to a service that would.",
         "We will never let an organisation pay to appear higher in your results, or pay to see who searched for what. There is no paid placement on this platform and there is no advertising on it.",
         "We will never share your name, email or phone number with an organisation on this platform. If you want them to have it, you give it to them.",
+      ],
+    },
+    {
+      title: "AI, and how your words are read",
+      body: [
+        "Our approach is AI-assisted discovery, with structured eligibility, geography and accessibility rules. In plain words, that is two separate jobs kept deliberately apart: software helps us understand the sentence you typed, and a fixed set of rules decides what is open to you, what is near you, what it costs and how you can reach it.",
+        "As things stand today, no AI model is involved. The ordering is done entirely by those rules, which read the words in your sentence and weigh them against what each listing says it is for. We are preparing to bring AI in, and we are telling you before rather than after, so that when it arrives it is something you were told about rather than something you notice.",
+        "What AI will do is read your sentence the way a person would, so that describing your situation in your own words works as well as knowing the official term for it. It is there to understand the question better. It is not there to answer it.",
+        "What AI will never do is decide whether you qualify for anything, move an organisation up your results because it paid, or build a picture of you. Your words will not train it, and they will not be sent anywhere that would use them to train anything else.",
+        "We will update this page before any of that goes live, and say plainly what changed.",
       ],
     },
     {
       title: "Decisions about you",
       body: [
         "Nothing on this platform makes a decision about you. The order your results come back in is worked out by a set of rules we wrote: what you told us, weighed against what each listing is for, who it is open to, where it runs and what it costs. Every result on the page says in a sentence why it matched.",
+        "Bringing AI in to help read what you wrote will not change that. Understanding the question is not the same as deciding the answer: the rules above are what order the page, and they are written down rather than learned.",
         "Whether you actually qualify for anything is decided by the organisation, by a person, after you contact them. We do not decide it, we cannot decide it, and nothing here is an assessment of you.",
       ],
     },
@@ -240,6 +278,7 @@ export const TERMS: LegalDocument = {
       body: [
         "We do not decide whether you qualify for anything listed here, and we do not apply on your behalf. Each organisation decides who it can help, using its own rules, and that decision is theirs alone.",
         "A listing appearing in your results is not an offer, a promise of a place, or an indication that you will be accepted. It means what you described lined up with what that organisation says it does.",
+        "The same is true of any AI we use. Our approach is AI-assisted discovery, with structured eligibility, geography and accessibility rules: AI helps read what you wrote, the rules decide what comes back and in what order, and neither of them decides whether you qualify. A person at the organisation does that, after you contact them.",
       ],
     },
     {
