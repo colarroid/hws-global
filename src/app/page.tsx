@@ -233,7 +233,14 @@ export default async function Landing() {
           The steps are numbered because they are a sequence, and numbered in
           the component rather than in nine catalogues, so nobody has to
           translate the word "One". */}
-      <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
+      {/* Ruled top and bottom. The rule underneath is doing a different job
+          from the one above it: the section below has no ground of its own
+          any more, so without this the two run together and the only thing
+          marking the change is a photograph appearing on the right. The rule
+          is the container's width rather than the screen's, which is what
+          keeps it a divider between two sections rather than a band across
+          the page. */}
+      <section className="mx-auto w-full max-w-[1180px] border-y border-hairline px-5 py-24 sm:px-10 sm:py-32">
         <div className="flex flex-col gap-3">
           <span className="eyebrow text-gold-700">{t("why.eyebrow")}</span>
           <h2 className="m-0 max-w-[26ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
