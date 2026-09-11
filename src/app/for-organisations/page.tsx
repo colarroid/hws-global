@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import organisationsFigure from "@/images/organisations-figure.webp";
+import orgTell from "@/images/org-tell.png";
+import orgCheck from "@/images/org-check.png";
+import orgPost from "@/images/org-post.png";
+import orgFinds from "@/images/org-finds.png";
 import { Testimonials } from "@/components/Testimonials";
 import { TESTIMONIALS } from "@/lib/design/testimonials";
 import {
@@ -87,20 +91,38 @@ export default async function CommunityPage() {
     },
   ];
 
+  /*
+   * Four steps, four drawings, all from HWS and each named for the step it
+   * belongs above. Three are the same files the landing page's organisations
+   * branch uses, which is deliberate rather than lazy: that branch and this
+   * list are the same four-step story told at two lengths, and an organisation
+   * arriving here from there should recognise where it is.
+   *
+   * "image" rather than "icon" because `highlights` above already uses
+   * `icon` for a lucide component, and these are artwork.
+   *
+   * They arrived as white strokes on transparent, invisible on this page.
+   * Only the colour was changed, to the gold-700 the eyebrow and the
+   * highlight icons already use.
+   */
   const steps = [
     {
+      image: orgTell,
       title: "Tell us who you are",
       body: "A few questions about what you do, who you serve and where. Ten minutes, and you can stop partway and come back.",
     },
     {
+      image: orgCheck,
       title: "We check you",
       body: "Against a public register, or your funder. One check, done by a person.",
     },
     {
+      image: orgPost,
       title: "Post what is open",
       body: "A course, a grant, a drop-in, a mentoring scheme. Anything with a way in for a woman.",
     },
     {
+      image: orgFinds,
       title: "She finds it when it fits",
       body: "Not because she searched your name. Because what she described matched what you run.",
     },
@@ -197,6 +219,22 @@ export default async function CommunityPage() {
         <ol className="m-0 mt-[62px] grid list-none grid-cols-1 gap-x-12 gap-y-9 p-0 sm:grid-cols-2 lg:grid-cols-4">
           {steps.map((step, index) => (
             <li key={step.title} className="flex flex-col gap-2">
+              {/* Decorative, so alt is empty: the step is named in the line
+                  underneath and a screen reader gains nothing from being told
+                  there is a picture of it.
+
+                  64px, matching the landing page's steps and for the same
+                  reason: these are halftone rather than line art, and below
+                  about 60 the dots stop resolving and the shape turns to
+                  grain. It is also exactly half the source, so it lands on
+                  whole pixels at 1x and uses the file at native size at 2x. */}
+              <Image
+                src={step.image}
+                alt=""
+                width={64}
+                height={64}
+                className="mb-1"
+              />
               {/* Numbered in the component, as the landing page's tree is, so
                   the word "One" never has to be translated. */}
               <span className="text-[16px] font-bold text-ink">
