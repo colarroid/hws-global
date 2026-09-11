@@ -5,12 +5,20 @@
  * break by pasting a paragraph into the wrong place. The page builds itself
  * from `sections`: the contents list, the anchors and the spacing all follow.
  *
- * STATUS, 10 September 2026. Both documents below were drafted from the
+ * STATUS, 11 September 2026. Both documents below were drafted from the
  * schema rather than from a template, so every claim in them is checkable
  * against the database: the tables named are the tables that exist, and the
- * three processors named are the three the platform actually calls. They have
- * NOT been through a solicitor, and `draft` is true on both, which puts a
- * visible notice at the top of each page saying so.
+ * three processors named are the three the platform actually calls.
+ *
+ * THEY HAVE STILL NOT BEEN THROUGH A SOLICITOR. What changed on 11 September
+ * is only that HWS asked for the draft notice to come off the pages, so
+ * `draft` is now false on both and a reader is no longer told the wording is
+ * unreviewed. That was their call to make and it is recorded here because it
+ * is no longer recorded anywhere a reader can see: the pages now read as
+ * being in force, and every item in the list below is still outstanding.
+ *
+ * `updated` is deliberately still null, so neither page claims a date it does
+ * not have. Set it when a reviewer approves the wording, and not before.
  *
  * WHAT A REVIEWER HAS TO SUPPLY, because it is not knowable from the code:
  *
@@ -38,9 +46,10 @@
  *
  *   * `updated` is the date on the approved document, written out in full,
  *     e.g. "18 September 2026". Leave it null until there is one.
- *   * `draft` comes off once a reviewer has approved the wording. Setting it
- *     false without setting `updated` is a mistake: the page then claims to
- *     be in force with no date on it.
+ *   * `draft` puts a notice at the top of the page saying the wording is
+ *     unreviewed. It is false on both at HWS's request, which is why that
+ *     notice is not there; the mechanism still works if it is ever wanted
+ *     back for a new document.
  *   * `lead` is one or two sentences under the title, in plain words. It is
  *     not part of the legal text and should not try to be.
  *   * each section is a heading and its paragraphs. One string per paragraph.
@@ -77,7 +86,7 @@ export type LegalDocument = {
 
 export const PRIVACY: LegalDocument = {
   updated: null,
-  draft: true,
+  draft: false,
   lead:
     "What we collect when you use this site, why we collect it, and what we will never do with it.",
   sections: [
@@ -206,7 +215,7 @@ export const PRIVACY: LegalDocument = {
 
 export const TERMS: LegalDocument = {
   updated: null,
-  draft: true,
+  draft: false,
   lead:
     "The rules for using this site, for the women who search it and the organisations who list on it.",
   sections: [

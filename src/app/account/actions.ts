@@ -40,41 +40,72 @@ const email = z
  * the account is confirmed at creation, which changes nothing she can do:
  * without the code she still cannot get in.
  *
- * Failures are swallowed, like everything else on this path. An existing
- * address comes back as an error here and that is the normal case, not a
- * problem, and distinguishing the two would leak who has an account.
+ * "Already registered" is the normal case, not a failure: it means the
+ * address is ready, which is all the caller needs to know. Anything else is
+ * not ready, and the difference matters — see requestCode.
  */
-async function ensureAccount(address: string): Promise<boolean> {
+async function ensureAccount(address: string): Promise<"ready" | "unknown"> {
+  let admin;
   try {
-    const admin = createAdminClient();
-    await admin.auth.admin.createUser({
-      email: address,
-      email_confirm: true,
-      user_metadata: { role: "woman" },
-    });
-    return true;
+    admin = createAdminClient();
   } catch {
-    // No service-role key configured, or the address already exists. Either
-    // way the caller falls back to letting Supabase create it, which is what
-    // this did before.
-    return false;
+    // No service-role key in this deployment.
+    return "unknown";
   }
+
+  const { error } = await admin.auth.admin.createUser({
+    email: address,
+    email_confirm: true,
+    user_metadata: { role: "woman" },
+  });
+
+  if (!error) return "ready";
+
+  // The Supabase client returns this rather than throwing, which is the whole
+  // reason this function used to get it wrong: it caught throws, saw none,
+  // and reported success for every outcome including a real failure.
+  //
+  // email_exists is the common path — she has signed in before. The status
+  // check is a belt on the braces, because the code has been renamed once
+  // already and a rename here would silently turn every returning woman into
+  // the "unknown" case.
+  if (error.code === "email_exists" || error.status === 422) return "ready";
+
+  return "unknown";
 }
 
-async function requestCode(address: string) {
-  const created = await ensureAccount(address);
+/**
+ * Send her the code, and say whether one is actually on its way.
+ *
+ * The guarantee this exists to keep: if an email arrives, it contains a six
+ * digit code. She is sent to a screen with six boxes on it, so a link in that
+ * inbox is not a lesser version of the right email, it is a dead end with no
+ * way back to the boxes.
+ *
+ * `shouldCreateUser` is what decides which template GoTrue reaches for, and
+ * it is never true here. True means GoTrue is creating the account, so it
+ * sends **Confirm signup** — which the organisation portal needs to be a
+ * link, and which is therefore a link. That is the path that used to send a
+ * woman a link: not a wrong template, a different template, reached because
+ * of what this flag was set to.
+ *
+ * So when the address is not known to be ready, nothing is sent at all. That
+ * only happens when the service-role key is missing or Supabase refused the
+ * create for some reason of its own, both of which are faults on our side
+ * rather than anything about her address, and both of which fail the same way
+ * for every address. Telling her plainly leaks nothing and is a great deal
+ * better than a code screen waiting on an email that was never sent.
+ */
+async function requestCode(address: string): Promise<boolean> {
+  if ((await ensureAccount(address)) !== "ready") return false;
 
   const supabase = await createClient();
-  await supabase.auth.signInWithOtp({
+  const { error } = await supabase.auth.signInWithOtp({
     email: address,
-    options: {
-      // False once the account is known to exist, which is what keeps this on
-      // the Magic Link template. True only when the admin client was
-      // unavailable, so a deployment without the key still works.
-      shouldCreateUser: !created,
-      data: { role: "woman" },
-    },
+    options: { shouldCreateUser: false, data: { role: "woman" } },
   });
+
+  return !error;
 }
 
 /**
@@ -92,7 +123,15 @@ export async function sendCode(
   const parsed = email.safeParse(formData.get("email"));
   if (!parsed.success) return { error: parsed.error.issues[0].message };
 
-  await requestCode(parsed.data);
+  // Not redirected when nothing was sent. She would arrive at six empty boxes
+  // and wait for an email that is not coming, and the only thing worse than a
+  // failure is a failure that looks like success.
+  if (!(await requestCode(parsed.data))) {
+    return {
+      error:
+        "We could not send your code just now. Try again in a moment, and if it keeps happening let us know.",
+    };
+  }
 
   redirect(`/account/code?email=${encodeURIComponent(parsed.data)}`);
 }
