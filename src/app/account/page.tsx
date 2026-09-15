@@ -95,7 +95,7 @@ export default async function AccessPage({
           carries a create-an-account link for the ones who are not. */}
       <div className="flex flex-col items-center gap-1 self-stretch border-t border-hairline pt-7 text-center">
         <span className="text-[15px] leading-[1.5] text-ink-60">
-          Are you an organisation providing solutions for women?
+          Are you an organisation or individual providing solutions for women?
         </span>
         <a
           href={portalLink("/sign-in")}

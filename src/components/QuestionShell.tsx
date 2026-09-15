@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import type { ReactNode } from "react";
 import { Page } from "@/components/ui/Page";
 import { SearchCredit } from "@/components/find/SearchCredit";
+import { portalLink } from "@/lib/portal";
 
 const TOTAL = 3;
 
@@ -71,6 +72,35 @@ export function QuestionShell({
         {children}
 
         <SearchCredit />
+
+        {/* The other audience, on the first question only.
+
+            It is the same block, word for word, as the foot of the access
+            screen, because somebody who has wandered onto the wrong site
+            should meet the same sentence wherever they land rather than two
+            differently worded near-misses. Change one and change the other.
+
+            Question one only, and that is the restraint the rest of this
+            platform already keeps: the landing page holds its pitch to
+            organisations to a single block at the very foot, on the reasoning
+            that a woman looking for help should not have to scroll past it to
+            reach anything that is for her. An organisation realises where it
+            is on the first screen. By questions two and three she is in the
+            middle of describing her own situation, and that is the worst
+            place on the site to put somebody else's call to action. */}
+        {step === 1 ? (
+          <div className="flex flex-col items-center gap-1 self-stretch border-t border-hairline pt-7 text-center">
+            <span className="text-[15px] leading-[1.5] text-ink-60">
+              Are you an organisation or individual providing solutions for women?
+            </span>
+            <a
+              href={portalLink("/sign-in")}
+              className="p-1 text-[15px] font-bold text-gold-700 no-underline"
+            >
+              Sign in here
+            </a>
+          </div>
+        ) : null}
       </Page>
     </>
   );
