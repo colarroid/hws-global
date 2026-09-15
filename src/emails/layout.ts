@@ -145,7 +145,7 @@ export function emailLayout({
           <tr>
             <td style="padding:20px 4px 0;font-family:Helvetica,Arial,sans-serif;font-size:13px;line-height:1.6;color:${INK_60};">
               ${footnote ? `${escapeHtml(footnote)}<br><br>` : ""}
-              HWS Path Grid &middot; support for women across Scotland
+              HWS Path Grid &middot; connecting women to opportunity - beyond one room, one postcode or one day
             </td>
           </tr>
         </table>

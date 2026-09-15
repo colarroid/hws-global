@@ -21,7 +21,8 @@ import { ImageResponse } from "next/og";
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "HWS Path Grid, support for women across Scotland";
+export const alt =
+  "HWS Path Grid. Connecting women to opportunity, beyond one room, one postcode or one day.";
 
 export default function Image() {
   return new ImageResponse(
@@ -61,12 +62,23 @@ export default function Image() {
           </div>
         </div>
 
+        {/* The tagline, across both tiers. It breaks at its own dash, so the
+            card needs no dash of its own: the size change is the pause, and
+            the lower half stays lower case because it is the same sentence
+            carrying on rather than a second one starting.
+
+            This displaced "Every organisation checked", which is not free —
+            that was a trust signal on a card people paste to funders. It was
+            the line that could go because the row underneath still carries
+            three, "Nobody pays to appear" among them. If the checking claim
+            ever has to be back up here, the bottom row is where to take the
+            room from, not this. */}
         <div style={{ display: "flex", flexDirection: "column", gap: 26 }}>
           <div style={{ fontSize: 74, lineHeight: 1.05, letterSpacing: -2 }}>
-            Support for women across Scotland, in one place.
+            Connecting women to opportunity
           </div>
           <div style={{ fontSize: 30, color: "rgba(18, 9, 2, 0.65)" }}>
-            Tell us what you need in your own words. Every organisation checked.
+            beyond one room, one postcode or one day.
           </div>
         </div>
 

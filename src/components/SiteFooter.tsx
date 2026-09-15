@@ -63,9 +63,24 @@ export async function SiteFooter() {
                 unoptimized
               />
             </Link>
+            {/* The tagline, then the practical sentence, in that order and
+                in two different voices on purpose. The first says what the
+                platform is for and is set in the display face so it reads as
+                a line of the brand rather than a line of body copy. The
+                second is the thing somebody at the bottom of a page actually
+                needs to know, and it is unchanged.
+
+                "Support for women across Scotland, in one place" came out of
+                the second sentence rather than being kept alongside: the
+                tagline now says that, and saying it twice in four lines is
+                how a footer starts sounding like a brochure. */}
+            <p className="m-0 font-display text-[19px] leading-[1.35] text-ink">
+              Connecting women to opportunity - beyond one room, one postcode
+              or one day.
+            </p>
             <p className="m-0 text-[16px] leading-[1.6] text-ink-70">
-              Support for women across Scotland, in one place. Free to use, and
-              you never need an account to search, read or apply.
+              Free to use, and you never need an account to search, read or
+              apply.
             </p>
           </div>
 
