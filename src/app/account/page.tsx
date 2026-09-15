@@ -62,12 +62,23 @@ export default async function AccessPage({
         Your email is kept private and secure.
       </span>
 
-      <Link
-        href="/find"
-        className="self-center p-1 text-[15px] font-bold text-gold-700 no-underline"
-      >
-        {save ? "Carry on without saving" : "Just search without signing in"}
-      </Link>
+      {/* Only on the save flow now. HWS removed "Just search without signing
+          in", which is this same link on the plain screen.
+
+          The two are not the same offer, which is why one goes and one stays.
+          On the plain screen it invited somebody who came here on purpose to
+          leave again. On the save flow she pressed Save, was sent here
+          without asking, and this is the way back to what she was doing —
+          taking it away there would leave her on a screen she did not choose
+          with an account as the only way off it. */}
+      {save ? (
+        <Link
+          href="/find"
+          className="self-center p-1 text-[15px] font-bold text-gold-700 no-underline"
+        >
+          Carry on without saving
+        </Link>
+      ) : null}
 
       {/* The other audience, and ruled off rather than dropped in among her
           options. Everything above this is a choice she has to make; this is
