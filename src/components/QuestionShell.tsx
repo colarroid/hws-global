@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Page } from "@/components/ui/Page";
 import { SearchCredit } from "@/components/find/SearchCredit";
-import { portalLink } from "@/lib/portal";
 
 const TOTAL = 3;
 
@@ -75,10 +74,27 @@ export function QuestionShell({
 
         {/* The other audience, on the first question only.
 
-            It is the same block, word for word, as the foot of the access
+            The question is the same sentence as the foot of the access
             screen, because somebody who has wandered onto the wrong site
-            should meet the same sentence wherever they land rather than two
+            should meet the same words wherever they land rather than two
             differently worded near-misses. Change one and change the other.
+
+            The answer underneath is deliberately not the same. The access
+            screen sends them to the portal's sign-in, because somebody
+            already trying to reach an account has one. Here they are three
+            questions deep in a search built for somebody else, which is much
+            more likely to be a first look than a lost login — so this goes to
+            the page that explains what listing involves, and says so.
+
+            Internal, so Link rather than an anchor: /for-organisations is on
+            this site. Writing the absolute www URL would work in production
+            and send every developer to production from localhost.
+
+            A forward arrow rather than the diagonal one on the access screen,
+            and the pair now says something: the diagonal marks a link that
+            leaves the site for the portal, this one marks going onward within
+            it. It is the same ArrowRight the landing page puts after "Browse
+            everyone on the platform", which is the same shape of link.
 
             Question one only, and that is the restraint the rest of this
             platform already keeps: the landing page holds its pitch to
@@ -93,12 +109,13 @@ export function QuestionShell({
             <span className="text-[15px] leading-[1.5] text-ink-60">
               Are you an organisation or individual providing solutions for women?
             </span>
-            <a
-              href={portalLink("/sign-in")}
-              className="p-1 text-[15px] font-bold text-gold-700 no-underline"
+            <Link
+              href="/for-organisations"
+              className="inline-flex items-center gap-[6px] p-1 text-[15px] font-bold text-gold-700 no-underline"
             >
-              Sign in here
-            </a>
+              For organisations
+              <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
+            </Link>
           </div>
         ) : null}
       </Page>

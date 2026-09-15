@@ -5,6 +5,7 @@ import { Lock } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { portalLink } from "@/lib/portal";
 import { AccessForm } from "@/components/account/AccessForm";
+import { ArrowUpRightIcon } from "@/components/ui/SuppliedIcons";
 
 export const metadata: Metadata = pageMetadata({
   title: "Access your account",
@@ -99,9 +100,10 @@ export default async function AccessPage({
         </span>
         <a
           href={portalLink("/sign-in")}
-          className="p-1 text-[15px] font-bold text-gold-700 no-underline"
+          className="inline-flex items-center gap-[6px] p-1 text-[15px] font-bold text-gold-700 no-underline"
         >
           Sign in here
+          <ArrowUpRightIcon />
         </a>
       </div>
     </Page>

@@ -5,7 +5,7 @@ import { Quote } from "lucide-react";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
-} from "@/components/ui/ChevronIcons";
+} from "@/components/ui/SuppliedIcons";
 import {
   MAX_TESTIMONIALS,
   type Testimonial,
