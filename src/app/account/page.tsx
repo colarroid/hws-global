@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Page } from "@/components/ui/Page";
+import { portalLink } from "@/lib/portal";
 import { AccessForm } from "@/components/account/AccessForm";
 
 export const metadata: Metadata = pageMetadata({
@@ -67,6 +68,31 @@ export default async function AccessPage({
       >
         {save ? "Carry on without saving" : "Just search without signing in"}
       </Link>
+
+      {/* The other audience, and ruled off rather than dropped in among her
+          options. Everything above this is a choice she has to make; this is
+          a sign that she is on the wrong screen entirely. Sitting it in the
+          same stack, in the same weight, would make signing in as an
+          organisation look like a third way for her to get at her own list.
+
+          A plain anchor, not Link: the portal is a different origin, and
+          Next's client router cannot route to it.
+
+          It goes to sign-in rather than sign-up because of what the sentence
+          asks. Somebody who reads "are you an organisation" and says yes is
+          telling us they already are one; the portal's own sign-in screen
+          carries a create-an-account link for the ones who are not. */}
+      <div className="flex flex-col items-center gap-1 self-stretch border-t border-hairline pt-7 text-center">
+        <span className="text-[15px] leading-[1.5] text-ink-60">
+          Are you an organisation providing solutions for women?
+        </span>
+        <a
+          href={portalLink("/sign-in")}
+          className="p-1 text-[15px] font-bold text-gold-700 no-underline"
+        >
+          Sign in here
+        </a>
+      </div>
     </Page>
   );
 }
