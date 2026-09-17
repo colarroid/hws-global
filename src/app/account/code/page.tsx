@@ -46,6 +46,19 @@ export default async function CodePage({
           We sent a sign-in code to <strong className="text-ink">{email}</strong>.
           Enter it below and you&apos;re in.
         </p>
+        {/* Said here rather than left for her to work out.
+            hwspathgrid.com started sending in late August and has sent very
+            little since, so it has almost no reputation with the big mail
+            providers yet and a share of these land in spam. That is a real
+            thing happening to real women on the one screen where not getting
+            the email means not getting in at all.
+            It should stop being true as the domain builds a history, and this
+            line can go then. Until it does, one sentence here is worth more
+            than any amount of tuning at the sending end. */}
+        <p className="m-0 text-[15px] leading-[1.6] text-ink-60">
+          It should arrive within a minute. If it has not, check your spam or
+          junk folder.
+        </p>
       </div>
 
       <CodeForm email={email} />
