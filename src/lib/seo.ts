@@ -34,6 +34,36 @@ export function siteUrl(): string {
   const explicit = process.env.NEXT_PUBLIC_SITE_URL?.trim();
   if (explicit) return explicit.replace(/\/$/, "");
 
+  /*
+   * Vercel's own name for this project's production domain.
+   *
+   * This exists because of a real failure, found on 19 September while
+   * opening the site to search engines: neither variable below was set in
+   * production, so every deployed page had been serving
+   *
+   *     <link rel="canonical" href="http://localhost:3000/faq">
+   *
+   * and og:url to match. A canonical is a page naming its own true address,
+   * and this one named an address nobody outside the machine can reach. The
+   * sitemap would have listed the same host, which search engines reject
+   * outright because a sitemap may only contain URLs on its own domain.
+   *
+   * Nothing warned. It renders, it deploys, it looks right in a browser, and
+   * it only bites the moment a crawler is let in — which was the very next
+   * step. So the fallback is no longer a developer's localhost but the
+   * platform's own answer, which is correct without anybody setting it.
+   *
+   * VERCEL_PROJECT_PRODUCTION_URL rather than VERCEL_URL: the latter is the
+   * unique per-deployment hostname, which changes every push and is the
+   * wrong thing to canonicalise to. This one is the domain the project is
+   * actually served on, and it reads the same from a preview build.
+   *
+   * NEXT_PUBLIC_SITE_URL still wins, and is worth setting anyway so the
+   * apex-versus-www choice is written down rather than inferred.
+   */
+  const vercel = process.env.VERCEL_PROJECT_PRODUCTION_URL?.trim();
+  if (vercel) return `https://${vercel.replace(/\/$/, "")}`;
+
   const root = process.env.NEXT_PUBLIC_ROOT_DOMAIN?.trim();
   if (root) {
     const scheme = root.startsWith("localhost") ? "http" : "https";
@@ -43,9 +73,39 @@ export function siteUrl(): string {
   return "http://localhost:3000";
 }
 
-/** True when this deployment is allowed into search results at all. */
+/**
+ * True when this deployment is allowed into search results at all.
+ *
+ * The single definition. robots.ts used to read the variable itself, which
+ * meant two places could disagree about whether the site was open — and the
+ * failure mode of disagreeing is a page that tells crawlers to stay out while
+ * robots.txt waves them in, or the reverse.
+ *
+ * WHY THE DEPLOYMENT DECIDES, and not a variable somebody remembers to set.
+ *
+ * Until 19 September this was one flag, default closed, because the platform
+ * carried demo listings under real organisations' names and a crawler
+ * indexing those outlives the seed data by months. That danger is gone: the
+ * demo roster was removed and HWS asked for the site to be opened.
+ *
+ * What replaces it is the distinction that actually matters. Production is
+ * the only deployment that should ever be indexed. Preview builds are the
+ * real hazard now — every branch gets its own public URL, and an indexed
+ * preview is duplicate content competing with the live site under a hostname
+ * nobody meant to publish. Keying on VERCEL_ENV gets that right by itself,
+ * where "set NEXT_PUBLIC_ALLOW_INDEXING=true" in a dashboard is one wrong
+ * scope box away from opening every preview too.
+ *
+ * The variable still wins when set, in both directions, so "true" opens a
+ * non-production deployment for testing and "false" is a kill switch that
+ * closes production without a code change.
+ */
 export function indexingAllowed(): boolean {
-  return process.env.NEXT_PUBLIC_ALLOW_INDEXING === "true";
+  const flag = process.env.NEXT_PUBLIC_ALLOW_INDEXING;
+  if (flag === "true") return true;
+  if (flag === "false") return false;
+
+  return process.env.VERCEL_ENV === "production";
 }
 
 type PageMetadataInput = {
