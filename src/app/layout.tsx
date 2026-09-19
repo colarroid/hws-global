@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import { Analytics } from "@/components/Analytics";
 import { SiteBottom } from "@/components/SiteChrome";
 import { CookieNotice } from "@/components/CookieNotice";
 import { getLocale } from "@/lib/i18n";
@@ -54,6 +55,20 @@ export const metadata: Metadata = {
     ? { index: true, follow: true }
     : { index: false, follow: false },
 
+  /* Google Search Console, when a token is set.
+
+     Verification is independent of indexing: Google will confirm ownership
+     while robots.txt still says stay out, which is the order you want — get
+     the property verified now, submit the sitemap the day the site opens.
+
+     Left out entirely when unset, rather than rendered empty, because an
+     empty verification meta tag is a thing Google warns about. The DNS TXT
+     method works just as well and needs no deploy; this is here for whoever
+     finds the HTML tag easier. */
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
+
   openGraph: {
     type: "website",
     siteName: SITE_NAME,
@@ -95,6 +110,11 @@ export default async function RootLayout({
               order. A box about cookies is not what anybody came for. */}
           <CookieNotice />
         </div>
+
+        {/* Outside the layout column because it renders nothing: it is a
+            script tag that reports which pages get used, with the query
+            string stripped first. See the component. */}
+        <Analytics />
       </body>
     </html>
   );
