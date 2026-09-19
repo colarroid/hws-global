@@ -34,6 +34,22 @@ const db = createClient(url, serviceKey, {
   auth: { autoRefreshToken: false, persistSession: false },
 });
 
+/**
+ * Accounts to spare that the role check would not, by email.
+ *
+ * The role check keeps admins, which is right for a reset but cannot say
+ * "keep this one woman". On 19 September that was the whole of what stood
+ * between a reset and deleting the first organisation contact who had found
+ * the platform on her own, so it is a flag rather than a line in a commit
+ * message.
+ */
+const keep = new Set(
+  process.argv
+    .flatMap((arg, i) => (arg === "--keep" ? [process.argv[i + 1]] : []))
+    .filter(Boolean)
+    .map((email) => email.toLowerCase()),
+);
+
 /** Admin accounts to remove anyway, by email. */
 const alsoDelete = new Set(
   process.argv
@@ -90,7 +106,7 @@ for (const user of users) {
   const email = (user.email ?? "").toLowerCase();
   const isAdmin = adminIds.has(user.id) && !alsoDelete.has(email);
 
-  if (isAdmin) {
+  if (isAdmin || keep.has(email)) {
     kept.push(user.email);
     continue;
   }
