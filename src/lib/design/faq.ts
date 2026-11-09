@@ -70,7 +70,7 @@ export const FOR_WOMEN: Question[] = [
   },
   {
     q: "Can I read this in another language?",
-    a: "Parts of it. The language control at the top of the page offers Gaelic, Scots, Polish, Ukrainian, Arabic, Urdu, Punjabi and simplified Chinese. What organisations write about themselves stays in the language they wrote it in, we do not machine-translate anybody's words.",
+    a: "Yes. The language control at the top of the page offers Gaelic, Scots, Polish, Ukrainian, Arabic, Urdu, Punjabi, simplified Chinese, Romanian, Somali and Tigrinya, and the whole of the search is translated rather than just the front page. What organisations write about themselves stays in the language they wrote it in, because we do not machine-translate anybody's words. Every translation here was machine-drafted and is waiting on a native speaker to read it.",
   },
   {
     q: "I need help right now.",

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/LegalPage";
 import { TERMS } from "@/lib/design/legal";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Terms of use",
-  description:
-    "The rules for using HWS Path Grid, for the women who search it and the organisations who list on it.",
-  path: "/terms",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "footer.terms",
+    descriptionKey: "meta.terms.desc",
+    path: "/terms",
+    indexable: true,
+  });
+}
 
 /**
  * The terms of use.

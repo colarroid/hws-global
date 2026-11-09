@@ -5,15 +5,17 @@ import { redirect } from "next/navigation";
 import { ArrowLeft, CalendarDays } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { BookingForm } from "@/components/find/BookingForm";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { isSlotFree } from "@/lib/data/booking";
 import { getAccount } from "@/lib/data/account";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Confirm your call",
-  description: "The last step before your call is booked.",
-  path: "/talk/confirm",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "confirm.title",
+    descriptionKey: "meta.confirm.desc",
+    path: "/talk/confirm",
+  });
+}
 
 /**
  * The last step: who to call, and how.

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Search, X } from "lucide-react";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { OrganisationRow } from "@/components/discover/OrganisationRow";
 import { getTranslator } from "@/lib/i18n";
 import {
@@ -10,13 +10,14 @@ import {
   searchOrganisations,
 } from "@/lib/data/discover";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Discover organisations across Scotland",
-  description:
-    "Browse the organisations working with women across Scotland, by the kind of support they offer or by what you need.",
-  path: "/discover",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.discover.title",
+    descriptionKey: "meta.discover.desc",
+    path: "/discover",
+    indexable: true,
+  });
+}
 
 /**
  * Browsing, as opposed to searching for a match.

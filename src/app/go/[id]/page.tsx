@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
@@ -7,11 +7,12 @@ import { Page } from "@/components/ui/Page";
 import { getService, applyHost } from "@/lib/data/service";
 import { track } from "@/lib/track";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Leaving to apply",
-  description:
-    "Taking you to the organisation's own page so you can apply with them.",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.go.title",
+    descriptionKey: "meta.go.desc",
+  });
+}
 
 /**
  * The handover interstitial.

@@ -3,15 +3,16 @@ import { getTranslator } from "@/lib/i18n";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { getFreeDays } from "@/lib/data/booking";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Talk to someone",
-  description:
-    "Book a free call with somebody who can point you in the right direction.",
-  path: "/talk",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "talk.title",
+    descriptionKey: "meta.talk.desc",
+    path: "/talk",
+  });
+}
 
 /**
  * Choosing a time.

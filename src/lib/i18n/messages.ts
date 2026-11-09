@@ -350,7 +350,45 @@ export type MessageKey =
   | "loading.organisation"
   | "loading.saved"
   | "loading.listing"
-  | "profile.subline";
+  | "faq.title"
+  | "faq.lede"
+  | "faq.notHere"
+  | "faq.talkPerson"
+  | "faq.forWomen"
+  | "faq.forOrgs"
+  | "profile.subline"
+  | "meta.home.title"
+  | "meta.home.desc"
+  | "meta.find.desc"
+  | "meta.where.desc"
+  | "meta.situation.desc"
+  | "meta.results.desc"
+  | "meta.refine.desc"
+  | "meta.change.title"
+  | "meta.change.desc"
+  | "meta.startOver.desc"
+  | "meta.discover.title"
+  | "meta.discover.desc"
+  | "meta.faq.desc"
+  | "meta.orgs.desc"
+  | "meta.go.title"
+  | "meta.go.desc"
+  | "meta.help.desc"
+  | "meta.saved.desc"
+  | "meta.privacy.desc"
+  | "meta.terms.desc"
+  | "meta.talk.desc"
+  | "meta.confirm.desc"
+  | "meta.booked.title"
+  | "meta.booked.desc"
+  | "meta.account.desc"
+  | "meta.accountCode.desc"
+  | "meta.profile.desc"
+  | "meta.settings.desc"
+  | "meta.emailChange.title"
+  | "meta.emailChange.desc"
+  | "meta.emailCode.title"
+  | "meta.emailCode.desc";
 
 type Catalogue = Partial<Record<MessageKey, string>>;
 
@@ -654,6 +692,66 @@ const en: Record<MessageKey, string> = {
   "loading.organisation": "Loading this organisation",
   "loading.saved": "Loading your saved list",
   "loading.listing": "Loading this listing",
+  "faq.title": "Frequently asked questions",
+  "faq.lede":
+    "HWS Path Grid connects women across Scotland to the support that actually suits them, and gives the organisations behind it one place to be found.",
+  "faq.notHere": "If the answer you need is not here, we answer every message.",
+  "faq.talkPerson": "Talk to a person.",
+  "faq.forWomen": "If you are looking for support",
+  "faq.forOrgs": "If you are an organisation",
+
+  "meta.home.title": "Find support for women in Scotland",
+  "meta.home.desc":
+    "Tell us what you need in your own words and we will show you a few next steps worth taking. Every organisation is checked. No account needed.",
+  "meta.find.desc":
+    "Tell us what you need in your own words. Three questions, no account needed, and we look across every organisation in Scotland we have checked.",
+  "meta.where.desc":
+    "Tell us where you are so we can put what is near you first, and still show you what is open to everyone.",
+  "meta.situation.desc":
+    "Pick anything that fits. It changes what we put in front of you.",
+  "meta.results.desc":
+    "The support we found for you, with the reason each one is here.",
+  "meta.refine.desc":
+    "Narrow your search or open it up, when the first set of results is not the right one.",
+  "meta.change.title": "Change your answers",
+  "meta.change.desc":
+    "Change what you told us and we will look again across every organisation.",
+  "meta.startOver.desc":
+    "Clear your answers and begin the three questions again.",
+  "meta.discover.title": "Discover organisations across Scotland",
+  "meta.discover.desc":
+    "Browse the organisations working with women across Scotland, by the kind of support they offer or by what you need.",
+  "meta.faq.desc":
+    "What women ask before they use this site, and what organisations ask before they list on it. Answered plainly.",
+  "meta.orgs.desc":
+    "List what you run on HWS Path Grid and reach the women it actually suits. Free, checked once, and nobody pays to appear.",
+  "meta.go.title": "Leaving to apply",
+  "meta.go.desc":
+    "Taking you to the organisation's own page so you can apply with them.",
+  "meta.help.desc":
+    "If you cannot find what you need, or something here looks wrong, tell us. We would rather hear from you than have you give up on it.",
+  "meta.saved.desc": "Everything you have saved, in one place.",
+  "meta.privacy.desc":
+    "What HWS Path Grid collects when you use the site, why, and what we will never do with it.",
+  "meta.terms.desc":
+    "The rules for using HWS Path Grid, for the women who search it and the organisations who list on it.",
+  "meta.talk.desc":
+    "Book a free call with somebody who can point you in the right direction.",
+  "meta.confirm.desc": "The last step before your call is booked.",
+  "meta.booked.title": "Your call is booked",
+  "meta.booked.desc": "What happens next.",
+  "meta.account.desc":
+    "Sign in, or make an account, so the support you save is there next time you come back.",
+  "meta.accountCode.desc": "We have sent you a six digit code to sign in with.",
+  "meta.profile.desc":
+    "Add your name so we can address you properly. Nothing here is required.",
+  "meta.settings.desc":
+    "Your reminders, your language, and what happens to your account.",
+  "meta.emailChange.title": "Change your email address",
+  "meta.emailChange.desc":
+    "Move your account, and everything saved on it, to another address.",
+  "meta.emailCode.title": "Check your new inbox",
+  "meta.emailCode.desc": "Enter the code we sent to your new address.",
 };
 
 const gd: Catalogue = {
@@ -965,6 +1063,71 @@ const gd: Catalogue = {
   "loading.organisation": "A' luchdachadh a' bhuidhinn seo",
   "loading.saved": "A' luchdachadh na liosta sh\u00e0bhailte agad",
   "loading.listing": "A' luchdachadh a' chl\u00e0raidh seo",
+
+  "faq.title": "Ceistean cumanta",
+  "faq.lede":
+    "Bidh HWS Path Grid a' ceangal bhoireannach air feadh Alba ris an taic a tha dha-rìribh freagarrach dhaibh, agus a' toirt dha na buidhnean air a cùlaibh aon àite far an lorgar iad.",
+  "faq.notHere":
+    "Mura h-eil am freagairt a tha a dhìth ort an seo, freagraidh sinn a h-uile teachdaireachd.",
+  "faq.talkPerson": "Bruidhinn ri duine.",
+  "faq.forWomen": "Ma tha thu a' lorg taic",
+  "faq.forOrgs": "Ma tha thu nad bhuidheann",
+
+  "meta.home.title": "Lorg taic do bhoireannaich ann an Alba",
+  "meta.home.desc":
+    "Innis dhuinn nad fhaclan fhèin dè tha a dhìth ort agus seallaidh sinn dhut beagan cheumannan as fhiach a ghabhail. Tha gach buidheann air a dhearbhadh. Chan eil cunntas a dhìth.",
+  "meta.find.desc":
+    "Innis dhuinn nad fhaclan fhèin dè tha a dhìth ort. Trì ceistean, gun chunntas, agus bidh sinn a' coimhead thairis air gach buidheann ann an Alba a dhearbh sinn.",
+  "meta.where.desc":
+    "Innis dhuinn càite a bheil thu gus an cuir sinn na tha faisg ort an toiseach, agus sealltainn fhathast dhut na tha fosgailte dha na h-uile.",
+  "meta.situation.desc":
+    "Tagh rud sam bith a fhreagras. Atharraichidh e na chuireas sinn romhad.",
+  "meta.results.desc":
+    "An taic a lorg sinn dhut, leis an adhbhar a tha gach tè an seo.",
+  "meta.refine.desc":
+    "Teannaich an lorg agad no fosgail e, nuair nach e a' chiad seata de thoraidhean am fear ceart.",
+  "meta.change.title": "Atharraich na freagairtean agad",
+  "meta.change.desc":
+    "Atharraich na dh'innis thu dhuinn agus coimheadaidh sinn a-rithist thairis air gach buidheann.",
+  "meta.startOver.desc":
+    "Glan na freagairtean agad agus tòisich na trì ceistean a-rithist.",
+  "meta.discover.title": "Rùraich buidhnean air feadh Alba",
+  "meta.discover.desc":
+    "Rùraich na buidhnean a tha ag obair le boireannaich air feadh Alba, a rèir an seòrsa taic a tha iad a' tabhann no a rèir na tha a dhìth ort.",
+  "meta.faq.desc":
+    "Na bhios boireannaich a' faighneachd mus cleachd iad an làrach seo, agus na bhios buidhnean a' faighneachd mus clàraich iad air. Air am freagairt gu soilleir.",
+  "meta.orgs.desc":
+    "Clàraich na bhios tu a' ruith air HWS Path Grid agus ruig na boireannaich a fhreagras air dha-rìribh. An-asgaidh, air a dhearbhadh aon turas, agus chan eil duine a' pàigheadh gus nochdadh.",
+  "meta.go.title": "A' fàgail gus tagradh",
+  "meta.go.desc":
+    "Gad thoirt gu duilleag na buidhne fhèin gus an urrainn dhut tagradh còmhla riutha.",
+  "meta.help.desc":
+    "Mura lorg thu na tha a dhìth ort, no ma tha rudeigin an seo a' coimhead ceàrr, innis dhuinn. B' fheàrr leinn cluinntinn bhuat na gun leigeadh tu seachad e.",
+  "meta.saved.desc": "A h-uile dad a shàbhail thu, ann an aon àite.",
+  "meta.privacy.desc":
+    "Na bhios HWS Path Grid a' cruinneachadh nuair a chleachdas tu an làrach, carson, agus na nach dèan sinn a-chaoidh leis.",
+  "meta.terms.desc":
+    "Na riaghailtean airson HWS Path Grid a chleachdadh, dha na boireannaich a lorgas e agus dha na buidhnean a chlàraicheas air.",
+  "meta.talk.desc":
+    "Cuir air dòigh gairm an-asgaidh le cuideigin a chuireas air an t-slighe cheart thu.",
+  "meta.confirm.desc":
+    "An ceum mu dheireadh mus tèid a' ghairm agad a chur air dòigh.",
+  "meta.booked.title": "Tha a' ghairm agad air a cur air dòigh",
+  "meta.booked.desc": "Dè thachras an ath rud.",
+  "meta.account.desc":
+    "Clàraich a-steach, no dèan cunntas, gus am bi an taic a shàbhaileas tu ann an ath-thuras a thilleas tu.",
+  "meta.accountCode.desc":
+    "Chuir sinn còd sia àireamhan thugad gus clàradh a-steach leis.",
+  "meta.profile.desc":
+    "Cuir d' ainm ris gus an urrainn dhuinn bruidhinn riut mar bu chòir. Chan eil dad an seo riatanach.",
+  "meta.settings.desc":
+    "Na cuimhneachain agad, do chànan, agus dè thachras dhan chunntas agad.",
+  "meta.emailChange.title": "Atharraich an seòladh puist-d agad",
+  "meta.emailChange.desc":
+    "Gluais an cunntas agad, agus a h-uile dad a tha air a shàbhaladh air, gu seòladh eile.",
+  "meta.emailCode.title": "Thoir sùil air a' bhogsa ùr agad",
+  "meta.emailCode.desc":
+    "Cuir a-steach an còd a chuir sinn dhan t-seòladh ùr agad.",
 };
 
 const sco: Catalogue = {
@@ -1266,6 +1429,65 @@ const sco: Catalogue = {
   "loading.organisation": "Loadin this organisation",
   "loading.saved": "Loadin yer saved leet",
   "loading.listing": "Loadin this leetin",
+
+  "faq.title": "Quaistens fowk speir",
+  "faq.lede":
+    "HWS Path Grid connects weemen ower Scotland tae the support that raelly suits thaim, and gies the organisations ahint it ae place tae be fund.",
+  "faq.notHere": "Gin the answer ye need isna here, we answer ilka message.",
+  "faq.talkPerson": "Speak tae a body.",
+  "faq.forWomen": "Gin ye're luikin for support",
+  "faq.forOrgs": "Gin ye're an organisation",
+
+  "meta.home.title": "Find support for weemen in Scotland",
+  "meta.home.desc":
+    "Tell us whit ye need in yer ain wirds and we'll shaw ye a wheen neist steps worth takkin. Ilka organisation is checkit. Nae accoont needit.",
+  "meta.find.desc":
+    "Tell us whit ye need in yer ain wirds. Three quaistens, nae accoont needit, and we luik ower ilka organisation in Scotland we've checkit.",
+  "meta.where.desc":
+    "Tell us whaur ye are sae we can pit whit's near ye first, and still shaw ye whit's open tae awbody.",
+  "meta.situation.desc":
+    "Wale onythin that fits. It chynges whit we pit afore ye.",
+  "meta.results.desc":
+    "The support we fund for ye, wi the raeson ilk ane is here.",
+  "meta.refine.desc":
+    "Nairrae yer sairch or open it up, whan the first set o results isna the richt ane.",
+  "meta.change.title": "Chynge yer answers",
+  "meta.change.desc":
+    "Chynge whit ye telt us and we'll luik again ower ilka organisation.",
+  "meta.startOver.desc": "Redd yer answers and begin the three quaistens again.",
+  "meta.discover.title": "Discover organisations ower Scotland",
+  "meta.discover.desc":
+    "Brouse the organisations warkin wi weemen ower Scotland, bi the kind o support thay offer or bi whit ye need.",
+  "meta.faq.desc":
+    "Whit weemen speir afore thay uise this site, and whit organisations speir afore thay leet on it. Answert plain.",
+  "meta.orgs.desc":
+    "Leet whit ye rin on HWS Path Grid and reach the weemen it raelly suits. Free, checkit aince, and naebody pays tae kythe.",
+  "meta.go.title": "Leavin tae apply",
+  "meta.go.desc":
+    "Takkin ye tae the organisation's ain page sae ye can apply wi thaim.",
+  "meta.help.desc":
+    "Gin ye canna find whit ye need, or somethin here luiks wrang, tell us. We'd raither hear frae ye nor hae ye gie up on it.",
+  "meta.saved.desc": "Awthing ye hae saved, in ae place.",
+  "meta.privacy.desc":
+    "Whit HWS Path Grid collects whan ye uise the site, hou, and whit we'll niver dae wi it.",
+  "meta.terms.desc":
+    "The rules for uisin HWS Path Grid, for the weemen that sairch it and the organisations that leet on it.",
+  "meta.talk.desc": "Buik a free caw wi somebody that can pynt ye the richt wey.",
+  "meta.confirm.desc": "The hindmaist step afore yer caw is buikit.",
+  "meta.booked.title": "Yer caw is buikit",
+  "meta.booked.desc": "Whit happens neist.",
+  "meta.account.desc":
+    "Sign in, or mak an accoont, sae the support ye save is there neist time ye come back.",
+  "meta.accountCode.desc": "We hae sent ye a sax digit code tae sign in wi.",
+  "meta.profile.desc":
+    "Add yer name sae we can address ye richt. Naethin here is needit.",
+  "meta.settings.desc":
+    "Yer mindins, yer language, and whit happens tae yer accoont.",
+  "meta.emailChange.title": "Chynge yer email address",
+  "meta.emailChange.desc":
+    "Muive yer accoont, and awthing saved on it, tae anither address.",
+  "meta.emailCode.title": "Check yer new inbox",
+  "meta.emailCode.desc": "Pit in the code we sent tae yer new address.",
 };
 
 const pl: Catalogue = {
@@ -1572,6 +1794,67 @@ const pl: Catalogue = {
   "loading.organisation": "Wczytywanie organizacji",
   "loading.saved": "Wczytywanie zapisanej listy",
   "loading.listing": "Wczytywanie tej oferty",
+
+  "faq.title": "Najczęstsze pytania",
+  "faq.lede":
+    "HWS Path Grid łączy kobiety w całej Szkocji ze wsparciem, które naprawdę do nich pasuje, a organizacjom daje jedno miejsce, w którym można je znaleźć.",
+  "faq.notHere":
+    "Jeśli nie ma tu odpowiedzi, której szukasz, odpowiadamy na każdą wiadomość.",
+  "faq.talkPerson": "Porozmawiaj z człowiekiem.",
+  "faq.forWomen": "Jeśli szukasz wsparcia",
+  "faq.forOrgs": "Jeśli jesteś organizacją",
+
+  "meta.home.title": "Znajdź wsparcie dla kobiet w Szkocji",
+  "meta.home.desc":
+    "Powiedz nam własnymi słowami, czego potrzebujesz, a pokażemy ci kilka kolejnych kroków wartych zrobienia. Każda organizacja jest sprawdzona. Konto niepotrzebne.",
+  "meta.find.desc":
+    "Powiedz nam własnymi słowami, czego potrzebujesz. Trzy pytania, bez konta, a my przeszukamy każdą sprawdzoną przez nas organizację w Szkocji.",
+  "meta.where.desc":
+    "Powiedz nam, gdzie jesteś, żebyśmy mogli pokazać najpierw to, co blisko ciebie, nie pomijając tego, co otwarte dla wszystkich.",
+  "meta.situation.desc":
+    "Zaznacz wszystko, co pasuje. To zmienia, co ci pokażemy.",
+  "meta.results.desc":
+    "Wsparcie, które dla ciebie znaleźliśmy, z powodem, dla którego każde z nich tu jest.",
+  "meta.refine.desc":
+    "Zawęź wyszukiwanie albo je poszerz, gdy pierwszy zestaw wyników nie jest tym właściwym.",
+  "meta.change.title": "Zmień swoje odpowiedzi",
+  "meta.change.desc":
+    "Zmień to, co nam powiedziałaś, a my jeszcze raz przejrzymy wszystkie organizacje.",
+  "meta.startOver.desc": "Wyczyść odpowiedzi i zacznij trzy pytania od nowa.",
+  "meta.discover.title": "Odkrywaj organizacje w całej Szkocji",
+  "meta.discover.desc":
+    "Przeglądaj organizacje pracujące z kobietami w całej Szkocji, według rodzaju wsparcia albo według tego, czego potrzebujesz.",
+  "meta.faq.desc":
+    "O co pytają kobiety, zanim skorzystają z tej strony, i o co pytają organizacje, zanim się na niej zgłoszą. Odpowiedzi bez owijania.",
+  "meta.orgs.desc":
+    "Zgłoś to, co prowadzisz, na HWS Path Grid i dotrzyj do kobiet, którym to naprawdę pasuje. Bezpłatnie, sprawdzane raz, i nikt nie płaci za obecność.",
+  "meta.go.title": "Przechodzisz, żeby się zgłosić",
+  "meta.go.desc":
+    "Przenosimy cię na stronę samej organizacji, żebyś mogła zgłosić się u niej.",
+  "meta.help.desc":
+    "Jeśli nie możesz znaleźć tego, czego potrzebujesz, albo coś tu wygląda źle, powiedz nam. Wolimy usłyszeć od ciebie, niż żebyś z tego zrezygnowała.",
+  "meta.saved.desc": "Wszystko, co zapisałaś, w jednym miejscu.",
+  "meta.privacy.desc":
+    "Co HWS Path Grid zbiera, kiedy korzystasz ze strony, dlaczego i czego nigdy z tym nie zrobimy.",
+  "meta.terms.desc":
+    "Zasady korzystania z HWS Path Grid, dla kobiet, które tu szukają, i organizacji, które się zgłaszają.",
+  "meta.talk.desc":
+    "Umów bezpłatną rozmowę z kimś, kto wskaże ci właściwy kierunek.",
+  "meta.confirm.desc": "Ostatni krok przed zarezerwowaniem rozmowy.",
+  "meta.booked.title": "Twoja rozmowa jest zarezerwowana",
+  "meta.booked.desc": "Co dalej.",
+  "meta.account.desc":
+    "Zaloguj się albo załóż konto, żeby zapisane wsparcie było na miejscu, gdy wrócisz.",
+  "meta.accountCode.desc": "Wysłaliśmy ci sześciocyfrowy kod do zalogowania.",
+  "meta.profile.desc":
+    "Dodaj imię, żebyśmy mogli zwracać się do ciebie właściwie. Nic tu nie jest wymagane.",
+  "meta.settings.desc":
+    "Twoje przypomnienia, twój język i to, co dzieje się z twoim kontem.",
+  "meta.emailChange.title": "Zmień adres e-mail",
+  "meta.emailChange.desc":
+    "Przenieś konto, razem ze wszystkim, co na nim zapisane, na inny adres.",
+  "meta.emailCode.title": "Sprawdź nową skrzynkę",
+  "meta.emailCode.desc": "Wpisz kod, który wysłaliśmy na twój nowy adres.",
 };
 
 const uk: Catalogue = {
@@ -1880,6 +2163,67 @@ const uk: Catalogue = {
   "loading.organisation": "\u041e\u0440\u0433\u0430\u043d\u0456\u0437\u0430\u0446\u0456\u044f \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f",
   "loading.saved": "\u0412\u0430\u0448 \u0441\u043f\u0438\u0441\u043e\u043a \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f",
   "loading.listing": "\u0417\u0430\u043f\u0438\u0441 \u0437\u0430\u0432\u0430\u043d\u0442\u0430\u0436\u0443\u0454\u0442\u044c\u0441\u044f",
+
+  "faq.title": "Поширені питання",
+  "faq.lede":
+    "HWS Path Grid поєднує жінок по всій Шотландії з підтримкою, яка їм справді підходить, а організаціям дає одне місце, де їх можна знайти.",
+  "faq.notHere":
+    "Якщо потрібної відповіді тут немає, ми відповідаємо на кожне повідомлення.",
+  "faq.talkPerson": "Поговоріть з людиною.",
+  "faq.forWomen": "Якщо ви шукаєте підтримку",
+  "faq.forOrgs": "Якщо ви організація",
+
+  "meta.home.title": "Знайдіть підтримку для жінок у Шотландії",
+  "meta.home.desc":
+    "Розкажіть своїми словами, що вам потрібно, і ми покажемо кілька наступних кроків, які варто зробити. Кожну організацію перевірено. Обліковий запис не потрібен.",
+  "meta.find.desc":
+    "Розкажіть своїми словами, що вам потрібно. Три питання, без облікового запису, і ми переглянемо кожну перевірену нами організацію в Шотландії.",
+  "meta.where.desc":
+    "Скажіть, де ви, щоб ми могли показати спершу те, що поруч, і водночас не пропустити того, що відкрите для всіх.",
+  "meta.situation.desc":
+    "Оберіть усе, що підходить. Це змінює те, що ми вам покажемо.",
+  "meta.results.desc":
+    "Підтримка, яку ми для вас знайшли, із причиною, чому кожна з них тут.",
+  "meta.refine.desc":
+    "Звузьте пошук або розширте його, коли перший набір результатів виявився не тим.",
+  "meta.change.title": "Змініть свої відповіді",
+  "meta.change.desc":
+    "Змініть те, що ви нам сказали, і ми ще раз переглянемо всі організації.",
+  "meta.startOver.desc": "Очистіть відповіді й почніть три питання спочатку.",
+  "meta.discover.title": "Огляд організацій по всій Шотландії",
+  "meta.discover.desc":
+    "Перегляньте організації, що працюють з жінками по всій Шотландії, за видом підтримки або за тим, що вам потрібно.",
+  "meta.faq.desc":
+    "Що питають жінки, перш ніж скористатися цим сайтом, і що питають організації, перш ніж тут зареєструватися. Відповіді прямо.",
+  "meta.orgs.desc":
+    "Розмістіть те, що ви проводите, на HWS Path Grid і досягніть жінок, яким це справді підходить. Безкоштовно, перевірка один раз, і ніхто не платить за появу.",
+  "meta.go.title": "Переходите, щоб подати заявку",
+  "meta.go.desc":
+    "Переводимо вас на власну сторінку організації, щоб ви могли подати заявку в них.",
+  "meta.help.desc":
+    "Якщо ви не можете знайти потрібне або щось тут виглядає не так, скажіть нам. Ми радше почуємо від вас, ніж щоб ви від цього відмовилися.",
+  "meta.saved.desc": "Усе, що ви зберегли, в одному місці.",
+  "meta.privacy.desc":
+    "Що HWS Path Grid збирає, коли ви користуєтеся сайтом, навіщо, і чого ми ніколи з цим не зробимо.",
+  "meta.terms.desc":
+    "Правила користування HWS Path Grid — для жінок, які тут шукають, і для організацій, які тут представлені.",
+  "meta.talk.desc":
+    "Забронюйте безкоштовну розмову з тим, хто підкаже правильний напрямок.",
+  "meta.confirm.desc": "Останній крок перед бронюванням розмови.",
+  "meta.booked.title": "Вашу розмову заброньовано",
+  "meta.booked.desc": "Що далі.",
+  "meta.account.desc":
+    "Увійдіть або створіть обліковий запис, щоб збережена підтримка була на місці, коли ви повернетеся.",
+  "meta.accountCode.desc": "Ми надіслали вам шестизначний код для входу.",
+  "meta.profile.desc":
+    "Додайте імʼя, щоб ми могли звертатися до вас належно. Нічого тут не є обовʼязковим.",
+  "meta.settings.desc":
+    "Ваші нагадування, ваша мова і те, що відбувається з вашим обліковим записом.",
+  "meta.emailChange.title": "Змінити адресу електронної пошти",
+  "meta.emailChange.desc":
+    "Перенесіть обліковий запис і все збережене на ньому на іншу адресу.",
+  "meta.emailCode.title": "Перевірте нову скриньку",
+  "meta.emailCode.desc": "Введіть код, який ми надіслали на вашу нову адресу.",
 };
 
 const ar: Catalogue = {
@@ -2175,6 +2519,59 @@ const ar: Catalogue = {
   "loading.organisation": "\u064a\u062c\u0631\u064a \u062a\u062d\u0645\u064a\u0644 \u0647\u0630\u0647 \u0627\u0644\u062c\u0647\u0629",
   "loading.saved": "\u064a\u062c\u0631\u064a \u062a\u062d\u0645\u064a\u0644 \u0642\u0627\u0626\u0645\u062a\u0643 \u0627\u0644\u0645\u062d\u0641\u0648\u0638\u0629",
   "loading.listing": "\u064a\u062c\u0631\u064a \u062a\u062d\u0645\u064a\u0644 \u0647\u0630\u0627 \u0627\u0644\u0639\u0631\u0636",
+
+  "faq.title": "الأسئلة الشائعة",
+  "faq.lede":
+    "يصل HWS Path Grid النساء في اسكتلندا بالدعم الذي يناسبهن فعلاً، ويمنح الجهات التي تقف خلفه مكاناً واحداً يُعثر عليها فيه.",
+  "faq.notHere": "إن لم تكن الإجابة التي تحتاجينها هنا، فنحن نردّ على كل رسالة.",
+  "faq.talkPerson": "تحدثي إلى شخص.",
+  "faq.forWomen": "إن كنتِ تبحثين عن دعم",
+  "faq.forOrgs": "إن كنتم جهة",
+
+  "meta.home.title": "ابحثي عن دعم للنساء في اسكتلندا",
+  "meta.home.desc":
+    "أخبرينا بكلماتك ما الذي تحتاجينه ونعرض عليك بضع خطوات تالية تستحق أن تُتخذ. كل جهة مُتحقَّق منها. ولا حاجة إلى حساب.",
+  "meta.find.desc":
+    "أخبرينا بكلماتك ما الذي تحتاجينه. ثلاثة أسئلة، بلا حساب، ونبحث في كل جهة في اسكتلندا تحققنا منها.",
+  "meta.where.desc":
+    "أخبرينا أين أنتِ لنضع ما هو قريب منك أولاً، ونعرض عليك في الوقت نفسه ما هو مفتوح للجميع.",
+  "meta.situation.desc": "اختاري ما ينطبق. هذا يغيّر ما نضعه أمامك.",
+  "meta.results.desc": "الدعم الذي وجدناه لكِ، مع سبب وجود كل عرض هنا.",
+  "meta.refine.desc":
+    "ضيّقي بحثك أو وسّعيه، حين لا تكون المجموعة الأولى من النتائج هي المناسبة.",
+  "meta.change.title": "غيّري إجاباتك",
+  "meta.change.desc": "غيّري ما أخبرتِنا به وسنبحث من جديد في كل الجهات.",
+  "meta.startOver.desc": "امسحي إجاباتك وابدئي الأسئلة الثلاثة من جديد.",
+  "meta.discover.title": "استكشفي الجهات في أنحاء اسكتلندا",
+  "meta.discover.desc":
+    "تصفّحي الجهات التي تعمل مع النساء في أنحاء اسكتلندا، حسب نوع الدعم الذي تقدّمه أو حسب ما تحتاجينه.",
+  "meta.faq.desc":
+    "ما تسأل عنه النساء قبل استخدام هذا الموقع، وما تسأل عنه الجهات قبل الإدراج فيه. بإجابات واضحة.",
+  "meta.orgs.desc":
+    "أدرجوا ما تقدّمونه على HWS Path Grid وصِلوا إلى النساء اللواتي يناسبهن فعلاً. مجاناً، والتحقق مرة واحدة، ولا أحد يدفع ليظهر.",
+  "meta.go.title": "مغادرة للتقديم",
+  "meta.go.desc": "ننقلك إلى صفحة الجهة نفسها لتتمكني من التقديم لديها.",
+  "meta.help.desc":
+    "إن لم تجدي ما تحتاجينه، أو بدا شيء هنا خاطئاً، أخبرينا. نفضّل أن نسمع منك على أن تتخلي عن الأمر.",
+  "meta.saved.desc": "كل ما حفظتِه، في مكان واحد.",
+  "meta.privacy.desc":
+    "ما يجمعه HWS Path Grid عند استخدامك الموقع، ولماذا، وما لن نفعله به أبداً.",
+  "meta.terms.desc":
+    "قواعد استخدام HWS Path Grid، للنساء اللواتي يبحثن فيه وللجهات المدرجة عليه.",
+  "meta.talk.desc":
+    "احجزي مكالمة مجانية مع شخص يمكنه أن يدلّك على الاتجاه الصحيح.",
+  "meta.confirm.desc": "الخطوة الأخيرة قبل حجز مكالمتك.",
+  "meta.booked.title": "تم حجز مكالمتك",
+  "meta.booked.desc": "ما الذي يحدث بعد ذلك.",
+  "meta.account.desc":
+    "سجّلي الدخول، أو أنشئي حساباً، ليبقى ما تحفظينه موجوداً في المرة القادمة التي تعودين فيها.",
+  "meta.accountCode.desc": "أرسلنا إليك رمزاً من ستة أرقام لتسجيل الدخول به.",
+  "meta.profile.desc": "أضيفي اسمك لنخاطبك كما ينبغي. لا شيء هنا إلزامي.",
+  "meta.settings.desc": "تذكيراتك، ولغتك، وما يحدث لحسابك.",
+  "meta.emailChange.title": "تغيير بريدك الإلكتروني",
+  "meta.emailChange.desc": "انقلي حسابك، وكل ما حُفظ عليه، إلى عنوان آخر.",
+  "meta.emailCode.title": "تفقّدي بريدك الجديد",
+  "meta.emailCode.desc": "أدخلي الرمز الذي أرسلناه إلى عنوانك الجديد.",
 };
 
 const ur: Catalogue = {
@@ -2479,6 +2876,68 @@ const ur: Catalogue = {
   "loading.organisation": "\u06cc\u06c1 \u0627\u062f\u0627\u0631\u06c1 \u0644\u0648\u0688 \u06c1\u0648 \u0631\u06c1\u0627 \u06c1\u06d2",
   "loading.saved": "\u0622\u067e \u06a9\u06cc \u0645\u062d\u0641\u0648\u0638 \u0641\u06c1\u0631\u0633\u062a \u0644\u0648\u0688 \u06c1\u0648 \u0631\u06c1\u06cc \u06c1\u06d2",
   "loading.listing": "\u06cc\u06c1 \u0627\u0646\u062f\u0631\u0627\u062c \u0644\u0648\u0688 \u06c1\u0648 \u0631\u06c1\u0627 \u06c1\u06d2",
+
+  "faq.title": "اکثر پوچھے گئے سوالات",
+  "faq.lede":
+    "HWS Path Grid سکاٹ لینڈ بھر میں خواتین کو ایسی مدد سے جوڑتا ہے جو واقعی اُن کے لیے موزوں ہو، اور اداروں کو ایک جگہ دیتا ہے جہاں انہیں ڈھونڈا جا سکے۔",
+  "faq.notHere":
+    "اگر آپ کا مطلوبہ جواب یہاں نہیں ہے تو ہم ہر پیغام کا جواب دیتے ہیں۔",
+  "faq.talkPerson": "کسی شخص سے بات کریں۔",
+  "faq.forWomen": "اگر آپ مدد تلاش کر رہی ہیں",
+  "faq.forOrgs": "اگر آپ ایک ادارہ ہیں",
+
+  "meta.home.title": "سکاٹ لینڈ میں خواتین کے لیے مدد تلاش کریں",
+  "meta.home.desc":
+    "اپنے الفاظ میں بتائیں کہ آپ کو کیا چاہیے اور ہم آپ کو چند ایسے اگلے قدم دکھائیں گے جو اٹھانے کے قابل ہوں۔ ہر ادارہ جانچا ہوا ہے۔ اکاؤنٹ کی ضرورت نہیں۔",
+  "meta.find.desc":
+    "اپنے الفاظ میں بتائیں کہ آپ کو کیا چاہیے۔ تین سوال، اکاؤنٹ کے بغیر، اور ہم سکاٹ لینڈ کے ہر جانچے ہوئے ادارے میں دیکھیں گے۔",
+  "meta.where.desc":
+    "بتائیں آپ کہاں ہیں تاکہ ہم پہلے وہ دکھائیں جو آپ کے قریب ہے، اور وہ بھی جو سب کے لیے کھلا ہے۔",
+  "meta.situation.desc":
+    "جو کچھ بھی لاگو ہو منتخب کریں۔ اس سے بدلتا ہے کہ ہم آپ کے سامنے کیا رکھتے ہیں۔",
+  "meta.results.desc":
+    "وہ مدد جو ہم نے آپ کے لیے تلاش کی، اس وجہ کے ساتھ کہ ہر ایک یہاں کیوں ہے۔",
+  "meta.refine.desc":
+    "اپنی تلاش محدود کریں یا وسیع کریں، جب نتائج کا پہلا سیٹ درست نہ ہو۔",
+  "meta.change.title": "اپنے جواب بدلیں",
+  "meta.change.desc":
+    "جو آپ نے ہمیں بتایا اسے بدلیں اور ہم تمام اداروں میں دوبارہ دیکھیں گے۔",
+  "meta.startOver.desc": "اپنے جواب صاف کریں اور تینوں سوال دوبارہ شروع کریں۔",
+  "meta.discover.title": "سکاٹ لینڈ بھر کے ادارے دریافت کریں",
+  "meta.discover.desc":
+    "سکاٹ لینڈ بھر میں خواتین کے ساتھ کام کرنے والے ادارے دیکھیں، ان کی پیش کردہ مدد کی قسم کے حساب سے یا اپنی ضرورت کے حساب سے۔",
+  "meta.faq.desc":
+    "یہ سائٹ استعمال کرنے سے پہلے خواتین کیا پوچھتی ہیں، اور درج ہونے سے پہلے ادارے کیا پوچھتے ہیں۔ صاف جواب۔",
+  "meta.orgs.desc":
+    "جو آپ چلاتے ہیں اسے HWS Path Grid پر درج کریں اور ان خواتین تک پہنچیں جن کے لیے وہ واقعی موزوں ہے۔ مفت، ایک بار جانچ، اور کوئی ظاہر ہونے کے لیے پیسے نہیں دیتا۔",
+  "meta.go.title": "درخواست کے لیے جا رہی ہیں",
+  "meta.go.desc":
+    "ہم آپ کو ادارے کے اپنے صفحے پر لے جا رہے ہیں تاکہ آپ وہیں درخواست دے سکیں۔",
+  "meta.help.desc":
+    "اگر آپ کو مطلوبہ چیز نہ ملے، یا یہاں کچھ غلط لگے، تو ہمیں بتائیں۔ ہم چاہیں گے کہ آپ ہم سے کہیں بجائے اس کے کہ آپ ہمت ہار جائیں۔",
+  "meta.saved.desc": "جو کچھ آپ نے محفوظ کیا، ایک ہی جگہ۔",
+  "meta.privacy.desc":
+    "جب آپ سائٹ استعمال کرتی ہیں تو HWS Path Grid کیا جمع کرتا ہے، کیوں، اور اس کے ساتھ ہم کبھی کیا نہیں کریں گے۔",
+  "meta.terms.desc":
+    "HWS Path Grid کے استعمال کے اصول، ان خواتین کے لیے جو یہاں تلاش کرتی ہیں اور ان اداروں کے لیے جو یہاں درج ہیں۔",
+  "meta.talk.desc":
+    "کسی ایسے شخص کے ساتھ مفت کال بُک کریں جو آپ کو صحیح سمت دکھا سکے۔",
+  "meta.confirm.desc": "آپ کی کال بُک ہونے سے پہلے آخری قدم۔",
+  "meta.booked.title": "آپ کی کال بُک ہو گئی",
+  "meta.booked.desc": "آگے کیا ہوگا۔",
+  "meta.account.desc":
+    "سائن اِن کریں یا اکاؤنٹ بنائیں، تاکہ آپ کی محفوظ کردہ مدد اگلی بار آنے پر موجود ہو۔",
+  "meta.accountCode.desc":
+    "ہم نے آپ کو سائن اِن کے لیے چھ ہندسوں کا کوڈ بھیجا ہے۔",
+  "meta.profile.desc":
+    "اپنا نام شامل کریں تاکہ ہم آپ کو ٹھیک طرح مخاطب کر سکیں۔ یہاں کچھ بھی لازمی نہیں۔",
+  "meta.settings.desc":
+    "آپ کی یاد دہانیاں، آپ کی زبان، اور آپ کے اکاؤنٹ کے ساتھ کیا ہوتا ہے۔",
+  "meta.emailChange.title": "اپنا ای میل پتہ بدلیں",
+  "meta.emailChange.desc":
+    "اپنا اکاؤنٹ، اور اس پر محفوظ سب کچھ، کسی اور پتے پر منتقل کریں۔",
+  "meta.emailCode.title": "اپنا نیا اِن باکس دیکھیں",
+  "meta.emailCode.desc": "وہ کوڈ درج کریں جو ہم نے آپ کے نئے پتے پر بھیجا ہے۔",
 };
 
 const pa: Catalogue = {
@@ -2782,6 +3241,67 @@ const pa: Catalogue = {
   "loading.organisation": "\u0a07\u0a39 \u0a05\u0a26\u0a3e\u0a30\u0a3e \u0a32\u0a4b\u0a21 \u0a39\u0a4b \u0a30\u0a3f\u0a39\u0a3e \u0a39\u0a48",
   "loading.saved": "\u0a24\u0a41\u0a39\u0a3e\u0a21\u0a40 \u0a38\u0a70\u0a2d\u0a3e\u0a32\u0a40 \u0a38\u0a42\u0a1a\u0a40 \u0a32\u0a4b\u0a21 \u0a39\u0a4b \u0a30\u0a39\u0a40 \u0a39\u0a48",
   "loading.listing": "\u0a07\u0a39 \u0a07\u0a70\u0a26\u0a30\u0a3e\u0a1c \u0a32\u0a4b\u0a21 \u0a39\u0a4b \u0a30\u0a3f\u0a39\u0a3e \u0a39\u0a48",
+
+  "faq.title": "ਆਮ ਪੁੱਛੇ ਜਾਂਦੇ ਸਵਾਲ",
+  "faq.lede":
+    "HWS Path Grid ਸਕਾਟਲੈਂਡ ਭਰ ਦੀਆਂ ਔਰਤਾਂ ਨੂੰ ਉਸ ਸਹਾਰੇ ਨਾਲ ਜੋੜਦਾ ਹੈ ਜੋ ਸੱਚਮੁੱਚ ਉਨ੍ਹਾਂ ਲਈ ਢੁਕਵਾਂ ਹੋਵੇ, ਤੇ ਪਿੱਛੇ ਖੜ੍ਹੇ ਅਦਾਰਿਆਂ ਨੂੰ ਇੱਕ ਥਾਂ ਦਿੰਦਾ ਹੈ ਜਿੱਥੇ ਉਨ੍ਹਾਂ ਨੂੰ ਲੱਭਿਆ ਜਾ ਸਕੇ।",
+  "faq.notHere":
+    "ਜੇ ਤੁਹਾਡਾ ਲੋੜੀਂਦਾ ਜਵਾਬ ਇੱਥੇ ਨਹੀਂ ਹੈ, ਤਾਂ ਅਸੀਂ ਹਰ ਸੁਨੇਹੇ ਦਾ ਜਵਾਬ ਦਿੰਦੇ ਹਾਂ।",
+  "faq.talkPerson": "ਕਿਸੇ ਵਿਅਕਤੀ ਨਾਲ ਗੱਲ ਕਰੋ।",
+  "faq.forWomen": "ਜੇ ਤੁਸੀਂ ਸਹਾਰਾ ਲੱਭ ਰਹੇ ਹੋ",
+  "faq.forOrgs": "ਜੇ ਤੁਸੀਂ ਇੱਕ ਅਦਾਰਾ ਹੋ",
+
+  "meta.home.title": "ਸਕਾਟਲੈਂਡ ਵਿੱਚ ਔਰਤਾਂ ਲਈ ਸਹਾਰਾ ਲੱਭੋ",
+  "meta.home.desc":
+    "ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ ਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਕੁਝ ਅਜਿਹੇ ਅਗਲੇ ਕਦਮ ਦਿਖਾਵਾਂਗੇ ਜੋ ਚੁੱਕਣ ਦੇ ਲਾਇਕ ਹਨ। ਹਰ ਅਦਾਰਾ ਜਾਂਚਿਆ ਹੋਇਆ ਹੈ। ਖਾਤੇ ਦੀ ਲੋੜ ਨਹੀਂ।",
+  "meta.find.desc":
+    "ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸੋ ਕਿ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ। ਤਿੰਨ ਸਵਾਲ, ਖਾਤੇ ਬਿਨਾਂ, ਤੇ ਅਸੀਂ ਸਕਾਟਲੈਂਡ ਦੇ ਹਰ ਜਾਂਚੇ ਅਦਾਰੇ ਵਿੱਚ ਵੇਖਾਂਗੇ।",
+  "meta.where.desc":
+    "ਦੱਸੋ ਤੁਸੀਂ ਕਿੱਥੇ ਹੋ ਤਾਂ ਜੋ ਅਸੀਂ ਪਹਿਲਾਂ ਉਹ ਰੱਖੀਏ ਜੋ ਤੁਹਾਡੇ ਨੇੜੇ ਹੈ, ਤੇ ਉਹ ਵੀ ਦਿਖਾਈਏ ਜੋ ਸਭ ਲਈ ਖੁੱਲ੍ਹਾ ਹੈ।",
+  "meta.situation.desc":
+    "ਜੋ ਵੀ ਢੁਕਦਾ ਹੈ ਚੁਣੋ। ਇਸ ਨਾਲ ਬਦਲਦਾ ਹੈ ਕਿ ਅਸੀਂ ਤੁਹਾਡੇ ਅੱਗੇ ਕੀ ਰੱਖਦੇ ਹਾਂ।",
+  "meta.results.desc":
+    "ਉਹ ਸਹਾਰਾ ਜੋ ਅਸੀਂ ਤੁਹਾਡੇ ਲਈ ਲੱਭਿਆ, ਨਾਲ ਇਹ ਕਾਰਨ ਕਿ ਹਰ ਇੱਕ ਇੱਥੇ ਕਿਉਂ ਹੈ।",
+  "meta.refine.desc":
+    "ਆਪਣੀ ਖੋਜ ਸੀਮਤ ਕਰੋ ਜਾਂ ਵਧਾਓ, ਜਦੋਂ ਨਤੀਜਿਆਂ ਦਾ ਪਹਿਲਾ ਸੈੱਟ ਠੀਕ ਨਾ ਹੋਵੇ।",
+  "meta.change.title": "ਆਪਣੇ ਜਵਾਬ ਬਦਲੋ",
+  "meta.change.desc":
+    "ਜੋ ਤੁਸੀਂ ਸਾਨੂੰ ਦੱਸਿਆ ਉਹ ਬਦਲੋ ਤੇ ਅਸੀਂ ਸਾਰੇ ਅਦਾਰਿਆਂ ਵਿੱਚ ਦੁਬਾਰਾ ਵੇਖਾਂਗੇ।",
+  "meta.startOver.desc": "ਆਪਣੇ ਜਵਾਬ ਸਾਫ਼ ਕਰੋ ਤੇ ਤਿੰਨੋ ਸਵਾਲ ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ।",
+  "meta.discover.title": "ਸਕਾਟਲੈਂਡ ਭਰ ਦੇ ਅਦਾਰੇ ਖੋਜੋ",
+  "meta.discover.desc":
+    "ਸਕਾਟਲੈਂਡ ਭਰ ਵਿੱਚ ਔਰਤਾਂ ਨਾਲ ਕੰਮ ਕਰਦੇ ਅਦਾਰੇ ਵੇਖੋ, ਉਨ੍ਹਾਂ ਵੱਲੋਂ ਦਿੱਤੇ ਸਹਾਰੇ ਦੀ ਕਿਸਮ ਮੁਤਾਬਕ ਜਾਂ ਆਪਣੀ ਲੋੜ ਮੁਤਾਬਕ।",
+  "meta.faq.desc":
+    "ਔਰਤਾਂ ਇਹ ਸਾਈਟ ਵਰਤਣ ਤੋਂ ਪਹਿਲਾਂ ਕੀ ਪੁੱਛਦੀਆਂ ਹਨ, ਤੇ ਅਦਾਰੇ ਦਰਜ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਕੀ ਪੁੱਛਦੇ ਹਨ। ਸਿੱਧੇ ਜਵਾਬ।",
+  "meta.orgs.desc":
+    "ਜੋ ਤੁਸੀਂ ਚਲਾਉਂਦੇ ਹੋ ਉਹ HWS Path Grid ਉੱਤੇ ਦਰਜ ਕਰੋ ਤੇ ਉਨ੍ਹਾਂ ਔਰਤਾਂ ਤੱਕ ਪਹੁੰਚੋ ਜਿਨ੍ਹਾਂ ਲਈ ਉਹ ਸੱਚਮੁੱਚ ਢੁਕਵਾਂ ਹੈ। ਮੁਫ਼ਤ, ਇੱਕ ਵਾਰ ਜਾਂਚ, ਤੇ ਕੋਈ ਦਿਸਣ ਲਈ ਪੈਸੇ ਨਹੀਂ ਦਿੰਦਾ।",
+  "meta.go.title": "ਅਰਜ਼ੀ ਲਈ ਜਾ ਰਹੇ ਹੋ",
+  "meta.go.desc":
+    "ਅਸੀਂ ਤੁਹਾਨੂੰ ਅਦਾਰੇ ਦੇ ਆਪਣੇ ਸਫ਼ੇ ਤੇ ਲੈ ਜਾ ਰਹੇ ਹਾਂ ਤਾਂ ਜੋ ਤੁਸੀਂ ਉੱਥੇ ਅਰਜ਼ੀ ਦੇ ਸਕੋ।",
+  "meta.help.desc":
+    "ਜੇ ਤੁਹਾਨੂੰ ਲੋੜੀਂਦੀ ਚੀਜ਼ ਨਾ ਮਿਲੇ, ਜਾਂ ਇੱਥੇ ਕੁਝ ਗਲਤ ਲੱਗੇ, ਤਾਂ ਸਾਨੂੰ ਦੱਸੋ। ਅਸੀਂ ਚਾਹਾਂਗੇ ਕਿ ਤੁਸੀਂ ਸਾਨੂੰ ਕਹੋ, ਨਾ ਕਿ ਹਾਰ ਮੰਨ ਲਵੋ।",
+  "meta.saved.desc": "ਜੋ ਕੁਝ ਤੁਸੀਂ ਸੰਭਾਲਿਆ, ਇੱਕੋ ਥਾਂ।",
+  "meta.privacy.desc":
+    "ਜਦੋਂ ਤੁਸੀਂ ਸਾਈਟ ਵਰਤਦੇ ਹੋ ਤਾਂ HWS Path Grid ਕੀ ਇਕੱਠਾ ਕਰਦਾ ਹੈ, ਕਿਉਂ, ਤੇ ਉਸ ਨਾਲ ਅਸੀਂ ਕਦੇ ਕੀ ਨਹੀਂ ਕਰਾਂਗੇ।",
+  "meta.terms.desc":
+    "HWS Path Grid ਵਰਤਣ ਦੇ ਨਿਯਮ, ਉਨ੍ਹਾਂ ਔਰਤਾਂ ਲਈ ਜੋ ਇੱਥੇ ਲੱਭਦੀਆਂ ਹਨ ਤੇ ਉਨ੍ਹਾਂ ਅਦਾਰਿਆਂ ਲਈ ਜੋ ਇੱਥੇ ਦਰਜ ਹਨ।",
+  "meta.talk.desc":
+    "ਕਿਸੇ ਅਜਿਹੇ ਵਿਅਕਤੀ ਨਾਲ ਮੁਫ਼ਤ ਕਾਲ ਬੁੱਕ ਕਰੋ ਜੋ ਤੁਹਾਨੂੰ ਸਹੀ ਰਾਹ ਦਿਖਾ ਸਕੇ।",
+  "meta.confirm.desc": "ਤੁਹਾਡੀ ਕਾਲ ਬੁੱਕ ਹੋਣ ਤੋਂ ਪਹਿਲਾਂ ਆਖ਼ਰੀ ਕਦਮ।",
+  "meta.booked.title": "ਤੁਹਾਡੀ ਕਾਲ ਬੁੱਕ ਹੋ ਗਈ",
+  "meta.booked.desc": "ਅੱਗੇ ਕੀ ਹੁੰਦਾ ਹੈ।",
+  "meta.account.desc":
+    "ਸਾਈਨ ਇਨ ਕਰੋ ਜਾਂ ਖਾਤਾ ਬਣਾਓ, ਤਾਂ ਜੋ ਤੁਹਾਡਾ ਸੰਭਾਲਿਆ ਸਹਾਰਾ ਅਗਲੀ ਵਾਰ ਆਉਣ ਤੇ ਮੌਜੂਦ ਹੋਵੇ।",
+  "meta.accountCode.desc": "ਅਸੀਂ ਤੁਹਾਨੂੰ ਸਾਈਨ ਇਨ ਲਈ ਛੇ ਅੰਕਾਂ ਦਾ ਕੋਡ ਭੇਜਿਆ ਹੈ।",
+  "meta.profile.desc":
+    "ਆਪਣਾ ਨਾਮ ਜੋੜੋ ਤਾਂ ਜੋ ਅਸੀਂ ਤੁਹਾਨੂੰ ਠੀਕ ਤਰ੍ਹਾਂ ਸੰਬੋਧਨ ਕਰ ਸਕੀਏ। ਇੱਥੇ ਕੁਝ ਵੀ ਲਾਜ਼ਮੀ ਨਹੀਂ।",
+  "meta.settings.desc":
+    "ਤੁਹਾਡੀਆਂ ਯਾਦ-ਦਹਾਨੀਆਂ, ਤੁਹਾਡੀ ਭਾਸ਼ਾ, ਤੇ ਤੁਹਾਡੇ ਖਾਤੇ ਨਾਲ ਕੀ ਹੁੰਦਾ ਹੈ।",
+  "meta.emailChange.title": "ਆਪਣਾ ਈਮੇਲ ਪਤਾ ਬਦਲੋ",
+  "meta.emailChange.desc":
+    "ਆਪਣਾ ਖਾਤਾ, ਤੇ ਉਸ ਉੱਤੇ ਸੰਭਾਲਿਆ ਸਭ ਕੁਝ, ਕਿਸੇ ਹੋਰ ਪਤੇ ਤੇ ਲੈ ਜਾਓ।",
+  "meta.emailCode.title": "ਆਪਣਾ ਨਵਾਂ ਇਨਬਾਕਸ ਵੇਖੋ",
+  "meta.emailCode.desc": "ਉਹ ਕੋਡ ਦਰਜ ਕਰੋ ਜੋ ਅਸੀਂ ਤੁਹਾਡੇ ਨਵੇਂ ਪਤੇ ਤੇ ਭੇਜਿਆ ਹੈ।",
 };
 
 const zh: Catalogue = {
@@ -3050,6 +3570,46 @@ const zh: Catalogue = {
   "loading.organisation": "\u6b63\u5728\u52a0\u8f7d\u8be5\u673a\u6784",
   "loading.saved": "\u6b63\u5728\u52a0\u8f7d\u4f60\u4fdd\u5b58\u7684\u6e05\u5355",
   "loading.listing": "\u6b63\u5728\u52a0\u8f7d\u8be5\u9879\u76ee",
+
+  "faq.title": "常见问题",
+  "faq.lede": "HWS Path Grid 把苏格兰各地的女性与真正适合她们的支持连接起来，也让背后的机构有一个可以被找到的地方。",
+  "faq.notHere": "如果这里没有你要的答案，我们会回复每一条留言。",
+  "faq.talkPerson": "和真人聊聊。",
+  "faq.forWomen": "如果你在寻找支持",
+  "faq.forOrgs": "如果你是一家机构",
+
+  "meta.home.title": "为苏格兰的女性寻找支持",
+  "meta.home.desc": "用你自己的话告诉我们你需要什么，我们会给你几个值得去走的下一步。每家机构都经过核实。无需账户。",
+  "meta.find.desc": "用你自己的话告诉我们你需要什么。三个问题，无需账户，我们会在每一家经我们核实的苏格兰机构中查找。",
+  "meta.where.desc": "告诉我们你在哪里，这样我们可以把离你近的排在前面，同时也让你看到面向所有人的项目。",
+  "meta.situation.desc": "选择所有符合的。这会改变我们呈现给你的内容。",
+  "meta.results.desc": "我们为你找到的支持，并说明每一项为什么在这里。",
+  "meta.refine.desc": "当第一批结果不合适时，缩小或扩大你的搜索范围。",
+  "meta.change.title": "修改你的回答",
+  "meta.change.desc": "修改你告诉我们的内容，我们会在所有机构中重新查找。",
+  "meta.startOver.desc": "清空你的回答，重新开始这三个问题。",
+  "meta.discover.title": "探索苏格兰各地的机构",
+  "meta.discover.desc": "按提供的支持类型，或按你的需要，浏览在苏格兰各地与女性一起工作的机构。",
+  "meta.faq.desc": "女性在使用本站前会问什么，机构在登记前会问什么。直接作答。",
+  "meta.orgs.desc": "把你们开展的项目登记在 HWS Path Grid 上，触及真正适合的女性。免费，核实一次，没有人付费出现。",
+  "meta.go.title": "正在离开以申请",
+  "meta.go.desc": "正把你带到该机构自己的页面，以便你在那里申请。",
+  "meta.help.desc": "如果你找不到需要的内容，或者这里有什么看起来不对，请告诉我们。我们宁愿听到你的反馈，也不希望你就此放弃。",
+  "meta.saved.desc": "你保存的全部内容，集中在一处。",
+  "meta.privacy.desc": "你使用本站时 HWS Path Grid 会收集什么、为什么，以及我们绝不会拿它做什么。",
+  "meta.terms.desc": "使用 HWS Path Grid 的规则，适用于在此搜索的女性和在此登记的机构。",
+  "meta.talk.desc": "预约一次免费通话，与能为你指明方向的人聊聊。",
+  "meta.confirm.desc": "预约通话前的最后一步。",
+  "meta.booked.title": "你的通话已预约",
+  "meta.booked.desc": "接下来会发生什么。",
+  "meta.account.desc": "登录或创建账户，这样你保存的支持在下次回来时还在。",
+  "meta.accountCode.desc": "我们已给你发送了一个六位登录码。",
+  "meta.profile.desc": "填写你的名字，好让我们用合适的称呼。这里没有必填项。",
+  "meta.settings.desc": "你的提醒、你的语言，以及你的账户会发生什么。",
+  "meta.emailChange.title": "更改你的电子邮箱",
+  "meta.emailChange.desc": "把你的账户，以及上面保存的一切，迁移到另一个邮箱地址。",
+  "meta.emailCode.title": "查看你的新邮箱",
+  "meta.emailCode.desc": "输入我们发送到你新邮箱地址的验证码。",
 };
 
 const ro: Catalogue = {
@@ -3355,6 +3915,68 @@ const ro: Catalogue = {
   "loading.organisation": "Se \u00eencarc\u0103 organiza\u021bia",
   "loading.saved": "Se \u00eencarc\u0103 lista ta de salvate",
   "loading.listing": "Se \u00eencarc\u0103 acest anun\u021b",
+
+  "faq.title": "Întrebări frecvente",
+  "faq.lede":
+    "HWS Path Grid conectează femeile din toată Scoția cu sprijinul care li se potrivește cu adevărat și oferă organizațiilor din spate un singur loc în care pot fi găsite.",
+  "faq.notHere":
+    "Dacă răspunsul de care ai nevoie nu este aici, noi răspundem la fiecare mesaj.",
+  "faq.talkPerson": "Vorbește cu o persoană.",
+  "faq.forWomen": "Dacă ești în căutare de sprijin",
+  "faq.forOrgs": "Dacă sunteți o organizație",
+
+  "meta.home.title": "Găsește sprijin pentru femei în Scoția",
+  "meta.home.desc":
+    "Spune-ne cu cuvintele tale de ce ai nevoie și îți arătăm câțiva pași următori care merită făcuți. Fiecare organizație este verificată. Fără cont.",
+  "meta.find.desc":
+    "Spune-ne cu cuvintele tale de ce ai nevoie. Trei întrebări, fără cont, și căutăm în fiecare organizație din Scoția pe care am verificat-o.",
+  "meta.where.desc":
+    "Spune-ne unde ești, ca să punem primele lucrurile din apropiere și să îți arătăm totuși ce este deschis pentru toată lumea.",
+  "meta.situation.desc":
+    "Alege tot ce ți se potrivește. Asta schimbă ce îți punem în față.",
+  "meta.results.desc":
+    "Sprijinul pe care l-am găsit pentru tine, cu motivul pentru care fiecare este aici.",
+  "meta.refine.desc":
+    "Restrânge căutarea sau extinde-o, când primul set de rezultate nu este cel potrivit.",
+  "meta.change.title": "Schimbă-ți răspunsurile",
+  "meta.change.desc":
+    "Schimbă ce ne-ai spus și căutăm din nou în toate organizațiile.",
+  "meta.startOver.desc":
+    "Șterge răspunsurile și ia cele trei întrebări de la capăt.",
+  "meta.discover.title": "Descoperă organizații din toată Scoția",
+  "meta.discover.desc":
+    "Răsfoiește organizațiile care lucrează cu femei în toată Scoția, după felul de sprijin pe care îl oferă sau după ce ai nevoie.",
+  "meta.faq.desc":
+    "Ce întreabă femeile înainte să folosească acest site și ce întreabă organizațiile înainte să se înscrie. Răspunsuri pe șleau.",
+  "meta.orgs.desc":
+    "Înscrieți ce organizați pe HWS Path Grid și ajungeți la femeile cărora li se potrivește cu adevărat. Gratuit, verificat o dată, și nimeni nu plătește ca să apară.",
+  "meta.go.title": "Pleci ca să aplici",
+  "meta.go.desc":
+    "Te ducem pe pagina organizației, ca să poți aplica direct la ea.",
+  "meta.help.desc":
+    "Dacă nu găsești ce îți trebuie, sau ceva de aici pare greșit, spune-ne. Preferăm să auzim de la tine decât să renunți.",
+  "meta.saved.desc": "Tot ce ai salvat, într-un singur loc.",
+  "meta.privacy.desc":
+    "Ce colectează HWS Path Grid când folosești site-ul, de ce, și ce nu vom face niciodată cu aceste date.",
+  "meta.terms.desc":
+    "Regulile de folosire a HWS Path Grid, pentru femeile care caută aici și pentru organizațiile înscrise.",
+  "meta.talk.desc":
+    "Rezervă un apel gratuit cu cineva care te poate îndruma în direcția potrivită.",
+  "meta.confirm.desc": "Ultimul pas înainte ca apelul tău să fie rezervat.",
+  "meta.booked.title": "Apelul tău este rezervat",
+  "meta.booked.desc": "Ce urmează.",
+  "meta.account.desc":
+    "Conectează-te sau creează un cont, ca sprijinul salvat să fie acolo data viitoare când revii.",
+  "meta.accountCode.desc": "Ți-am trimis un cod din șase cifre pentru conectare.",
+  "meta.profile.desc":
+    "Adaugă-ți numele ca să ne putem adresa cum se cuvine. Nimic de aici nu este obligatoriu.",
+  "meta.settings.desc":
+    "Memento-urile tale, limba ta și ce se întâmplă cu contul tău.",
+  "meta.emailChange.title": "Schimbă-ți adresa de e-mail",
+  "meta.emailChange.desc":
+    "Mută-ți contul, și tot ce este salvat pe el, pe altă adresă.",
+  "meta.emailCode.title": "Verifică noua ta căsuță",
+  "meta.emailCode.desc": "Scrie codul pe care l-am trimis la noua ta adresă.",
 };
 
 const so: Catalogue = {
@@ -3662,6 +4284,69 @@ const so: Catalogue = {
   "loading.organisation": "Hay'addan waa la soo rarayaa",
   "loading.saved": "Liiskaaga la kaydiyay waa la soo rarayaa",
   "loading.listing": "Liiskan waa la soo rarayaa",
+
+  "faq.title": "Su'aalaha badanaa la weydiiyo",
+  "faq.lede":
+    "HWS Path Grid wuxuu haweenka Scotland ku xiraa taageerada runtii ku habboon, hay'adaha ka dambeeyana wuxuu siiyaa hal meel oo lagu heli karo.",
+  "faq.notHere":
+    "Haddii jawaabta aad u baahan tahay aanay halkan ku jirin, fariin kasta waan ka jawaabnaa.",
+  "faq.talkPerson": "Qof la hadal.",
+  "faq.forWomen": "Haddii aad taageero raadinayso",
+  "faq.forOrgs": "Haddii aad hay'ad tahay",
+
+  "meta.home.title": "Raadi taageero haween ah oo Scotland ah",
+  "meta.home.desc":
+    "Noo sheeg erayadaada waxa aad u baahan tahay, waxaanan ku tusi doonnaa dhowr tallaabo oo mudan in la qaado. Hay'ad kasta waa la hubiyay. Xisaab looma baahna.",
+  "meta.find.desc":
+    "Noo sheeg erayadaada waxa aad u baahan tahay. Saddex su'aal, xisaab la'aan, waxaanan ka raadinaynaa hay'ad kasta oo Scotland ah oo aan hubinnay.",
+  "meta.where.desc":
+    "Noo sheeg meesha aad joogto si aan hore u dhigno waxa kuu dhow, haddana aan ku tusno waxa qof kasta u furan.",
+  "meta.situation.desc":
+    "Dooro wax kasta oo kugu habboon. Taasi way beddeshaa waxa aan ku hor dhigno.",
+  "meta.results.desc":
+    "Taageerada aan kuu helnay, iyo sababta mid kastaa halkan u joogo.",
+  "meta.refine.desc":
+    "Yaree raadintaada ama balaadhi, marka natiijooyinka ugu horreeya aanay kuwa saxda ahayn.",
+  "meta.change.title": "Beddel jawaabahaaga",
+  "meta.change.desc":
+    "Beddel wixii aad noo sheegtay waanan dib uga raadinaynaa hay'adaha oo dhan.",
+  "meta.startOver.desc": "Nadiifi jawaabahaaga oo saddexda su'aal dib u bilow.",
+  "meta.discover.title": "Sahan hay'adaha Scotland oo dhan",
+  "meta.discover.desc":
+    "Eeg hay'adaha haweenka kala shaqeeya Scotland oo dhan, iyadoo lagu kala saarayo nooca taageerada ay bixiyaan ama waxa aad u baahan tahay.",
+  "meta.faq.desc":
+    "Waxa haweenku weydiiyaan ka hor inta aysan isticmaalin goobtan, iyo waxa hay'aduhu weydiiyaan ka hor inta aysan ku qorin. Si cad ayaa loogu jawaabay.",
+  "meta.orgs.desc":
+    "Ku qor waxa aad qabato HWS Path Grid oo gaadh haweenka runtii ku habboon. Bilaash, hal mar la hubiyo, qofna lacag ma bixiyo si uu u muuqdo.",
+  "meta.go.title": "Waxaad u baxaysaa inaad codsato",
+  "meta.go.desc":
+    "Waxaan kuu gudbinaynaa bogga hay'adda si aad halkaas uga codsato.",
+  "meta.help.desc":
+    "Haddii aadan heli karin waxa aad u baahan tahay, ama wax halkan ku jira ay khaldan u muuqdaan, noo sheeg. Waxaan doorbidaynaa inaan kaa maqalno halkii aad ka quusan lahayd.",
+  "meta.saved.desc": "Wax kasta oo aad kaydisay, hal meel.",
+  "meta.privacy.desc":
+    "Waxa HWS Path Grid uruuriyo marka aad goobta isticmaasho, sababta, iyo waxa aanan weligeen ku samayn doonin.",
+  "meta.terms.desc":
+    "Xeerarka isticmaalka HWS Path Grid, haweenka halkan raadiya iyo hay'adaha halkan ku qoran.",
+  "meta.talk.desc":
+    "Ballanso wicitaan bilaash ah oo aad la yeelanayso qof ku tilmaami kara jihada saxda ah.",
+  "meta.confirm.desc":
+    "Tallaabada ugu dambeysa ka hor inta aan wicitaankaaga la ballansan.",
+  "meta.booked.title": "Wicitaankaaga waa la ballansaday",
+  "meta.booked.desc": "Waxa xiga.",
+  "meta.account.desc":
+    "Gal ama xisaab samee, si taageerada aad kaydiso ay u joogto marka xigta ee aad soo noqoto.",
+  "meta.accountCode.desc":
+    "Waxaan kuu dirnay koodh lix lambar ah oo aad ku gasho.",
+  "meta.profile.desc":
+    "Ku dar magacaaga si aan si habboon kuugu hadalno. Waxba halkan looma baahna.",
+  "meta.settings.desc":
+    "Xusuusintaada, luqaddaada, iyo waxa ku dhacaya xisaabtaada.",
+  "meta.emailChange.title": "Beddel cinwaankaaga iimaylka",
+  "meta.emailChange.desc":
+    "U wareeji xisaabtaada, iyo wax kasta oo lagu kaydiyay, cinwaan kale.",
+  "meta.emailCode.title": "Fiiri sanduuqaaga cusub",
+  "meta.emailCode.desc": "Geli koodhka aan u dirnay cinwaankaaga cusub.",
 };
 
 const ti: Catalogue = {
@@ -3948,6 +4633,57 @@ const ti: Catalogue = {
   "loading.organisation": "\u12a5\u12da \u1275\u12ab\u120d \u12ed\u133d\u12d3\u1295 \u12a3\u120e",
   "loading.saved": "\u12dd\u12d3\u1240\u1265\u12ad\u12ee \u12dd\u122d\u12dd\u122d \u12ed\u133d\u12d3\u1295 \u12a3\u120e",
   "loading.listing": "\u12a5\u12da \u12dd\u122d\u12dd\u122d \u12ed\u133d\u12d3\u1295 \u12a3\u120e",
+
+  "faq.title": "ቀጻሊ ዝሕተቱ ሕቶታት",
+  "faq.lede":
+    "HWS Path Grid ኣብ ብምሉኡ ስኮትላንድ ንዘለዋ ደቂ ኣንስትዮ ምስቲ ብሓቂ ዝሰማምዐን ደገፍ የራኽበን፡ ነቶም ኣብ ድሕሪኡ ዘለዉ ትካላት ድማ ክርከቡሉ ዝኽእሉ ሓደ ቦታ ይህብ።",
+  "faq.notHere": "እቲ ዘድልየኪ መልሲ ኣብዚ እንተ ዘየሎ፡ ንሕና ንነፍሲ ወከፍ መልእኽቲ ንምልስ ኢና።",
+  "faq.talkPerson": "ምስ ሰብ ተዛረቢ።",
+  "faq.forWomen": "ደገፍ እትደልዪ እንተ ኾንኪ",
+  "faq.forOrgs": "ትካል እንተ ኾይንኩም",
+
+  "meta.home.title": "ኣብ ስኮትላንድ ንደቂ ኣንስትዮ ዝኸውን ደገፍ ርኸቢ",
+  "meta.home.desc":
+    "ብናትኪ ቃላት እንታይ ከም ዘድልየኪ ንገርና፡ ንሕና ድማ ክትወስድዮም ዝግብኡ ውሑዳት ቀጺሎም ዘለዉ ስጉምትታት ከነርእየኪ ኢና። ነፍሲ ወከፍ ትካል ተረጋጊጹ እዩ። ኣካውንት ኣየድልን።",
+  "meta.find.desc":
+    "ብናትኪ ቃላት እንታይ ከም ዘድልየኪ ንገርና። ሰለስተ ሕቶታት፡ ብዘይ ኣካውንት፡ ኣብ ስኮትላንድ ዘረጋገጽናዮ ነፍሲ ወከፍ ትካል ድማ ንርኢ።",
+  "meta.where.desc":
+    "ኣበይ ከም ዘለኺ ንገርና፡ ኣብ ጥቓኺ ዘሎ ቀዲምና ንኽንገብሮ፡ ነቲ ንኹሉ ክፉት ዘሎ እውን ከነርእየኪ።",
+  "meta.situation.desc": "ዝሰማማዕ ኩሉ ምረጺ። እዚ ነቲ ኣብ ቅድሜኺ እነቕርቦ ይቕይሮ።",
+  "meta.results.desc": "እቲ ዘናደናልኪ ደገፍ፡ ምስቲ ነፍሲ ወከፉ ኣብዚ ዘለወሉ ምኽንያት።",
+  "meta.refine.desc": "እቲ ቀዳማይ ውጽኢት እቲ ቅኑዕ እንተ ዘይኮይኑ፡ ድሌትኪ ኣጽብብዮ ወይ ኣስፍሕዮ።",
+  "meta.change.title": "መልስታትኪ ቀይሪ",
+  "meta.change.desc": "ነቲ ዝነገርክና ቀይርዮ እሞ ኣብ ኩሎም ትካላት ከም ብሓድሽ ክንደሊ ኢና።",
+  "meta.startOver.desc": "መልስታትኪ ኣጽርዪ እሞ ነቶም ሰለስተ ሕቶታት ካብ መጀመርታ ጀምሪ።",
+  "meta.discover.title": "ኣብ ብምሉኡ ስኮትላንድ ዘለዉ ትካላት ርኸቢ",
+  "meta.discover.desc":
+    "ኣብ ብምሉኡ ስኮትላንድ ምስ ደቂ ኣንስትዮ ዝሰርሑ ትካላት፡ በቲ ዝህብዎ ዓይነት ደገፍ ወይ በቲ ዘድልየኪ ረኣዪ።",
+  "meta.faq.desc":
+    "ደቂ ኣንስትዮ ነዚ መርበብ ቅድሚ ምጥቃመን እንታይ ይሓታ፡ ትካላት ድማ ቅድሚ ምምዝጋቦም እንታይ ይሓቱ። ብንጹር ተመሊሱ።",
+  "meta.orgs.desc":
+    "እቲ እተካይድዎ ኣብ HWS Path Grid ኣስፍርዎ እሞ ነተን ብሓቂ ዝሰማምዐን ደቂ ኣንስትዮ ብጽሓዮም። ነጻ እዩ፡ ሓደ ግዜ ይረጋገጽ፡ ንምንጻር ድማ ዝኸፍል የለን።",
+  "meta.go.title": "ንምምልካት ትወጺ ኣለኺ",
+  "meta.go.desc": "ናብቲ ናይቲ ትካል ገጽ ነብጽሓኪ ኣለና፡ ኣብኡ ከተመልክቲ።",
+  "meta.help.desc":
+    "ዘድልየኪ እንተ ዘይረኺብኪ፡ ወይ ኣብዚ ጌጋ ዝመስል ነገር እንተ ሃልዩ፡ ንገርና። ካባኺ ክንሰምዕ ንመርጽ እምበር ክትገድፍዮ ኣይንደልን።",
+  "meta.saved.desc": "ዝዓቀብክዮ ኩሉ፡ ኣብ ሓደ ቦታ።",
+  "meta.privacy.desc":
+    "ነዚ መርበብ ክትጥቀምሉ ከለኺ HWS Path Grid እንታይ ከም ዝእክብ፡ ስለምንታይ፡ ከምኡ ድማ እንታይ ፈጺሙ ከም ዘይገብረሉ።",
+  "meta.terms.desc":
+    "ናይ HWS Path Grid ናይ ኣጠቓቕማ ሕግታት፡ ነተን ኣብዚ ዝደልያ ደቂ ኣንስትዮን ነቶም ኣብዚ ዝተመዝገቡ ትካላትን።",
+  "meta.talk.desc": "ናብ ቅኑዕ መኣዝን ክመርሓኪ ምስ ዝኽእል ሰብ ነጻ ጻውዒት ሓዝዪ።",
+  "meta.confirm.desc": "ጻውዒትኪ ቅድሚ ምሓዙ ዘሎ ናይ መወዳእታ ስጉምቲ።",
+  "meta.booked.title": "ጻውዒትኪ ተታሒዙ ኣሎ",
+  "meta.booked.desc": "ቀጺሉ እንታይ የጋጥም።",
+  "meta.account.desc":
+    "እቶዊ ወይ ኣካውንት ፍጠሪ፡ እቲ እትዕቅብዮ ደገፍ ኣብ ዝመጽእ ግዜ ምስ ትምለሲ ኣብኡ ምእንቲ ክህሉ።",
+  "meta.accountCode.desc": "ክትኣትዊሉ እትኽእሊ ናይ ሽዱሽተ ኣሃዝ ኮድ ሰዲድናልኪ ኣለና።",
+  "meta.profile.desc": "ብግቡእ ክንጽውዓኪ ስምኪ ወስኺ። ኣብዚ ዝግደድ ነገር የለን።",
+  "meta.settings.desc": "መዘኻኸሪታትኪ፡ ቋንቋኺ፡ ከምኡ ድማ ኣብ ኣካውንትኪ እንታይ ከም ዘጋጥም።",
+  "meta.emailChange.title": "ኢመይል ኣድራሻኺ ቀይሪ",
+  "meta.emailChange.desc": "ኣካውንትኪን ኣብኡ ዝተዓቀበ ኩሉን ናብ ካልእ ኣድራሻ ኣግዓዝዮ።",
+  "meta.emailCode.title": "ሓድሽ ኢመይልኪ ርኣዪ",
+  "meta.emailCode.desc": "ናብ ሓድሽ ኣድራሻኺ ዝሰደድናዮ ኮድ ኣእትዊ።",
 };
 
 export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, string> } = {

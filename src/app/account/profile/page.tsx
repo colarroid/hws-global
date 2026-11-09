@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
 import { getTranslator } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { redirect } from "next/navigation";
 import { Page } from "@/components/ui/Page";
 import { ProfileForm } from "@/components/account/ProfileForm";
 import { getAccount } from "@/lib/data/account";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Set up your profile",
-  description:
-    "Add your name so we can address you properly. Nothing here is required.",
-  path: "/account/profile",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "profile.title",
+    descriptionKey: "meta.profile.desc",
+    path: "/account/profile",
+  });
+}
 
 /**
  * Screen 10. Set up your profile.

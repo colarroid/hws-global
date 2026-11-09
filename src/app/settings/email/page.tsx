@@ -4,14 +4,16 @@ import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { EmailChangeForm } from "@/components/account/EmailChangeForm";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { getAccount } from "@/lib/data/account";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Change your email address",
-  description: "Move your account, and everything saved on it, to another address.",
-  path: "/settings/email",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.emailChange.title",
+    descriptionKey: "meta.emailChange.desc",
+    path: "/settings/email",
+  });
+}
 
 /**
  * Changing the address on the account.

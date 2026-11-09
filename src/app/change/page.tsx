@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { ButtonLink } from "@/components/ui/Button";
 import { getSituationLabels } from "@/lib/data/situations";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Change your answers",
-  description:
-    "Change what you told us and we will look again across every organisation.",
-  path: "/change",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.change.title",
+    descriptionKey: "meta.change.desc",
+    path: "/change",
+  });
+}
 
 /**
  * Screen 7. Change answers.

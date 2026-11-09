@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
+import type { MessageKey } from "@/lib/i18n/messages";
 
 /**
  * One place that decides what a page tells a search engine and a link
@@ -182,4 +184,59 @@ export function pageMetadata({
       images: [preview],
     },
   };
+}
+
+/**
+ * The same metadata, in the language she is reading.
+ *
+ * WHAT THIS DOES AND DOES NOT CHANGE
+ *
+ * It changes the browser tab, the bookmark, and the preview card when she
+ * shares the link. It does not change what Google indexes: a crawler arrives
+ * with no language cookie, so it is served the English title and
+ * description, which is right — one URL, one indexed language, and no
+ * duplicate-content problem invented out of nothing.
+ *
+ * The canonical URL, the robots directive and the preview image are all
+ * unchanged, because none of them is a matter of language. Only
+ * `openGraph.locale` moves, so a link shared into a Polish group unfurls
+ * marked as Polish rather than claiming to be en_GB.
+ *
+ * Pages are already dynamic — the root layout reads the language cookie —
+ * so making the metadata dynamic costs nothing that was not already spent.
+ */
+export async function translatedMetadata(input: {
+  titleKey: MessageKey;
+  descriptionKey: MessageKey;
+  path?: string;
+  indexable?: boolean;
+  image?: string;
+}): Promise<Metadata> {
+  const { t, locale } = await getTranslator();
+
+  const base = pageMetadata({
+    title: t(input.titleKey),
+    description: t(input.descriptionKey),
+    path: input.path,
+    indexable: input.indexable,
+    image: input.image,
+  });
+
+  return {
+    ...base,
+    openGraph: { ...base.openGraph, locale: openGraphLocale(locale.intl) },
+  };
+}
+
+/**
+ * BCP-47 to the underscored form Open Graph expects.
+ *
+ * Chinese is special-cased because og:locale wants a territory and our tag
+ * names a script: zh-Hans is the correct language tag and zh_CN is what a
+ * preview card will actually recognise. Everything else differs only in the
+ * separator.
+ */
+function openGraphLocale(tag: string): string {
+  if (tag.startsWith("zh")) return "zh_CN";
+  return tag.includes("-") ? tag.replace("-", "_") : tag;
 }

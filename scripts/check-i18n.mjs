@@ -37,6 +37,8 @@ import { MESSAGES } from "../src/lib/i18n/messages.ts";
 import { LABELS } from "../src/lib/i18n/labels.ts";
 import * as taxonomy from "../src/lib/design/taxonomy.ts";
 import { PLURALS, ENGLISH_PLURALS } from "../src/lib/i18n/plurals.ts";
+import { FAQ } from "../src/lib/i18n/faq.ts";
+import { FOR_WOMEN, FOR_ORGANISATIONS } from "../src/lib/design/faq.ts";
 import {
   SITUATION_SUGGESTIONS,
   MARKET_SUGGESTIONS,
@@ -152,6 +154,66 @@ for (const locale of translatable) {
   }
 }
 
+/* ---------------------------------------------------------- the FAQ ---- */
+
+/*
+ * The same orphan problem as the example sentences, with more at stake.
+ *
+ * Twenty-eight answers, keyed by their English question. Reword a question
+ * in design/faq.ts and eleven answers detach silently, each one reverting to
+ * English for the only people who cannot read it. And unlike a button, an
+ * answer here is a promise about how the software behaves.
+ *
+ * The two emergency numbers are checked literally. A translator improving
+ * "999" into something else is the single worst thing that could happen in
+ * this file, and it is exactly the kind of change that looks like care.
+ */
+const questions = [...FOR_WOMEN, ...FOR_ORGANISATIONS];
+const askedInEnglish = questions.map((x) => x.q);
+
+const EMERGENCY = ["999", "0800 027 1234"];
+const emergencyAnswers = questions
+  .filter((x) => EMERGENCY.every((n) => x.a.includes(n)))
+  .map((x) => x.q);
+
+for (const code of Object.keys(FAQ)) {
+  if (!LOCALES.some((l) => l.code === code)) {
+    errors.push(`faq.ts has "${code}", which is not a locale in locales.ts.`);
+  }
+}
+
+for (const locale of translatable) {
+  const table = FAQ[locale.code] ?? {};
+
+  for (const asked of Object.keys(table)) {
+    if (!askedInEnglish.includes(asked)) {
+      errors.push(
+        `${locale.code}: the FAQ answer keyed to "${asked}" translates no ` +
+          `question. A question was reworded in design/faq.ts and this was ` +
+          `left behind.`,
+      );
+    }
+  }
+
+  for (const asked of emergencyAnswers) {
+    const translated = table[asked];
+    if (!translated) continue;
+    for (const number of EMERGENCY) {
+      if (!translated.a.includes(number)) {
+        errors.push(
+          `${locale.code}: the answer to "${asked}" has lost the number ` +
+            `${number}. Emergency numbers are not translatable.`,
+        );
+      }
+    }
+  }
+
+  const missingFaq = askedInEnglish.filter((asked) => !table[asked]);
+  if (missingFaq.length > 0) {
+    gaps.push({ locale, missingWords: [], missingSaid: missingFaq });
+  }
+}
+
 /* --------------------------------------------- the one placeholder ----- */
 
 /*
@@ -239,8 +301,8 @@ for (const locale of translatable) {
 
 console.log(
   `\n${translatable.length} languages besides English, ` +
-    `${wanted.length} labels, ${messageKeys.length} messages and ` +
-    `${pluralKeys.length} counts each.\n`,
+    `${wanted.length} labels, ${messageKeys.length} messages, ` +
+    `${pluralKeys.length} counts and ${questions.length} questions each.\n`,
 );
 
 const pad = (s, n) => String(s).padEnd(n);

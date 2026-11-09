@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { getService } from "@/lib/data/service";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Talk to a person",
-  description:
-    "If you cannot find what you need, or something here looks wrong, tell us. We would rather hear from you than have you give up on it.",
-  path: "/help",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "footer.talk",
+    descriptionKey: "meta.help.desc",
+    path: "/help",
+    indexable: true,
+  });
+}
 
 /**
  * Contact our support, and the "something wrong?" reporting loop.

@@ -9,6 +9,7 @@ import {
 } from "@/lib/i18n/locales";
 import { MESSAGES, type MessageKey } from "@/lib/i18n/messages";
 import { LABELS } from "@/lib/i18n/labels";
+import { FAQ, type FaqEntry } from "@/lib/i18n/faq";
 import { PLURALS, ENGLISH_PLURALS, type PluralKey } from "@/lib/i18n/plurals";
 import {
   CLIENT_KEYS,
@@ -180,11 +181,13 @@ export async function getTranslator(): Promise<{
   chip: (english: string) => string;
   count: (key: PluralKey, n: number) => string;
   fmt: Formats;
+  faq: (entry: FaqEntry) => FaqEntry;
 }> {
   const locale = await getLocale();
   const table = MESSAGES[locale.code] ?? {};
   const english = MESSAGES[DEFAULT_LOCALE];
   const words = LABELS[locale.code] ?? {};
+  const questions = FAQ[locale.code] ?? {};
 
   return {
     locale,
@@ -196,6 +199,12 @@ export async function getTranslator(): Promise<{
     count: (key, n) => pluralise(locale.code, locale.intl, key, n),
 
     fmt: formatsFor(locale.intl),
+
+    /* Both halves together, or neither. A translated question above an
+       English answer would read as a page half-built; falling back to the
+       English pair reads as a page not yet translated, which is what it
+       is. */
+    faq: (entry) => questions[entry.q] ?? entry,
 
     label: (vocabulary, slug) =>
       !slug ? "" : (words[slug] ?? labelFor(vocabulary, slug)),

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { PlaceForm } from "@/components/find/PlaceForm";
 import { getTranslator } from "@/lib/i18n";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Where should we look for support?",
-  description:
-    "Tell us where you are so we can put what is near you first, and still show you what is open to everyone.",
-  path: "/find/where",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "q2.title",
+    descriptionKey: "meta.where.desc",
+    path: "/find/where",
+  });
+}
 
 /**
  * Question 2. Where to look.

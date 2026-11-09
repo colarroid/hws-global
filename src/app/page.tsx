@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import Image from "next/image";
 import heroImage from "@/images/hero-women.webp";
@@ -24,13 +24,14 @@ import { SummitPhotos } from "@/components/SummitPhotos";
 import { Testimonials } from "@/components/Testimonials";
 import { TESTIMONIALS } from "@/lib/design/testimonials";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Find support for women in Scotland",
-  description:
-    "Tell us what you need in your own words and we will show you a few next steps worth taking. Every organisation is checked. No account needed.",
-  path: "/",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.home.title",
+    descriptionKey: "meta.home.desc",
+    path: "/",
+    indexable: true,
+  });
+}
 
 /**
  * The landing page.

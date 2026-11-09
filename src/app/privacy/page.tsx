@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/LegalPage";
 import { PRIVACY } from "@/lib/design/legal";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Privacy policy",
-  description:
-    "What HWS Path Grid collects when you use the site, why, and what we will never do with it.",
-  path: "/privacy",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "footer.privacy",
+    descriptionKey: "meta.privacy.desc",
+    path: "/privacy",
+    indexable: true,
+  });
+}
 
 /**
  * The privacy policy.

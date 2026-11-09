@@ -1,17 +1,18 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { NeedForm } from "@/components/find/NeedForm";
 import { getNeedSuggestions } from "@/lib/data/search";
 import { getTranslator } from "@/lib/i18n";
 
-export const metadata: Metadata = pageMetadata({
-  title: "What do you need help with?",
-  description:
-    "Tell us what you need in your own words. Three questions, no account needed, and we look across every organisation in Scotland we have checked.",
-  path: "/find",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "q1.title",
+    descriptionKey: "meta.find.desc",
+    path: "/find",
+    indexable: true,
+  });
+}
 
 /**
  * Question 1. What she needs, in her own words.

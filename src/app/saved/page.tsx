@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Page } from "@/components/ui/Page";
@@ -67,12 +67,13 @@ const TONES: Record<Status["tone"], string> = {
   closed: "bg-closed text-ink-65",
 };
 
-export const metadata: Metadata = pageMetadata({
-  title: "Your saved list",
-  description:
-    "Everything you have saved, in one place.",
-  path: "/saved",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "saved.title",
+    descriptionKey: "meta.saved.desc",
+    path: "/saved",
+  });
+}
 
 /**
  * Screen 11. Your saved list.

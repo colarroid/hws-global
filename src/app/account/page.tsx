@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getTranslator } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Lock } from "lucide-react";
 import { Page } from "@/components/ui/Page";
@@ -8,12 +8,13 @@ import { portalLink } from "@/lib/portal";
 import { AccessForm } from "@/components/account/AccessForm";
 import { ArrowUpRightIcon } from "@/components/ui/SuppliedIcons";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Access your account",
-  description:
-    "Sign in, or make an account, so the support you save is there next time you come back.",
-  path: "/account",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "account.title",
+    descriptionKey: "meta.account.desc",
+    path: "/account",
+  });
+}
 
 /**
  * Screen 9. Access your account.

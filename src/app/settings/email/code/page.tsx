@@ -4,14 +4,16 @@ import { redirect } from "next/navigation";
 import { Mail } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { EmailChangeCodeForm } from "@/components/account/EmailChangeCodeForm";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { getAccount } from "@/lib/data/account";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Check your new inbox",
-  description: "Enter the code we sent to your new address.",
-  path: "/settings/email/code",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.emailCode.title",
+    descriptionKey: "meta.emailCode.desc",
+    path: "/settings/email/code",
+  });
+}
 
 /**
  * The second half of the change.

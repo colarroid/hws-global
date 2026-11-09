@@ -4,13 +4,15 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Check } from "lucide-react";
 import { Page } from "@/components/ui/Page";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Your call is booked",
-  description: "What happens next.",
-  path: "/talk/booked",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "meta.booked.title",
+    descriptionKey: "meta.booked.desc",
+    path: "/talk/booked",
+  });
+}
 
 /**
  * Booked.

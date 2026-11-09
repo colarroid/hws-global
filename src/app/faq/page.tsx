@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Minus, Plus } from "lucide-react";
 import { FOR_ORGANISATIONS, FOR_WOMEN, type Question } from "@/lib/design/faq";
+import { getTranslator } from "@/lib/i18n";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Frequently asked questions",
-  description:
-    "What women ask before they use this site, and what organisations ask before they list on it. Answered plainly.",
-  path: "/faq",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "faq.title",
+    descriptionKey: "meta.faq.desc",
+    path: "/faq",
+    indexable: true,
+  });
+}
 
 /**
  * The questions people actually ask.
@@ -32,12 +34,25 @@ export const metadata: Metadata = pageMetadata({
  * costs and what happens to what it posts. One list makes both read half a
  * page that is not for them.
  */
-function Answers({ questions, first }: { questions: Question[]; first: boolean }) {
+async function Answers({
+  questions,
+  first,
+}: {
+  questions: Question[];
+  first: boolean;
+}) {
+  const { faq } = await getTranslator();
+
   return (
     <div className="flex flex-col">
-      {questions.map((item, index) => (
+      {questions.map((english, index) => {
+        /* Keyed by the English question rather than the translated one, so
+           the exclusive-accordion grouping and React's reconciliation do not
+           change meaning when she switches language mid-page. */
+        const item = faq(english);
+        return (
         <details
-          key={item.q}
+          key={english.q}
           name="faq"
           // Only the very first on the page, so somebody arriving sees the
           // shape of an answer without having to guess these open at all.
@@ -69,12 +84,15 @@ function Answers({ questions, first }: { questions: Question[]; first: boolean }
             </p>
           </div>
         </details>
-      ))}
+        );
+      })}
     </div>
   );
 }
 
-export default function FaqPage() {
+export default async function FaqPage() {
+  const { t } = await getTranslator();
+
   return (
     <div className="mx-auto w-full max-w-[1180px] px-5 py-12 sm:px-10 sm:py-16">
       <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14">
@@ -101,21 +119,21 @@ export default function FaqPage() {
 
           <div className="relative flex flex-col gap-5">
             <h1 className="m-0 font-display text-[34px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[40px]">
-              Frequently asked questions
+              {t("faq.title")}
             </h1>
 
             <p className="m-0 text-[16px] leading-[1.65] text-white/70">
-              HWS Path Grid connects women across Scotland to the support that
-              actually suits them, and gives the organisations behind it one
-              place to be found.
+              {t("faq.lede")}
             </p>
 
+            {/* The link is a whole sentence rather than two words inside
+                one, because word order is not ours to assume in eleven
+                languages. */}
             <p className="m-0 text-[16px] leading-[1.65] text-white/70">
-              If the answer you need is not here,{" "}
+              {t("faq.notHere")}{" "}
               <Link href="/help" className="font-semibold text-gold-300">
-                talk to a person
+                {t("faq.talkPerson")}
               </Link>
-              . We answer every message.
             </p>
           </div>
         </aside>
@@ -123,14 +141,14 @@ export default function FaqPage() {
         <div className="flex min-w-0 flex-1 flex-col gap-12">
           <section className="flex flex-col gap-1">
             <h2 className="m-0 eyebrow text-gold-700">
-              If you are looking for support
+              {t("faq.forWomen")}
             </h2>
             <Answers questions={FOR_WOMEN} first />
           </section>
 
           <section className="flex flex-col gap-1">
             <h2 className="m-0 eyebrow text-gold-700">
-              If you are an organisation
+              {t("faq.forOrgs")}
             </h2>
             <Answers questions={FOR_ORGANISATIONS} first={false} />
           </section>

@@ -18,17 +18,18 @@ import {
   MessageSquareText,
   Users,
 } from "lucide-react";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import { getZonesWithCounts } from "@/lib/data/discover";
 import { portalLink, portalUrl } from "@/lib/portal";
 
-export const metadata: Metadata = pageMetadata({
-  title: "For organisations",
-  description:
-    "List what you run on HWS Path Grid and reach the women it actually suits. Free, checked once, and nobody pays to appear.",
-  path: "/for-organisations",
-  indexable: true,
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "flow.orgLink",
+    descriptionKey: "meta.orgs.desc",
+    path: "/for-organisations",
+    indexable: true,
+  });
+}
 
 /**
  * The organisations page: the platform, explained to the people who run

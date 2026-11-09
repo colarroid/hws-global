@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
 import { getTranslator } from "@/lib/i18n";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Mail } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { CodeForm } from "@/components/account/CodeForm";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Check your email",
-  // A code, not a link, and the wording has to say so. The email is
-  // deliberately link-free: a link in an inbox somebody else can open is a
-  // session handed to whoever opens it, which on this platform is a safety
-  // problem rather than a convenience one.
-  description: "We have sent you a six digit code to sign in with.",
-  path: "/account/code",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "code.title",
+    descriptionKey: "meta.accountCode.desc",
+    path: "/account/code",
+  });
+}
 
 /**
  * Passcode entry. Never designed; the spec existed only in prose.

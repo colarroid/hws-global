@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { pageMetadata } from "@/lib/seo";
+import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -9,12 +9,13 @@ import { DangerZone } from "@/components/account/DangerZone";
 import { getAccount } from "@/lib/data/account";
 import { getSavedIds } from "@/lib/saved";
 
-export const metadata: Metadata = pageMetadata({
-  title: "Settings",
-  description:
-    "Your reminders, your language, and what happens to your account.",
-  path: "/settings",
-});
+export function generateMetadata(): Promise<Metadata> {
+  return translatedMetadata({
+    titleKey: "nav.settings",
+    descriptionKey: "meta.settings.desc",
+    path: "/settings",
+  });
+}
 
 /**
  * Screen 12. Settings.
