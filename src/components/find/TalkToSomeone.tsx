@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslator } from "@/lib/i18n";
 import { CalendarDays } from "lucide-react";
 import type { Answers } from "@/lib/search/rank";
 
@@ -26,7 +27,9 @@ import type { Answers } from "@/lib/search/rank";
  * Thursday" as the best this platform can do, and /help carries both the
  * phone number and the 999 panel.
  */
-export function TalkToSomeone({ answers }: { answers: Answers }) {
+export async function TalkToSomeone({ answers }: { answers: Answers }) {
+  const { t } = await getTranslator();
+
   const query = new URLSearchParams(
     Object.entries({
       need: answers.need,
@@ -39,12 +42,10 @@ export function TalkToSomeone({ answers }: { answers: Answers }) {
     <div className="flex flex-col gap-4 rounded-card bg-ink p-6 text-white sm:p-7">
       <div className="flex flex-col gap-[10px]">
         <h2 className="m-0 font-display text-[22px] font-normal leading-[1.25] sm:text-[26px]">
-          Do you want to talk to someone?
+          {t("talkcta.title")}
         </h2>
         <p className="m-0 max-w-[52ch] text-[17px] leading-[1.6] text-white/75">
-          Somebody who knows what is out there, and can point you in the right
-          direction. Pick a time that suits you. It costs nothing, and you do
-          not need an account.
+          {t("talkcta.body")}
         </p>
       </div>
 
@@ -53,16 +54,18 @@ export function TalkToSomeone({ answers }: { answers: Answers }) {
         className="inline-flex min-h-[44px] items-center gap-2 self-start rounded-control bg-surface px-6 py-[14px] text-[16px] font-bold text-ink no-underline"
       >
         <CalendarDays size={17} strokeWidth={2} aria-hidden="true" />
-        See available times
+        {t("talkcta.cta")}
       </Link>
 
+      {/* Two sentences, and the link is the whole of the second one.
+          It used to sit mid-sentence, which only works if every language
+          puts it in the same place — and the languages here do not. A whole
+          clause as the link survives any word order. */}
       <p className="m-0 text-[14px] leading-[1.5] text-white/70">
-        We will already know what you searched for, so you will not have to
-        explain it again. If you need help today,{" "}
+        {t("talkcta.note")}{" "}
         <Link href="/help" className="font-bold text-white underline">
-          talk to us now
-        </Link>{" "}
-        instead.
+          {t("talkcta.today")}
+        </Link>
       </p>
     </div>
   );

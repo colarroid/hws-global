@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { Check } from "lucide-react";
@@ -31,7 +32,7 @@ export default async function BookedPage({
 }: {
   searchParams: Promise<{ ref?: string }>;
 }) {
-  const { ref } = await searchParams;
+  const [{ ref }, { t }] = await Promise.all([searchParams, getTranslator()]);
   if (!ref) redirect("/talk");
 
   return (
@@ -42,16 +43,15 @@ export default async function BookedPage({
 
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[40px] sm:leading-[1.1]">
-          That is booked
+          {t("booked.title")}
         </h1>
         <p className="m-0 text-[18px] leading-[1.6] text-ink-70">
-          We have sent the time to your inbox, with a calendar file you can tap
-          to add it to your phone. It can take a minute to arrive.
+          {t("booked.sent")}
         </p>
       </div>
 
       <div className="flex flex-col gap-1 rounded-card bg-surface p-6 shadow-hairline">
-        <span className="eyebrow text-ink-60">Your reference</span>
+        <span className="eyebrow text-ink-60">{t("booked.reference")}</span>
         <span className="font-display text-[32px] font-normal tracking-[0.12em] text-ink">
           {ref}
         </span>
@@ -59,12 +59,10 @@ export default async function BookedPage({
 
       <div className="flex flex-col gap-3 border-t border-hairline pt-6">
         <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-          There is nothing to prepare. Whoever calls will have read what you
-          were looking for, so you will not have to start from the beginning.
+          {t("booked.prepare")}
         </p>
         <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-          If the time stops suiting you, reply to that email and we will move
-          it.
+          {t("booked.move")}
         </p>
       </div>
 
@@ -73,13 +71,13 @@ export default async function BookedPage({
           href="/find"
           className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-6 py-[14px] text-[16px] font-bold text-white no-underline"
         >
-          Keep looking in the meantime
+          {t("booked.keepLooking")}
         </Link>
         <Link
           href="/"
           className="inline-flex min-h-[44px] items-center rounded-control bg-surface px-6 py-[14px] text-[16px] font-bold text-ink no-underline shadow-hairline"
         >
-          Back to the start
+          {t("booked.backToStart")}
         </Link>
       </div>
     </Page>

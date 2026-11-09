@@ -24,6 +24,20 @@ export type Locale = {
   /** In English, for the accessible name of the control. */
   english: string;
   dir: "ltr" | "rtl";
+  /**
+   * The tag Intl formats dates and numbers with.
+   *
+   * Separate from `code` because the two answer different questions. `code`
+   * is our key for a catalogue; this is a BCP-47 tag a browser recognises,
+   * and for three of these they differ: English is en-GB because a date
+   * reading "December 31" to a woman in Glasgow is wrong whatever language
+   * it is in, and simplified Chinese needs its script named.
+   *
+   * Scots has no CLDR data. Intl falls back to English for it, which is the
+   * right answer: a Scots speaker reads an English date without friction,
+   * and inventing one would be worse than borrowing one.
+   */
+  intl: string;
   /** Two or three letters, shown beside the badge. */
   short: string;
   /**
@@ -56,18 +70,18 @@ export type Locale = {
 };
 
 export const LOCALES: Locale[] = [
-  { code: "en", name: "English", english: "English", dir: "ltr", short: "EN", badge: "uk" },
-  { code: "gd", name: "Gàidhlig", english: "Scottish Gaelic", dir: "ltr", short: "GD", badge: "scotland" },
-  { code: "sco", name: "Scots", english: "Scots", dir: "ltr", short: "SCO", badge: "scotland" },
-  { code: "pl", name: "Polski", english: "Polish", dir: "ltr", short: "PL", badge: "poland" },
-  { code: "uk", name: "Українська", english: "Ukrainian", dir: "ltr", short: "UK", badge: "ukraine" },
-  { code: "ar", name: "العربية", english: "Arabic", dir: "rtl", short: "AR", badge: "ع" },
-  { code: "ur", name: "اردو", english: "Urdu", dir: "rtl", short: "UR", badge: "pakistan" },
-  { code: "pa", name: "ਪੰਜਾਬੀ", english: "Punjabi", dir: "ltr", short: "PA", badge: "ਪ" },
-  { code: "zh", name: "简体中文", english: "Chinese, simplified", dir: "ltr", short: "ZH", badge: "china" },
-  { code: "ro", name: "Română", english: "Romanian", dir: "ltr", short: "RO", badge: "romania" },
-  { code: "so", name: "Soomaali", english: "Somali", dir: "ltr", short: "SO", badge: "So" },
-  { code: "ti", name: "ትግርኛ", english: "Tigrinya", dir: "ltr", short: "TI", badge: "ት" },
+  { code: "en", name: "English", english: "English", intl: "en-GB", dir: "ltr", short: "EN", badge: "uk" },
+  { code: "gd", name: "Gàidhlig", english: "Scottish Gaelic", intl: "gd-GB", dir: "ltr", short: "GD", badge: "scotland" },
+  { code: "sco", name: "Scots", english: "Scots", intl: "en-GB", dir: "ltr", short: "SCO", badge: "scotland" },
+  { code: "pl", name: "Polski", english: "Polish", intl: "pl-PL", dir: "ltr", short: "PL", badge: "poland" },
+  { code: "uk", name: "Українська", english: "Ukrainian", intl: "uk-UA", dir: "ltr", short: "UK", badge: "ukraine" },
+  { code: "ar", name: "العربية", english: "Arabic", intl: "ar", dir: "rtl", short: "AR", badge: "ع" },
+  { code: "ur", name: "اردو", english: "Urdu", intl: "ur-PK", dir: "rtl", short: "UR", badge: "pakistan" },
+  { code: "pa", name: "ਪੰਜਾਬੀ", english: "Punjabi", intl: "pa-IN", dir: "ltr", short: "PA", badge: "ਪ" },
+  { code: "zh", name: "简体中文", english: "Chinese, simplified", intl: "zh-Hans", dir: "ltr", short: "ZH", badge: "china" },
+  { code: "ro", name: "Română", english: "Romanian", intl: "ro-RO", dir: "ltr", short: "RO", badge: "romania" },
+  { code: "so", name: "Soomaali", english: "Somali", intl: "so-SO", dir: "ltr", short: "SO", badge: "So" },
+  { code: "ti", name: "ትግርኛ", english: "Tigrinya", intl: "ti-ER", dir: "ltr", short: "TI", badge: "ት" },
 ];
 
 export const DEFAULT_LOCALE = "en";

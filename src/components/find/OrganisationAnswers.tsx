@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslator } from "@/lib/i18n";
 import { ArrowRight, Building2 } from "lucide-react";
 import type { RankedOrganisation } from "@/lib/search/rankOrganisations";
 
@@ -15,20 +16,21 @@ import type { RankedOrganisation } from "@/lib/search/rankOrganisations";
  * organisation appearing as for a listing, and it is written from the same
  * factors that scored it.
  */
-export function OrganisationAnswers({
+export async function OrganisationAnswers({
   organisations,
 }: {
   organisations: RankedOrganisation[];
 }) {
+  const { t } = await getTranslator();
+
   return (
     <section className="flex flex-col gap-4 border-t border-hairline pt-7">
       <div className="flex flex-col gap-[6px]">
         <h2 className="m-0 font-display text-[24px] font-normal leading-[1.2] sm:text-[28px]">
-          These people can help too
+          {t("orgsAnswer.title")}
         </h2>
         <p className="m-0 max-w-[58ch] text-[16px] leading-[1.55] text-ink-70">
-          Organisations working on what you asked about. They may not have
-          anything open right now, but you can go to them directly.
+          {t("orgsAnswer.body")}
         </p>
       </div>
 
@@ -73,7 +75,7 @@ export function OrganisationAnswers({
 
               <span className="text-[15px] leading-[1.5] text-ink-65">
                 <span className="font-semibold text-ink">
-                  Why this matched you:
+                  {t("card.whyMatched")}
                 </span>{" "}
                 {why}
               </span>

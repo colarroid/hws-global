@@ -3,6 +3,7 @@
 import { useOptimistic, useTransition } from "react";
 import { Bookmark } from "lucide-react";
 import { toggleSave } from "@/app/actions";
+import { useT } from "@/lib/i18n/client";
 
 /**
  * Save, on a result card.
@@ -23,6 +24,7 @@ export function SaveButton({
   /** Listing name, so the control says which thing it saves. */
   name: string;
 }) {
+  const t = useT();
   const [pending, startTransition] = useTransition();
   const [optimistic, setOptimistic] = useOptimistic(saved);
 
@@ -30,7 +32,9 @@ export function SaveButton({
     <button
       type="button"
       aria-pressed={optimistic}
-      aria-label={optimistic ? `Saved: ${name}` : `Save ${name}`}
+      aria-label={
+        optimistic ? t("card.savedAria", name) : t("card.saveAria", name)
+      }
       disabled={pending}
       onClick={() =>
         startTransition(async () => {
@@ -47,7 +51,7 @@ export function SaveButton({
         fill={optimistic ? "currentColor" : "none"}
         aria-hidden="true"
       />
-      <span>{optimistic ? "Saved" : "Save"}</span>
+      <span>{optimistic ? t("card.saved") : t("card.save")}</span>
     </button>
   );
 }

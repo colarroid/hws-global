@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Search, X } from "lucide-react";
 import { pageMetadata } from "@/lib/seo";
 import { OrganisationRow } from "@/components/discover/OrganisationRow";
+import { getTranslator } from "@/lib/i18n";
 import {
   getNeedsWithCounts,
   getZonesWithCounts,
@@ -38,10 +39,11 @@ export default async function DiscoverPage({
   const { q: rawQ } = await searchParams;
   const q = (rawQ ?? "").trim();
 
-  const [zones, needs, results] = await Promise.all([
+  const [zones, needs, results, { t, count }] = await Promise.all([
     getZonesWithCounts(),
     getNeedsWithCounts(),
     q ? searchOrganisations(q) : Promise.resolve([]),
+    getTranslator(),
   ]);
 
   return (
@@ -55,15 +57,14 @@ export default async function DiscoverPage({
       */}
       <section className="bg-ink px-5 pb-16 pt-14 sm:px-10 sm:pb-20 sm:pt-20">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
-          <span className="eyebrow text-gold-300">Discover</span>
+          <span className="eyebrow text-gold-300">{t("discover.eyebrow")}</span>
 
           <h1 className="m-0 max-w-[18ch] font-display text-[38px] font-normal leading-[1.05] tracking-[-0.015em] text-white sm:text-[64px]">
-            Who is working for women in Scotland
+            {t("discover.title")}
           </h1>
 
           <p className="m-0 max-w-[58ch] text-[18px] leading-[1.6] text-white/70">
-            Every organisation here has been checked by us. Search for one by
-            name, or read your way down by what you need.
+            {t("discover.lede")}
           </p>
 
           <form
@@ -72,7 +73,7 @@ export default async function DiscoverPage({
             className="mt-1 flex w-full max-w-[760px] items-center gap-3 rounded-full bg-surface py-2 pl-6 pr-2 shadow-panel sm:gap-4 sm:pl-8 sm:pr-3"
           >
             <label htmlFor="q" className="sr-only">
-              Search organisations by name or by what they do
+              {t("discover.searchLabel")}
             </label>
             <Search
               size={24}
@@ -85,13 +86,13 @@ export default async function DiscoverPage({
               name="q"
               type="search"
               defaultValue={q}
-              placeholder="Search organisations"
+              placeholder={t("discover.searchButton")}
               autoComplete="off"
               className="min-w-0 flex-1 border-0 bg-transparent py-[14px] text-[18px] text-ink outline-none placeholder:text-ink-60 sm:py-[18px] sm:text-[21px]"
             />
             <button
               type="submit"
-              aria-label="Search"
+              aria-label={t("discover.searchAria")}
               className="flex size-[46px] shrink-0 items-center justify-center rounded-full border-0 bg-ink text-white transition-transform duration-150 ease-out hover:translate-x-[2px] sm:size-[52px]"
             >
               <ArrowRight size={22} strokeWidth={2} aria-hidden="true" />
@@ -105,7 +106,7 @@ export default async function DiscoverPage({
             href="/find"
             className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-300 no-underline"
           >
-            Or answer three questions and we will match you
+            {t("discover.orAnswer")}
             <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
           </Link>
         </div>
@@ -116,28 +117,29 @@ export default async function DiscoverPage({
           <div className="mb-14 flex flex-col gap-5">
             <div className="flex flex-wrap items-baseline justify-between gap-4">
               <h2 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[34px]">
+                {/* The query is appended as its own phrase rather than
+                    sewn into the count's sentence. "for X" survives any word
+                    order; an adjective that has to agree with a number does
+                    not, and Polish and Arabic both make it agree. */}
                 {results.length === 0
-                  ? `Nothing matches “${q}”`
-                  : `${results.length} organisation${results.length === 1 ? "" : "s"} matching “${q}”`}
+                  ? t("discover.nothingMatches", q)
+                  : `${count("count.organisationsFound", results.length)} ${t("discover.forQuery", q)}`}
               </h2>
               <Link
                 href="/discover"
                 className="inline-flex min-h-[44px] items-center gap-[6px] p-1 text-[15px] font-bold text-ink no-underline"
               >
                 <X size={16} strokeWidth={2} aria-hidden="true" />
-                Clear
+                {t("discover.clear")}
               </Link>
             </div>
 
             {results.length === 0 ? (
               <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-                This box only looks at names and descriptions. If you are
-                trying to describe a situation rather than find a particular
-                organisation,{" "}
+                {t("discover.searchNote")}{" "}
                 <Link href="/find" className="font-bold text-gold-700">
-                  the three questions
-                </Link>{" "}
-                will do far better.
+                  {t("discover.tryQuestions")}
+                </Link>
               </p>
             ) : (
               <div className="flex flex-col gap-[14px]">
@@ -154,11 +156,10 @@ export default async function DiscoverPage({
 
         <div className="flex flex-col gap-2">
           <h2 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[34px]">
-            Browse by Access Zone
+            {t("discover.byZone")}
           </h2>
           <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-            The eight kinds of support the platform is built around. Each one
-            leads to the organisations working in it.
+            {t("discover.byZoneNote")}
           </p>
         </div>
 
@@ -186,8 +187,8 @@ export default async function DiscoverPage({
                 <span className="flex items-center justify-between gap-3 pt-1">
                   <span className="text-[14px] font-semibold text-ink-60">
                     {empty
-                      ? "Nobody here yet"
-                      : `${zone.organisationCount} organisation${zone.organisationCount === 1 ? "" : "s"}`}
+                      ? t("discover.nobodyYet")
+                      : count("count.organisations", zone.organisationCount)}
                   </span>
                   {empty ? null : (
                     <ArrowRight
@@ -208,10 +209,10 @@ export default async function DiscoverPage({
             the one she recognises, so both are on the page. */}
         <div className="mt-14 flex flex-col gap-2">
           <h2 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[34px]">
-            Browse by what you need
+            {t("discover.byNeed")}
           </h2>
           <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-            Say it the way you would say it out loud.
+            {t("discover.byNeedNote")}
           </p>
         </div>
 

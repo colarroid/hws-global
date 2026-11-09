@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { Lock } from "lucide-react";
@@ -36,18 +37,16 @@ export default async function AccessPage({
   // She pressed Save and was sent here. The listing is held and finishes
   // saving itself the moment the account exists, so the page says that
   // rather than leaving her to wonder whether the press was thrown away.
-  const { save } = await searchParams;
+  const [{ save }, { t }] = await Promise.all([searchParams, getTranslator()]);
 
   return (
     <Page width={460} top={80} gap={22}>
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[40px] sm:leading-[1.1]">
-          {save ? "Sign in to save it" : "Access your account"}
+          {save ? t("account.saveIt") : t("account.title")}
         </h1>
         <p className="m-0 text-[17px] leading-[1.55] text-ink-70">
-          {save
-            ? "Saving is the one thing here that needs an account, so your list is still there next time. We have kept hold of what you just pressed Save on, and it will be waiting once you are in."
-            : "We'll send you a one-time passcode to sign in. No password to remember."}
+          {save ? t("account.saveBody") : t("account.otp")}
         </p>
       </div>
 
@@ -60,7 +59,7 @@ export default async function AccessPage({
           with the link below. */}
       <span className="inline-flex items-start gap-2 self-center text-[14px] leading-[1.5] text-ink-60">
         <Lock size={14} strokeWidth={2} aria-hidden="true" className="mt-[3px] shrink-0" />
-        Your email is kept private and secure.
+        {t("account.emailPrivate")}
       </span>
 
       {/* Only on the save flow now. HWS removed "Just search without signing
@@ -77,7 +76,7 @@ export default async function AccessPage({
           href="/find"
           className="self-center p-1 text-[15px] font-bold text-gold-700 no-underline"
         >
-          Carry on without saving
+          {t("account.carryOn")}
         </Link>
       ) : null}
 
@@ -96,13 +95,13 @@ export default async function AccessPage({
           carries a create-an-account link for the ones who are not. */}
       <div className="flex flex-col items-center gap-1 self-stretch border-t border-hairline pt-7 text-center">
         <span className="text-[15px] leading-[1.5] text-ink-60">
-          Are you an organisation or individual providing solutions for women?
+          {t("flow.orgPrompt")}
         </span>
         <a
           href={portalLink("/sign-in")}
           className="inline-flex items-center gap-[6px] p-1 text-[15px] font-bold text-gold-700 no-underline"
         >
-          Sign in here
+          {t("account.signInHere")}
           <ArrowUpRightIcon />
         </a>
       </div>

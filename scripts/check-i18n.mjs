@@ -36,6 +36,7 @@ import { LOCALES, DEFAULT_LOCALE } from "../src/lib/i18n/locales.ts";
 import { MESSAGES } from "../src/lib/i18n/messages.ts";
 import { LABELS } from "../src/lib/i18n/labels.ts";
 import * as taxonomy from "../src/lib/design/taxonomy.ts";
+import { PLURALS, ENGLISH_PLURALS } from "../src/lib/i18n/plurals.ts";
 import {
   SITUATION_SUGGESTIONS,
   MARKET_SUGGESTIONS,
@@ -112,6 +113,90 @@ for (const code of Object.keys(MESSAGES)) {
   }
 }
 
+/* ------------------------------------------------------- the counts ---- */
+
+/*
+ * Plurals are checked separately because they fail differently.
+ *
+ * A missing message falls back to English, which is legible. A missing
+ * `other` form throws, because there is nothing to fall back to inside the
+ * key — and it throws on a page that is counting something, which is the
+ * moment a woman is deciding whether it is worth her bus fare.
+ */
+const pluralKeys = Object.keys(ENGLISH_PLURALS);
+
+for (const code of Object.keys(PLURALS)) {
+  if (!LOCALES.some((l) => l.code === code)) {
+    errors.push(`plurals.ts has "${code}", which is not a locale in locales.ts.`);
+  }
+}
+
+for (const locale of translatable) {
+  const table = PLURALS[locale.code] ?? {};
+
+  for (const key of Object.keys(table)) {
+    if (!pluralKeys.includes(key)) {
+      errors.push(`${locale.code}: plural key "${key}" is not in the English table.`);
+    }
+    if (!table[key].other) {
+      errors.push(
+        `${locale.code}: plural "${key}" has no \`other\` form. Every other ` +
+          `form falls back to it, so without it there is nothing to show.`,
+      );
+    }
+  }
+
+  const missingCounts = pluralKeys.filter((key) => !table[key]);
+  if (missingCounts.length > 0) {
+    gaps.push({ locale, missingWords: [], missingSaid: missingCounts });
+  }
+}
+
+/* --------------------------------------------- the one placeholder ----- */
+
+/*
+ * A key whose English carries "#" must carry it in every language, or the
+ * number or name simply never appears: "Question of 3", "Closes", "Continue
+ * to". Nothing throws and nothing looks broken, which is why this is checked
+ * rather than left to review.
+ */
+for (const key of messageKeys) {
+  if (!MESSAGES[DEFAULT_LOCALE][key].includes("#")) continue;
+
+  for (const locale of translatable) {
+    const text = MESSAGES[locale.code]?.[key];
+    if (text && !text.includes("#")) {
+      errors.push(
+        `${locale.code}: "${key}" has lost its # placeholder, so the value ` +
+          `the component supplies would never be shown.`,
+      );
+    }
+  }
+}
+
+for (const key of pluralKeys) {
+  for (const locale of translatable) {
+    const forms = PLURALS[locale.code]?.[key];
+    if (!forms) continue;
+    for (const [form, text] of Object.entries(forms)) {
+      /*
+       * zero, one and two are allowed to spell the quantity in words, and
+       * in several languages they should: Arabic says "خدمة واحدة" and
+       * "خدمتان" rather than putting a digit in front of a noun, and
+       * English says "Show me that one". The categories that can only mean
+       * "several" are the ones that must carry the number.
+       */
+      if (form === "zero" || form === "one" || form === "two") continue;
+      if (!text.includes("#")) {
+        errors.push(
+          `${locale.code}: plural "${key}" form "${form}" has no #, so the ` +
+            `count would never be shown.`,
+        );
+      }
+    }
+  }
+}
+
 const rows = [];
 
 for (const locale of translatable) {
@@ -154,7 +239,8 @@ for (const locale of translatable) {
 
 console.log(
   `\n${translatable.length} languages besides English, ` +
-    `${wanted.length} labels and ${messageKeys.length} messages each.\n`,
+    `${wanted.length} labels, ${messageKeys.length} messages and ` +
+    `${pluralKeys.length} counts each.\n`,
 );
 
 const pad = (s, n) => String(s).padEnd(n);

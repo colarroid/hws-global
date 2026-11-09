@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -43,7 +44,10 @@ export default async function ZonePage({
   const zone = await getZone(slug);
   if (!zone) notFound();
 
-  const organisations = await getOrganisationsInZone(zone.id);
+  const [organisations, { t }] = await Promise.all([
+    getOrganisationsInZone(zone.id),
+    getTranslator(),
+  ]);
   const primary = organisations.filter((o) => o.isPrimary);
   const also = organisations.filter((o) => !o.isPrimary);
 
@@ -54,11 +58,11 @@ export default async function ZonePage({
         className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
       >
         <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-        All Access Zones
+        {t("zone.allZones")}
       </Link>
 
       <div className="flex flex-col gap-3">
-        <span className="eyebrow text-gold-700">Access Zone</span>
+        <span className="eyebrow text-gold-700">{t("zone.eyebrow")}</span>
         <h1 className="m-0 font-display text-[34px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[46px]">
           {zone.name}
         </h1>
@@ -73,15 +77,13 @@ export default async function ZonePage({
             <Building2 size={30} strokeWidth={1.5} aria-hidden="true" />
           </span>
           <p className="m-0 max-w-[52ch] text-[17px] leading-[1.6] text-ink-70">
-            Nobody is listed in this zone yet. That does not mean there is no
-            help. Tell us what you need and we will look across everything we have,
-            not just this one zone.
+            {t("zone.empty")}
           </p>
           <Link
             href="/find"
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-7 py-4 text-[17px] font-bold text-white no-underline"
           >
-            Tell us what you need
+            {t("zone.tellUs")}
             <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
           </Link>
         </div>
@@ -92,7 +94,7 @@ export default async function ZonePage({
           {also.length > 0 ? (
             <>
               <h2 className="m-0 mt-2 font-display text-[24px] font-normal leading-[1.2]">
-                Also works in this zone
+                {t("zone.alsoWorks")}
               </h2>
               <OrganisationList organisations={also} />
             </>

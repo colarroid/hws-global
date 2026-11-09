@@ -1,4 +1,5 @@
 import { LoadingPage } from "@/components/ui/LoadingScreen";
+import { getTranslator } from "@/lib/i18n";
 
 /**
  * The wait, for every route that does not name its own.
@@ -11,6 +12,8 @@ import { LoadingPage } from "@/components/ui/LoadingScreen";
  * like it moved, so this commits to nothing more than a heading and some
  * things underneath, which every screen here has.
  */
-export default function Loading() {
-  return <LoadingPage label="Loading this page" />;
+export default async function Loading() {
+  const { t } = await getTranslator();
+
+  return <LoadingPage label={t("loading.page")} />;
 }

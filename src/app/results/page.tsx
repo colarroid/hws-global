@@ -21,12 +21,9 @@ import { OrganisationAnswers } from "@/components/find/OrganisationAnswers";
 import { COSTS, FORMATS, SOLUTION_KINDS } from "@/lib/design/taxonomy";
 import { getTranslator } from "@/lib/i18n";
 
-const DATE = new Intl.DateTimeFormat("en-GB", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
-const SHORT = new Intl.DateTimeFormat("en-GB", { day: "numeric", month: "long" });
+/* Dates come from `fmt` now, built per request from her locale. They were
+   pinned to en-GB, which told a woman reading in Arabic that something
+   closes "31 December" in the middle of an Arabic sentence. */
 
 const SCOPES: Scope[] = ["my-area", "nearby", "all-scotland", "online"];
 
@@ -91,7 +88,7 @@ export default async function ResultsPage({
     situationLabels,
     situationPhrases,
     savedIds,
-    { label },
+    { t, label, fmt },
   ] = await Promise.all([
     getLiveListings(),
     getSearchableOrganisations(),
@@ -184,11 +181,11 @@ export default async function ResultsPage({
           className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
         >
           <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-          Change answers
+          {t("flow.changeAnswers")}
         </Link>
 
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
-          Next steps for you
+          {t("results.title")}
         </h1>
 
         <div className="flex flex-wrap items-center gap-2">
@@ -205,15 +202,13 @@ export default async function ResultsPage({
             className="inline-flex min-h-[44px] items-center gap-2 rounded-full shadow-hairline-gold bg-surface px-[14px] py-2 text-[14px] font-bold text-gold-700 no-underline"
           >
             <SlidersHorizontal size={15} strokeWidth={2} aria-hidden="true" />
-            Refine or widen
+            {t("results.refine")}
           </Link>
         </div>
 
         {/* Stated where she can see it, because it is a promise about her. */}
         <p className="m-0 text-[14px] leading-[1.5] text-ink-60">
-          {ranked.length === 0
-            ? "Nothing open fits closely enough to put in front of you, but these organisations work on what you asked about."
-            : "Ordered by how well they fit what you told us. Nobody pays to appear here."}
+          {ranked.length === 0 ? t("results.orgsOnly") : t("results.ordered")}
         </p>
       </div>
 
@@ -231,14 +226,14 @@ export default async function ResultsPage({
               ...listing.formats.map((f) => label(FORMATS, f)),
             ].filter(Boolean),
             deadline: listing.deadline
-              ? `Closes ${SHORT.format(new Date(listing.deadline))}`
+              ? t("card.closes", fmt.dateShort(listing.deadline))
               : null,
             whoFor: listing.who_for ?? "",
             whatToExpect: listing.what_to_expect ?? "",
             why,
             verified: listing.last_confirmed_at
-              ? `Verified · last updated ${DATE.format(new Date(listing.last_confirmed_at))}`
-              : "Verified",
+              ? t("card.verifiedOn", fmt.date(listing.last_confirmed_at))
+              : t("card.verified"),
           };
 
           return (
@@ -270,7 +265,7 @@ export default async function ResultsPage({
                      their own ground rather than relying on the change. */
                   className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-8 py-[15px] text-[17px] font-bold text-ink no-underline transition-[color,background-color,box-shadow] duration-150 ease-out hover:bg-ink hover:text-white focus-visible:bg-ink focus-visible:text-white"
                 >
-                  Learn more
+                  {t("card.learnMore")}
                 </Link>
               }
             />
@@ -284,27 +279,26 @@ export default async function ResultsPage({
 
       <div className="flex flex-col gap-[14px] border-t border-hairline pt-6">
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
-          That&apos;s everything that fits closely. You can widen the search or
-          change what you told us.
+          {t("results.thatsAll")}
         </p>
         <div className="flex flex-wrap items-center gap-3">
           <Link
             href={`/results?${new URLSearchParams({ ...params, scope: "all-scotland" } as Record<string, string>)}`}
             className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
           >
-            Show support across Scotland
+            {t("results.showScotland")}
           </Link>
           <Link
             href={changeHref}
             className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-5 py-3 text-[16px] font-bold text-ink no-underline"
           >
-            Change my answers
+            {t("results.changeMine")}
           </Link>
           <Link
             href={`/start-over?${query}`}
             className="inline-flex min-h-[44px] items-center p-1 text-[16px] font-bold text-gold-700 no-underline"
           >
-            Start over
+            {t("results.startOver")}
           </Link>
         </div>
       </div>

@@ -5,7 +5,8 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { Analytics } from "@/components/Analytics";
 import { SiteBottom } from "@/components/SiteChrome";
 import { CookieNotice } from "@/components/CookieNotice";
-import { getLocale } from "@/lib/i18n";
+import { getClientBundle, getLocale } from "@/lib/i18n";
+import { StringsProvider } from "@/lib/i18n/client";
 import { SITE_NAME, indexingAllowed, siteUrl } from "@/lib/seo";
 import "./globals.css";
 
@@ -92,7 +93,10 @@ export default async function RootLayout({
   // Read on the server so the page arrives in her language. Rendering English
   // and swapping it on the client shows a flash of a language she may not
   // read, which is worst for exactly the people this is for.
-  const locale = await getLocale();
+  const [locale, bundle] = await Promise.all([
+    getLocale(),
+    getClientBundle(),
+  ]);
 
   return (
     <html
@@ -101,6 +105,12 @@ export default async function RootLayout({
       className={`${playfair.variable} ${inter.variable}`}
     >
       <body>
+        {/* The strings the forms need, resolved to her language on the
+            server. The three questions, Save, Refine and the booking form
+            all run in the browser, so without this they have no way to
+            reach a translated word and stay English behind a translated
+            header. See lib/i18n/client.tsx for what crosses and why. */}
+        <StringsProvider bundle={bundle}>
         <div className="flex min-h-screen flex-col">
           <SiteHeader />
           <main className="flex flex-1 flex-col">{children}</main>
@@ -110,6 +120,7 @@ export default async function RootLayout({
               order. A box about cookies is not what anybody came for. */}
           <CookieNotice />
         </div>
+        </StringsProvider>
 
         {/* Outside the layout column because it renders nothing: it is a
             script tag that reports which pages get used, with the query

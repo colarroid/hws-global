@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { NeedForm } from "@/components/find/NeedForm";
 import { getNeedSuggestions } from "@/lib/data/search";
+import { getTranslator } from "@/lib/i18n";
 
 export const metadata: Metadata = pageMetadata({
   title: "What do you need help with?",
@@ -29,16 +30,17 @@ export default async function NeedPage({
 }: {
   searchParams: Promise<{ need?: string }>;
 }) {
-  const [{ need }, suggestions] = await Promise.all([
+  const [{ need }, suggestions, { t }] = await Promise.all([
     searchParams,
     getNeedSuggestions(),
+    getTranslator(),
   ]);
 
   return (
     <QuestionShell
       step={1}
-      title="What do you need help with?"
-      subline="In your own words. There's no wrong answer."
+      title={t("q1.title")}
+      subline={t("q1.subline")}
     >
       <NeedForm initialNeed={need ?? ""} suggestions={suggestions} />
     </QuestionShell>

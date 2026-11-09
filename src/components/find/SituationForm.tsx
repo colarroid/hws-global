@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { Chip, ChipGroup } from "@/components/ui/Chip";
 import { NextButton } from "@/components/find/NextButton";
+import { useT } from "@/lib/i18n/client";
 import type { Situation } from "@/lib/data/situations";
 
 const PREFER_NOT_TO_SAY = "prefer-not-to-say";
@@ -19,6 +20,7 @@ export function SituationForm({
   options: Situation[];
   initial: string[];
 }) {
+  const t = useT();
   const router = useRouter();
   const [picked, setPicked] = useState<string[]>(initial);
 
@@ -46,7 +48,7 @@ export function SituationForm({
 
   return (
     <div className="flex flex-col gap-7">
-      <ChipGroup label="What best describes your situation?">
+      <ChipGroup label={t("q3.title")}>
         {options.map((option) => (
           <Chip
             key={option.id}
@@ -69,12 +71,11 @@ export function SituationForm({
       <NextButton
         ready={picked.length > 0}
         onNext={go}
-        hint="Pick anything that applies, or choose Prefer not to say."
+        hint={t("q3.hint")}
       />
 
       <span className="text-[14px] leading-[1.5] text-ink-60">
-        We don&apos;t store your answers or share them with the organisations we
-        show you.
+        {t("q3.privacy")}
       </span>
     </div>
   );

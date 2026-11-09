@@ -1,4 +1,5 @@
 import { LoadingBlock, LoadingFrame } from "@/components/ui/LoadingScreen";
+import { getTranslator } from "@/lib/i18n";
 
 /**
  * Discover, waiting.
@@ -10,15 +11,17 @@ import { LoadingBlock, LoadingFrame } from "@/components/ui/LoadingScreen";
  *
  * Below it, the grid the zone cards land in.
  */
-export default function Loading() {
+export default async function Loading() {
+  const { t } = await getTranslator();
+
   return (
-    <LoadingFrame label="Loading organisations">
+    <LoadingFrame label={t("loading.organisations")}>
       <section
         className="bg-ink px-5 pb-16 pt-14 sm:px-10 sm:pb-20 sm:pt-20"
         aria-hidden="true"
       >
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
-          <span className="eyebrow text-gold-300">Discover</span>
+          <span className="eyebrow text-gold-300">{t("discover.eyebrow")}</span>
           <h1 className="m-0 max-w-[18ch] font-display text-[38px] font-normal leading-[1.05] tracking-[-0.015em] text-white sm:text-[64px]">
             Who is working for women in Scotland
           </h1>

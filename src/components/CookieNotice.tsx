@@ -2,6 +2,7 @@ import Link from "next/link";
 import { revalidatePath } from "next/cache";
 import { Cookie } from "lucide-react";
 import { hasSeenCookieNotice, markCookieNoticeSeen } from "@/lib/cookies";
+import { getTranslator } from "@/lib/i18n";
 
 /**
  * The cookie notice.
@@ -40,6 +41,8 @@ import { hasSeenCookieNotice, markCookieNoticeSeen } from "@/lib/cookies";
 export async function CookieNotice() {
   if (await hasSeenCookieNotice()) return null;
 
+  const { t } = await getTranslator();
+
   async function acknowledge() {
     "use server";
     await markCookieNoticeSeen();
@@ -49,7 +52,7 @@ export async function CookieNotice() {
   return (
     <div
       role="region"
-      aria-label="About cookies"
+      aria-label={t("cookie.region")}
       className="pointer-events-none sticky bottom-0 z-40 flex justify-center px-3 pb-3 sm:px-5 sm:pb-5"
     >
       <div className="panel-in pointer-events-auto flex w-full max-w-[760px] items-center gap-3 rounded-card bg-surface p-3 shadow-panel sm:gap-6 sm:p-6">
@@ -72,17 +75,11 @@ export async function CookieNotice() {
             the privacy policy carries the same detail at more length and is
             one tap away. */}
         <p className="m-0 flex-1 text-[13px] leading-[1.45] text-ink-70 sm:text-[15px] sm:leading-[1.55]">
-          <strong className="font-semibold text-ink">
-            We use a few cookies, and none of them watch you.
-          </strong>{" "}
-          <span className="hidden sm:inline">
-            They keep you signed in and remember your language. Nothing is
-            tracked or sold.{" "}
-          </span>
+          <strong className="font-semibold text-ink">{t("cookie.claim")}</strong>{" "}
+          <span className="hidden sm:inline">{t("cookie.detail")} </span>
           <Link href="/privacy" className="font-bold text-gold-700">
-            More in the privacy policy
+            {t("cookie.more")}
           </Link>
-          .
         </p>
 
         {/* Beside the text rather than under it. Stacked, this was a 195px
@@ -94,7 +91,7 @@ export async function CookieNotice() {
             type="submit"
             className="inline-flex min-h-[44px] items-center justify-center rounded-full border-0 bg-ink px-5 py-[11px] text-[14px] font-bold text-white sm:px-7 sm:py-[13px] sm:text-[15px]"
           >
-            Okay
+            {t("cookie.okay")}
           </button>
         </form>
       </div>

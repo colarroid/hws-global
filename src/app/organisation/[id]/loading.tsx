@@ -1,4 +1,5 @@
 import { LoadingBlock, LoadingFrame } from "@/components/ui/LoadingScreen";
+import { getTranslator } from "@/lib/i18n";
 
 /**
  * An organisation profile, waiting.
@@ -10,9 +11,11 @@ import { LoadingBlock, LoadingFrame } from "@/components/ui/LoadingScreen";
  *
  * The blocks in the cream band are white, because that is what lands there.
  */
-export default function Loading() {
+export default async function Loading() {
+  const { t } = await getTranslator();
+
   return (
-    <LoadingFrame label="Loading this organisation">
+    <LoadingFrame label={t("loading.organisation")}>
       <div className="flex flex-1 flex-col bg-surface">
         <div
           className="mx-auto flex w-full max-w-[1080px] flex-col px-5 pb-16 pt-12 sm:px-10 sm:pt-14"

@@ -9,13 +9,12 @@ import { getSavedIds } from "@/lib/saved";
 import { getAccount } from "@/lib/data/account";
 import { getService, type Service } from "@/lib/data/service";
 import { COSTS, FORMATS, SOLUTION_KINDS } from "@/lib/design/taxonomy";
-import { getTranslator } from "@/lib/i18n";
-
-const LONG = new Intl.DateTimeFormat("en-GB", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
+import {
+  getTranslator,
+  type Formats,
+  type Translate,
+} from "@/lib/i18n";
+import type { PluralKey } from "@/lib/i18n/plurals";
 
 const DAY = 24 * 60 * 60 * 1000;
 
@@ -28,31 +27,38 @@ type Status =
  * The status pill above the name, which is the hierarchy point on this
  * screen: what is about to close is read before what it is called.
  */
-function statusOf(service: Service): Status {
+function statusOf(
+  service: Service,
+  t: Translate,
+  count: (key: PluralKey, n: number) => string,
+  fmt: Formats,
+): Status {
   if (service.status === "closed") {
     return {
       tone: "closed",
       label: service.deadline
-        ? `Closed ${LONG.format(new Date(service.deadline))}`
-        : "No longer running",
+        ? t("card.closed", fmt.date(service.deadline))
+        : t("saved.noLongerRunning"),
     };
   }
 
-  if (!service.deadline) return { tone: "neutral", label: "No closing date" };
+  if (!service.deadline) {
+    return { tone: "neutral", label: t("saved.noClosingDate") };
+  }
 
   const days = Math.ceil(
     (new Date(service.deadline).getTime() - Date.now()) / DAY,
   );
-  const when = LONG.format(new Date(service.deadline));
+  const when = fmt.date(service.deadline);
 
-  if (days < 0) return { tone: "closed", label: `Closed ${when}` };
+  if (days < 0) return { tone: "closed", label: t("card.closed", when) };
   if (days <= 14) {
     return {
       tone: "urgent",
-      label: `Closes in ${days} ${days === 1 ? "day" : "days"} · ${when}`,
+      label: `${count("count.closesInDays", days)} · ${when}`,
     };
   }
-  return { tone: "neutral", label: `Closes ${when}` };
+  return { tone: "neutral", label: t("card.closes", when) };
 }
 
 const TONES: Record<Status["tone"], string> = {
@@ -82,7 +88,7 @@ export const metadata: Metadata = pageMetadata({
  * reading and applying still need nothing, which is the promise that matters.
  */
 export default async function SavedPage() {
-  const [ids, account, { label }] = await Promise.all([
+  const [ids, account, { t, label, count, fmt }] = await Promise.all([
     getSavedIds(),
     getAccount(),
     getTranslator(),
@@ -107,15 +113,14 @@ export default async function SavedPage() {
     return (
       <Page width={780} top={72} gap={24}>
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
-          Your saved list
+          {t("saved.title")}
         </h1>
         <p className="m-0 max-w-[62ch] text-[18px] leading-[1.6] text-ink-70">
-          When you find something worth coming back to, press Save on it. It
-          will wait here, and we will tell you before it closes.
+          {t("saved.emptyBody")}
         </p>
         {/* Starts a fresh search rather than resuming the last one. */}
         <ButtonLink href="/find" size="inline" className="self-start px-7 py-4 text-[17px]">
-          Find support
+          {t("saved.emptyCta")}
         </ButtonLink>
       </Page>
     );
@@ -125,17 +130,18 @@ export default async function SavedPage() {
     <Page width={780} top={56} gap={24}>
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[44px] sm:leading-[1.1]">
-          {account.firstName ? account.firstName + "'s saved list" : "Your saved list"}
+          {account.firstName
+            ? t("saved.titleNamed", account.firstName)
+            : t("saved.title")}
         </h1>
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
-          {sorted.length} {sorted.length === 1 ? "thing" : "things"} saved,
-          soonest to close first.
+          {count("count.thingsSaved", sorted.length)} {t("saved.soonest")}
         </p>
       </div>
 
       <div className="flex flex-col gap-[14px]">
         {sorted.map((service) => {
-          const status = statusOf(service);
+          const status = statusOf(service, t, count, fmt);
           const closed = status.tone === "closed";
           const meta = [
             label(SOLUTION_KINDS, service.kind),
@@ -177,7 +183,7 @@ export default async function SavedPage() {
                   variant={closed ? "secondary" : "primary"}
                   size="inline"
                 >
-                  {closed ? "See what else" : "Learn more"}
+                  {closed ? t("saved.seeWhatElse") : t("card.learnMore")}
                 </ButtonLink>
                 <SaveButton listingId={service.id} saved name={service.name} />
               </div>
@@ -188,10 +194,10 @@ export default async function SavedPage() {
 
       <div className="flex flex-wrap items-center gap-3 border-t border-hairline pt-6">
         <ButtonLink href="/find" variant="secondary" size="inline">
-          Find something else
+          {t("saved.findSomethingElse")}
         </ButtonLink>
         <ButtonLink href="/settings" variant="text" size="bare">
-          Reminders and account settings
+          {t("saved.settings")}
         </ButtonLink>
       </div>
     </Page>

@@ -8,7 +8,7 @@ import { signOut } from "@/app/account/actions";
 import { getAccount } from "@/lib/data/account";
 import { LanguageMenu } from "@/components/LanguageMenu";
 import { LanguageRows } from "@/components/LanguageRows";
-import { getLocale } from "@/lib/i18n";
+import { getLocale, getTranslator, type Translate } from "@/lib/i18n";
 
 /**
  * Saved, as a row in the phone panel.
@@ -19,10 +19,10 @@ import { getLocale } from "@/lib/i18n";
  * now one control, so the pill has gone with it rather than staying as a
  * branch nothing takes.
  */
-function SavedLink({ count }: { count: number }) {
+function SavedLink({ count, t }: { count: number; t: Translate }) {
   return (
     <Link href="/saved" className={PANEL_ROW}>
-      <span className="flex-1">Saved</span>
+      <span className="flex-1">{t("nav.saved")}</span>
       {count > 0 ? (
         <span className="rounded-full bg-gold-200 px-[10px] py-[3px] text-[15px] font-bold tabular-nums text-gold-700">
           {count}
@@ -32,13 +32,19 @@ function SavedLink({ count }: { count: number }) {
   );
 }
 
-/** The places in the header, written once for the row and the phone panel. */
+/**
+ * The places in the header, written once for the row and the phone panel.
+ *
+ * Keys rather than words, because the header is the one thing on every
+ * screen: a nav that stayed English over a translated page was the loudest
+ * remaining piece of English on the site.
+ */
 const PLACES = [
-  { href: "/", label: "Home" },
-  { href: "/discover", label: "Discover" },
-  { href: "/for-organisations", label: "For organisations" },
-  { href: "/faq", label: "FAQ" },
-];
+  { href: "/", key: "nav.home" },
+  { href: "/discover", key: "nav.discover" },
+  { href: "/for-organisations", key: "nav.forOrgs" },
+  { href: "/faq", key: "nav.faq" },
+] as const;
 
 /*
  * The sheet's rows, in the style HWS pointed at: set large, ruled off from
@@ -60,10 +66,10 @@ const SHEET_BUTTON =
   "text-[16px] font-bold no-underline transition-opacity duration-150 ease-out";
 
 /** Settings, as a row in the phone panel. In words: there is room for them. */
-function SettingsLink() {
+function SettingsLink({ t }: { t: Translate }) {
   return (
     <Link href="/settings" className={PANEL_ROW}>
-      <span className="flex-1">Reminders and settings</span>
+      <span className="flex-1">{t("nav.remindersSettings")}</span>
     </Link>
   );
 }
@@ -76,14 +82,14 @@ function SettingsLink() {
  * control here that does not take her somewhere, and a woman reaching for
  * Settings should not be able to land on it by a thumb's width.
  */
-function SignOutButton() {
+function SignOutButton({ t }: { t: Translate }) {
   return (
     <form action={signOut} className="w-full">
       <button
         type="submit"
         className={`${SHEET_BUTTON} cursor-pointer border-0 bg-transparent text-ink shadow-hairline`}
       >
-        Sign out
+        {t("nav.signOut")}
       </button>
     </form>
   );
@@ -104,10 +110,11 @@ function SignOutButton() {
  * one more thing to wonder about.
  */
 export async function SiteHeader() {
-  const [saved, account, locale] = await Promise.all([
+  const [saved, account, locale, { t }] = await Promise.all([
     getSavedIds(),
     getAccount(),
     getLocale(),
+    getTranslator(),
   ]);
 
   return (
@@ -131,7 +138,7 @@ export async function SiteHeader() {
               once, as the thing it does, rather than twice. */}
           <Link
             href="/"
-            aria-label="HWS Pathgrid, home"
+            aria-label={t("nav.homeAria")}
             className="flex items-center no-underline"
           >
             <Image
@@ -156,7 +163,7 @@ export async function SiteHeader() {
               header stays close to empty on purpose, and anything more turns
               the way in to the search into one option among several. */}
           <nav
-            aria-label="Sections"
+            aria-label={t("nav.sections")}
             className="hidden items-center gap-1 lg:flex"
           >
             {PLACES.map((place) => (
@@ -165,7 +172,7 @@ export async function SiteHeader() {
                 href={place.href}
                 className="inline-flex min-h-[44px] items-center rounded-full px-4 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:bg-gold-200"
               >
-                {place.label}
+                {t(place.key)}
               </Link>
             ))}
           </nav>
@@ -180,7 +187,7 @@ export async function SiteHeader() {
                 href="/account"
                 className="inline-flex min-h-[44px] items-center whitespace-nowrap rounded-full px-3 py-[9px] text-[15px] font-semibold text-ink no-underline transition-colors duration-150 ease-out hover:bg-gold-200 sm:px-4"
               >
-                Sign in
+                {t("nav.signIn")}
               </Link>
             )}
 
@@ -197,18 +204,18 @@ export async function SiteHeader() {
             {/* Always now, because there are always two places to go. It used
                 to appear only once she had saved something, back when the
                 panel would otherwise have opened onto nothing. */}
-            <MobileNav label="menu">
+            <MobileNav label={t("nav.menu")}>
               {PLACES.map((place) => (
                 <Link key={place.href} href={place.href} className={PANEL_ROW}>
-                  {place.label}
+                  {t(place.key)}
                 </Link>
               ))}
               {/* Both when she is signed in, so the sheet lists what the
                   account menu lists. Saved used to appear only once there
                   was something in it, which meant the way back to an empty
                   list was through a page she had no route to. */}
-              {account ? <SavedLink count={saved.length} /> : null}
-              {account ? <SettingsLink /> : null}
+              {account ? <SavedLink count={saved.length} t={t} /> : null}
+              {account ? <SettingsLink t={t} /> : null}
 
               {/* The two things to do, under the list. Searching is the
                   filled one on every screen of this platform and this is no
@@ -219,16 +226,16 @@ export async function SiteHeader() {
                   href="/find"
                   className={`${SHEET_BUTTON} bg-ink text-white`}
                 >
-                  Find your next step
+                  {t("nav.findNext")}
                 </Link>
                 {account ? (
-                  <SignOutButton />
+                  <SignOutButton t={t} />
                 ) : (
                   <Link
                     href="/account"
                     className={`${SHEET_BUTTON} bg-transparent text-ink shadow-hairline`}
                   >
-                    Sign in
+                    {t("nav.signIn")}
                   </Link>
                 )}
               </div>

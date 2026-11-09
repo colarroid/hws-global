@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { Field } from "@/components/ui/Field";
 import { FormError, SubmitButton } from "@/components/ui/Form";
 import { makeBooking, type BookingState } from "@/app/talk/actions";
+import { useT } from "@/lib/i18n/client";
 
 /**
  * Who to call, and anything she wants said before the call.
@@ -31,6 +32,7 @@ export function BookingForm({
   /** Filled in already when she is signed in. */
   email: string;
 }) {
+  const t = useT();
   const [state, formAction] = useActionState<BookingState, FormData>(
     makeBooking,
     null,
@@ -46,48 +48,48 @@ export function BookingForm({
       <input type="hidden" name="situations" value={situations} />
 
       <Field
-        label="Your name"
+        label={t("booking.name")}
         name="name"
         autoComplete="name"
-        placeholder="What you would like to be called"
+        placeholder={t("booking.nameNote")}
         required
       />
 
       <Field
-        label="Email address"
+        label={t("booking.email")}
         name="email"
         type="email"
         autoComplete="email"
         defaultValue={email}
         placeholder="you@example.com"
         required
-        hint="We send the time here, with a calendar file you can tap."
+        hint={t("booking.emailNote")}
       />
 
       <Field
-        label="Phone number"
+        label={t("booking.phone")}
         name="phone"
         type="tel"
         autoComplete="tel"
-        placeholder="Optional"
-        hint="Only if you would rather we rang you than emailed you."
+        placeholder={t("booking.optional")}
+        hint={t("booking.phoneNote")}
       />
 
       <div className="flex flex-col gap-2">
         <label htmlFor="note" className="text-[15px] font-semibold">
-          Anything you want us to know first
+          {t("booking.notes")}
         </label>
         <textarea
           id="note"
           name="note"
           rows={3}
           maxLength={2000}
-          placeholder="Optional. Nobody reads this but the person who calls you."
+          placeholder={t("booking.notesNote")}
           className="rounded-control bg-surface p-[14px] text-[16px] leading-[1.5] text-ink shadow-hairline outline-none placeholder:text-ink-60"
         />
       </div>
 
-      <SubmitButton>Book this time</SubmitButton>
+      <SubmitButton>{t("booking.submit")}</SubmitButton>
     </form>
   );
 }

@@ -3,6 +3,7 @@ import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { TalkToSomeone } from "@/components/find/TalkToSomeone";
 import type { Answers } from "@/lib/search/rank";
+import { getTranslator } from "@/lib/i18n";
 
 /**
  * Screen 8. Nothing matched.
@@ -15,7 +16,7 @@ import type { Answers } from "@/lib/search/rank";
  * The counts arrive already computed. Offering a widening that turns out to
  * be empty is just a second dead end.
  */
-export function NoMatch({
+export async function NoMatch({
   answers,
   widenCount,
   onlineCount,
@@ -24,6 +25,8 @@ export function NoMatch({
   widenCount: number;
   onlineCount: number;
 }) {
+  const { t, count } = await getTranslator();
+
   const base = {
     need: answers.need,
     place: answers.place,
@@ -35,18 +38,18 @@ export function NoMatch({
 
   const others = [
     onlineCount > 0 && {
-      title: "Online support only",
-      note: `${onlineCount} ${onlineCount === 1 ? "service works" : "services work"} by phone or online, wherever you are.`,
+      title: t("nomatch.onlineTitle"),
+      note: count("count.servicesOnline", onlineCount),
       href: onlineHref,
     },
     {
-      title: "Change what you asked for",
-      note: "Different words sometimes find different things. It is worth one more try.",
+      title: t("nomatch.changeTitle"),
+      note: t("nomatch.changeNote"),
       href: `/find?need=${encodeURIComponent(answers.need)}`,
     },
     {
-      title: "Start again",
-      note: "Clear everything and begin from the first question.",
+      title: t("nomatch.startTitle"),
+      note: t("nomatch.startNote"),
       href: "/find",
     },
   ].filter((o): o is { title: string; note: string; href: string } => Boolean(o));
@@ -58,16 +61,15 @@ export function NoMatch({
         className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
       >
         <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-        Change answers
+        {t("flow.changeAnswers")}
       </Link>
 
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
-          We couldn&apos;t find anything for you right now
+          {t("nomatch.title")}
         </h1>
         <p className="m-0 max-w-[54ch] text-[18px] leading-[1.6] text-ink-70">
-          That doesn&apos;t mean there&apos;s no help. It means we don&apos;t
-          have something that fits what you asked for today.
+          {t("nomatch.body")}
         </p>
       </div>
 
@@ -85,25 +87,23 @@ export function NoMatch({
 
       {widenCount > 0 ? (
         <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline-ink p-6">
-          <span className="eyebrow text-gold-700">
-            Try this first
-          </span>
+          <span className="eyebrow text-gold-700">{t("nomatch.tryFirst")}</span>
           <span className="font-display text-[21px] font-normal leading-[1.3]">
-            Widen to all of Scotland
+            {t("nomatch.widen")}
           </span>
+          {/* Two sentences, in English too. It was one clause joined by a
+              comma, and the half after the comma had to agree with the half
+              before it — which no translator can do once the first half is
+              a number whose form they do not control. */}
           <span className="text-[17px] leading-[1.6] text-ink-70">
-            {widenCount} {widenCount === 1 ? "service supports" : "services support"}{" "}
-            this
-            {onlineCount > 0
-              ? `, and ${onlineCount} of them work by phone or online`
-              : ""}
-            .
+            {count("count.servicesSupport", widenCount)}
+            {onlineCount > 0 ? ` ${count("count.ofThoseOnline", onlineCount)}` : ""}
           </span>
           <Link
             href={widenHref}
             className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-7 py-4 text-[17px] font-bold text-white no-underline"
           >
-            Show me {widenCount === 1 ? "that one" : `those ${widenCount}`}
+            {count("count.showThose", widenCount)}
           </Link>
         </div>
       ) : null}

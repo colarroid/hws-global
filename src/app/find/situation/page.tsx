@@ -3,6 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { SituationForm } from "@/components/find/SituationForm";
 import { getSituations } from "@/lib/data/situations";
+import { getTranslator } from "@/lib/i18n";
 
 export const metadata: Metadata = pageMetadata({
   title: "What best describes your situation?",
@@ -22,15 +23,15 @@ export default async function SituationPage({
 }: {
   searchParams: Promise<{ need?: string; place?: string; situations?: string }>;
 }) {
-  const { need = "", place = "", situations = "" } = await searchParams;
-  const options = await getSituations();
+  const [{ need = "", place = "", situations = "" }, options, { t }] =
+    await Promise.all([searchParams, getSituations(), getTranslator()]);
 
   return (
     <QuestionShell
       step={3}
       backHref={`/find/where?need=${encodeURIComponent(need)}&place=${encodeURIComponent(place)}`}
-      title="What best describes your situation?"
-      subline="This helps us spot support you may qualify for. You can pick more than one."
+      title={t("q3.title")}
+      subline={t("q3.subline")}
       width={780}
     >
       <SituationForm

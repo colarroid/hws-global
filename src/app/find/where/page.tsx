@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import { QuestionShell } from "@/components/QuestionShell";
 import { PlaceForm } from "@/components/find/PlaceForm";
+import { getTranslator } from "@/lib/i18n";
 
 export const metadata: Metadata = pageMetadata({
   title: "Where should we look for support?",
@@ -22,14 +23,17 @@ export default async function WherePage({
 }: {
   searchParams: Promise<{ need?: string; place?: string }>;
 }) {
-  const { need = "", place = "" } = await searchParams;
+  const [{ need = "", place = "" }, { t }] = await Promise.all([
+    searchParams,
+    getTranslator(),
+  ]);
 
   return (
     <QuestionShell
       step={2}
       backHref={`/find?need=${encodeURIComponent(need)}`}
-      title="Where should we look for support?"
-      subline="A town, a postcode, or your council area."
+      title={t("q2.title")}
+      subline={t("q2.subline")}
     >
       <PlaceForm need={need} initialPlace={place} />
     </QuestionShell>

@@ -11,12 +11,6 @@ import { getService, applyHost } from "@/lib/data/service";
 import { COSTS, FORMATS, SOLUTION_KINDS } from "@/lib/design/taxonomy";
 import { getTranslator } from "@/lib/i18n";
 
-const LONG = new Intl.DateTimeFormat("en-GB", {
-  day: "numeric",
-  month: "long",
-  year: "numeric",
-});
-
 type Params = { params: Promise<{ id: string }> };
 type Search = {
   searchParams: Promise<Record<string, string | undefined>>;
@@ -79,7 +73,7 @@ function Fact({ label, value }: { label: string; value: string | null }) {
 export default async function ServicePage({ params, searchParams }: Params & Search) {
   const { id } = await params;
   const query = await searchParams;
-  const [service, savedIds, { label }] = await Promise.all([
+  const [service, savedIds, { t, label, fmt }] = await Promise.all([
     getService(id),
     getSavedIds(),
     getTranslator(),
@@ -147,7 +141,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
               className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
             >
               <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-              Back to your results
+              {t("service.backToResults")}
             </Link>
           ) : null}
 
@@ -155,9 +149,8 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
           <div className="flex flex-col gap-3">
             {closed ? (
               <span className="self-start rounded-pill-sm bg-closed px-[11px] py-[7px] text-[13px] font-bold text-ink-65">
-                Closed
                 {service.deadline
-                  ? ` ${LONG.format(new Date(service.deadline))}`
+                  ? t("card.closed", fmt.date(service.deadline))
                   : ""}
               </span>
             ) : null}
@@ -195,32 +188,33 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
               ))}
               {service.deadline && !closed ? (
                 <span className="rounded-tag bg-gold-200 px-[10px] py-[6px] text-[13px] font-semibold text-gold-700">
-                  Closes {LONG.format(new Date(service.deadline))}
+                  {t("card.closes", fmt.date(service.deadline))}
                 </span>
               ) : null}
             </div>
           ) : null}
 
           <dl className="m-0 flex flex-col gap-5">
-            <Fact label="Who it's for" value={service.who_for} />
-            <Fact label="What to expect" value={service.what_to_expect} />
-            <Fact label="Cost" value={label(COSTS, service.cost) || null} />
+            <Fact label={t("card.whoFor")} value={service.who_for} />
+            <Fact label={t("card.whatToExpect")} value={service.what_to_expect} />
+            <Fact label={t("service.cost")} value={label(COSTS, service.cost) || null} />
             <Fact
-              label="How to take part"
+              label={t("service.howToTakePart")}
               value={
                 service.formats.map((f) => label(FORMATS, f)).join(", ") || null
               }
             />
-            <Fact label="Where" value={service.place} />
+            <Fact label={t("service.where")} value={service.place} />
           </dl>
 
           {closed ? (
             /* A closed listing is never a dead end either. */
             <div className="flex flex-col items-start gap-3 rounded-card shadow-hairline bg-surface p-6">
-              <span className="font-display text-[19px] font-normal">This one has closed</span>
+              <span className="font-display text-[19px] font-normal">
+                {t("service.closedTitle")}
+              </span>
               <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
-                It may run again. {service.organisationName} can tell you when the
-                next one opens, and there may be something similar available now.
+                {t("service.closedBody", service.organisationName ?? "")}
               </p>
               <div className="flex flex-wrap gap-3">
                 {service.organisationWebsite ? (
@@ -229,14 +223,14 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
                     className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-6 py-4 text-[16px] font-bold text-white no-underline"
                     rel="noopener noreferrer"
                   >
-                    Ask when the next one starts
+                    {t("service.askNext")}
                   </a>
                 ) : null}
                 <Link
                   href={similarHref}
                   className="inline-flex min-h-[44px] items-center rounded-control shadow-hairline bg-surface px-6 py-4 text-[16px] font-bold text-ink no-underline"
                 >
-                  Find similar support
+                  {t("service.findSimilar")}
                 </Link>
               </div>
             </div>
@@ -246,7 +240,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
                 href={`/go/${service.id}`}
                 className="inline-flex min-h-[44px] items-center justify-center self-start rounded-control bg-ink px-9 py-[19px] text-[18px] font-bold text-white no-underline"
               >
-                {host ? `Continue to ${host}` : "How to take part"}
+                {host ? t("service.continueTo", host) : t("service.howToTakePart")}
               </Link>
               {/* Honesty about limits, next to the button rather than buried. */}
               <p className="m-0 max-w-[62ch] text-[15px] leading-[1.55] text-ink-60">
@@ -266,8 +260,8 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
               <span className="inline-flex items-center gap-2 text-[15px] text-green-700">
                 <BadgeCheck size={17} strokeWidth={2} aria-hidden="true" />
                 {service.last_confirmed_at
-                  ? `Verified · last updated ${LONG.format(new Date(service.last_confirmed_at))}`
-                  : "Verified"}
+                  ? t("card.verifiedOn", fmt.date(service.last_confirmed_at))
+                  : t("card.verified")}
               </span>
             </div>
             {/* The reporting loop. The verified stamp is only worth what the
@@ -277,7 +271,7 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
               className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[15px] font-bold text-gold-700 no-underline"
             >
               <Flag size={15} strokeWidth={2} aria-hidden="true" />
-              Something wrong with this?
+              {t("service.somethingWrong")}
             </Link>
           </div>
 

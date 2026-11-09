@@ -1,4 +1,5 @@
 import { LoadingPage } from "@/components/ui/LoadingScreen";
+import { getTranslator } from "@/lib/i18n";
 
 /**
  * One listing, waiting.
@@ -6,8 +7,10 @@ import { LoadingPage } from "@/components/ui/LoadingScreen";
  * A single thing rather than a list, so two taller blocks rather than a stack
  * of equal ones.
  */
-export default function Loading() {
+export default async function Loading() {
+  const { t } = await getTranslator();
+
   return (
-    <LoadingPage label="Loading this listing" width={780} count={2} height={160} />
+    <LoadingPage label={t("loading.listing")} width={780} count={2} height={160} />
   );
 }

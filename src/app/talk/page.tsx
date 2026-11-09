@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
@@ -10,19 +11,6 @@ export const metadata: Metadata = pageMetadata({
   description:
     "Book a free call with somebody who can point you in the right direction.",
   path: "/talk",
-});
-
-const DAY = new Intl.DateTimeFormat("en-GB", {
-  weekday: "long",
-  day: "numeric",
-  month: "long",
-  timeZone: "Europe/London",
-});
-
-const TIME = new Intl.DateTimeFormat("en-GB", {
-  hour: "2-digit",
-  minute: "2-digit",
-  timeZone: "Europe/London",
 });
 
 /**
@@ -47,8 +35,11 @@ export default async function TalkPage({
 }: {
   searchParams: Promise<{ need?: string; place?: string; situations?: string }>;
 }) {
-  const context = await searchParams;
-  const days = await getFreeDays();
+  const [context, days, { t, fmt }] = await Promise.all([
+    searchParams,
+    getFreeDays(),
+    getTranslator(),
+  ]);
 
   const carry = new URLSearchParams(
     Object.entries({
@@ -65,16 +56,15 @@ export default async function TalkPage({
         className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
       >
         <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-        Other ways to reach us
+        {t("talk.otherWays")}
       </Link>
 
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
-          Pick a time that suits you
+          {t("talk.pickTime")}
         </h1>
         <p className="m-0 max-w-[56ch] text-[18px] leading-[1.6] text-ink-70">
-          We will call you. It takes about half an hour, it costs nothing, and
-          you do not need an account.
+          {t("talk.pickBody")}
         </p>
       </div>
 
@@ -84,17 +74,16 @@ export default async function TalkPage({
            nothing open in the next three weeks. */
         <div className="flex flex-col items-start gap-3 rounded-card bg-surface p-6 shadow-hairline">
           <span className="font-display text-[20px] font-normal">
-            Nothing free in the next few weeks
+            {t("talk.noneTitle")}
           </span>
           <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-            That is unusual, and it does not mean nobody can help. Get in touch
-            and we will find a time that is not on this calendar.
+            {t("talk.noneBody")}
           </p>
           <Link
             href="/help"
             className="inline-flex min-h-[44px] items-center rounded-control bg-ink px-6 py-[14px] text-[16px] font-bold text-white no-underline"
           >
-            Other ways to reach us
+            {t("talk.otherWays")}
           </Link>
         </div>
       ) : (
@@ -102,7 +91,7 @@ export default async function TalkPage({
           {days.map((day) => (
             <section key={day.date} className="flex flex-col gap-3">
               <h2 className="m-0 font-display text-[20px] font-normal leading-[1.3] text-ink">
-                {DAY.format(new Date(day.slots[0].at))}
+                {fmt.dayWithWeekday(day.slots[0].at)}
               </h2>
               <div className="flex flex-wrap gap-[10px]">
                 {day.slots.map((slot) => {
@@ -114,7 +103,7 @@ export default async function TalkPage({
                       href={`/talk/confirm?${query}`}
                       className="inline-flex min-h-[44px] items-center rounded-pill-sm bg-surface px-[18px] py-[11px] text-[16px] font-semibold text-ink no-underline shadow-hairline transition-[box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
                     >
-                      {TIME.format(new Date(slot.at))}
+                      {fmt.timeOfDay(slot.at)}
                     </Link>
                   );
                 })}
@@ -125,12 +114,10 @@ export default async function TalkPage({
       )}
 
       <p className="m-0 border-t border-hairline pt-6 text-[15px] leading-[1.6] text-ink-60">
-        All times are UK time. If you need help today rather than at a booked
-        time,{" "}
+        {t("talk.ukTime")}{" "}
         <Link href="/help" className="font-bold text-gold-700">
-          there are quicker ways to reach us
+          {t("talk.todayInstead")}
         </Link>
-        .
       </p>
     </Page>
   );

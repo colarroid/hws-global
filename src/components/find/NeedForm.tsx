@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useRef, useState } from "react";
 import { NextButton } from "@/components/find/NextButton";
+import { useT } from "@/lib/i18n/client";
 
 export function NeedForm({
   initialNeed,
@@ -17,6 +18,7 @@ export function NeedForm({
    */
   suggestions: string[];
 }) {
+  const t = useT();
   const router = useRouter();
   const [need, setNeed] = useState(initialNeed);
   const [blankAttempt, setBlankAttempt] = useState(false);
@@ -69,13 +71,13 @@ export function NeedForm({
           role="alert"
           className="m-0 rounded-control border border-gold-300 bg-gold-200 px-4 py-3 text-[16px] leading-[1.5] text-gold-700"
         >
-          Add a few words so we know where to look.
+          {t("q1.blank")}
         </p>
       ) : null}
 
       <div className="flex flex-col gap-2">
         <label htmlFor="need" className="sr-only">
-          What do you need help with?
+          {t("q1.title")}
         </label>
         <textarea
           id="need"
@@ -87,19 +89,19 @@ export function NeedForm({
             setNeed(e.target.value);
             if (blankAttempt) setBlankAttempt(false);
           }}
-          placeholder="e.g. getting back to work after caring for my mum"
+          placeholder={t("q1.placeholder")}
           className="resize-y rounded-control shadow-hairline bg-surface p-[18px] text-[18px] leading-[1.5] text-ink"
         />
         {ready ? (
           <span className="text-[14px] leading-[1.5] text-ink-60">
-            We&apos;ll search on what you wrote.
+            {t("q1.searchOn")}
           </span>
         ) : null}
       </div>
 
       {suggestions.length > 0 ? (
         <div className="flex flex-col gap-3">
-          <span className="eyebrow text-ink-60">Suggestions</span>
+          <span className="eyebrow text-ink-60">{t("q1.suggestions")}</span>
           <div className="flex flex-wrap gap-[10px]">
             {suggestions.map((suggestion) => (
               <button

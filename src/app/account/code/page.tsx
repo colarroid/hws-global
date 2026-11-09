@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -29,7 +30,7 @@ export default async function CodePage({
 }: {
   searchParams: Promise<{ email?: string }>;
 }) {
-  const { email } = await searchParams;
+  const [{ email }, { t }] = await Promise.all([searchParams, getTranslator()]);
   if (!email) redirect("/account");
 
   return (
@@ -40,11 +41,19 @@ export default async function CodePage({
 
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
-          Check your email
+          {t("code.title")}
         </h1>
+        {/* The address on its own line rather than inside the sentence.
+            It used to sit mid-clause in bold, which only reads correctly in
+            a language that puts the object after the verb — Urdu and
+            Punjabi put it before, so the bold landed in the middle of a
+            different phrase. A colon and a line of its own works in all
+            twelve, and is easier to check against her inbox on a phone. */}
         <p className="m-0 text-[17px] leading-[1.6] text-ink-70">
-          We sent a sign-in code to <strong className="text-ink">{email}</strong>.
-          Enter it below and you&apos;re in.
+          {t("code.sentTo")}{" "}
+          <strong className="text-ink">{email}</strong>
+          <br />
+          {t("code.enterBelow")}
         </p>
         {/* Said here rather than left for her to work out.
             hwspathgrid.com started sending in late August and has sent very
@@ -56,8 +65,7 @@ export default async function CodePage({
             line can go then. Until it does, one sentence here is worth more
             than any amount of tuning at the sending end. */}
         <p className="m-0 text-[15px] leading-[1.6] text-ink-60">
-          It should arrive within a minute. If it has not, check your spam or
-          junk folder.
+          {t("code.arrive")}
         </p>
       </div>
 
@@ -68,13 +76,13 @@ export default async function CodePage({
           href="/account"
           className="self-start p-1 text-[15px] font-bold text-gold-700 no-underline"
         >
-          Use a different address
+          {t("code.different")}
         </Link>
         <Link
           href="/find"
           className="self-start p-1 text-[15px] font-bold text-gold-700 no-underline"
         >
-          Just search without signing in
+          {t("code.justSearch")}
         </Link>
       </div>
     </Page>

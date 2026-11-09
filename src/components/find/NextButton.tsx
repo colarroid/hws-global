@@ -2,6 +2,7 @@
 
 import { useId } from "react";
 import { Button } from "@/components/ui/Button";
+import { useT } from "@/lib/i18n/client";
 
 /**
  * The Next control the three questions share.
@@ -21,7 +22,7 @@ export function NextButton({
   ready,
   onNext,
   hint,
-  label = "Next",
+  label,
 }: {
   ready: boolean;
   /** Called on every press. Handle the not-ready case yourself. */
@@ -36,8 +37,10 @@ export function NextButton({
    * where somebody who needs telling actually is.
    */
   hint?: string;
+  /** Defaults to the translated "Next". */
   label?: string;
 }) {
+  const t = useT();
   const hintId = useId();
 
   return (
@@ -48,7 +51,7 @@ export function NextButton({
         aria-describedby={!ready && hint ? hintId : undefined}
         className={!ready ? "opacity-40" : undefined}
       >
-        {label}
+        {label ?? t("flow.next")}
       </Button>
       {!ready && hint ? (
         <span id={hintId} className="text-[14px] leading-[1.5] text-ink-60">

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Bookmark, ChevronDown, LogOut, Settings, User } from "lucide-react";
 import { signOut } from "@/app/account/actions";
+import { useT } from "@/lib/i18n/client";
 
 /**
  * Her account, behind one control.
@@ -27,6 +28,7 @@ import { signOut } from "@/app/account/actions";
  * that gives no sign of it is a header that quietly forgets for her.
  */
 export function AccountMenu({ savedCount }: { savedCount: number }) {
+  const t = useT();
   const [open, setOpen] = useState(false);
   const box = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
@@ -122,7 +124,7 @@ export function AccountMenu({ savedCount }: { savedCount: number }) {
               fill="currentColor"
               aria-hidden="true"
             />
-            <span className="flex-1">Saved</span>
+            <span className="flex-1">{t("nav.saved")}</span>
             {savedCount > 0 ? (
               <span className="rounded-full bg-gold-200 px-2 py-[2px] text-[13px] font-bold tabular-nums text-gold-700">
                 {savedCount}
@@ -146,7 +148,7 @@ export function AccountMenu({ savedCount }: { savedCount: number }) {
                 at this width the longer one wraps to two lines, and a
                 two-line row in a two-row menu reads as a mistake. The panel
                 has the room, so it keeps the fuller wording. */}
-            <span className="flex-1">Settings</span>
+            <span className="flex-1">{t("nav.settings")}</span>
           </Link>
 
           {/* Ruled off, because it is the one row that does something rather
@@ -164,7 +166,7 @@ export function AccountMenu({ savedCount }: { savedCount: number }) {
                 className="shrink-0 text-ink-60"
                 aria-hidden="true"
               />
-              <span className="flex-1">Sign out</span>
+              <span className="flex-1">{t("nav.signOut")}</span>
             </button>
           </form>
         </div>

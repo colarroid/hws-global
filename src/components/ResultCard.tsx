@@ -1,4 +1,5 @@
 import { BadgeCheck, Bookmark } from "lucide-react";
+import { getTranslator } from "@/lib/i18n";
 
 export type ResultCardData = {
   name: string;
@@ -20,7 +21,8 @@ export type ResultCardData = {
   verified: string;
 };
 
-const MISSING = "Not filled in yet";
+/* The card is the one component a woman and an organisation both look at,
+   so it translates itself rather than taking twelve strings as props. */
 
 /**
  * The woman-facing result card.
@@ -37,7 +39,7 @@ const MISSING = "Not filled in yet";
  * The action is always "Learn more". Never "Apply": applying happens on the
  * organisation's own site, and promising otherwise breaks the handover.
  */
-export function ResultCard({
+export async function ResultCard({
   data,
   saveSlot,
   actionSlot,
@@ -63,8 +65,10 @@ export function ResultCard({
   bestMatch?: boolean;
   showGaps?: boolean;
 }) {
+  const { t } = await getTranslator();
+
   const fallback = (value: string) =>
-    value.trim() ? value : showGaps ? MISSING : "";
+    value.trim() ? value : showGaps ? t("card.missing") : "";
 
   const dim = (value: string) =>
     showGaps && !value.trim() ? "text-ink-40 italic" : "";
@@ -90,9 +94,7 @@ export function ResultCard({
       <div className="flex items-start justify-between gap-6">
         <div className="flex flex-col gap-[5px]">
           {bestMatch ? (
-            <span className="eyebrow text-gold-700">
-              Best match
-            </span>
+            <span className="eyebrow text-gold-700">{t("card.bestMatch")}</span>
           ) : null}
           <h2 className={`m-0 font-display text-[24px] font-normal leading-[1.33] ${dim(data.name)}`}>
             {fallback(data.name)}
@@ -107,7 +109,7 @@ export function ResultCard({
           className="flex items-center gap-2 whitespace-nowrap rounded-control shadow-hairline bg-surface px-4 py-3 text-[15px] font-bold text-ink"
         >
           <Bookmark size={17} strokeWidth={2} className="text-gold-500" />
-          <span>Save</span>
+          <span>{t("card.save")}</span>
         </span>
         )}
       </div>
@@ -134,17 +136,13 @@ export function ResultCard({
 
       <div className="grid grid-cols-1 gap-4 border-t border-hairline-soft pt-[14px] sm:grid-cols-2 sm:gap-x-8">
         <div className="flex flex-col gap-1">
-          <span className="eyebrow text-ink-60">
-            Who it&apos;s for
-          </span>
+          <span className="eyebrow text-ink-60">{t("card.whoFor")}</span>
           <span className={`text-[15px] leading-[1.5] ${dim(data.whoFor)}`}>
             {fallback(data.whoFor)}
           </span>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="eyebrow text-ink-60">
-            What to expect
-          </span>
+          <span className="eyebrow text-ink-60">{t("card.whatToExpect")}</span>
           <span className={`text-[15px] leading-[1.5] ${dim(data.whatToExpect)}`}>
             {fallback(data.whatToExpect)}
           </span>
@@ -152,7 +150,7 @@ export function ResultCard({
       </div>
 
       <div className="rounded-control bg-gold-200 px-4 py-[14px] text-[15px] leading-[1.55] text-gold-700">
-        <strong>Why this matched you:</strong> {data.why}
+        <strong>{t("card.whyMatched")}</strong> {data.why}
       </div>
 
       <div className="flex flex-wrap items-center justify-between gap-5">
@@ -161,7 +159,7 @@ export function ResultCard({
           aria-hidden="true"
           className="rounded-control bg-ink px-8 py-[15px] text-[17px] font-bold text-white"
         >
-          Learn more
+          {t("card.learnMore")}
         </span>
         )}
         <span className="inline-flex items-center gap-[7px] text-[13px] text-green-700">

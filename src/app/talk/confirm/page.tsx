@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { ArrowLeft, CalendarDays } from "lucide-react";
@@ -12,15 +13,6 @@ export const metadata: Metadata = pageMetadata({
   title: "Confirm your call",
   description: "The last step before your call is booked.",
   path: "/talk/confirm",
-});
-
-const WHEN = new Intl.DateTimeFormat("en-GB", {
-  weekday: "long",
-  day: "numeric",
-  month: "long",
-  hour: "2-digit",
-  minute: "2-digit",
-  timeZone: "Europe/London",
 });
 
 /**
@@ -55,7 +47,10 @@ export default async function ConfirmPage({
   const free = await isSlotFree(params.slot);
   if (!free) redirect("/talk?gone=1");
 
-  const account = await getAccount().catch(() => null);
+  const [account, { t, fmt }] = await Promise.all([
+    getAccount().catch(() => null),
+    getTranslator(),
+  ]);
   const back = new URLSearchParams(
     Object.entries({
       need: params.need ?? "",
@@ -71,12 +66,12 @@ export default async function ConfirmPage({
         className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
       >
         <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-        Pick a different time
+        {t("confirm.pickDifferent")}
       </Link>
 
       <div className="flex flex-col gap-[10px]">
         <h1 className="m-0 font-display text-[28px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[36px] sm:leading-[1.1]">
-          Confirm your call
+          {t("confirm.title")}
         </h1>
         <p className="m-0 flex items-center gap-2 text-[18px] leading-[1.6] text-ink">
           <CalendarDays
@@ -86,7 +81,7 @@ export default async function ConfirmPage({
             aria-hidden="true"
           />
           <strong className="font-semibold">
-            {WHEN.format(new Date(params.slot))}
+            {`${fmt.dayWithWeekday(params.slot)}, ${fmt.timeOfDay(params.slot)}`}
           </strong>
         </p>
       </div>
@@ -100,8 +95,7 @@ export default async function ConfirmPage({
       />
 
       <p className="m-0 border-t border-hairline pt-5 text-[14px] leading-[1.6] text-ink-60">
-        We use your name and email to make the call and nothing else. No
-        account is created, and this is not added to any list.
+        {t("confirm.privacy")}
       </p>
     </Page>
   );

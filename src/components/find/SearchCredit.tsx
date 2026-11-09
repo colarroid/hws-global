@@ -1,3 +1,5 @@
+import { getTranslator } from "@/lib/i18n";
+
 /**
  * The line under the three questions.
  *
@@ -12,8 +14,11 @@
  * it is theirs to ask for, but it is not true yet, and the honest versions
  * are a one-line change here.
  */
-export function SearchCredit() {
+export async function SearchCredit() {
+  const { t } = await getTranslator();
   return (
-    <span className="eyebrow self-center text-ink-60">Search powered by AI</span>
+    <span className="eyebrow self-center text-ink-60">
+      {t("flow.searchCredit")}
+    </span>
   );
 }

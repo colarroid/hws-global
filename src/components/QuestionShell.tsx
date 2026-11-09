@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import type { ReactNode } from "react";
 import { Page } from "@/components/ui/Page";
 import { SearchCredit } from "@/components/find/SearchCredit";
+import { getTranslator } from "@/lib/i18n";
 
 const TOTAL = 3;
 
@@ -12,7 +13,7 @@ const TOTAL = 3;
  * One decision per screen, a progress bar in thirds, and a Back link that is
  * always exactly one step and never loses what she typed.
  */
-export function QuestionShell({
+export async function QuestionShell({
   step,
   backHref,
   title,
@@ -22,11 +23,14 @@ export function QuestionShell({
 }: {
   step: 1 | 2 | 3;
   backHref?: string;
+  /** Already translated by the page, which knows which question it is. */
   title: string;
   subline: string;
   width?: number;
   children: ReactNode;
 }) {
+  const { t } = await getTranslator();
+
   return (
     <>
       <div
@@ -35,7 +39,7 @@ export function QuestionShell({
         aria-valuenow={step}
         aria-valuemin={1}
         aria-valuemax={TOTAL}
-        aria-label={`Question ${step} of ${TOTAL}`}
+        aria-label={t("flow.questionOf", step)}
       >
         <div
           className="h-1 bg-gold-500"
@@ -51,13 +55,13 @@ export function QuestionShell({
               className="inline-flex min-h-[44px] items-center gap-[6px] text-[14px] font-bold text-ink no-underline"
             >
               <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-              Back
+              {t("flow.back")}
             </Link>
           ) : (
             <span />
           )}
           <span className="text-[14px] font-semibold text-ink-60">
-            Question {step} of {TOTAL}
+            {t("flow.questionOf", step)}
           </span>
         </div>
 
@@ -107,13 +111,13 @@ export function QuestionShell({
         {step === 1 ? (
           <div className="flex flex-col items-center gap-1 self-stretch border-t border-hairline pt-7 text-center">
             <span className="text-[15px] leading-[1.5] text-ink-60">
-              Are you an organisation or individual providing solutions for women?
+              {t("flow.orgPrompt")}
             </span>
             <Link
               href="/for-organisations"
               className="inline-flex items-center gap-[6px] p-1 text-[15px] font-bold text-gold-700 no-underline"
             >
-              For organisations
+              {t("flow.orgLink")}
               <ArrowRight size={16} strokeWidth={2} aria-hidden="true" />
             </Link>
           </div>

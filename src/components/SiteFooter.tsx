@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslator } from "@/lib/i18n";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { getAccount } from "@/lib/data/account";
@@ -28,20 +29,20 @@ import { portalUrl } from "@/lib/portal";
  * the trail is worse than no link, because somebody would rely on it.
  */
 export async function SiteFooter() {
-  const account = await getAccount();
+  const [account, { t }] = await Promise.all([getAccount(), getTranslator()]);
   const year = new Date().getFullYear();
 
   const forYou = [
-    { href: "/find", label: "Find solution" },
-    { href: "/discover", label: "Discover organisations" },
-    { href: "/faq", label: "Frequently asked questions" },
-    { href: "/help", label: "Help" },
+    { href: "/find", label: t("footer.find") },
+    { href: "/discover", label: t("footer.discover") },
+    { href: "/faq", label: t("footer.faq") },
+    { href: "/help", label: t("footer.help") },
   ];
 
   const legal = [
-    { href: "/privacy", label: "Privacy policy" },
-    { href: "/terms", label: "Terms of use" },
-    { href: "/help", label: "Talk to a person" },
+    { href: "/privacy", label: t("footer.privacy") },
+    { href: "/terms", label: t("footer.terms") },
+    { href: "/help", label: t("footer.talk") },
   ];
 
   return (
@@ -75,21 +76,19 @@ export async function SiteFooter() {
                 tagline now says that, and saying it twice in four lines is
                 how a footer starts sounding like a brochure. */}
             <p className="m-0 font-display text-[19px] leading-[1.35] text-ink">
-              Connecting women to opportunity - beyond one room, one postcode
-              or one day.
+              {t("footer.tagline")}
             </p>
             <p className="m-0 text-[16px] leading-[1.6] text-ink-70">
-              Free to use, and you never need an account to search, read or
-              apply.
+              {t("footer.free")}
             </p>
           </div>
 
           <nav
-            aria-label="Footer"
+            aria-label={t("footer.label")}
             className="flex flex-col gap-10 sm:flex-row sm:gap-16"
           >
             <div className="flex flex-col gap-3">
-              <h2 className="m-0 eyebrow text-ink-60">For you</h2>
+              <h2 className="m-0 eyebrow text-ink-60">{t("footer.forYou")}</h2>
               <ul className="m-0 flex list-none flex-col gap-[2px] p-0">
                 {forYou.map((link) => (
                   <li key={link.href}>
@@ -106,21 +105,21 @@ export async function SiteFooter() {
                     href={account ? "/settings" : "/account"}
                     className="inline-flex min-h-[44px] items-center text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
-                    {account ? "Reminders and settings" : "Sign in"}
+                    {account ? t("nav.remindersSettings") : t("nav.signIn")}
                   </Link>
                 </li>
               </ul>
             </div>
 
             <div className="flex flex-col gap-3">
-              <h2 className="m-0 eyebrow text-ink-60">For organisations</h2>
+              <h2 className="m-0 eyebrow text-ink-60">{t("footer.forOrgs")}</h2>
               <ul className="m-0 flex list-none flex-col gap-[2px] p-0">
                 <li>
                   <a
                     href={portalUrl()}
                     className="inline-flex min-h-[44px] items-center gap-[6px] text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
-                    Meet the women
+                    {t("footer.meetWomen")}
                     <ArrowUpRight size={15} strokeWidth={2} aria-hidden="true" />
                   </a>
                 </li>
@@ -129,7 +128,7 @@ export async function SiteFooter() {
                     href="/for-organisations"
                     className="inline-flex min-h-[44px] items-center text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
-                    Why list with us
+                    {t("footer.whyList")}
                   </Link>
                 </li>
                 <li>
@@ -137,7 +136,7 @@ export async function SiteFooter() {
                     href="/discover"
                     className="inline-flex min-h-[44px] items-center text-[16px] font-medium text-ink no-underline hover:text-gold-700"
                   >
-                    Who is already listed
+                    {t("footer.whoListed")}
                   </Link>
                 </li>
               </ul>
@@ -155,7 +154,7 @@ export async function SiteFooter() {
                 columns above. Somebody looking for them looks at the bottom
                 of the page, and nobody arrives wanting to read them. */}
             <nav
-              aria-label="Legal"
+              aria-label={t("footer.legal")}
               className="flex flex-wrap items-center gap-x-6"
             >
               {legal.map((link) => (
