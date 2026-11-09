@@ -88,7 +88,11 @@ export function LanguageMenu({ current }: { current: string }) {
           role="menu"
           /* end rather than right, so it stays inside the bar when the
              document is flipped for Arabic or Urdu. */
-          className="panel-in absolute end-0 top-[calc(100%+6px)] z-30 flex min-w-[190px] flex-col gap-[2px] rounded-card bg-surface p-2 shadow-panel"
+          /* Capped and scrollable since the list went to twelve. Twelve rows
+             at 44px is 528px, which still fits a tall phone whole and would
+             otherwise run off the bottom of a short one. vh rather than a
+             fixed height so nobody scrolls who does not have to. */
+          className="panel-in absolute end-0 top-[calc(100%+6px)] z-30 flex max-h-[70vh] min-w-[190px] flex-col gap-[2px] overflow-y-auto rounded-card bg-surface p-2 shadow-panel"
         >
           {LOCALES.map((locale) => {
             const chosen = locale.code === current;

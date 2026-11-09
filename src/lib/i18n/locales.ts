@@ -36,8 +36,23 @@ export type Locale = {
    * either flag misidentifies half the people who would reach for it. Those
    * two get their own first letter instead, at the same size and in the same
    * circle, so the row still reads as one set.
+   *
+   * Somali and Tigrinya are here for the same reason. Somali is spoken across
+   * Somalia, Somaliland, Djibouti, Ethiopia and Kenya, and the Somalia flag
+   * takes a side in a dispute a woman in Glasgow did not ask to be part of.
+   * Tigrinya is Eritrea and Tigray, which is a harder version of the same
+   * problem. Romanian keeps a flag because Romania is where it comes from and
+   * nobody is misidentified by it.
    */
-  badge: "uk" | "scotland" | "poland" | "ukraine" | "pakistan" | "china" | string;
+  badge:
+    | "uk"
+    | "scotland"
+    | "poland"
+    | "ukraine"
+    | "pakistan"
+    | "china"
+    | "romania"
+    | string;
 };
 
 export const LOCALES: Locale[] = [
@@ -50,6 +65,9 @@ export const LOCALES: Locale[] = [
   { code: "ur", name: "اردو", english: "Urdu", dir: "rtl", short: "UR", badge: "pakistan" },
   { code: "pa", name: "ਪੰਜਾਬੀ", english: "Punjabi", dir: "ltr", short: "PA", badge: "ਪ" },
   { code: "zh", name: "简体中文", english: "Chinese, simplified", dir: "ltr", short: "ZH", badge: "china" },
+  { code: "ro", name: "Română", english: "Romanian", dir: "ltr", short: "RO", badge: "romania" },
+  { code: "so", name: "Soomaali", english: "Somali", dir: "ltr", short: "SO", badge: "So" },
+  { code: "ti", name: "ትግርኛ", english: "Tigrinya", dir: "ltr", short: "TI", badge: "ት" },
 ];
 
 export const DEFAULT_LOCALE = "en";

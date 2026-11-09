@@ -42,6 +42,32 @@
  * plainer in sentence shape than it wants to be, so that the other eight had
  * less to lose.
  *
+ * NEWER AGAIN: Romanian, Somali and Tigrinya were added on 9 November 2026,
+ * taking the list to twelve. They come from the interpretation-demand
+ * evidence rather than from the census alone, which is why Somali and
+ * Tigrinya are on it at all: both communities are small in headcount and
+ * large in need, and both are among the languages Scottish public services
+ * most often have to find an interpreter for.
+ *
+ * READ THIS BEFORE QUOTING THE NUMBER TWELVE. Confidence in these three is
+ * not equal and should not be presented as if it were.
+ *
+ *   * Romanian is the strongest of the three. Latin script, close to
+ *     languages this file already carries, and the diacritics are correct.
+ *   * Somali is a reasonable draft. Standard Latin orthography, but the
+ *     register may read stiff and some compound phrases will want a speaker.
+ *   * Tigrinya is the one to have checked first. Ge'ez script, and the
+ *     verb morphology carries the gender of the person being addressed —
+ *     every one of these strings is addressed to a woman, so a wrong form
+ *     is not a typo, it tells her the page was not written for her. Treat
+ *     it as a starting point for a translator, not as finished work.
+ *
+ * None of the three has been read by a native speaker. Neither has any of
+ * the eight before them. The honest sentence for a funder is "twelve
+ * languages, three of them pending native review" rather than "twelve
+ * languages", and the cheapest way to fix that is to ask the organisations
+ * serving these communities to read their own.
+ *
  * WHAT STILL NEEDS A SPEAKER, in order of how likely it is to be wrong:
  *
  *   * Scots. Untouched by the pass, because the line between written Scots
@@ -633,6 +659,183 @@ const zh: Catalogue = {
   "orgs.cta": "认识这些女性",
 };
 
+const ro: Catalogue = {
+  "language.label": "Limbă",
+  "hero.title": "Sprijinim femeile să găsească ajutorul de care au nevoie",
+  "hero.body":
+    "Spune-ne de ce ai nevoie, cu cuvintele tale, și îți vom arăta câțiva pași următori care merită făcuți. Trei întrebări, fără cont.",
+  "hero.cta": "Găsește o soluție",
+  "hero.browse": "Sau vezi cine există",
+  "why.eyebrow": "Cum funcționează",
+  "why.title":
+    "A ști că ceva există nu înseamnă a ști că îți este deschis",
+  "hero.begin": "De unde ai vrea să începi?",
+  "hero.beginFind": "Găsește pasul următor",
+  "hero.beginBrowse": "Vezi cine există",
+  "origin.eyebrow": "De ce există platforma",
+  "origin.title": "A început într-o încăpere ca aceasta",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit adună femeile în aceeași încăpere cu oamenii care chiar le pot ajuta. Cineva face o prezentare. Cineva spune numele unui fond despre care nu auziseși, și acum știi că există.",
+  "origin.bodyTwo":
+    "Apoi încăperea se golește. Organizațiile se întorc la munca lor, iar femeile au în continuare nevoie de ajutor. Această platformă este acea încăpere cu ușile lăsate deschise, pentru fiecare femeie care nu a fost acolo.",
+  "how.oneTitle": "Spune-ne, cu cuvintele tale",
+  "how.oneBody":
+    "De ce ai nevoie, aproximativ unde ești și orice ține de situația ta. Doar trei întrebări.",
+  "how.twoTitle": "Cântărim totul",
+  "how.twoBody":
+    "În funcție de ce este fiecare lucru, cui îi este deschis, unde se desfășoară și cum poți ajunge acolo. Rezultatul este generat cu ajutorul inteligenței artificiale.",
+  "how.threeTitle": "Primești câteva opțiuni reale",
+  "how.threeBody":
+    "Câteva, nu o sută, fiecare cu motivul pentru care se potrivește, cât costă, cui i se adresează și ce se întâmplă exact după ce iei legătura.",
+  "how.forWomen": "Pentru femei",
+  "how.forOrgs": "Pentru organizații",
+  "how.orgOneTitle": "Spuneți-ne cine sunteți",
+  "how.orgOneBody":
+    "Câteva întrebări despre ce faceți, cui vreți să oferiți soluții și unde. Înscrierea este rapidă.",
+  "how.orgTwoTitle": "Vă verificăm, o singură dată",
+  "how.orgTwoBody":
+    "Într-un registru public sau pe baza activității voastre de până acum. După verificare, publicați ce vreți, când vreți.",
+  "how.orgThreeTitle": "Ea vă găsește când i se potrivește",
+  "how.orgThreeBody":
+    "Nu pentru că v-a căutat numele, ci pentru că ceea ce a descris s-a potrivit cu soluția pe care o oferiți.",
+  "zones.eyebrow": "Zone de acces",
+  "zones.title": "Orice fel de sprijin, într-un singur loc",
+  "zones.body":
+    "Muncă, bani, învățare, sănătate, antreprenoriat, dreptul la opinie. Majoritatea femeilor au nevoie de mai multe deodată, iar majoritatea serviciilor acoperă doar unul. Acesta este golul pe care platforma există să îl închidă.",
+  "zones.browse": "Vezi pe toată lumea de pe platformă",
+  "trust.checkedTitle": "Conținut verificat",
+  "trust.checkedBody":
+    "Fiecare organizație de aici a fost verificată într-un registru public sau la finanțatorul ei înainte de a putea publica ceva. Fiecare anunț poartă data ultimei confirmări.",
+  "trust.privateTitle": "Informațiile sunt private",
+  "trust.privateBody":
+    "Nu ai nevoie de cont ca să cauți, să citești sau să aplici. Ce scrii este folosit doar pentru a ordona rezultatele și nu este vândut, transmis mai departe sau folosit ca să se construiască un profil despre tine.",
+  "trust.paidTitle": "Fără conținut sponsorizat",
+  "trust.paidBody":
+    "Nu există plasare plătită și nici publicitate. Rezultatele sunt ordonate după cât de bine se potrivesc cu ce ne-ai spus, iar fiecare anunț explică de ce s-a potrivit.",
+  "orgs.title": "Conduceți ceva despre care femeile ar trebui să știe?",
+  "orgs.body":
+    "Publicați aici și ajunge la femeile cărora li se potrivește cu adevărat, nu doar la cine vă găsește din întâmplare site-ul. Gratuit, și vă verificăm o dată, nu la fiecare anunț.",
+  "orgs.cta": "Cunoașteți femeile",
+};
+
+const so: Catalogue = {
+  "language.label": "Luqadda",
+  "hero.title": "Waxaan ka caawinnaa haweenka inay helaan taageerada ay u baahan yihiin",
+  "hero.body":
+    "Noo sheeg waxaad u baahan tahay erayadaada, waxaanan ku tusi doonnaa dhowr tallaabo oo mudan in la qaado. Saddex su'aal, xisaab looma baahna.",
+  "hero.cta": "Raadi xal",
+  "hero.browse": "Ama arag cidda jirta",
+  "why.eyebrow": "Sida ay u shaqeyso",
+  "why.title":
+    "In aad ogaato in wax jiro ma aha sida in aad ogaato inuu kuu furan yahay",
+  "hero.begin": "Xaggee ayaad jeclaan lahayd inaad ka bilowdo?",
+  "hero.beginFind": "Raadi tallaabadaada xigta",
+  "hero.beginBrowse": "Arag cidda jirta",
+  "origin.eyebrow": "Sababta ay u jirto",
+  "origin.title": "Waxay ka bilaabatay qol sidan oo kale ah",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit wuxuu haweenka ku keenaa hal qol dadka runtii caawin kara. Qof ayaa is-barid sameeya. Qof ayaa magacaabaya sanduuq aadan waligaa maqlin, haddana waad ogtahay inuu jiro.",
+  "origin.bodyTwo":
+    "Kadibna qolku waa madhnaadaa. Hay'aduhu waxay ku noqdaan shaqadooda, haweenkuna weli way u baahan yihiin. Barahan waa qolkaas oo albaabbadiisa la furay, oo loogu talagalay haweeney kasta oo aan halkaas joogin.",
+  "how.oneTitle": "Noo sheeg, erayadaada",
+  "how.oneBody":
+    "Waxaad u baahan tahay, meesha aad ku sugan tahay, iyo wax kasta oo ku saabsan xaaladdaada. Saddex su'aal oo keliya.",
+  "how.twoTitle": "Waan miisaameynaa",
+  "how.twoBody":
+    "Marka la barbar dhigo waxa mid walba loogu talagalay, cidda u furan, meesha uu ka dhacayo iyo sida aad u gaari karto. Natiijada waxaa lagu taageeray AI.",
+  "how.threeTitle": "Waxaad heshaa dhowr fursadood oo dhab ah",
+  "how.threeBody":
+    "Dhowr, ma aha boqol, mid walbana wuxuu leeyahay sababta uu kuugu habboon yahay, intee ku kacayso, cidda loogu talagalay, iyo waxa dhacaya marka aad xiriirto.",
+  "how.forWomen": "Haweenka",
+  "how.forOrgs": "Hay'adaha",
+  "how.orgOneTitle": "Noo sheeg cidda aad tihiin",
+  "how.orgOneBody":
+    "Dhowr su'aalood oo ku saabsan waxaad qabataan, cidda aad rabtaan inaad xal siisaan iyo meesha. Isdiiwaangelintu waa degdeg.",
+  "how.orgTwoTitle": "Hal mar ayaan idin hubinnaa",
+  "how.orgTwoBody":
+    "Iyadoo lagu salaynayo diiwaan dadweyne ama taariikhda shaqadiinna. Hubinta kadib, waxaad soo dhigtaan waxaad rabtaan, markaad rabtaan.",
+  "how.orgThreeTitle": "Way heshaa marka ay ku habboon tahay",
+  "how.orgThreeBody":
+    "Ma aha sababtoo ah magaciinna ayay raadisay, laakiin waa sababtoo ah waxa ay sharraxday ayaa u dhigma xalka aad bixinaysaan.",
+  "zones.eyebrow": "Aagagga Helitaanka",
+  "zones.title": "Nooc kasta oo taageero ah, hal meel",
+  "zones.body":
+    "Shaqo, lacag, waxbarasho, caafimaad, ganacsi, cod lahaansho. Haweenka badidood hal mar ayay u baahan yihiin wax ka badan mid, adeegyada badidooduna mid keliya ayay qabtaan. Taasi waa farqiga uu barahan u jiro inuu xiro.",
+  "zones.browse": "Fiiri dhammaan kuwa barahan ku jira",
+  "trust.checkedTitle": "Macluumaad la xaqiijiyay",
+  "trust.checkedBody":
+    "Hay'ad kasta oo halkan ku jirta waa la hubiyay diiwaan dadweyne ama deeq-bixiyeheeda ka hor inta aysan wax soo dhigin. Liis kastaa wuxuu wataa taariikhda ugu dambeysay ee la xaqiijiyay.",
+  "trust.privateTitle": "Macluumaadkaagu waa qarsoodi",
+  "trust.privateBody":
+    "Uma baahnid xisaab si aad u raadiso, u akhriso ama u codsato. Waxa aad qorto waxaa loo isticmaalaa oo keliya in lagu habeeyo natiijooyinkaaga, lamana iibiyo, lama gudbiyo, loomana isticmaalo in lagugu sameeyo astaan.",
+  "trust.paidTitle": "Ma jiro wax lacag lagu daabacay",
+  "trust.paidBody":
+    "Ma jiro boos lacag lagu iibsado iyo xayeysiin toona. Natiijooyinka waxaa loo kala horreysiiyaa sida ay ugu habboon yihiin waxa aad noo sheegtay, liis kastaana wuxuu sheegayaa sababta uu u habboon yahay.",
+  "orgs.title": "Ma waxaad maamushaa wax ay haweenku ka ogaan lahaayeen?",
+  "orgs.body":
+    "Halkan soo dhig, wuxuuna gaadhaa haweenka runtii ku habboon, ee ma aha oo keliya cidda si shil ah u hesha websaydkaaga. Waa bilaash, hal marna ayaan idin hubinnaa, ee ma aha liis walba.",
+  "orgs.cta": "La kulan haweenka",
+};
+
+const ti: Catalogue = {
+  "language.label": "ቋንቋ",
+  "hero.title": "ንደቂ ኣንስትዮ ዘድልየን ደገፍ ንኽረኽባ ንሕግዝ",
+  "hero.body":
+    "ብናትኪ ቃላት እንታይ ከም ዘድልየኪ ንገርና፡ ንሕና ድማ ክትወስድዮም ዝግብኡ ቀጺሎም ዘለዉ ስጉምትታት ከነርእየኪ ኢና። ሰለስተ ሕቶታት፡ ኣካውንት ኣየድልን።",
+  "hero.cta": "መፍትሒ ርኸቢ",
+  "hero.browse": "ወይ ከኣ መን ከም ዘሎ ረኣዪ",
+  "why.eyebrow": "ከመይ ይሰርሕ",
+  "why.title":
+    "ሓደ ነገር ከም ዘሎ ምፍላጥ፡ ንዓኺ ክፉት ምዃኑ ምፍላጥ ማለት ኣይኮነን",
+  "hero.begin": "ካበይ ክትጅምሪ ትደልዪ?",
+  "hero.beginFind": "ቀጺሉ ዘሎ ስጉምትኺ ርኸቢ",
+  "hero.beginBrowse": "መን ከም ዘሎ ረኣዪ",
+  "origin.eyebrow": "ስለምንታይ ኣሎ",
+  "origin.title": "ከምዚ ዝኣመሰለ ክፍሊ እዩ ጀሚሩ",
+  "origin.bodyOne":
+    "Holistic Wellbeing Summit ንደቂ ኣንስትዮ ምስቶም ብሓቂ ክሕግዝወን ዝኽእሉ ሰባት ኣብ ሓደ ክፍሊ የራኽበን። ሓደ ሰብ የላሊ። ሓደ ሰብ ከኣ ፈጺምኪ ሰሚዕክዮ ዘይትፈልጢ ፈንድ ይጠቅስ፡ ሕጂ ድማ ከም ዘሎ ትፈልጢ።",
+  "origin.bodyTwo":
+    "ድሕሪኡ እቲ ክፍሊ ይጽንቀቕ። እቶም ትካላት ናብ ስርሖም ይምለሱ፡ እተን ደቂ ኣንስትዮ ግን ገና የድልየን። እዚ መድረኽ እዚ ነቲ ክፍሊ ማዕጾኡ ተኸፊቱ ዝተረፈ እዩ፡ ነፍሲ ወከፍ ኣብኡ ዘይነበረት ጓል ኣንስተይቲ።",
+  "how.oneTitle": "ብናትኪ ቃላት ንገርና",
+  "how.oneBody":
+    "እንታይ ከም ዘድልየኪ፡ ኣበይ ከም ዘለኺ፡ ከምኡ ድማ ብዛዕባ ኩነታትኪ ዝኾነ ነገር። ሰለስተ ሕቶታት ጥራይ።",
+  "how.twoTitle": "ንመዝኖ",
+  "how.twoBody":
+    "ነፍሲ ወከፍ ነገር ንምንታይ ከም ዝተዳለወ፡ ንመን ክፉት ከም ዝኾነ፡ ኣበይ ከም ዝካየድን ከመይ ጌርኪ ክትበጽሕዮ ከም እትኽእልን ብምምዛን። እቲ ውጽኢት ብ AI ዝተደገፈ እዩ።",
+  "how.threeTitle": "ውሑዳት ግን ሓቀኛታት ኣማራጺታት ትረኽቢ",
+  "how.threeBody":
+    "ውሑዳት እምበር ሚእቲ ኣይኮኑን፡ ነፍሲ ወከፎም ስለምንታይ ከም ዝሰማምዑ፡ ክንደይ ከም ዝኽፈል፡ ንመን ከም ዝኾኑን ድሕሪ ምርኻብኪ እንታይ ከም ዝኽሰትን ይሕብሩ።",
+  "how.forWomen": "ንደቂ ኣንስትዮ",
+  "how.forOrgs": "ንትካላት",
+  "how.orgOneTitle": "መን ምዃንኩም ንገሩና",
+  "how.orgOneBody":
+    "ብዛዕባ እትገብርዎ፡ መፍትሒ ክትህብዎም እትደልዩ ሰባትን ቦታን ውሑዳት ሕቶታት። ምምዝጋብ ቅልጡፍ እዩ።",
+  "how.orgTwoTitle": "ሓደ ግዜ ንሕልወኩም",
+  "how.orgTwoBody":
+    "ብህዝባዊ መዝገብ ወይ ብዝሓለፈ ስራሕኩም። ድሕሪ እቲ ምርግጋጽ፡ ዝደለኹምዎ ኣብ ዝደለኹምሉ ግዜ ትዝርግሑ።",
+  "how.orgThreeTitle": "ዝሰማማዓላ ግዜ ትረኽቦ",
+  "how.orgThreeBody":
+    "ስምኩም ስለ ዝደለየት ዘይኮነ፡ እቲ ዝገለጸቶ ነገር ምስቲ እትህብዎ መፍትሒ ስለ ዝሰማምዐ እዩ።",
+  "zones.eyebrow": "ዞባታት ተበጻሕነት",
+  "zones.title": "ኩሉ ዓይነት ደገፍ፡ ኣብ ሓደ መድረኽ",
+  "zones.body":
+    "ስራሕ፡ ገንዘብ፡ ትምህርቲ፡ ጥዕና፡ ንግዲ፡ ድምጺ ምህላው። መብዛሕትአን ደቂ ኣንስትዮ ኣብ ሓደ እዋን ካብ ሓደ ንላዕሊ የድልየን፡ መብዛሕትኡ ኣገልግሎት ግን ሓደ ጥራይ እዩ ዝገብር። እዚ ድማ እቲ ክዓጽዎ ዝተፈጥረሉ ጋግ እዩ።",
+  "zones.browse": "ኣብዚ መድረኽ ዘለዉ ኩሎም ረኣዪ",
+  "trust.checkedTitle": "ዝተረጋገጸ ትሕዝቶ",
+  "trust.checkedBody":
+    "ኣብዚ ዘሎ ነፍሲ ወከፍ ትካል ዝኾነ ነገር ቅድሚ ምዝርጋሑ ብህዝባዊ መዝገብ ወይ ብወሃቢ ገንዘቡ ተረጋጊጹ እዩ። ነፍሲ ወከፍ ዝርዝር እቲ ዳሕራይ ዝተረጋገጸሉ ዕለት ይሕዝ።",
+  "trust.privateTitle": "ሓበሬታኺ ብሕታዊ እዩ",
+  "trust.privateBody":
+    "ንምድላይ፡ ንምንባብ ወይ ንምምልካት ኣካውንት ኣየድልየክን። እትጽሕፍዮ ነገር ውጽኢትኪ ንምስራዕ ጥራይ እዩ ዝውዕል፡ ኣይሽየጥን፡ ናብ ካልእ ኣይመሓላለፍን፡ ብዛዕባኺ መለለዪ ንምስራሕ ድማ ኣይውዕልን።",
+  "trust.paidTitle": "ዝተኸፍለሉ ትሕዝቶ የለን",
+  "trust.paidBody":
+    "ዝተኸፍለሉ ቦታን መወዓውዒን የለን። ውጽኢታት ምሳና ብዝተዛረብክዮ ክንደይ ከም ዝሰማምዑ ተመርኲሶም እዮም ዝስርዑ፡ ነፍሲ ወከፍ ዝርዝር ድማ ስለምንታይ ከም ዝሰማምዐ ይሕብር።",
+  "orgs.title": "ደቂ ኣንስትዮ ክፈልጣኦ ዝግባእ ነገር ተካይዱ ዲኹም?",
+  "orgs.body":
+    "ኣብዚ ኣስፍርዎ፡ ብሓቂ ንዝሰማምዐን ደቂ ኣንስትዮ ይበጽሕ፡ ዌብሳይትኩም ብኣጋጣሚ ንዝረኸበ ጥራይ ዘይኮነ። ነጻ እዩ፡ ንነፍሲ ወከፍ ዝርዝር ዘይኮነስ ሓደ ግዜ ኢና ንሕልወኩም።",
+  "orgs.cta": "ምስ ደቂ ኣንስትዮ ተራኸቡ",
+};
+
 export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, string> } = {
   en,
   gd,
@@ -643,4 +846,7 @@ export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, stri
   ur,
   pa,
   zh,
+  ro,
+  so,
+  ti,
 };

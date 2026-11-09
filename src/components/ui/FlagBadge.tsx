@@ -46,6 +46,16 @@ function Poland() {
   );
 }
 
+function Romania() {
+  return (
+    <>
+      <rect width="8" height="24" fill="#002B7F" />
+      <rect x="8" width="8" height="24" fill="#FCD116" />
+      <rect x="16" width="8" height="24" fill="#CE1126" />
+    </>
+  );
+}
+
 function Ukraine() {
   return (
     <>
@@ -95,6 +105,7 @@ const FLAGS: Record<string, () => React.ReactElement> = {
   ukraine: Ukraine,
   pakistan: Pakistan,
   china: China,
+  romania: Romania,
 };
 
 export function FlagBadge({
