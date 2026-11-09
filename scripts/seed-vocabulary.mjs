@@ -94,7 +94,11 @@ if (orphans.length > 0) {
       orphans.join("\n  ") +
       "\n\nNothing was written. Fix the slugs or the seed file.",
   );
-  process.exit(1);
+  // Emptying the list is what makes this "nothing was written" true, and
+  // leaves the process to exit on its own. See the note on the exit code
+  // in check-vocab.mjs: killing it here reports 127 rather than this.
+  process.exitCode = 1;
+  rows.length = 0;
 }
 
 /* ------------------------------------------------------------- write ---- */
@@ -125,16 +129,17 @@ if (!force) {
 
 if (rows.length === 0) {
   console.log("Nothing to write.");
-  process.exit(0);
 }
 
-const { error } = await db
-  .from("vocabulary_translations")
-  .upsert(rows, { onConflict: "entity,slug,field,locale" });
+const { error } = rows.length
+  ? await db
+      .from("vocabulary_translations")
+      .upsert(rows, { onConflict: "entity,slug,field,locale" })
+  : { error: null };
 
 if (error) {
   console.error(`Could not write the translations: ${error.message}`);
-  process.exit(1);
+  process.exitCode = 1;
 }
 
 const byLocale = rows.reduce((tally, r) => {

@@ -41,12 +41,19 @@ const [{ data: zones }, { data: situations }, { data: rows, error }] =
     db.from("vocabulary_translations").select("entity, slug, field, locale"),
   ]);
 
+/*
+ * A missing table is reported, not thrown.
+ *
+ * With no rows every language comes out at 0/39 and the run exits 1
+ * anyway, which is both true and more useful than an abort: the report
+ * underneath says exactly what is not translated. The line below is only
+ * there so nobody spends ten minutes wondering why.
+ */
 if (error) {
   console.error(
     `Could not read vocabulary_translations: ${error.message}\n` +
-      `If the table does not exist yet, apply migration 0027 first.`,
+      `If the table does not exist yet, apply migration 0027 first.\n`,
   );
-  process.exit(1);
 }
 
 const parents = {
@@ -146,4 +153,11 @@ if (errors.length > 0) {
   for (const line of errors) console.log(`  - ${line}\n`);
 }
 
-process.exit(errors.length > 0 || gaps.length > 0 ? 1 : 0);
+/*
+ * exitCode rather than process.exit(), because the Supabase client leaves a
+ * socket open and killing the process on top of it trips a libuv assertion
+ * on Windows — which exits 127 and makes the result of this check a lie
+ * whichever way it went. Setting the code and letting Node close down on
+ * its own gets the right answer out.
+ */
+process.exitCode = errors.length > 0 || gaps.length > 0 ? 1 : 0;
