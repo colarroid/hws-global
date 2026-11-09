@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { translatedMetadata } from "@/lib/seo";
 import { LegalPage } from "@/components/LegalPage";
+import { getTranslator } from "@/lib/i18n";
 import { TERMS } from "@/lib/design/legal";
 
 export function generateMetadata(): Promise<Metadata> {
@@ -18,6 +19,7 @@ export function generateMetadata(): Promise<Metadata> {
  * The wording lives in lib/design/legal.ts. This file only says which
  * document it is.
  */
-export default function TermsPage() {
-  return <LegalPage title="Terms of use" document={TERMS} />;
+export default async function TermsPage() {
+  const { t } = await getTranslator();
+  return <LegalPage title={t("footer.terms")} which="terms" document={TERMS} />;
 }

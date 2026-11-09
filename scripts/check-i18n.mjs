@@ -38,6 +38,8 @@ import { LABELS } from "../src/lib/i18n/labels.ts";
 import * as taxonomy from "../src/lib/design/taxonomy.ts";
 import { PLURALS, ENGLISH_PLURALS } from "../src/lib/i18n/plurals.ts";
 import { FAQ } from "../src/lib/i18n/faq.ts";
+import { LEGAL } from "../src/lib/i18n/legal.ts";
+import { PRIVACY, TERMS } from "../src/lib/design/legal.ts";
 import { FOR_WOMEN, FOR_ORGANISATIONS } from "../src/lib/design/faq.ts";
 import {
   SITUATION_SUGGESTIONS,
@@ -214,6 +216,73 @@ for (const locale of translatable) {
   }
 }
 
+/* ------------------------------------------------------- the legal ---- */
+
+/*
+ * Headings only, because headings are all that is translated. See
+ * lib/i18n/legal.ts for why the paragraphs are not.
+ *
+ * This still has to be checked, and for the usual reason: the headings are
+ * keyed by the English heading, so rewording one in design/legal.ts detaches
+ * eleven translations and the section silently reverts to English in the
+ * middle of an otherwise translated contents list.
+ *
+ * A `body` added here is checked against the English paragraph count too, so
+ * that the day the approved wording is translated, a paragraph added to the
+ * English and not to a translation is caught rather than disappearing.
+ */
+const DOCS = { privacy: PRIVACY, terms: TERMS };
+
+for (const code of Object.keys(LEGAL)) {
+  if (!LOCALES.some((l) => l.code === code)) {
+    errors.push(`legal.ts has "${code}", which is not a locale in locales.ts.`);
+  }
+}
+
+for (const locale of translatable) {
+  const pair = LEGAL[locale.code];
+  if (!pair) {
+    gaps.push({ locale, missingWords: [], missingSaid: ["legal headings"] });
+    continue;
+  }
+
+  for (const [which, english] of Object.entries(DOCS)) {
+    const table = pair[which];
+    const headings = english.sections.map((s) => s.title);
+
+    for (const asked of Object.keys(table.sections)) {
+      if (!headings.includes(asked)) {
+        errors.push(
+          `${locale.code}: the ${which} heading keyed to "${asked}" matches no ` +
+            `section in design/legal.ts. A heading was reworded and this was ` +
+            `left behind.`,
+        );
+      }
+    }
+
+    const missingHeadings = headings.filter((h) => !table.sections[h]);
+    if (missingHeadings.length > 0) {
+      gaps.push({
+        locale,
+        missingWords: [],
+        missingSaid: missingHeadings.map((h) => `${which}: ${h}`),
+      });
+    }
+
+    for (const section of english.sections) {
+      const translatedSection = table.sections[section.title];
+      if (!translatedSection?.body) continue;
+      if (translatedSection.body.length !== section.body.length) {
+        errors.push(
+          `${locale.code}: the ${which} section "${section.title}" has ` +
+            `${translatedSection.body.length} paragraphs, the English has ` +
+            `${section.body.length}.`,
+        );
+      }
+    }
+  }
+}
+
 /* --------------------------------------------- the one placeholder ----- */
 
 /*
@@ -302,7 +371,8 @@ for (const locale of translatable) {
 console.log(
   `\n${translatable.length} languages besides English, ` +
     `${wanted.length} labels, ${messageKeys.length} messages, ` +
-    `${pluralKeys.length} counts and ${questions.length} questions each.\n`,
+    `${pluralKeys.length} counts, ${questions.length} questions and ` +
+    `${PRIVACY.sections.length + TERMS.sections.length} legal headings each.\n`,
 );
 
 const pad = (s, n) => String(s).padEnd(n);

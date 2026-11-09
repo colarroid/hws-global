@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { getTranslator } from "@/lib/i18n";
+import { LEGAL } from "@/lib/i18n/legal";
+import { Languages } from "lucide-react";
 import { FileText, PencilLine } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { anchorFor, type LegalDocument } from "@/lib/design/legal";
@@ -22,28 +24,63 @@ import { anchorFor, type LegalDocument } from "@/lib/design/legal";
  */
 export async function LegalPage({
   title,
+  which,
   document,
 }: {
+  /** Already translated by the page. */
   title: string;
+  /** Which of the two, so the right translated headings are found. */
+  which: "privacy" | "terms";
   document: LegalDocument;
 }) {
-  const { t } = await getTranslator();
+  const { t, locale } = await getTranslator();
   const { updated, draft, lead, sections } = document;
+
+  /*
+   * Headings and the lead in her language, paragraphs in English.
+   *
+   * Deliberate and explained on the page rather than quietly half-done: see
+   * lib/i18n/legal.ts. Enough that she can see what the document covers and
+   * find the part she needs; not so much that an unreviewed translation of
+   * an unreviewed policy starts making promises in eleven languages.
+   */
+  const translated = LEGAL[locale.code]?.[which];
+  const headingFor = (english: string) =>
+    translated?.sections[english]?.title ?? english;
 
   return (
     <Page width={760} top={56} gap={30}>
       <div className="flex flex-col gap-[10px]">
-        <span className="eyebrow text-ink-60">Legal</span>
+        <span className="eyebrow text-ink-60">{t("footer.legal")}</span>
         <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
           {title}
         </h1>
         <p className="m-0 max-w-[62ch] text-[18px] leading-[1.6] text-ink-70">
-          {lead}
+          {translated?.lead ?? lead}
         </p>
         {updated ? (
           <p className="m-0 text-[15px] text-ink-60">Last updated {updated}</p>
         ) : null}
       </div>
+
+      {/* Only where there is a gap to explain. In English the headings and
+          the wording are the same language and there is nothing to say. */}
+      {translated ? (
+        <div className="flex items-start gap-3 rounded-card bg-gold-200 p-5">
+          <Languages
+            size={20}
+            strokeWidth={1.75}
+            className="mt-[2px] shrink-0 text-gold-700"
+            aria-hidden="true"
+          />
+          <p className="m-0 max-w-[58ch] text-[16px] leading-[1.6] text-gold-700">
+            {t("legal.englishApplies")}{" "}
+            <Link href="/help" className="font-bold underline">
+              {t("legal.askInYourLanguage")}
+            </Link>
+          </p>
+        </div>
+      ) : null}
 
       {/* Written but not signed off. Said at the top rather than in a
           footnote: somebody reading a privacy policy is deciding whether to
@@ -122,7 +159,7 @@ export async function LegalPage({
                       <span className="w-[1.6em] shrink-0 text-[14px] tabular-nums text-ink-60">
                         {index + 1}.
                       </span>
-                      {section.title}
+                      {headingFor(section.title)}
                     </a>
                   </li>
                 ))}
@@ -140,7 +177,7 @@ export async function LegalPage({
                 className="flex scroll-mt-24 flex-col gap-3 border-t border-hairline pt-7"
               >
                 <h2 className="m-0 font-display text-[24px] font-normal leading-[1.25] tracking-[-0.01em] sm:text-[28px]">
-                  {section.title}
+                  {headingFor(section.title)}
                 </h2>
                 {section.body.map((paragraph) => (
                   <p
@@ -164,7 +201,7 @@ export async function LegalPage({
           href="/help"
           className="inline-flex min-h-[44px] items-center self-start p-1 text-[16px] font-bold text-gold-700 no-underline"
         >
-          Talk to a person
+          {t("footer.talk")}
         </Link>
       </div>
     </Page>

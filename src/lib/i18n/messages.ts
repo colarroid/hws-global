@@ -466,7 +466,9 @@ export type MessageKey =
   | "orgpage.step4Title"
   | "orgpage.step4Body"
   | "orgpage.whereYouSit"
-  | "orgpage.zonesBody";
+  | "orgpage.zonesBody"
+  | "legal.englishApplies"
+  | "legal.askInYourLanguage";
 
 type Catalogue = Partial<Record<MessageKey, string>>;
 
@@ -930,6 +932,10 @@ const en: Record<MessageKey, string> = {
   "orgpage.whereYouSit": "Where you would sit",
   "orgpage.zonesBody":
     "You pick your own, one main and up to two others. Most women need more than one at a time and most services only do one, which is the gap this exists to close.",
+
+  "legal.englishApplies":
+    "The headings on this page are in your language. The wording itself is in English, and the English is the version that applies.",
+  "legal.askInYourLanguage": "Ask us about any part of it and we will answer.",
 };
 
 const gd: Catalogue = {
@@ -1413,6 +1419,11 @@ const gd: Catalogue = {
   "orgpage.whereYouSit": "Càite am biodh sibh",
   "orgpage.zonesBody":
     "Taghaidh sibh fhèin, aon phrìomh fhear agus suas ri dhà eile. Tha feum aig a' mhòr-chuid de bhoireannaich air barrachd air aon aig an aon àm agus chan eil a' mhòr-chuid de sheirbheisean a' dèanamh ach aon, agus is e sin am beàrn a tha seo ann gus a dhùnadh.",
+
+  "legal.englishApplies":
+    "Tha na ceann-sgrìobhaidhean air an duilleag seo nad chànan fhèin. Tha na faclan fhèin sa Bheurla, agus is e an tionndadh Beurla a tha an sàs.",
+  "legal.askInYourLanguage":
+    "Faighnich dhuinn mu phàirt sam bith dheth agus freagraidh sinn.",
 };
 
 const sco: Catalogue = {
@@ -1874,6 +1885,10 @@ const sco: Catalogue = {
   "orgpage.whereYouSit": "Whaur ye wad sit",
   "orgpage.zonesBody":
     "Ye wale yer ain, ae main ane and up tae twa ithers. Maist weemen need mair nor ane at a time and maist services ainly dae ane, whilk is the gap this exists tae close.",
+
+  "legal.englishApplies":
+    "The heidins on this page are in yer ain language. The wirdin itsel is in English, and the English is the version that applies.",
+  "legal.askInYourLanguage": "Speir at us aboot ony pairt o it and we'll answer.",
 };
 
 const pl: Catalogue = {
@@ -2345,6 +2360,10 @@ const pl: Catalogue = {
   "orgpage.whereYouSit": "Gdzie byście się znaleźli",
   "orgpage.zonesBody":
     "Wybieracie sami, jedną główną i do dwóch kolejnych. Większość kobiet potrzebuje więcej niż jednej naraz, a większość usług robi tylko jedną, i to jest luka, którą to zamyka.",
+
+  "legal.englishApplies":
+    "Nagłówki na tej stronie są w twoim języku. Sam tekst jest po angielsku i to wersja angielska obowiązuje.",
+  "legal.askInYourLanguage": "Zapytaj nas o dowolny jego fragment, a odpowiemy.",
 };
 
 const uk: Catalogue = {
@@ -2817,6 +2836,11 @@ const uk: Catalogue = {
   "orgpage.whereYouSit": "Де б ви були",
   "orgpage.zonesBody":
     "Ви обираєте самі: одну основну і ще до двох. Більшості жінок потрібно кілька водночас, а більшість сервісів робить лише одне — і саме цю прогалину це закриває.",
+
+  "legal.englishApplies":
+    "Заголовки на цій сторінці — вашою мовою. Сам текст англійською, і саме англійська версія є чинною.",
+  "legal.askInYourLanguage":
+    "Запитайте нас про будь-яку його частину, і ми відповімо.",
 };
 
 const ar: Catalogue = {
@@ -3263,6 +3287,10 @@ const ar: Catalogue = {
   "orgpage.whereYouSit": "أين سيكون موقعكم",
   "orgpage.zonesBody":
     "تختارون بأنفسكم، مجالاً رئيسياً وما يصل إلى اثنين آخرين. أغلب النساء يحتجن أكثر من واحد في الوقت نفسه، وأغلب الخدمات تقدّم واحداً فقط، وهذه هي الفجوة التي وُجد هذا لسدّها.",
+
+  "legal.englishApplies":
+    "العناوين في هذه الصفحة بلغتك. أما النص نفسه فبالإنجليزية، والنسخة الإنجليزية هي النسخة السارية.",
+  "legal.askInYourLanguage": "اسألينا عن أي جزء منه وسنجيب.",
 };
 
 const ur: Catalogue = {
@@ -3733,6 +3761,11 @@ const ur: Catalogue = {
   "orgpage.whereYouSit": "آپ کہاں ہوں گے",
   "orgpage.zonesBody":
     "آپ خود چنتے ہیں، ایک بنیادی اور دو تک مزید۔ زیادہ تر خواتین کو بیک وقت ایک سے زیادہ کی ضرورت ہوتی ہے اور زیادہ تر خدمات صرف ایک کرتی ہیں، اور یہی وہ خلا ہے جسے یہ پُر کرنے کے لیے موجود ہے۔",
+
+  "legal.englishApplies":
+    "اس صفحے کی سرخیاں آپ کی زبان میں ہیں۔ عبارت خود انگریزی میں ہے، اور انگریزی نسخہ ہی نافذ العمل ہے۔",
+  "legal.askInYourLanguage":
+    "اس کے کسی بھی حصے کے بارے میں ہم سے پوچھیں، ہم جواب دیں گے۔",
 };
 
 const pa: Catalogue = {
@@ -4201,6 +4234,11 @@ const pa: Catalogue = {
   "orgpage.whereYouSit": "ਤੁਸੀਂ ਕਿੱਥੇ ਹੋਵੋਗੇ",
   "orgpage.zonesBody":
     "ਤੁਸੀਂ ਆਪ ਚੁਣਦੇ ਹੋ, ਇੱਕ ਮੁੱਖ ਤੇ ਦੋ ਤੱਕ ਹੋਰ। ਬਹੁਤੀਆਂ ਔਰਤਾਂ ਨੂੰ ਇੱਕੋ ਵੇਲੇ ਇੱਕ ਤੋਂ ਵੱਧ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ ਤੇ ਬਹੁਤੀਆਂ ਸੇਵਾਵਾਂ ਸਿਰਫ਼ ਇੱਕ ਕਰਦੀਆਂ ਹਨ, ਤੇ ਇਹੀ ਉਹ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਇਹ ਪੂਰਨ ਲਈ ਹੈ।",
+
+  "legal.englishApplies":
+    "ਇਸ ਸਫ਼ੇ ਦੀਆਂ ਸੁਰਖੀਆਂ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਵਿੱਚ ਹਨ। ਇਬਾਰਤ ਆਪ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਹੈ, ਤੇ ਅੰਗਰੇਜ਼ੀ ਵਾਲਾ ਰੂਪ ਹੀ ਲਾਗੂ ਹੁੰਦਾ ਹੈ।",
+  "legal.askInYourLanguage":
+    "ਇਸ ਦੇ ਕਿਸੇ ਵੀ ਹਿੱਸੇ ਬਾਰੇ ਸਾਨੂੰ ਪੁੱਛੋ, ਅਸੀਂ ਜਵਾਬ ਦੇਵਾਂਗੇ।",
 };
 
 const zh: Catalogue = {
@@ -4595,6 +4633,9 @@ const zh: Catalogue = {
   "orgpage.whereYouSit": "你们会在哪里",
   "orgpage.zonesBody":
     "你们自己选，一个主要领域，最多再加两个。大多数女性同时需要不止一个，而大多数服务只做一个——这正是本平台要填补的空白。",
+
+  "legal.englishApplies": "本页的标题已译成你的语言。正文仍为英文，并且以英文版本为准。",
+  "legal.askInYourLanguage": "其中任何一部分，都可以来问我们，我们会回答。",
 };
 
 const ro: Catalogue = {
@@ -5065,6 +5106,11 @@ const ro: Catalogue = {
   "orgpage.whereYouSit": "Unde v-ați situa",
   "orgpage.zonesBody":
     "Vă alegeți singuri, una principală și până la încă două. Majoritatea femeilor au nevoie de mai multe deodată, iar majoritatea serviciilor acoperă doar una, și acesta este golul pe care platforma îl închide.",
+
+  "legal.englishApplies":
+    "Titlurile de pe această pagină sunt în limba ta. Textul în sine este în engleză, iar versiunea engleză este cea care se aplică.",
+  "legal.askInYourLanguage":
+    "Întreabă-ne despre orice parte din el și îți răspundem.",
 };
 
 const so: Catalogue = {
@@ -5541,6 +5587,11 @@ const so: Catalogue = {
   "orgpage.whereYouSit": "Meesha aad ku jiri lahaydeen",
   "orgpage.zonesBody":
     "Idinkaa dooranaya, hal mid oo weyn iyo ilaa laba kale. Haweenka badidood hal mar ayay u baahan yihiin wax ka badan mid, adeegyada badidooduna mid keliya ayay qabtaan, taasina waa farqiga tani u jirto inay xirto.",
+
+  "legal.englishApplies":
+    "Cinwaannada boggan waxay ku qoran yihiin luqaddaada. Qoraalka laftiisu waa Ingiriisi, nuqulka Ingiriisiguna waa kan khuseeya.",
+  "legal.askInYourLanguage":
+    "Qaybo kasta oo ka mid ah na weydii waanan kaaga jawaabaynaa.",
 };
 
 const ti: Catalogue = {
@@ -5973,6 +6024,10 @@ const ti: Catalogue = {
   "orgpage.whereYouSit": "ኣበይ ምተቐመጥኩም",
   "orgpage.zonesBody":
     "ባዕልኻትኩም ትመርጹ፡ ሓደ ቀንዲን ክሳብ ክልተ ካልኦትን። መብዛሕትአን ደቂ ኣንስትዮ ኣብ ሓደ እዋን ካብ ሓደ ንላዕሊ የድልየን፡ መብዛሕትኡ ኣገልግሎት ግን ሓደ ጥራይ እዩ ዝገብር፡ እዚ ድማ እቲ ክዓጽዎ ዝተፈጥረሉ ጋግ እዩ።",
+
+  "legal.englishApplies":
+    "እቶም ኣብዚ ገጽ ዘለዉ ኣርእስትታት ብቋንቋኺ እዮም። እቲ ጽሑፍ ባዕሉ ግን ብእንግሊዝኛ እዩ፡ እቲ ዝሰርሕ ድማ እቲ ናይ እንግሊዝኛ ቅዳሕ እዩ።",
+  "legal.askInYourLanguage": "ብዛዕባ ዝኾነ ክፋሉ ሕተቱና እሞ ክንምልሰልኩም ኢና።",
 };
 
 export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, string> } = {
