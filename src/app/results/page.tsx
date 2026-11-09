@@ -101,7 +101,7 @@ export default async function ResultsPage({
   ]);
 
   // Phrases build the reason; labels show her answers back as chips.
-  const ranked = rank(listings, answers, situationPhrases);
+  const ranked = rank(listings, answers, situationPhrases, t);
 
   // Beside the listings rather than mixed into them. A specific thing with a
   // date and a way in beats a general one every time, so these are the second

@@ -1,4 +1,5 @@
 import "server-only";
+import { getVocabulary, translated } from "@/lib/data/vocabulary";
 import { createClient } from "@/lib/supabase/server";
 
 export type AccessZone = {
@@ -18,14 +19,22 @@ export type AccessZone = {
  */
 export async function getAccessZones(): Promise<AccessZone[]> {
   const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("access_zones")
-    .select("id, slug, name, focus")
-    .is("retired_at", null)
-    .order("sort_order");
+  const [{ data, error }, vocabulary] = await Promise.all([
+    supabase
+      .from("access_zones")
+      .select("id, slug, name, focus")
+      .is("retired_at", null)
+      .order("sort_order"),
+    getVocabulary(),
+  ]);
 
   if (error) throw error;
-  return data ?? [];
+
+  return (data ?? []).map((zone) => ({
+    ...zone,
+    name: translated(vocabulary, "access_zone", zone.slug, "name", zone.name),
+    focus: translated(vocabulary, "access_zone", zone.slug, "focus", zone.focus),
+  }));
 }
 
 export type MyOrganisation = {

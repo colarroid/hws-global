@@ -1,4 +1,6 @@
 import type { SearchableListing } from "@/lib/data/search";
+import type { Translate } from "@/lib/i18n";
+import { MESSAGES } from "@/lib/i18n/messages";
 
 export type Scope = "my-area" | "nearby" | "all-scotland" | "online";
 
@@ -188,6 +190,14 @@ function explain(
   matchedWords: string[],
   /** Slug to second-person phrase, from situations.match_phrase. */
   situationPhrases: Map<string, string>,
+  /*
+   * The sentence is assembled here rather than held whole, so it needs the
+   * translator as well as the phrases. Every clause is one key with at most
+   * one slot: the phrase already arrives in her language from the database,
+   * and "you told us #" keeps the word order inside the clause where the
+   * language can decide it.
+   */
+  t: Translate,
 ): string {
   const about: string[] = [];
 
@@ -200,30 +210,38 @@ function explain(
       .slice(0, 2);
 
     if (phrases.length === 1) {
-      about.push(`you told us ${phrases[0]}`);
+      about.push(t("reason.youToldUs", phrases[0]));
     } else if (phrases.length > 1) {
-      about.push(`you told us ${phrases[0]} and ${phrases[1]}`);
+      about.push(
+        t("reason.youToldUs", `${phrases[0]} ${t("reason.and")} ${phrases[1]}`),
+      );
     }
   } else if (matchedWords.length > 0) {
-    about.push(`you asked about ${matchedWords.slice(0, 2).join(" and ")}`);
+    // Her own words, as she typed them, so they are never translated.
+    about.push(
+      t(
+        "reason.youAskedAbout",
+        matchedWords.slice(0, 2).join(` ${t("reason.and")} `),
+      ),
+    );
   }
 
   const where = placeMatches(listing, answers.place)
-    ? `this runs in ${listing.place ?? answers.place}`
+    ? t("reason.runsIn", listing.place ?? answers.place)
     : isOnline(listing)
-      ? "this one is online, so where you are doesn't matter"
+      ? t("reason.isOnline")
       : isScotlandWide(listing)
-        ? "this is open across Scotland"
+        ? t("reason.acrossScotland")
         : null;
 
   if (where) about.push(where);
 
   if (about.length === 0) {
     // Everything is explainable or it does not belong in her results.
-    return `it's one of the closest things we have to what you described.`;
+    return t("reason.closest");
   }
 
-  return `${about.join(", and ")}.`;
+  return `${about.join(t("reason.clauseJoin"))}.`;
 }
 
 /**
@@ -238,6 +256,7 @@ function scoreAll(
   answers: Answers,
   /** Slug to second-person phrase. See situations.match_phrase. */
   situationPhrases: Map<string, string>,
+  t: Translate,
 ): RankedListing[] {
   const needStems = new Set(words(answers.need).map(stem));
 
@@ -341,6 +360,7 @@ function scoreAll(
         // Report her words, not the stems we matched on.
         words(answers.need).filter((w) => listingStems.has(stem(w))),
         situationPhrases,
+        t,
       ),
     };
   });
@@ -370,9 +390,24 @@ export function rank(
   listings: SearchableListing[],
   answers: Answers,
   situationPhrases: Map<string, string>,
+  t: Translate,
 ): RankedListing[] {
-  return scoreAll(listings, answers, situationPhrases).slice(0, MAX_RESULTS);
+  return scoreAll(listings, answers, situationPhrases, t).slice(0, MAX_RESULTS);
 }
+
+/**
+ * The translator the counting path uses, which is to say: none.
+ *
+ * countMatches throws the ranked list away and keeps its length, so every
+ * reason it builds is discarded. Handing it the English catalogue directly
+ * keeps scoreAll to one shape rather than making `t` optional and the
+ * reason sometimes absent, and it means the counting path never reads a
+ * cookie it has no use for.
+ */
+const englishOnly: Translate = (key, value) => {
+  const text = MESSAGES.en[key];
+  return value === undefined ? text : text.replace("#", String(value));
+};
 
 /**
  * How many listings match, uncapped.
@@ -385,7 +420,7 @@ export function countMatches(
   listings: SearchableListing[],
   answers: Answers,
 ): number {
-  return scoreAll(listings, answers, new Map()).length;
+  return scoreAll(listings, answers, new Map(), englishOnly).length;
 }
 
 /**

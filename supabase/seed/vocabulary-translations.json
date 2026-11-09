@@ -1,0 +1,948 @@
+{
+  "gd": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "Dreuchd, Misneachd agus Cosnadh",
+        "Slighean cosnaidh, com-pàirteachadh san luchd-obrach, fàs proifeasanta"
+      ],
+      "enterprise-business-growth": [
+        "Iomairt agus Fàs Gnothachais",
+        "Fàs, sgèileadh, iomairteachd, solar"
+      ],
+      "funding-finance": [
+        "Maoineachadh agus Ionmhas",
+        "Cothrom air calpa, seasmhachd ionmhasail"
+      ],
+      "education-pathways": [
+        "Foghlam agus Slighean",
+        "Ionnsachadh, leasachadh chomasan, sgilean fad-beatha"
+      ],
+      "health-wellbeing": [
+        "Slàinte agus Sunnd",
+        "Com-pàirteachadh seasmhach tro shlàinte agus sunnd"
+      ],
+      "business-infrastructure-professional-services": [
+        "Bun-structar Gnothachais agus Seirbheisean Proifeiseanta",
+        "Seirbheisean practaigeach gus tòiseachadh, ruith agus fàs"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "Guth, Ceannas agus Buaidh Shìobhalta Bhoireannach",
+        "Riochdachadh, ceannas, com-pàirteachadh sìobhalta"
+      ],
+      "visibility-marketplace-opportunities": [
+        "Follaiseachd, Margaid agus Cothroman",
+        "A' ruigsinn luchd-èisteachd, a' cruthachadh chothroman"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "A' tilleadh a dh'obair",
+        "tha thu a' tilleadh a dh'obair"
+      ],
+      "unpaid-carer": [
+        "Neach-cùraim gun phàigheadh",
+        "tha thu a' toirt cùram do chuideigin"
+      ],
+      "pregnant-or-new-parent": [
+        "Trom no nad phàrant ùr",
+        "tha thu trom no nad phàrant ùr"
+      ],
+      "starting-or-growing": [
+        "A' tòiseachadh no a' fàs gnothachais",
+        "tha thu a' tòiseachadh no a' fàs gnothachais"
+      ],
+      "looking-for-funding": [
+        "A' lorg maoineachaidh",
+        "tha thu a' lorg maoineachaidh"
+      ],
+      "changing-career": [
+        "Ag atharrachadh dreuchd",
+        "tha thu ag atharrachadh dreuchd"
+      ],
+      "recently-graduated": [
+        "Air ceumnachadh o chionn ghoirid",
+        "cheumnaich thu o chionn ghoirid"
+      ],
+      "new-to-scotland": [
+        "Ùr ann an Alba",
+        "tha thu ùr ann an Alba"
+      ],
+      "rural-or-island": [
+        "Coimhearsnachd dhùthchail no eileanach",
+        "tha thu ann an coimhearsnachd dhùthchail no eileanach"
+      ],
+      "financial-difficulty": [
+        "A' strì le airgead",
+        "tha airgead gann an-dràsta"
+      ],
+      "looking-after-my-health": [
+        "A' coimhead às dèidh mo shlàinte",
+        "tha thu a' coimhead às dèidh do shlàinte"
+      ],
+      "prefer-not-to-say": [
+        "Chan eil mi airson innse",
+        null
+      ]
+    }
+  },
+  "sco": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "Career, Confidence & Employability",
+        "Employment pathweys, warkforce participation, professional growthe"
+      ],
+      "enterprise-business-growth": [
+        "Enterprise & Business Growthe",
+        "Growthe, scalin, enterprise, procurement"
+      ],
+      "funding-finance": [
+        "Fundin & Siller",
+        "Access tae capital, financial resilience"
+      ],
+      "education-pathways": [
+        "Education & Pathweys",
+        "Lairnin, capability development, lifelang skills"
+      ],
+      "health-wellbeing": [
+        "Health & Wellbein",
+        "Sustainable participation throu health and wellbein"
+      ],
+      "business-infrastructure-professional-services": [
+        "Business Infrastructure & Professional Services",
+        "Practical services tae stert, rin and growe"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "Weemen's Voice, Leadership & Civic Influence",
+        "Representation, leadership, civic participation"
+      ],
+      "visibility-marketplace-opportunities": [
+        "Visibility, Mercat & Opportunities",
+        "Reachin audiences, makkin opportunities"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "Gaun back tae wark",
+        "ye're gaun back tae wark"
+      ],
+      "unpaid-carer": [
+        "Unpeyed carer",
+        "ye luik efter somebody"
+      ],
+      "pregnant-or-new-parent": [
+        "Expectin or a new parent",
+        "ye're expectin or a new parent"
+      ],
+      "starting-or-growing": [
+        "Stertin or growin a business",
+        "ye're stertin or growin a business"
+      ],
+      "looking-for-funding": [
+        "Luikin for fundin",
+        "ye're luikin for fundin"
+      ],
+      "changing-career": [
+        "Chyngin career",
+        "ye're chyngin career"
+      ],
+      "recently-graduated": [
+        "Lately graduatit",
+        "ye lately graduatit"
+      ],
+      "new-to-scotland": [
+        "New tae Scotland",
+        "ye're new tae Scotland"
+      ],
+      "rural-or-island": [
+        "Kintra or island community",
+        "ye're in a kintra or island community"
+      ],
+      "financial-difficulty": [
+        "Siller is ticht",
+        "siller's ticht the nou"
+      ],
+      "looking-after-my-health": [
+        "Luikin efter ma health",
+        "ye're luikin efter yer health"
+      ],
+      "prefer-not-to-say": [
+        "Raither no say",
+        null
+      ]
+    }
+  },
+  "pl": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "Kariera, pewność siebie i zatrudnienie",
+        "Ścieżki zawodowe, udział w rynku pracy, rozwój zawodowy"
+      ],
+      "enterprise-business-growth": [
+        "Przedsiębiorczość i rozwój firmy",
+        "Wzrost, skalowanie, przedsiębiorczość, zamówienia"
+      ],
+      "funding-finance": [
+        "Finansowanie i pieniądze",
+        "Dostęp do kapitału, odporność finansowa"
+      ],
+      "education-pathways": [
+        "Edukacja i ścieżki rozwoju",
+        "Nauka, rozwijanie umiejętności, uczenie się przez całe życie"
+      ],
+      "health-wellbeing": [
+        "Zdrowie i dobre samopoczucie",
+        "Trwały udział dzięki zdrowiu i dobremu samopoczuciu"
+      ],
+      "business-infrastructure-professional-services": [
+        "Zaplecze firmy i usługi profesjonalne",
+        "Praktyczne usługi na start, prowadzenie i rozwój"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "Głos kobiet, przywództwo i wpływ obywatelski",
+        "Reprezentacja, przywództwo, udział obywatelski"
+      ],
+      "visibility-marketplace-opportunities": [
+        "Widoczność, rynek i okazje",
+        "Docieranie do odbiorców, tworzenie okazji"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "Powrót do pracy",
+        "wracasz do pracy"
+      ],
+      "unpaid-carer": [
+        "Nieodpłatna opiekunka",
+        "opiekujesz się kimś bliskim"
+      ],
+      "pregnant-or-new-parent": [
+        "W ciąży lub świeżo upieczona mama",
+        "jesteś w ciąży albo właśnie zostałaś mamą"
+      ],
+      "starting-or-growing": [
+        "Zakładanie lub rozwijanie firmy",
+        "zakładasz albo rozwijasz firmę"
+      ],
+      "looking-for-funding": [
+        "Szukanie finansowania",
+        "szukasz finansowania"
+      ],
+      "changing-career": [
+        "Zmiana zawodu",
+        "zmieniasz zawód"
+      ],
+      "recently-graduated": [
+        "Niedawno po studiach",
+        "niedawno skończyłaś studia"
+      ],
+      "new-to-scotland": [
+        "Niedawno w Szkocji",
+        "jesteś nowa w Szkocji"
+      ],
+      "rural-or-island": [
+        "Wieś lub wyspa",
+        "mieszkasz na wsi albo na wyspie"
+      ],
+      "financial-difficulty": [
+        "Trudna sytuacja finansowa",
+        "teraz brakuje pieniędzy"
+      ],
+      "looking-after-my-health": [
+        "Dbanie o zdrowie",
+        "dbasz o swoje zdrowie"
+      ],
+      "prefer-not-to-say": [
+        "Wolę nie mówić",
+        null
+      ]
+    }
+  },
+  "uk": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "Кар'єра, впевненість і працевлаштування",
+        "Професійні шляхи, участь у ринку праці, професійне зростання"
+      ],
+      "enterprise-business-growth": [
+        "Підприємництво та зростання справи",
+        "Зростання, масштабування, підприємництво, закупівлі"
+      ],
+      "funding-finance": [
+        "Фінансування та гроші",
+        "Доступ до капіталу, фінансова стійкість"
+      ],
+      "education-pathways": [
+        "Освіта та шляхи навчання",
+        "Навчання, розвиток умінь, освіта впродовж життя"
+      ],
+      "health-wellbeing": [
+        "Здоров'я та добробут",
+        "Стала участь завдяки здоров'ю та добробуту"
+      ],
+      "business-infrastructure-professional-services": [
+        "Ділова інфраструктура та професійні послуги",
+        "Практичні послуги для початку, ведення та зростання"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "Голос жінок, лідерство та громадський вплив",
+        "Представництво, лідерство, громадська участь"
+      ],
+      "visibility-marketplace-opportunities": [
+        "Видимість, ринок і можливості",
+        "Охоплення аудиторії, створення можливостей"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "Повернення до роботи",
+        "ви повертаєтеся до роботи"
+      ],
+      "unpaid-carer": [
+        "Неоплачувана доглядальниця",
+        "ви доглядаєте за близькою людиною"
+      ],
+      "pregnant-or-new-parent": [
+        "Вагітна або щойно стала мамою",
+        "ви вагітні або щойно стали мамою"
+      ],
+      "starting-or-growing": [
+        "Відкриття чи розвиток справи",
+        "ви відкриваєте або розвиваєте свою справу"
+      ],
+      "looking-for-funding": [
+        "Пошук фінансування",
+        "ви шукаєте фінансування"
+      ],
+      "changing-career": [
+        "Зміна професії",
+        "ви змінюєте професію"
+      ],
+      "recently-graduated": [
+        "Нещодавно закінчила навчання",
+        "ви нещодавно закінчили навчання"
+      ],
+      "new-to-scotland": [
+        "Нещодавно в Шотландії",
+        "ви нещодавно в Шотландії"
+      ],
+      "rural-or-island": [
+        "Сільська чи острівна громада",
+        "ви живете в сільській або острівній громаді"
+      ],
+      "financial-difficulty": [
+        "Фінансові труднощі",
+        "зараз бракує грошей"
+      ],
+      "looking-after-my-health": [
+        "Турбота про здоров'я",
+        "ви дбаєте про своє здоров'я"
+      ],
+      "prefer-not-to-say": [
+        "Волію не казати",
+        null
+      ]
+    }
+  },
+  "ar": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "المسار المهني والثقة وفرص العمل",
+        "مسارات التوظيف، المشاركة في سوق العمل، النمو المهني"
+      ],
+      "enterprise-business-growth": [
+        "ريادة الأعمال ونمو المشروع",
+        "النمو، التوسّع، ريادة الأعمال، المشتريات"
+      ],
+      "funding-finance": [
+        "التمويل والمال",
+        "الوصول إلى رأس المال، المتانة المالية"
+      ],
+      "education-pathways": [
+        "التعليم ومسارات التعلّم",
+        "التعلّم، تنمية القدرات، مهارات مدى الحياة"
+      ],
+      "health-wellbeing": [
+        "الصحة والعافية",
+        "مشاركة مستدامة من خلال الصحة والعافية"
+      ],
+      "business-infrastructure-professional-services": [
+        "البنية التشغيلية والخدمات المهنية",
+        "خدمات عملية للبدء والتشغيل والنمو"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "صوت النساء والقيادة والتأثير المدني",
+        "التمثيل، القيادة، المشاركة المدنية"
+      ],
+      "visibility-marketplace-opportunities": [
+        "الظهور والسوق والفرص",
+        "الوصول إلى الجمهور، صناعة الفرص"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "العودة إلى العمل",
+        "أنكِ تعودين إلى العمل"
+      ],
+      "unpaid-carer": [
+        "مقدّمة رعاية بلا أجر",
+        "أنكِ ترعين شخصاً"
+      ],
+      "pregnant-or-new-parent": [
+        "حامل أو أم حديثة",
+        "أنكِ حامل أو أم حديثة"
+      ],
+      "starting-or-growing": [
+        "بدء مشروع أو تنميته",
+        "أنكِ تبدئين مشروعاً أو تنمّينه"
+      ],
+      "looking-for-funding": [
+        "البحث عن تمويل",
+        "أنكِ تبحثين عن تمويل"
+      ],
+      "changing-career": [
+        "تغيير المسار المهني",
+        "أنكِ تغيّرين مسارك المهني"
+      ],
+      "recently-graduated": [
+        "تخرّجت حديثاً",
+        "أنكِ تخرّجتِ حديثاً"
+      ],
+      "new-to-scotland": [
+        "جديدة في اسكتلندا",
+        "أنكِ جديدة في اسكتلندا"
+      ],
+      "rural-or-island": [
+        "مجتمع ريفي أو جزري",
+        "أنكِ في مجتمع ريفي أو جزري"
+      ],
+      "financial-difficulty": [
+        "ضيق مالي",
+        "أن المال ضيّق هذه الأيام"
+      ],
+      "looking-after-my-health": [
+        "الاعتناء بصحتي",
+        "أنكِ تعتنين بصحتك"
+      ],
+      "prefer-not-to-say": [
+        "أفضّل عدم القول",
+        null
+      ]
+    }
+  },
+  "ur": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "کیریئر، اعتماد اور روزگار",
+        "روزگار کے راستے، لیبر مارکیٹ میں شرکت، پیشہ ورانہ ترقی"
+      ],
+      "enterprise-business-growth": [
+        "کاروبار اور اس کی ترقی",
+        "ترقی، وسعت، کاروباری پہل، ٹھیکے"
+      ],
+      "funding-finance": [
+        "سرمایہ اور مالیات",
+        "سرمائے تک رسائی، مالی مضبوطی"
+      ],
+      "education-pathways": [
+        "تعلیم اور سیکھنے کے راستے",
+        "سیکھنا، صلاحیتوں کی ترقی، تاحیات مہارتیں"
+      ],
+      "health-wellbeing": [
+        "صحت اور بہبود",
+        "صحت اور بہبود کے ذریعے پائیدار شرکت"
+      ],
+      "business-infrastructure-professional-services": [
+        "کاروباری ڈھانچہ اور پیشہ ورانہ خدمات",
+        "شروع کرنے، چلانے اور بڑھانے کی عملی خدمات"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "خواتین کی آواز، قیادت اور شہری اثر",
+        "نمائندگی، قیادت، شہری شرکت"
+      ],
+      "visibility-marketplace-opportunities": [
+        "نمایاں ہونا، منڈی اور مواقع",
+        "سامعین تک پہنچنا، مواقع پیدا کرنا"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "کام پر واپسی",
+        "آپ کام پر واپس آ رہی ہیں"
+      ],
+      "unpaid-carer": [
+        "بلامعاوضہ دیکھ بھال کرنے والی",
+        "آپ کسی کی دیکھ بھال کرتی ہیں"
+      ],
+      "pregnant-or-new-parent": [
+        "حاملہ یا نئی ماں",
+        "آپ حاملہ ہیں یا نئی ماں ہیں"
+      ],
+      "starting-or-growing": [
+        "کاروبار شروع کرنا یا بڑھانا",
+        "آپ کاروبار شروع کر رہی ہیں یا بڑھا رہی ہیں"
+      ],
+      "looking-for-funding": [
+        "سرمایہ تلاش کرنا",
+        "آپ سرمایہ تلاش کر رہی ہیں"
+      ],
+      "changing-career": [
+        "شعبہ بدلنا",
+        "آپ شعبہ بدل رہی ہیں"
+      ],
+      "recently-graduated": [
+        "حال ہی میں فارغ التحصیل",
+        "آپ نے حال ہی میں تعلیم مکمل کی ہے"
+      ],
+      "new-to-scotland": [
+        "سکاٹ لینڈ میں نئی",
+        "آپ سکاٹ لینڈ میں نئی ہیں"
+      ],
+      "rural-or-island": [
+        "دیہی یا جزیرے کی آبادی",
+        "آپ کسی دیہی یا جزیرے کی آبادی میں ہیں"
+      ],
+      "financial-difficulty": [
+        "مالی مشکل",
+        "اِن دنوں پیسوں کی تنگی ہے"
+      ],
+      "looking-after-my-health": [
+        "اپنی صحت کا خیال",
+        "آپ اپنی صحت کا خیال رکھ رہی ہیں"
+      ],
+      "prefer-not-to-say": [
+        "بتانا نہیں چاہتی",
+        null
+      ]
+    }
+  },
+  "pa": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "ਕਿੱਤਾ, ਭਰੋਸਾ ਤੇ ਰੁਜ਼ਗਾਰ",
+        "ਰੁਜ਼ਗਾਰ ਦੇ ਰਾਹ, ਕਿਰਤ ਸ਼ਕਤੀ ਵਿੱਚ ਹਿੱਸੇਦਾਰੀ, ਪੇਸ਼ੇਵਰ ਵਿਕਾਸ"
+      ],
+      "enterprise-business-growth": [
+        "ਉੱਦਮ ਤੇ ਕਾਰੋਬਾਰੀ ਵਾਧਾ",
+        "ਵਾਧਾ, ਵਿਸਤਾਰ, ਉੱਦਮਤਾ, ਠੇਕੇ"
+      ],
+      "funding-finance": [
+        "ਪੈਸਾ ਤੇ ਵਿੱਤ",
+        "ਪੂੰਜੀ ਤੱਕ ਪਹੁੰਚ, ਵਿੱਤੀ ਮਜ਼ਬੂਤੀ"
+      ],
+      "education-pathways": [
+        "ਸਿੱਖਿਆ ਤੇ ਸਿੱਖਣ ਦੇ ਰਾਹ",
+        "ਸਿੱਖਣਾ, ਸਮਰੱਥਾ ਦਾ ਵਿਕਾਸ, ਉਮਰ ਭਰ ਦੇ ਹੁਨਰ"
+      ],
+      "health-wellbeing": [
+        "ਸਿਹਤ ਤੇ ਤੰਦਰੁਸਤੀ",
+        "ਸਿਹਤ ਤੇ ਤੰਦਰੁਸਤੀ ਰਾਹੀਂ ਟਿਕਾਊ ਹਿੱਸੇਦਾਰੀ"
+      ],
+      "business-infrastructure-professional-services": [
+        "ਕਾਰੋਬਾਰੀ ਢਾਂਚਾ ਤੇ ਪੇਸ਼ੇਵਰ ਸੇਵਾਵਾਂ",
+        "ਸ਼ੁਰੂ ਕਰਨ, ਚਲਾਉਣ ਤੇ ਵਧਾਉਣ ਦੀਆਂ ਅਮਲੀ ਸੇਵਾਵਾਂ"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "ਔਰਤਾਂ ਦੀ ਆਵਾਜ਼, ਅਗਵਾਈ ਤੇ ਨਾਗਰਿਕ ਅਸਰ",
+        "ਨੁਮਾਇੰਦਗੀ, ਅਗਵਾਈ, ਨਾਗਰਿਕ ਹਿੱਸੇਦਾਰੀ"
+      ],
+      "visibility-marketplace-opportunities": [
+        "ਦਿੱਖ, ਮੰਡੀ ਤੇ ਮੌਕੇ",
+        "ਲੋਕਾਂ ਤੱਕ ਪਹੁੰਚਣਾ, ਮੌਕੇ ਬਣਾਉਣਾ"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "ਕੰਮ ਤੇ ਵਾਪਸੀ",
+        "ਤੁਸੀਂ ਕੰਮ ਤੇ ਵਾਪਸ ਆ ਰਹੇ ਹੋ"
+      ],
+      "unpaid-carer": [
+        "ਬਿਨਾਂ ਤਨਖ਼ਾਹ ਸੰਭਾਲ ਕਰਨ ਵਾਲੀ",
+        "ਤੁਸੀਂ ਕਿਸੇ ਦੀ ਸੰਭਾਲ ਕਰਦੇ ਹੋ"
+      ],
+      "pregnant-or-new-parent": [
+        "ਗਰਭਵਤੀ ਜਾਂ ਨਵੀਂ ਮਾਂ",
+        "ਤੁਸੀਂ ਗਰਭਵਤੀ ਹੋ ਜਾਂ ਨਵੀਂ ਮਾਂ ਹੋ"
+      ],
+      "starting-or-growing": [
+        "ਕਾਰੋਬਾਰ ਸ਼ੁਰੂ ਕਰਨਾ ਜਾਂ ਵਧਾਉਣਾ",
+        "ਤੁਸੀਂ ਕਾਰੋਬਾਰ ਸ਼ੁਰੂ ਕਰ ਰਹੇ ਹੋ ਜਾਂ ਵਧਾ ਰਹੇ ਹੋ"
+      ],
+      "looking-for-funding": [
+        "ਪੈਸਾ ਲੱਭਣਾ",
+        "ਤੁਸੀਂ ਪੈਸਾ ਲੱਭ ਰਹੇ ਹੋ"
+      ],
+      "changing-career": [
+        "ਕਿੱਤਾ ਬਦਲਣਾ",
+        "ਤੁਸੀਂ ਕਿੱਤਾ ਬਦਲ ਰਹੇ ਹੋ"
+      ],
+      "recently-graduated": [
+        "ਹਾਲ ਹੀ ਵਿੱਚ ਪੜ੍ਹਾਈ ਮੁਕਾਈ",
+        "ਤੁਸੀਂ ਹਾਲ ਹੀ ਵਿੱਚ ਪੜ੍ਹਾਈ ਮੁਕਾਈ ਹੈ"
+      ],
+      "new-to-scotland": [
+        "ਸਕਾਟਲੈਂਡ ਵਿੱਚ ਨਵੀਂ",
+        "ਤੁਸੀਂ ਸਕਾਟਲੈਂਡ ਵਿੱਚ ਨਵੇਂ ਹੋ"
+      ],
+      "rural-or-island": [
+        "ਪੇਂਡੂ ਜਾਂ ਟਾਪੂ ਭਾਈਚਾਰਾ",
+        "ਤੁਸੀਂ ਪੇਂਡੂ ਜਾਂ ਟਾਪੂ ਭਾਈਚਾਰੇ ਵਿੱਚ ਹੋ"
+      ],
+      "financial-difficulty": [
+        "ਪੈਸੇ ਦੀ ਤੰਗੀ",
+        "ਇਸ ਵੇਲੇ ਪੈਸੇ ਦੀ ਤੰਗੀ ਹੈ"
+      ],
+      "looking-after-my-health": [
+        "ਆਪਣੀ ਸਿਹਤ ਦਾ ਖ਼ਿਆਲ",
+        "ਤੁਸੀਂ ਆਪਣੀ ਸਿਹਤ ਦਾ ਖ਼ਿਆਲ ਰੱਖ ਰਹੇ ਹੋ"
+      ],
+      "prefer-not-to-say": [
+        "ਦੱਸਣਾ ਨਹੀਂ ਚਾਹੁੰਦੀ",
+        null
+      ]
+    }
+  },
+  "zh": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "职业、自信与就业",
+        "就业路径、劳动力参与、职业成长"
+      ],
+      "enterprise-business-growth": [
+        "创业与业务成长",
+        "成长、扩张、创业、采购"
+      ],
+      "funding-finance": [
+        "资金与财务",
+        "获得资金、财务韧性"
+      ],
+      "education-pathways": [
+        "教育与学习路径",
+        "学习、能力培养、终身技能"
+      ],
+      "health-wellbeing": [
+        "健康与身心安适",
+        "透过健康与身心安适实现持续参与"
+      ],
+      "business-infrastructure-professional-services": [
+        "经营支持与专业服务",
+        "创办、运营与成长所需的实用服务"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "女性发声、领导力与公共影响",
+        "代表性、领导力、公共参与"
+      ],
+      "visibility-marketplace-opportunities": [
+        "曝光、市场与机会",
+        "触达受众、创造机会"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "重返职场",
+        "你正在重返职场"
+      ],
+      "unpaid-carer": [
+        "无偿照顾者",
+        "你在照顾家人"
+      ],
+      "pregnant-or-new-parent": [
+        "怀孕或刚当妈妈",
+        "你怀孕了或刚当妈妈"
+      ],
+      "starting-or-growing": [
+        "创业或扩大生意",
+        "你正在创业或扩大生意"
+      ],
+      "looking-for-funding": [
+        "寻找资金",
+        "你在寻找资金"
+      ],
+      "changing-career": [
+        "转行",
+        "你正在转行"
+      ],
+      "recently-graduated": [
+        "刚毕业",
+        "你刚毕业"
+      ],
+      "new-to-scotland": [
+        "初到苏格兰",
+        "你刚到苏格兰"
+      ],
+      "rural-or-island": [
+        "乡村或海岛社区",
+        "你住在乡村或海岛社区"
+      ],
+      "financial-difficulty": [
+        "经济困难",
+        "你眼下手头紧"
+      ],
+      "looking-after-my-health": [
+        "照顾自己的健康",
+        "你在照顾自己的健康"
+      ],
+      "prefer-not-to-say": [
+        "不想说",
+        null
+      ]
+    }
+  },
+  "ro": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "Carieră, încredere și angajabilitate",
+        "Trasee profesionale, participare pe piața muncii, creștere profesională"
+      ],
+      "enterprise-business-growth": [
+        "Antreprenoriat și creșterea afacerii",
+        "Creștere, scalare, antreprenoriat, achiziții"
+      ],
+      "funding-finance": [
+        "Finanțare și bani",
+        "Acces la capital, reziliență financiară"
+      ],
+      "education-pathways": [
+        "Educație și trasee de învățare",
+        "Învățare, dezvoltarea competențelor, învățare pe tot parcursul vieții"
+      ],
+      "health-wellbeing": [
+        "Sănătate și stare de bine",
+        "Participare durabilă prin sănătate și stare de bine"
+      ],
+      "business-infrastructure-professional-services": [
+        "Infrastructură de afaceri și servicii profesionale",
+        "Servicii practice pentru a porni, a opera și a crește"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "Vocea femeilor, leadership și influență civică",
+        "Reprezentare, leadership, participare civică"
+      ],
+      "visibility-marketplace-opportunities": [
+        "Vizibilitate, piață și oportunități",
+        "Ajungerea la public, crearea de oportunități"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "Revenire la muncă",
+        "te întorci la muncă"
+      ],
+      "unpaid-carer": [
+        "Îngrijitoare neplătită",
+        "ai grijă de cineva"
+      ],
+      "pregnant-or-new-parent": [
+        "Însărcinată sau proaspătă mamă",
+        "ești însărcinată sau proaspătă mamă"
+      ],
+      "starting-or-growing": [
+        "Pornirea sau creșterea unei afaceri",
+        "pornești sau îți crești afacerea"
+      ],
+      "looking-for-funding": [
+        "În căutare de finanțare",
+        "cauți finanțare"
+      ],
+      "changing-career": [
+        "Schimbare de carieră",
+        "îți schimbi cariera"
+      ],
+      "recently-graduated": [
+        "Recent absolventă",
+        "ai absolvit de curând"
+      ],
+      "new-to-scotland": [
+        "Nou-venită în Scoția",
+        "ești nou-venită în Scoția"
+      ],
+      "rural-or-island": [
+        "Comunitate rurală sau insulară",
+        "ești într-o comunitate rurală sau insulară"
+      ],
+      "financial-difficulty": [
+        "Dificultăți financiare",
+        "banii sunt puțini chiar acum"
+      ],
+      "looking-after-my-health": [
+        "Grija pentru sănătate",
+        "ai grijă de sănătatea ta"
+      ],
+      "prefer-not-to-say": [
+        "Prefer să nu spun",
+        null
+      ]
+    }
+  },
+  "so": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "Xirfad, Kalsooni iyo Shaqo-helid",
+        "Jidadka shaqada, ka qaybgalka shaqaalaha, koboca xirfadeed"
+      ],
+      "enterprise-business-growth": [
+        "Ganacsi iyo Kobaca",
+        "Koboc, ballaarin, hal-abuur ganacsi, qandaraasyo"
+      ],
+      "funding-finance": [
+        "Maalgelin iyo Lacag",
+        "Helitaanka raasumaal, adkaysi dhaqaale"
+      ],
+      "education-pathways": [
+        "Waxbarasho iyo Jidadka Barashada",
+        "Barasho, horumarinta kartida, xirfado nolosha oo dhan"
+      ],
+      "health-wellbeing": [
+        "Caafimaad iyo Fayoobi",
+        "Ka qaybgal waarta oo caafimaad iyo fayoobi ku salaysan"
+      ],
+      "business-infrastructure-professional-services": [
+        "Kaabayaasha Ganacsiga iyo Adeegyada Xirfadlayaasha",
+        "Adeegyo wax ku ool ah oo lagu bilaabo, loo maamulo loona koriyo"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "Codka Haweenka, Hoggaaminta iyo Saamaynta Bulsheed",
+        "Matalaad, hoggaamin, ka qaybgal bulsheed"
+      ],
+      "visibility-marketplace-opportunities": [
+        "Muuqasho, Suuq iyo Fursado",
+        "Gaadhista dhagaystayaasha, abuurista fursado"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "Ku noqoshada shaqada",
+        "aad ku soo laabanayso shaqada"
+      ],
+      "unpaid-carer": [
+        "Daryeele aan mushahar lahayn",
+        "aad qof daryeesho"
+      ],
+      "pregnant-or-new-parent": [
+        "Uur leh ama hooyo cusub",
+        "aad uur leedahay ama hooyo cusub tahay"
+      ],
+      "starting-or-growing": [
+        "Bilaabid ama kobcin ganacsi",
+        "aad ganacsi bilaabayso ama kobcinayso"
+      ],
+      "looking-for-funding": [
+        "Raadinta maalgelin",
+        "aad maalgelin raadinayso"
+      ],
+      "changing-career": [
+        "Beddelidda xirfadda",
+        "aad xirfaddaada beddelayso"
+      ],
+      "recently-graduated": [
+        "Dhawaan qalin-jabisay",
+        "aad dhawaan qalin-jabisay"
+      ],
+      "new-to-scotland": [
+        "Cusub Scotland",
+        "aad cusub tahay Scotland"
+      ],
+      "rural-or-island": [
+        "Bulsho miyi ama jasiirad ah",
+        "aad ku nooshahay bulsho miyi ama jasiirad ah"
+      ],
+      "financial-difficulty": [
+        "Dhibaato dhaqaale",
+        "lacagtu hadda yar tahay"
+      ],
+      "looking-after-my-health": [
+        "Daryeelka caafimaadkayga",
+        "aad caafimaadkaaga daryeesho"
+      ],
+      "prefer-not-to-say": [
+        "Doorbidayaa inaanan sheegin",
+        null
+      ]
+    }
+  },
+  "ti": {
+    "access_zone": {
+      "career-confidence-employability": [
+        "ሞያ፡ ርእሰ ምትእምማንን ስራሕ ምርካብን",
+        "መንገድታት ስራሕ፡ ኣብ ዓለም ስራሕ ምስታፍ፡ ሞያዊ ዕብየት"
+      ],
+      "enterprise-business-growth": [
+        "ንግድን ዕብየት ንግድን",
+        "ዕብየት፡ ምስፋሕ፡ ንግዳዊ ተበግሶ፡ ዕድላት ዕድጊ"
+      ],
+      "funding-finance": [
+        "ገንዘብን ፋይናንስን",
+        "ናብ ካፒታል ምብጻሕ፡ ፋይናንሳዊ ጽንዓት"
+      ],
+      "education-pathways": [
+        "ትምህርትን መንገድታት ምምሃርን",
+        "ምምሃር፡ ዓቕሚ ምዕባይ፡ ዕድመ ልክዕ ክእለታት"
+      ],
+      "health-wellbeing": [
+        "ጥዕናን ድሕንነትን",
+        "ብጥዕናን ድሕንነትን ዝመጽእ ቀጻሊ ተሳትፎ"
+      ],
+      "business-infrastructure-professional-services": [
+        "ትሕተ ቕርጺ ንግድን ሞያዊ ኣገልግሎታትን",
+        "ንምጅማር፡ ንምምራሕን ንምዕባይን ዝሕግዙ ግብራዊ ኣገልግሎታት"
+      ],
+      "womens-voice-leadership-civic-influence": [
+        "ድምጺ ደቂ ኣንስትዮ፡ መሪሕነትን ሲቪላዊ ጽልዋን",
+        "ውክልና፡ መሪሕነት፡ ሲቪላዊ ተሳትፎ"
+      ],
+      "visibility-marketplace-opportunities": [
+        "ተራእይነት፡ ዕዳጋን ዕድላትን",
+        "ናብ ተዓዘብቲ ምብጻሕ፡ ዕድላት ምፍጣር"
+      ]
+    },
+    "situation": {
+      "returning-to-work": [
+        "ናብ ስራሕ ምምላስ",
+        "ናብ ስራሕ ትምለሲ ከም ዘለኺ"
+      ],
+      "unpaid-carer": [
+        "ብዘይ ክፍሊት ተኸናኻኒት",
+        "ንሓደ ሰብ ከም እትከናኸኒ"
+      ],
+      "pregnant-or-new-parent": [
+        "ጥንስቲ ወይ ሓዳስ ኣደ",
+        "ጥንስቲ ወይ ሓዳስ ኣደ ከም ዝኾንኪ"
+      ],
+      "starting-or-growing": [
+        "ንግዲ ምጅማር ወይ ምዕባይ",
+        "ንግዲ ትጅምሪ ወይ ተዕቢ ከም ዘለኺ"
+      ],
+      "looking-for-funding": [
+        "ገንዘብ ምድላይ",
+        "ገንዘብ ትደልዪ ከም ዘለኺ"
+      ],
+      "changing-career": [
+        "ሞያ ምቕያር",
+        "ሞያኺ ትቕይሪ ከም ዘለኺ"
+      ],
+      "recently-graduated": [
+        "ኣብ ቀረባ እዋን ዝተመረቐት",
+        "ኣብ ቀረባ እዋን ከም ዝተመረቕኪ"
+      ],
+      "new-to-scotland": [
+        "ናብ ስኮትላንድ ሓዳስ",
+        "ናብ ስኮትላንድ ሓዳስ ከም ዝኾንኪ"
+      ],
+      "rural-or-island": [
+        "ናይ ገጠር ወይ ደሴት ሕብረተሰብ",
+        "ኣብ ናይ ገጠር ወይ ደሴት ሕብረተሰብ ከም ዘለኺ"
+      ],
+      "financial-difficulty": [
+        "ናይ ገንዘብ ጸገም",
+        "ሕጂ ገንዘብ ከም ዝጸበበ"
+      ],
+      "looking-after-my-health": [
+        "ጥዕናይ ምክንኻን",
+        "ጥዕናኺ ትከናኸኒ ከም ዘለኺ"
+      ],
+      "prefer-not-to-say": [
+        "ክዛረብ ኣይደልን",
+        null
+      ]
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import "server-only";
+import { getVocabulary, translated } from "@/lib/data/vocabulary";
 import { createClient } from "@/lib/supabase/server";
 
 /**
@@ -84,13 +85,22 @@ function logoUrl(
 export async function getZonesWithCounts(): Promise<Zone[]> {
   const supabase = await createClient();
 
-  const { data: zones, error } = await supabase
-    .from("access_zones")
-    .select("id, slug, name, focus")
-    .is("retired_at", null)
-    .order("sort_order");
+  const [{ data: zones, error }, vocabulary] = await Promise.all([
+    supabase
+      .from("access_zones")
+      .select("id, slug, name, focus")
+      .is("retired_at", null)
+      .order("sort_order"),
+    getVocabulary(),
+  ]);
 
   if (error) throw error;
+
+  const named = (zones ?? []).map((zone) => ({
+    ...zone,
+    name: translated(vocabulary, "access_zone", zone.slug, "name", zone.name),
+    focus: translated(vocabulary, "access_zone", zone.slug, "focus", zone.focus),
+  }));
 
   const { data: memberships, error: membershipError } = await supabase
     .from("public_organisation_cards")
@@ -110,7 +120,7 @@ export async function getZonesWithCounts(): Promise<Zone[]> {
     counts.set(row.zone_id, seen);
   }
 
-  return (zones ?? []).map((zone) => ({
+  return named.map((zone) => ({
     ...zone,
     organisationCount: counts.get(zone.id)?.size ?? 0,
   }));
@@ -119,15 +129,21 @@ export async function getZonesWithCounts(): Promise<Zone[]> {
 export async function getZone(slug: string): Promise<Zone | null> {
   const supabase = await createClient();
 
-  const { data, error } = await supabase
-    .from("access_zones")
-    .select("id, slug, name, focus")
-    .eq("slug", slug)
-    .is("retired_at", null)
-    .maybeSingle();
+  const [{ data, error }, vocabulary] = await Promise.all([
+    supabase
+      .from("access_zones")
+      .select("id, slug, name, focus")
+      .eq("slug", slug)
+      .is("retired_at", null)
+      .maybeSingle(),
+    getVocabulary(),
+  ]);
 
   if (error) throw error;
   if (!data) return null;
+
+  data.name = translated(vocabulary, "access_zone", data.slug, "name", data.name);
+  data.focus = translated(vocabulary, "access_zone", data.slug, "focus", data.focus);
 
   const { count, error: countError } = await supabase
     .from("public_organisation_cards")
@@ -253,17 +269,20 @@ export async function getZonesForOrganisation(
   const ids = (data ?? []).map((row) => row.zone_id);
   if (ids.length === 0) return [];
 
-  const { data: zones } = await supabase
-    .from("access_zones")
-    .select("id, name, slug")
-    .in("id", ids)
-    .is("retired_at", null)
-    .order("sort_order");
+  const [{ data: zones }, vocabulary] = await Promise.all([
+    supabase
+      .from("access_zones")
+      .select("id, name, slug")
+      .in("id", ids)
+      .is("retired_at", null)
+      .order("sort_order"),
+    getVocabulary(),
+  ]);
 
   const roles = new Map((data ?? []).map((row) => [row.zone_id, row.role]));
 
   return (zones ?? []).map((zone) => ({
-    name: zone.name,
+    name: translated(vocabulary, "access_zone", zone.slug, "name", zone.name),
     slug: zone.slug,
     isPrimary: roles.get(zone.id) === "primary",
   }));

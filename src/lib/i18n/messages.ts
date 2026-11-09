@@ -468,7 +468,15 @@ export type MessageKey =
   | "orgpage.whereYouSit"
   | "orgpage.zonesBody"
   | "legal.englishApplies"
-  | "legal.askInYourLanguage";
+  | "legal.askInYourLanguage"
+  | "reason.youToldUs"
+  | "reason.and"
+  | "reason.youAskedAbout"
+  | "reason.runsIn"
+  | "reason.isOnline"
+  | "reason.acrossScotland"
+  | "reason.closest"
+  | "reason.clauseJoin";
 
 type Catalogue = Partial<Record<MessageKey, string>>;
 
@@ -936,6 +944,16 @@ const en: Record<MessageKey, string> = {
   "legal.englishApplies":
     "The headings on this page are in your language. The wording itself is in English, and the English is the version that applies.",
   "legal.askInYourLanguage": "Ask us about any part of it and we will answer.",
+
+  "reason.youToldUs": "you told us #",
+  "reason.and": "and",
+  "reason.youAskedAbout": "you asked about #",
+  "reason.runsIn": "this runs in #",
+  "reason.isOnline": "this one is online, so where you are doesn't matter",
+  "reason.acrossScotland": "this is open across Scotland",
+  "reason.closest":
+    "it's one of the closest things we have to what you described.",
+  "reason.clauseJoin": ", and ",
 };
 
 const gd: Catalogue = {
@@ -1424,6 +1442,17 @@ const gd: Catalogue = {
     "Tha na ceann-sgrìobhaidhean air an duilleag seo nad chànan fhèin. Tha na faclan fhèin sa Bheurla, agus is e an tionndadh Beurla a tha an sàs.",
   "legal.askInYourLanguage":
     "Faighnich dhuinn mu phàirt sam bith dheth agus freagraidh sinn.",
+
+  "reason.youToldUs": "dh'innis thu dhuinn #",
+  "reason.and": "agus",
+  "reason.youAskedAbout": "dh'fhaighnich thu mu #",
+  "reason.runsIn": "tha seo a' ruith ann an #",
+  "reason.isOnline":
+    "tha am fear seo air-loidhne, agus mar sin chan eil e gu diofar càite a bheil thu",
+  "reason.acrossScotland": "tha seo fosgailte air feadh Alba",
+  "reason.closest":
+    "is e seo fear de na rudan as fhaisge a th' againn air na mhìnich thu.",
+  "reason.clauseJoin": ", agus ",
 };
 
 const sco: Catalogue = {
@@ -1889,6 +1918,15 @@ const sco: Catalogue = {
   "legal.englishApplies":
     "The heidins on this page are in yer ain language. The wirdin itsel is in English, and the English is the version that applies.",
   "legal.askInYourLanguage": "Speir at us aboot ony pairt o it and we'll answer.",
+
+  "reason.youToldUs": "ye telt us #",
+  "reason.and": "and",
+  "reason.youAskedAbout": "ye speired aboot #",
+  "reason.runsIn": "this rins in #",
+  "reason.isOnline": "this ane is online, sae whaur ye are disna maitter",
+  "reason.acrossScotland": "this is open ower Scotland",
+  "reason.closest": "it's ane o the closest things we hae tae whit ye described.",
+  "reason.clauseJoin": ", and ",
 };
 
 const pl: Catalogue = {
@@ -2364,6 +2402,16 @@ const pl: Catalogue = {
   "legal.englishApplies":
     "Nagłówki na tej stronie są w twoim języku. Sam tekst jest po angielsku i to wersja angielska obowiązuje.",
   "legal.askInYourLanguage": "Zapytaj nas o dowolny jego fragment, a odpowiemy.",
+
+  "reason.youToldUs": "powiedziałaś nam, że #",
+  "reason.and": "i",
+  "reason.youAskedAbout": "pytałaś o #",
+  "reason.runsIn": "to odbywa się w: #",
+  "reason.isOnline": "to jest online, więc nie ma znaczenia, gdzie jesteś",
+  "reason.acrossScotland": "to jest otwarte w całej Szkocji",
+  "reason.closest":
+    "to jedna z najbliższych rzeczy, jakie mamy, do tego, co opisałaś.",
+  "reason.clauseJoin": ", oraz ",
 };
 
 const uk: Catalogue = {
@@ -2841,6 +2889,15 @@ const uk: Catalogue = {
     "Заголовки на цій сторінці — вашою мовою. Сам текст англійською, і саме англійська версія є чинною.",
   "legal.askInYourLanguage":
     "Запитайте нас про будь-яку його частину, і ми відповімо.",
+
+  "reason.youToldUs": "ви сказали, що #",
+  "reason.and": "і",
+  "reason.youAskedAbout": "ви питали про #",
+  "reason.runsIn": "це відбувається в: #",
+  "reason.isOnline": "це онлайн, тож не має значення, де ви",
+  "reason.acrossScotland": "це відкрито по всій Шотландії",
+  "reason.closest": "це одне з найближчого, що ми маємо, до того, що ви описали.",
+  "reason.clauseJoin": ", а також ",
 };
 
 const ar: Catalogue = {
@@ -3291,6 +3348,15 @@ const ar: Catalogue = {
   "legal.englishApplies":
     "العناوين في هذه الصفحة بلغتك. أما النص نفسه فبالإنجليزية، والنسخة الإنجليزية هي النسخة السارية.",
   "legal.askInYourLanguage": "اسألينا عن أي جزء منه وسنجيب.",
+
+  "reason.youToldUs": "أخبرتِنا #",
+  "reason.and": "و",
+  "reason.youAskedAbout": "سألتِ عن #",
+  "reason.runsIn": "هذا يُقام في #",
+  "reason.isOnline": "هذا عبر الإنترنت، فلا يهم أين أنتِ",
+  "reason.acrossScotland": "هذا مفتوح في كل اسكتلندا",
+  "reason.closest": "هذا من أقرب ما لدينا إلى ما وصفتِه.",
+  "reason.clauseJoin": "، و",
 };
 
 const ur: Catalogue = {
@@ -3766,6 +3832,15 @@ const ur: Catalogue = {
     "اس صفحے کی سرخیاں آپ کی زبان میں ہیں۔ عبارت خود انگریزی میں ہے، اور انگریزی نسخہ ہی نافذ العمل ہے۔",
   "legal.askInYourLanguage":
     "اس کے کسی بھی حصے کے بارے میں ہم سے پوچھیں، ہم جواب دیں گے۔",
+
+  "reason.youToldUs": "آپ نے ہمیں بتایا کہ #",
+  "reason.and": "اور",
+  "reason.youAskedAbout": "آپ نے # کے بارے میں پوچھا",
+  "reason.runsIn": "یہ # میں ہوتا ہے",
+  "reason.isOnline": "یہ آن لائن ہے، اس لیے آپ کہاں ہیں اس سے فرق نہیں پڑتا",
+  "reason.acrossScotland": "یہ پورے سکاٹ لینڈ میں کھلا ہے",
+  "reason.closest": "جو آپ نے بیان کیا، اس کے قریب ترین چیزوں میں سے یہ ایک ہے۔",
+  "reason.clauseJoin": "، اور ",
 };
 
 const pa: Catalogue = {
@@ -4239,6 +4314,16 @@ const pa: Catalogue = {
     "ਇਸ ਸਫ਼ੇ ਦੀਆਂ ਸੁਰਖੀਆਂ ਤੁਹਾਡੀ ਭਾਸ਼ਾ ਵਿੱਚ ਹਨ। ਇਬਾਰਤ ਆਪ ਅੰਗਰੇਜ਼ੀ ਵਿੱਚ ਹੈ, ਤੇ ਅੰਗਰੇਜ਼ੀ ਵਾਲਾ ਰੂਪ ਹੀ ਲਾਗੂ ਹੁੰਦਾ ਹੈ।",
   "legal.askInYourLanguage":
     "ਇਸ ਦੇ ਕਿਸੇ ਵੀ ਹਿੱਸੇ ਬਾਰੇ ਸਾਨੂੰ ਪੁੱਛੋ, ਅਸੀਂ ਜਵਾਬ ਦੇਵਾਂਗੇ।",
+
+  "reason.youToldUs": "ਤੁਸੀਂ ਸਾਨੂੰ ਦੱਸਿਆ ਕਿ #",
+  "reason.and": "ਤੇ",
+  "reason.youAskedAbout": "ਤੁਸੀਂ # ਬਾਰੇ ਪੁੱਛਿਆ",
+  "reason.runsIn": "ਇਹ # ਵਿੱਚ ਚੱਲਦਾ ਹੈ",
+  "reason.isOnline": "ਇਹ ਆਨਲਾਈਨ ਹੈ, ਸੋ ਤੁਸੀਂ ਕਿੱਥੇ ਹੋ ਇਸ ਨਾਲ ਫ਼ਰਕ ਨਹੀਂ ਪੈਂਦਾ",
+  "reason.acrossScotland": "ਇਹ ਪੂਰੇ ਸਕਾਟਲੈਂਡ ਵਿੱਚ ਖੁੱਲ੍ਹਾ ਹੈ",
+  "reason.closest":
+    "ਜੋ ਤੁਸੀਂ ਦੱਸਿਆ, ਉਸ ਦੇ ਸਭ ਤੋਂ ਨੇੜੇ ਦੀਆਂ ਚੀਜ਼ਾਂ ਵਿੱਚੋਂ ਇਹ ਇੱਕ ਹੈ।",
+  "reason.clauseJoin": ", ਤੇ ",
 };
 
 const zh: Catalogue = {
@@ -4636,6 +4721,15 @@ const zh: Catalogue = {
 
   "legal.englishApplies": "本页的标题已译成你的语言。正文仍为英文，并且以英文版本为准。",
   "legal.askInYourLanguage": "其中任何一部分，都可以来问我们，我们会回答。",
+
+  "reason.youToldUs": "你告诉我们#",
+  "reason.and": "和",
+  "reason.youAskedAbout": "你问到#",
+  "reason.runsIn": "它在#进行",
+  "reason.isOnline": "这一项在线上，所以你在哪里都没关系",
+  "reason.acrossScotland": "这一项面向全苏格兰开放",
+  "reason.closest": "在你描述的情况里，这是我们能找到的最接近的之一。",
+  "reason.clauseJoin": "，而且",
 };
 
 const ro: Catalogue = {
@@ -5111,6 +5205,16 @@ const ro: Catalogue = {
     "Titlurile de pe această pagină sunt în limba ta. Textul în sine este în engleză, iar versiunea engleză este cea care se aplică.",
   "legal.askInYourLanguage":
     "Întreabă-ne despre orice parte din el și îți răspundem.",
+
+  "reason.youToldUs": "ne-ai spus că #",
+  "reason.and": "și",
+  "reason.youAskedAbout": "ai întrebat despre #",
+  "reason.runsIn": "acesta se desfășoară în #",
+  "reason.isOnline": "acesta este online, așa că nu contează unde ești",
+  "reason.acrossScotland": "acesta este deschis în toată Scoția",
+  "reason.closest":
+    "este unul dintre cele mai apropiate lucruri pe care le avem de ce ai descris.",
+  "reason.clauseJoin": ", și ",
 };
 
 const so: Catalogue = {
@@ -5592,6 +5696,16 @@ const so: Catalogue = {
     "Cinwaannada boggan waxay ku qoran yihiin luqaddaada. Qoraalka laftiisu waa Ingiriisi, nuqulka Ingiriisiguna waa kan khuseeya.",
   "legal.askInYourLanguage":
     "Qaybo kasta oo ka mid ah na weydii waanan kaaga jawaabaynaa.",
+
+  "reason.youToldUs": "waxaad noo sheegtay in #",
+  "reason.and": "iyo",
+  "reason.youAskedAbout": "waxaad wax ka weyddiisay #",
+  "reason.runsIn": "kani wuxuu ka dhacayaa #",
+  "reason.isOnline": "kani waa online, markaa meesha aad joogto muhiim ma aha",
+  "reason.acrossScotland": "kani wuxuu u furan yahay Scotland oo dhan",
+  "reason.closest":
+    "kani waa mid ka mid ah waxyaabaha ugu dhow ee aan haysanno waxa aad sharraxday.",
+  "reason.clauseJoin": ", iyo ",
 };
 
 const ti: Catalogue = {
@@ -6028,6 +6142,15 @@ const ti: Catalogue = {
   "legal.englishApplies":
     "እቶም ኣብዚ ገጽ ዘለዉ ኣርእስትታት ብቋንቋኺ እዮም። እቲ ጽሑፍ ባዕሉ ግን ብእንግሊዝኛ እዩ፡ እቲ ዝሰርሕ ድማ እቲ ናይ እንግሊዝኛ ቅዳሕ እዩ።",
   "legal.askInYourLanguage": "ብዛዕባ ዝኾነ ክፋሉ ሕተቱና እሞ ክንምልሰልኩም ኢና።",
+
+  "reason.youToldUs": "ንዓና ነጊርክና #",
+  "reason.and": "ከምኡ ድማ",
+  "reason.youAskedAbout": "ብዛዕባ # ሓቲትኪ",
+  "reason.runsIn": "እዚ ኣብ # ይካየድ",
+  "reason.isOnline": "እዚ ኦንላይን እዩ፡ ስለዚ ኣበይ ከም ዘለኺ ኣገዳሲ ኣይኮነን",
+  "reason.acrossScotland": "እዚ ኣብ ብምሉኡ ስኮትላንድ ክፉት እዩ",
+  "reason.closest": "ካብቲ ዝገለጽክዮ ዝቐረበ ካብ ዘሎና ሓደ እዚ እዩ።",
+  "reason.clauseJoin": "፡ ከምኡ ድማ ",
 };
 
 export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, string> } = {

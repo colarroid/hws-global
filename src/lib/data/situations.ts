@@ -1,5 +1,6 @@
 import "server-only";
 import { createClient } from "@/lib/supabase/server";
+import { getVocabulary, translated, translatedOrNull } from "@/lib/data/vocabulary";
 
 export type Situation = {
   id: string;
@@ -17,14 +18,31 @@ export type Situation = {
  */
 export async function getSituations(): Promise<Situation[]> {
   const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("situations")
-    .select("id, slug, label, match_phrase")
-    .is("retired_at", null)
-    .order("sort_order");
+  const [{ data, error }, vocabulary] = await Promise.all([
+    supabase
+      .from("situations")
+      .select("id, slug, label, match_phrase")
+      .is("retired_at", null)
+      .order("sort_order"),
+    getVocabulary(),
+  ]);
 
   if (error) throw error;
-  return data ?? [];
+
+  /* Resolved here rather than at every call site, so a chip, the answer
+     shown back to her and the match reason cannot end up in three
+     different languages. See lib/data/vocabulary.ts. */
+  return (data ?? []).map((situation) => ({
+    ...situation,
+    label: translated(vocabulary, "situation", situation.slug, "label", situation.label),
+    match_phrase: translatedOrNull(
+      vocabulary,
+      "situation",
+      situation.slug,
+      "match_phrase",
+      situation.match_phrase,
+    ),
+  }));
 }
 
 /** Slug to label, for showing her answers back to her as chips. */
