@@ -6,6 +6,7 @@ import {
   MAX_SUGGESTIONS,
   SITUATION_SUGGESTIONS,
 } from "@/lib/design/suggestions";
+import { getTranslator } from "@/lib/i18n";
 
 /** A listing women can reach, with everything the ranker and the card need. */
 export type SearchableListing = {
@@ -311,7 +312,19 @@ export async function getNeedSuggestions(): Promise<string[]> {
 
   const unique = [...new Set(suggestions)].slice(0, MAX_SUGGESTIONS);
 
-  return unique.length > 0
-    ? unique
-    : FALLBACK_SUGGESTIONS.slice(0, MAX_SUGGESTIONS);
+  const chosen =
+    unique.length > 0 ? unique : FALLBACK_SUGGESTIONS.slice(0, MAX_SUGGESTIONS);
+
+  /*
+   * Chosen in English, then translated, and that order is the point.
+   *
+   * Which sentences appear and in what order is decided by what the platform
+   * actually holds, so it must not change with the language she reads in.
+   * Translating first and de-duplicating after would let two sentences that
+   * are distinct in English collapse into one in another language, and she
+   * would be offered five examples where somebody else got six, for no
+   * reason she could see.
+   */
+  const { chip } = await getTranslator();
+  return chosen.map((sentence) => chip(sentence));
 }

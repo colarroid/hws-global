@@ -25,9 +25,8 @@ import {
   FORMATS,
   ORGANISATION_TYPES,
   SOLUTION_KINDS,
-  labelFor,
-  labelsFor,
 } from "@/lib/design/taxonomy";
+import { getTranslator } from "@/lib/i18n";
 
 export async function generateMetadata({
   params,
@@ -141,32 +140,33 @@ export default async function OrganisationProfilePage({
   const organisation = await getOrganisationProfile(id);
   if (!organisation) notFound();
 
-  const [zones, listings] = await Promise.all([
+  const [zones, listings, { label, labels }] = await Promise.all([
     getZonesForOrganisation(organisation.id),
     getListingsForOrganisation(organisation.id),
+    getTranslator(),
   ]);
 
   // Counted for the organisation's own overview. A date and a count, nothing
   // that could say who was here.
   await trackOrganisation(organisation.id, "profile_view");
 
-  const kinds = labelsFor(SOLUTION_KINDS, organisation.serviceKinds);
-  const routes = labelsFor(FORMATS, organisation.accessRoutes);
-  const costs = labelsFor(COSTS, organisation.costOptions);
+  const kinds = labels(SOLUTION_KINDS, organisation.serviceKinds);
+  const routes = labels(FORMATS, organisation.accessRoutes);
+  const costs = labels(COSTS, organisation.costOptions);
   const audiences = [
-    ...labelsFor(AUDIENCES, organisation.audiences),
+    ...labels(AUDIENCES, organisation.audiences),
     ...(organisation.audiencesOther ? [organisation.audiencesOther] : []),
   ];
 
   const where = [
-    labelFor(COVERAGE, organisation.coverage),
+    label(COVERAGE, organisation.coverage),
     organisation.coverageNote,
   ]
     .filter(Boolean)
     .join(" · ");
 
   const when = [
-    labelFor(AVAILABILITY, organisation.availability),
+    label(AVAILABILITY, organisation.availability),
     organisation.availabilityNote,
   ]
     .filter(Boolean)
@@ -239,7 +239,7 @@ export default async function OrganisationProfilePage({
                 ) : null}
                 {organisation.types.length > 0 ? (
                   <span>
-                    {labelsFor(ORGANISATION_TYPES, organisation.types).join(
+                    {labels(ORGANISATION_TYPES, organisation.types).join(
                       ", ",
                     )}
                   </span>
@@ -435,8 +435,8 @@ export default async function OrganisationProfilePage({
                       ) : null}
                       <span className="text-[14px] text-ink-60">
                         {[
-                          labelFor(SOLUTION_KINDS, listing.kind),
-                          labelFor(COSTS, listing.cost),
+                          label(SOLUTION_KINDS, listing.kind),
+                          label(COSTS, listing.cost),
                         ]
                           .filter(Boolean)
                           .join(" · ")}

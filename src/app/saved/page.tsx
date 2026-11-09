@@ -8,7 +8,8 @@ import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
 import { getAccount } from "@/lib/data/account";
 import { getService, type Service } from "@/lib/data/service";
-import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
+import { COSTS, FORMATS, SOLUTION_KINDS } from "@/lib/design/taxonomy";
+import { getTranslator } from "@/lib/i18n";
 
 const LONG = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -81,7 +82,11 @@ export const metadata: Metadata = pageMetadata({
  * reading and applying still need nothing, which is the promise that matters.
  */
 export default async function SavedPage() {
-  const [ids, account] = await Promise.all([getSavedIds(), getAccount()]);
+  const [ids, account, { label }] = await Promise.all([
+    getSavedIds(),
+    getAccount(),
+    getTranslator(),
+  ]);
 
   if (!account) redirect("/account");
 
@@ -133,9 +138,9 @@ export default async function SavedPage() {
           const status = statusOf(service);
           const closed = status.tone === "closed";
           const meta = [
-            labelFor(SOLUTION_KINDS, service.kind),
-            labelFor(COSTS, service.cost),
-            ...service.formats.map((f) => labelFor(FORMATS, f)),
+            label(SOLUTION_KINDS, service.kind),
+            label(COSTS, service.cost),
+            ...service.formats.map((f) => label(FORMATS, f)),
             service.place,
           ]
             .filter(Boolean)

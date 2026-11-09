@@ -13,7 +13,8 @@
     "demo:clean": "node --env-file=.env.local scripts/demo-clean.mjs",
     "emails:auth": "node --experimental-strip-types scripts/build-auth-emails.ts",
     "eval:comprehension": "node --env-file=.env.local scripts/evaluate-comprehension.mjs",
-    "check:sitemap": "node scripts/check-sitemap.mjs"
+    "check:sitemap": "node scripts/check-sitemap.mjs",
+    "check:i18n": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/check-i18n.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.12.4",

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Building2 } from "lucide-react";
-import { COVERAGE, SOLUTION_KINDS, labelFor, labelsFor } from "@/lib/design/taxonomy";
+import { COVERAGE, SOLUTION_KINDS } from "@/lib/design/taxonomy";
+import { getTranslator } from "@/lib/i18n";
 import type { OrganisationCard } from "@/lib/data/discover";
 
 /**
@@ -10,15 +11,21 @@ import type { OrganisationCard } from "@/lib/data/discover";
  * drift into looking like different kinds of thing. They are the same thing
  * reached two ways.
  */
-export function OrganisationRow({
+export async function OrganisationRow({
   organisation,
 }: {
   organisation: OrganisationCard;
 }) {
+  /* Awaited per row rather than passed down from the page. The lookup is a
+     cookie read, which Next de-duplicates across one request, and threading
+     a translator through three callers to save it would be the kind of prop
+     that gets forgotten on the fourth. */
+  const { label, labels } = await getTranslator();
+
   const facts = [
     organisation.place,
-    labelFor(COVERAGE, organisation.coverage),
-    labelsFor(SOLUTION_KINDS, organisation.serviceKinds).slice(0, 3).join(", "),
+    label(COVERAGE, organisation.coverage),
+    labels(SOLUTION_KINDS, organisation.serviceKinds).slice(0, 3).join(", "),
     organisation.liveListings > 0
       ? organisation.liveListings +
         (organisation.liveListings === 1 ? " thing open" : " things open")

@@ -8,7 +8,8 @@ import { SaveButton } from "@/components/find/SaveButton";
 import { getSavedIds } from "@/lib/saved";
 import { track } from "@/lib/track";
 import { getService, applyHost } from "@/lib/data/service";
-import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
+import { COSTS, FORMATS, SOLUTION_KINDS } from "@/lib/design/taxonomy";
+import { getTranslator } from "@/lib/i18n";
 
 const LONG = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -78,7 +79,11 @@ function Fact({ label, value }: { label: string; value: string | null }) {
 export default async function ServicePage({ params, searchParams }: Params & Search) {
   const { id } = await params;
   const query = await searchParams;
-  const [service, savedIds] = await Promise.all([getService(id), getSavedIds()]);
+  const [service, savedIds, { label }] = await Promise.all([
+    getService(id),
+    getSavedIds(),
+    getTranslator(),
+  ]);
 
   if (!service) notFound();
 
@@ -104,9 +109,9 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
   const host = applyHost(service.apply_url);
 
   const tags = [
-    labelFor(SOLUTION_KINDS, service.kind),
-    labelFor(COSTS, service.cost),
-    ...service.formats.map((f) => labelFor(FORMATS, f)),
+    label(SOLUTION_KINDS, service.kind),
+    label(COSTS, service.cost),
+    ...service.formats.map((f) => label(FORMATS, f)),
   ].filter(Boolean);
 
   const similarHref = `/results?${new URLSearchParams({
@@ -199,11 +204,11 @@ export default async function ServicePage({ params, searchParams }: Params & Sea
           <dl className="m-0 flex flex-col gap-5">
             <Fact label="Who it's for" value={service.who_for} />
             <Fact label="What to expect" value={service.what_to_expect} />
-            <Fact label="Cost" value={labelFor(COSTS, service.cost) || null} />
+            <Fact label="Cost" value={label(COSTS, service.cost) || null} />
             <Fact
               label="How to take part"
               value={
-                service.formats.map((f) => labelFor(FORMATS, f)).join(", ") || null
+                service.formats.map((f) => label(FORMATS, f)).join(", ") || null
               }
             />
             <Fact label="Where" value={service.place} />

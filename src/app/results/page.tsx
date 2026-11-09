@@ -18,7 +18,8 @@ import { getSituationLabels, getSituationPhrases } from "@/lib/data/situations";
 import { rank, countForScope, type Answers, type Scope } from "@/lib/search/rank";
 import { rankOrganisations } from "@/lib/search/rankOrganisations";
 import { OrganisationAnswers } from "@/components/find/OrganisationAnswers";
-import { COSTS, FORMATS, SOLUTION_KINDS, labelFor } from "@/lib/design/taxonomy";
+import { COSTS, FORMATS, SOLUTION_KINDS } from "@/lib/design/taxonomy";
+import { getTranslator } from "@/lib/i18n";
 
 const DATE = new Intl.DateTimeFormat("en-GB", {
   day: "numeric",
@@ -83,15 +84,23 @@ export default async function ResultsPage({
   const params = await searchParams;
   const answers = parseAnswers(params);
 
-  const [listings, organisations, markets, situationLabels, situationPhrases, savedIds] =
-    await Promise.all([
-      getLiveListings(),
-      getSearchableOrganisations(),
-      getMarkets(),
-      getSituationLabels(),
-      getSituationPhrases(),
-      getSavedIds(),
-    ]);
+  const [
+    listings,
+    organisations,
+    markets,
+    situationLabels,
+    situationPhrases,
+    savedIds,
+    { label },
+  ] = await Promise.all([
+    getLiveListings(),
+    getSearchableOrganisations(),
+    getMarkets(),
+    getSituationLabels(),
+    getSituationPhrases(),
+    getSavedIds(),
+    getTranslator(),
+  ]);
 
   // Phrases build the reason; labels show her answers back as chips.
   const ranked = rank(listings, answers, situationPhrases);
@@ -217,9 +226,9 @@ export default async function ResultsPage({
               .join(" · "),
             blurb: listing.blurb ?? "",
             tags: [
-              labelFor(SOLUTION_KINDS, listing.kind),
-              labelFor(COSTS, listing.cost),
-              ...listing.formats.map((f) => labelFor(FORMATS, f)),
+              label(SOLUTION_KINDS, listing.kind),
+              label(COSTS, listing.cost),
+              ...listing.formats.map((f) => label(FORMATS, f)),
             ].filter(Boolean),
             deadline: listing.deadline
               ? `Closes ${SHORT.format(new Date(listing.deadline))}`
