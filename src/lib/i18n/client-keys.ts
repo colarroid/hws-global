@@ -73,6 +73,26 @@ export const CLIENT_KEYS = [
   "booking.notesNote",
   "booking.optional",
   "booking.submit",
+  "photos.aria",
+  "photos.credit",
+  "testimonials.aria",
+  "testimonials.prev",
+  "testimonials.next",
+  "form.sendCode",
+  "form.yourCode",
+  "form.codeWorks",
+  "form.newCodeSent",
+  "form.sendNewCode",
+  "form.theCodeWeSent",
+  "form.newEmail",
+  "form.sendToNew",
+  "form.firstName",
+  "form.lastName",
+  "form.phoneOptional",
+  "form.phoneNote",
+  "form.continue",
+  "reminders.beforeDeadline",
+
 ] as const satisfies readonly MessageKey[];
 
 export type ClientMessageKey = (typeof CLIENT_KEYS)[number];

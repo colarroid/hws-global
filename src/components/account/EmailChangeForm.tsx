@@ -1,6 +1,7 @@
 "use client";
 
 import { useActionState } from "react";
+import { useT } from "@/lib/i18n/client";
 import { Field } from "@/components/ui/Field";
 import { FormError, SubmitButton } from "@/components/ui/Form";
 import { startEmailChange, type FormState } from "@/app/account/actions";
@@ -12,6 +13,7 @@ import { startEmailChange, type FormState } from "@/app/account/actions";
  * and the browser offering it is a help, not a leak.
  */
 export function EmailChangeForm() {
+  const t = useT();
   const [state, formAction] = useActionState<FormState, FormData>(
     startEmailChange,
     null,
@@ -21,14 +23,14 @@ export function EmailChangeForm() {
     <form action={formAction} className="flex flex-col gap-[22px]">
       <FormError message={state?.error} />
       <Field
-        label="New email address"
+        label={t("form.newEmail")}
         name="email"
         type="email"
         autoComplete="email"
         placeholder="you@example.com"
         required
       />
-      <SubmitButton>Send a code to the new address</SubmitButton>
+      <SubmitButton>{t("form.sendToNew")}</SubmitButton>
     </form>
   );
 }

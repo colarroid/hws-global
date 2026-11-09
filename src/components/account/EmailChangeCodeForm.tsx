@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState, useTransition } from "react";
+import { useT } from "@/lib/i18n/client";
 import { Button } from "@/components/ui/Button";
 import { FormError } from "@/components/ui/Form";
 import {
@@ -29,6 +30,7 @@ const SETTLE_MS = 700;
  * either.
  */
 export function EmailChangeCodeForm({ email }: { email: string }) {
+  const t = useT();
   const [error, setError] = useState<string | undefined>();
   const [pending, startVerify] = useTransition();
   const [code, setCode] = useState("");
@@ -107,7 +109,7 @@ export function EmailChangeCodeForm({ email }: { email: string }) {
 
         <div className="flex flex-col gap-2">
           <label htmlFor="code" className="text-[15px] font-semibold">
-            The code we sent
+            {t("form.theCodeWeSent")}
           </label>
           <input
             id="code"
@@ -125,7 +127,7 @@ export function EmailChangeCodeForm({ email }: { email: string }) {
             className="rounded-control shadow-hairline bg-surface p-[18px] text-center text-[28px] font-semibold tracking-[0.4em] text-ink tabular-nums disabled:opacity-40"
           />
           <span id={hintId} className="text-[14px] leading-[1.5] text-ink-60">
-            The code works for 15 minutes.
+            {t("form.codeWorks")}
           </span>
         </div>
 
@@ -139,7 +141,7 @@ export function EmailChangeCodeForm({ email }: { email: string }) {
 
       <div aria-live="polite" className="text-[15px] text-ink-60">
         {resent ? (
-          <span>New code sent. It can take a minute to arrive.</span>
+          <span>{t("form.newCodeSent")}</span>
         ) : cooldown > 0 ? (
           <span>
             Nothing arrived? You can ask for a new code in {cooldown}{" "}
@@ -163,7 +165,7 @@ export function EmailChangeCodeForm({ email }: { email: string }) {
               }
               className="cursor-pointer border-0 bg-transparent p-1 text-[15px] font-bold text-gold-700 hover:underline disabled:opacity-40"
             >
-              Send a new code
+              {t("form.sendNewCode")}
             </button>
           </>
         )}

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useT } from "@/lib/i18n/client";
 import { useEffect, useState } from "react";
 import networking from "@/images/summit-networking.webp";
 import speakers from "@/images/summit-speakers.webp";
@@ -71,6 +72,7 @@ const FRAMES = [
  * reads a photograph backwards.
  */
 export function SummitPhotos() {
+  const t = useT();
   const [at, setAt] = useState(0);
   const [held, setHeld] = useState(false);
   const count = FRAMES.length;
@@ -94,7 +96,7 @@ export function SummitPhotos() {
   return (
     <div
       aria-roledescription="carousel"
-      aria-label="Photographs from the Holistic Wellbeing Summit"
+      aria-label={t("photos.aria")}
       onMouseEnter={() => setHeld(true)}
       onMouseLeave={() => setHeld(false)}
       onFocusCapture={() => setHeld(true)}
@@ -175,7 +177,7 @@ export function SummitPhotos() {
 
         {/* A proper noun, so it is not translated and does not need a key. */}
         <span className="eyebrow ml-5 hidden text-white/85 lg:inline">
-          The Holistic Wellbeing Summit
+          {t("photos.credit")}
         </span>
       </div>
 

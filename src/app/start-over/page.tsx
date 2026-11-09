@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -28,7 +29,7 @@ export default async function StartOverPage({
 }: {
   searchParams: Promise<Record<string, string | undefined>>;
 }) {
-  const params = await searchParams;
+  const [params, { t }] = await Promise.all([searchParams, getTranslator()]);
   const back = new URLSearchParams(
     Object.entries(params).filter(([, v]) => v) as [string, string][],
   );
@@ -44,22 +45,21 @@ export default async function StartOverPage({
       </Link>
 
       <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[38px] sm:leading-[1.1]">
-        This clears your answers. Start again?
+        {t("startover.confirm")}
       </h1>
 
       <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
-        Anything you have saved stays where it is. Only what you told us about
-        what you need goes.
+        {t("startover.note")}
       </p>
 
       <div className="flex flex-col gap-3">
-        <ButtonLink href="/find">Yes, start again</ButtonLink>
+        <ButtonLink href="/find">{t("startover.yes")}</ButtonLink>
         <ButtonLink
           href={`/results?${back}`}
           variant="secondary"
           className="w-full"
         >
-          Keep my answers
+          {t("startover.keep")}
         </ButtonLink>
       </div>
     </Page>

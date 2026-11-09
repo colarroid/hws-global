@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getTranslator } from "@/lib/i18n";
 import { FileText, PencilLine } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { anchorFor, type LegalDocument } from "@/lib/design/legal";
@@ -19,13 +20,14 @@ import { anchorFor, type LegalDocument } from "@/lib/design/legal";
  * legal page that looks finished is worse than one that admits it is not,
  * because somebody would take the silence for a promise.
  */
-export function LegalPage({
+export async function LegalPage({
   title,
   document,
 }: {
   title: string;
   document: LegalDocument;
 }) {
+  const { t } = await getTranslator();
   const { updated, draft, lead, sections } = document;
 
   return (
@@ -57,7 +59,7 @@ export function LegalPage({
           />
           <div className="flex flex-col gap-2">
             <span className="text-[16px] font-bold text-ink">
-              This is a draft
+              {t("legal.draftTitle")}
             </span>
             <p className="m-0 max-w-[58ch] text-[16px] leading-[1.6] text-ink-70">
               The wording below describes exactly how the platform works today,
@@ -85,7 +87,7 @@ export function LegalPage({
           />
           <div className="flex flex-col gap-2">
             <span className="text-[16px] font-bold text-ink">
-              This one is still being written
+              {t("legal.pendingTitle")}
             </span>
             <p className="m-0 max-w-[58ch] text-[16px] leading-[1.6] text-ink-70">
               The wording is with us and will be published here before the
@@ -109,7 +111,7 @@ export function LegalPage({
               aria-label={`Contents of the ${title.toLowerCase()}`}
               className="flex flex-col gap-3 rounded-card bg-surface p-6 shadow-hairline"
             >
-              <h2 className="m-0 eyebrow text-ink-60">On this page</h2>
+              <h2 className="m-0 eyebrow text-ink-60">{t("legal.onThisPage")}</h2>
               <ol className="m-0 flex list-none flex-col gap-[2px] p-0">
                 {sections.map((section, index) => (
                   <li key={section.title}>
@@ -156,7 +158,7 @@ export function LegalPage({
 
       <div className="flex flex-col gap-2 border-t border-hairline pt-7">
         <p className="m-0 max-w-[62ch] text-[16px] leading-[1.6] text-ink-70">
-          Questions about any of this go to a person, not a form.
+          {t("legal.questions")}
         </p>
         <Link
           href="/help"

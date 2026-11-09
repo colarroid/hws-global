@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useT } from "@/lib/i18n/client";
 import { Quote } from "lucide-react";
 import {
   ChevronLeftIcon,
@@ -34,6 +35,7 @@ const DWELL = 7000;
  * reader, and the quotes are reachable in order through the buttons.
  */
 export function Testimonials({ items }: { items: Testimonial[] }) {
+  const t = useT();
   const slides = items.slice(0, MAX_TESTIMONIALS);
   const [at, setAt] = useState(0);
   const [held, setHeld] = useState(false);
@@ -65,7 +67,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
     <div
       className="mt-16 sm:mt-20"
       aria-roledescription="carousel"
-      aria-label="What women say"
+      aria-label={t("testimonials.aria")}
       onMouseEnter={() => setHeld(true)}
       onMouseLeave={() => setHeld(false)}
       onFocusCapture={() => setHeld(true)}
@@ -132,7 +134,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
             <button
               type="button"
               onClick={() => go(at - 1)}
-              aria-label="Previous quote"
+              aria-label={t("testimonials.prev")}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
             >
               <ChevronLeftIcon />
@@ -140,7 +142,7 @@ export function Testimonials({ items }: { items: Testimonial[] }) {
             <button
               type="button"
               onClick={() => go(at + 1)}
-              aria-label="Next quote"
+              aria-label={t("testimonials.next")}
               className="inline-flex h-11 w-11 items-center justify-center rounded-full text-ink shadow-hairline transition-shadow duration-150 ease-out hover:shadow-hairline-gold"
             >
               <ChevronRightIcon />

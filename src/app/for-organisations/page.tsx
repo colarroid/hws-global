@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import Link from "next/link";
 import Image from "next/image";
 import organisationsFigure from "@/images/organisations-figure.webp";
@@ -67,28 +68,31 @@ export function generateMetadata(): Promise<Metadata> {
 export default async function CommunityPage() {
   // The zones are real, unlike the counts. They describe the shape of the
   // platform rather than claiming a size.
-  const zones = await getZonesWithCounts();
+  const [zones, { t }] = await Promise.all([
+    getZonesWithCounts(),
+    getTranslator(),
+  ]);
 
   const gains = [
     {
       icon: Users,
-      title: "Women who were looking for what you do",
-      body: "She describes her situation in her own words. We match it against who you are set up for, what you offer, where you work and what it costs. She arrives already knowing whether she qualifies.",
+      title: t("orgpage.gain1Title"),
+      body: t("orgpage.gain1Body"),
     },
     {
       icon: BarChart3,
-      title: "Numbers you can take to a funder",
-      body: "How many women were sent to your own site, how many read your organisation page, and how each thing you posted performed. Not a vanity figure: the first one counts people who clicked through to you.",
+      title: t("orgpage.gain2Title"),
+      body: t("orgpage.gain2Body"),
     },
     {
       icon: BadgeCheck,
-      title: "Checked once, not per listing",
-      body: "We verify you against a public register or your funder when you join. After that you post what you like, when you like, without waiting on us.",
+      title: t("orgpage.gain3Title"),
+      body: t("orgpage.gain3Body"),
     },
     {
       icon: Ban,
-      title: "Fewer of the wrong enquiries",
-      body: "You say who you cannot help, and we show it. Women rule themselves out before they contact you, which is time back for whoever answers your inbox.",
+      title: t("orgpage.gain4Title"),
+      body: t("orgpage.gain4Body"),
     },
   ];
 
@@ -109,23 +113,23 @@ export default async function CommunityPage() {
   const steps = [
     {
       image: orgTell,
-      title: "Tell us who you are",
-      body: "A few questions about what you do, who you serve and where. Ten minutes, and you can stop partway and come back.",
+      title: t("orgpage.step1Title"),
+      body: t("orgpage.step1Body"),
     },
     {
       image: orgCheck,
-      title: "We check you",
-      body: "Against a public register, or your funder. One check, done by a person.",
+      title: t("orgpage.step2Title"),
+      body: t("orgpage.step2Body"),
     },
     {
       image: orgPost,
-      title: "Post what is open",
-      body: "A course, a grant, a drop-in, a mentoring scheme. Anything with a way in for a woman.",
+      title: t("orgpage.step3Title"),
+      body: t("orgpage.step3Body"),
     },
     {
       image: orgFinds,
-      title: "She finds it when it fits",
-      body: "Not because she searched your name. Because what she described matched what you run.",
+      title: t("orgpage.step4Title"),
+      body: t("orgpage.step4Body"),
     },
   ];
 
@@ -137,20 +141,17 @@ export default async function CommunityPage() {
           is no longer taking up any room of its own. */}
       <section className="bg-ink px-5 pb-20 pt-28 sm:px-10 sm:pb-28 sm:pt-36">
         <div className="mx-auto flex w-full max-w-[1180px] flex-col items-start gap-7">
-          <span className="eyebrow text-gold-300">For organisations</span>
+          <span className="eyebrow text-gold-300">{t("flow.orgLink")}</span>
 
           <h1 className="m-0 max-w-[19ch] font-display text-[38px] font-normal leading-[1.03] tracking-[-0.02em] text-white sm:text-[68px]">
-            The women you are for, without them having to find you
+            {t("orgpage.heroTitle")}
           </h1>
 
           {/* Set as the landing hero's paragraph is: 16px on a 512px measure
               at 1.5. They are the same sentence doing the same job to two
               different audiences and they were two different sizes. */}
           <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/80">
-            You already do the work. The problem is that a woman has to know
-            your name to find your website. Here she describes her situation,
-            and we put you in front of her because you are the right answer,
-            not because she guessed.
+            {t("orgpage.heroBody")}
           </p>
 
           <div className="mt-1 flex flex-wrap items-center gap-4">
@@ -158,20 +159,19 @@ export default async function CommunityPage() {
               href={portalLink("/sign-up")}
               className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-8 py-[17px] text-[18px] font-bold text-ink no-underline transition-opacity duration-150 ease-out hover:opacity-90"
             >
-              Meet the women
+              {t("orgs.cta")}
               <ArrowUpRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
             <a
               href={portalUrl()}
               className="inline-flex min-h-[44px] items-center gap-2 p-1 text-[16px] font-bold text-gold-300 no-underline"
             >
-              I already have an account
+              {t("orgpage.haveAccount")}
             </a>
           </div>
 
           <p className="m-0 text-[15px] leading-[1.6] text-white/60">
-            Free. No paid placement, no advertising, and nobody pays to appear
-            higher.
+            {t("orgpage.freeNote")}
           </p>
         </div>
       </section>
@@ -182,9 +182,9 @@ export default async function CommunityPage() {
       <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
         <div className="flex w-full flex-col gap-12">
           <div className="flex flex-col gap-3">
-            <span className="eyebrow text-gold-700">What you get</span>
+            <span className="eyebrow text-gold-700">{t("orgpage.whatYouGet")}</span>
             <h2 className="m-0 max-w-[22ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
-              Reach, and a way to prove it
+              {t("orgpage.reach")}
             </h2>
           </div>
 
@@ -211,7 +211,7 @@ export default async function CommunityPage() {
 
       <section className="mx-auto w-full max-w-[1180px] border-t border-hairline px-5 py-24 sm:px-10 sm:py-32">
         <div className="flex flex-col gap-3">
-          <span className="eyebrow text-gold-700">How it works</span>
+          <span className="eyebrow text-gold-700">{t("why.eyebrow")}</span>
           <h2 className="m-0 max-w-[24ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] sm:text-[42px]">
             Four steps, and one of them is ours
           </h2>
@@ -257,14 +257,12 @@ export default async function CommunityPage() {
       <section className="bg-ink px-5 py-24 sm:px-10 sm:py-32">
         <div className="mx-auto w-full max-w-[1180px]">
         <div className="flex flex-col gap-3">
-          <span className="eyebrow text-gold-300">Access Zones</span>
+          <span className="eyebrow text-gold-300">{t("org.zones")}</span>
           <h2 className="m-0 max-w-[26ch] font-display text-[30px] font-normal leading-[1.1] tracking-[-0.01em] text-white sm:text-[42px]">
-            Where you would sit
+            {t("orgpage.whereYouSit")}
           </h2>
           <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-white/80">
-            You pick your own, one main and up to two others. Most women need
-            more than one at a time and most services only do one, which is the
-            gap this exists to close.
+            {t("orgpage.zonesBody")}
           </p>
         </div>
 
@@ -306,18 +304,18 @@ export default async function CommunityPage() {
           {[
             {
               icon: BadgeCheck,
-              title: "Verified content",
-              body: "Every organisation here has been verified against a public register or its funder before it could post anything. Each listing carries the date it was last confirmed.",
+              title: t("trust.checkedTitle"),
+              body: t("trust.checkedBody"),
             },
             {
               icon: Lock,
-              title: "Information is private",
-              body: "You do not need an account to search, read or apply. What you type is used to rank your results and is not sold, passed on, or used to build a profile of you.",
+              title: t("trust.privateTitle"),
+              body: t("trust.privateBody"),
             },
             {
               icon: MessageSquareText,
-              title: "No sponsored content",
-              body: "There is no paid placement and no advertising. Results are ordered by how well they fit what you told us, and every listing says why it matched.",
+              title: t("trust.paidTitle"),
+              body: t("trust.paidBody"),
             },
           ].map((item) => (
             <div key={item.title} className="flex flex-col gap-3">
@@ -353,19 +351,17 @@ export default async function CommunityPage() {
         <div className="mx-auto flex max-w-[880px] flex-col gap-5 overflow-hidden rounded-card bg-surface p-8 shadow-hairline sm:flex-row sm:items-stretch sm:justify-between sm:gap-10 sm:p-10">
           <div className="flex flex-col items-start justify-center gap-3">
             <h2 className="m-0 max-w-[22ch] font-display text-[26px] font-normal leading-[1.15] sm:text-[32px]">
-              Do you run something women should know about?
+              {t("orgs.title")}
             </h2>
             <p className="m-0 max-w-[512px] text-[16px] leading-[1.5] text-ink-70">
-              List it here and it reaches the women it actually suits, rather
-              than whoever happens to find your website. Free, and we check you
-              once rather than checking every listing.
+              {t("orgs.body")}
             </p>
 
             <a
               href={portalLink("/sign-up")}
               className="mt-3 inline-flex min-h-[44px] items-center gap-2 rounded-full bg-ink px-8 py-[17px] text-[17px] font-bold text-white no-underline transition-opacity duration-150 ease-out hover:opacity-90"
             >
-              Meet the women
+              {t("orgs.cta")}
               <ArrowRight size={18} strokeWidth={2} aria-hidden="true" />
             </a>
           </div>

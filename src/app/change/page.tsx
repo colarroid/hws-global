@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { getTranslator } from "@/lib/i18n";
 import { translatedMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
@@ -35,7 +36,7 @@ export default async function ChangePage({
     filters?: string;
   }>;
 }) {
-  const params = await searchParams;
+  const [params, { t }] = await Promise.all([searchParams, getTranslator()]);
   const need = params.need ?? "";
   const place = params.place ?? "";
   const situations = params.situations?.split(",").filter(Boolean) ?? [];
@@ -78,7 +79,7 @@ export default async function ChangePage({
       </Link>
 
       <h1 className="m-0 font-display text-[30px] font-normal leading-[1.15] tracking-[-0.01em] sm:text-[42px] sm:leading-[1.1]">
-        Here&apos;s what we heard
+        {t("change.heard")}
       </h1>
 
       <div className="flex flex-col gap-[14px]">
@@ -110,12 +111,11 @@ export default async function ChangePage({
       {/* Sets the expectation before she sees the answer, and states the
           neutrality where it is a promise about her rather than about us. */}
       <p className="m-0 max-w-[62ch] text-[17px] leading-[1.6] text-ink-70">
-        We&apos;ll show you a small number of next steps, strongest match
-        first. Nobody pays to appear here.
+        {t("change.weWillShow")}
       </p>
 
       <div className="flex flex-col gap-3">
-        <ButtonLink href={`/results?${query}`}>Update my search</ButtonLink>
+        <ButtonLink href={`/results?${query}`}>{t("refine.update")}</ButtonLink>
         <ButtonLink href="/start-over" variant="text" size="bare" className="self-center">
           Start over
         </ButtonLink>

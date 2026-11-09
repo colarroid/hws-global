@@ -388,7 +388,85 @@ export type MessageKey =
   | "meta.emailChange.title"
   | "meta.emailChange.desc"
   | "meta.emailCode.title"
-  | "meta.emailCode.desc";
+  | "meta.emailCode.desc"
+  | "settings.savedList"
+  | "settings.reminders"
+  | "settings.howFar"
+  | "settings.nothingElse"
+  | "settings.neverName"
+  | "settings.emailChanged"
+  | "reminders.beforeDeadline"
+  | "change.heard"
+  | "change.weWillShow"
+  | "startover.confirm"
+  | "startover.note"
+  | "startover.yes"
+  | "startover.keep"
+  | "legal.onThisPage"
+  | "legal.questions"
+  | "legal.draftTitle"
+  | "legal.draftBody"
+  | "legal.draftAsk"
+  | "legal.pendingTitle"
+  | "legal.pendingBody"
+  | "legal.pendingAsk"
+  | "photos.aria"
+  | "photos.credit"
+  | "testimonials.aria"
+  | "testimonials.prev"
+  | "testimonials.next"
+  | "form.sendCode"
+  | "form.yourCode"
+  | "form.codeWorks"
+  | "form.newCodeSent"
+  | "form.sendNewCode"
+  | "form.theCodeWeSent"
+  | "form.newEmail"
+  | "form.sendToNew"
+  | "form.firstName"
+  | "form.lastName"
+  | "form.phoneOptional"
+  | "form.phoneNote"
+  | "form.continue"
+  | "org.allOrgs"
+  | "org.checked"
+  | "org.website"
+  | "org.whatTheyDo"
+  | "org.whatTheyOffer"
+  | "org.whoTheyWorkWith"
+  | "org.whoTheyCanHelp"
+  | "org.whoTheyCannot"
+  | "org.when"
+  | "org.howToReach"
+  | "org.zones"
+  | "org.mainOne"
+  | "org.nothingRunning"
+  | "org.orTellUs"
+  | "orgpage.heroTitle"
+  | "orgpage.heroBody"
+  | "orgpage.haveAccount"
+  | "orgpage.freeNote"
+  | "orgpage.whatYouGet"
+  | "orgpage.reach"
+  | "orgpage.gain1Title"
+  | "orgpage.gain1Body"
+  | "orgpage.gain2Title"
+  | "orgpage.gain2Body"
+  | "orgpage.gain3Title"
+  | "orgpage.gain3Body"
+  | "orgpage.gain4Title"
+  | "orgpage.gain4Body"
+  | "orgpage.fourSteps"
+  | "orgpage.step1Title"
+  | "orgpage.step1Body"
+  | "orgpage.step2Title"
+  | "orgpage.step2Body"
+  | "orgpage.step3Title"
+  | "orgpage.step3Body"
+  | "orgpage.step4Title"
+  | "orgpage.step4Body"
+  | "orgpage.whereYouSit"
+  | "orgpage.zonesBody";
 
 type Catalogue = Partial<Record<MessageKey, string>>;
 
@@ -752,6 +830,106 @@ const en: Record<MessageKey, string> = {
     "Move your account, and everything saved on it, to another address.",
   "meta.emailCode.title": "Check your new inbox",
   "meta.emailCode.desc": "Enter the code we sent to your new address.",
+
+  "settings.savedList": "My saved list",
+  "settings.reminders": "Reminders",
+  "settings.howFar": "How far ahead",
+  "settings.nothingElse": "We send nothing else. No newsletter, no suggestions.",
+  "settings.neverName":
+    "Reminder emails never name the kind of support, in case someone else reads your inbox.",
+  "settings.emailChanged":
+    "Done. Your account is on this address now, and your saved list came with it.",
+  "reminders.beforeDeadline": "Before a deadline",
+  "change.heard": "Here's what we heard",
+  "change.weWillShow":
+    "We'll show you a small number of next steps, strongest match first. Nobody pays to appear here.",
+  "startover.confirm": "This clears your answers. Start again?",
+  "startover.note":
+    "Anything you have saved stays where it is. Only what you told us about what you need goes.",
+  "startover.yes": "Yes, start again",
+  "startover.keep": "Keep my answers",
+  "legal.onThisPage": "On this page",
+  "legal.questions": "Questions about any of this go to a person, not a form.",
+  "legal.draftTitle": "This is a draft",
+  "legal.draftBody":
+    "The wording below describes exactly how the platform works today, but it has not yet been through a final review. It is published so you can read it and hold us to it, not because it is finished.",
+  "legal.draftAsk":
+    "If anything here matters to a decision you are making, ask us.",
+  "legal.pendingTitle": "This one is still being written",
+  "legal.pendingBody":
+    "The wording is with us and will be published here before the platform opens. Nothing on this page is in force until it is.",
+  "legal.pendingAsk":
+    "If you want to know what happens to what you type in the meantime, ask us and we will tell you plainly.",
+  "photos.aria": "Photographs from the Holistic Wellbeing Summit",
+  "photos.credit": "The Holistic Wellbeing Summit",
+  "testimonials.aria": "What women say",
+  "testimonials.prev": "Previous quote",
+  "testimonials.next": "Next quote",
+  "form.sendCode": "Send me a sign-in code",
+  "form.yourCode": "Your sign-in code",
+  "form.codeWorks": "The code works for 15 minutes.",
+  "form.newCodeSent": "New code sent. It can take a minute to arrive.",
+  "form.sendNewCode": "Send a new code",
+  "form.theCodeWeSent": "The code we sent",
+  "form.newEmail": "New email address",
+  "form.sendToNew": "Send a code to the new address",
+  "form.firstName": "First name",
+  "form.lastName": "Last name",
+  "form.phoneOptional": "Phone number (optional)",
+  "form.phoneNote": "We only use this if you ask us to call you back.",
+  "form.continue": "Continue",
+  "org.allOrgs": "All organisations",
+  "org.checked": "Checked by HWS",
+  "org.website": "Their website",
+  "org.whatTheyDo": "What they do",
+  "org.whatTheyOffer": "What they offer",
+  "org.whoTheyWorkWith": "Who they work with",
+  "org.whoTheyCanHelp": "Who they can help",
+  "org.whoTheyCannot": "Who they cannot help",
+  "org.when": "When",
+  "org.howToReach": "How to reach them",
+  "org.zones": "Access Zones",
+  "org.mainOne": "Their main one",
+  "org.nothingRunning":
+    "They have nothing running at the moment. Tell us what you need and we will look across everything we have.",
+  "org.orTellUs": "Or tell us what you need and we will match you",
+
+  "orgpage.heroTitle": "The women you are for, without them having to find you",
+  "orgpage.heroBody":
+    "You already do the work. The problem is that a woman has to know your name to find your website. Here she describes her situation, and we put you in front of her because you are the right answer, not because she guessed.",
+  "orgpage.haveAccount": "I already have an account",
+  "orgpage.freeNote":
+    "Free. No paid placement, no advertising, and nobody pays to appear higher.",
+  "orgpage.whatYouGet": "What you get",
+  "orgpage.reach": "Reach, and a way to prove it",
+  "orgpage.gain1Title": "Women who were looking for what you do",
+  "orgpage.gain1Body":
+    "She describes her situation in her own words. We match it against who you are set up for, what you offer, where you work and what it costs. She arrives already knowing whether she qualifies.",
+  "orgpage.gain2Title": "Numbers you can take to a funder",
+  "orgpage.gain2Body":
+    "How many women were sent to your own site, how many read your organisation page, and how each thing you posted performed. Not a vanity figure: the first one counts people who clicked through to you.",
+  "orgpage.gain3Title": "Checked once, not per listing",
+  "orgpage.gain3Body":
+    "We verify you against a public register or your funder when you join. After that you post what you like, when you like, without waiting on us.",
+  "orgpage.gain4Title": "Fewer of the wrong enquiries",
+  "orgpage.gain4Body":
+    "You say who you cannot help, and we show it. Women rule themselves out before they contact you, which is time back for whoever answers your inbox.",
+  "orgpage.fourSteps": "Four steps, and one of them is ours",
+  "orgpage.step1Title": "Tell us who you are",
+  "orgpage.step1Body":
+    "A few questions about what you do, who you serve and where. Ten minutes, and you can stop partway and come back.",
+  "orgpage.step2Title": "We check you",
+  "orgpage.step2Body":
+    "Against a public register, or your funder. One check, done by a person.",
+  "orgpage.step3Title": "Post what is open",
+  "orgpage.step3Body":
+    "A course, a grant, a drop-in, a mentoring scheme. Anything with a way in for a woman.",
+  "orgpage.step4Title": "She finds it when it fits",
+  "orgpage.step4Body":
+    "Not because she searched your name. Because what she described matched what you run.",
+  "orgpage.whereYouSit": "Where you would sit",
+  "orgpage.zonesBody":
+    "You pick your own, one main and up to two others. Most women need more than one at a time and most services only do one, which is the gap this exists to close.",
 };
 
 const gd: Catalogue = {
@@ -1128,6 +1306,113 @@ const gd: Catalogue = {
   "meta.emailCode.title": "Thoir sùil air a' bhogsa ùr agad",
   "meta.emailCode.desc":
     "Cuir a-steach an còd a chuir sinn dhan t-seòladh ùr agad.",
+
+  "settings.savedList": "An liosta shàbhailte agam",
+  "settings.reminders": "Cuimhneachain",
+  "settings.howFar": "Dè cho fada ro làimh",
+  "settings.nothingElse":
+    "Chan eil sinn a' cur dad eile. Gun chuairt-litir, gun mholaidhean.",
+  "settings.neverName":
+    "Chan ainmich post-d cuimhneachaidh a-riamh an seòrsa taic, air eagal gun leugh cuideigin eile am bogsa agad.",
+  "settings.emailChanged":
+    "Deiseil. Tha an cunntas agad air an t-seòladh seo a-nis, agus thàinig an liosta shàbhailte agad leis.",
+  "reminders.beforeDeadline": "Ro cheann-latha",
+  "change.heard": "Seo na chuala sinn",
+  "change.weWillShow":
+    "Seallaidh sinn dhut beagan de na h-ath cheumannan, am fear as fheàrr a fhreagras an toiseach. Chan eil duine a' pàigheadh gus nochdadh an seo.",
+  "startover.confirm":
+    "Glanaidh seo na freagairtean agad. Tòiseachadh a-rithist?",
+  "startover.note":
+    "Fanaidh rud sam bith a shàbhail thu far a bheil e. Chan fhalbh ach na dh'innis thu dhuinn mun na tha a dhìth ort.",
+  "startover.yes": "Seadh, tòisich a-rithist",
+  "startover.keep": "Cùm na freagairtean agam",
+  "legal.onThisPage": "Air an duilleag seo",
+  "legal.questions":
+    "Thèid ceistean mu rud sam bith dheth seo gu duine, chan ann gu foirm.",
+  "legal.draftTitle": "Is e dreachd a tha seo",
+  "legal.draftBody":
+    "Tha na faclan gu h-ìosal a' mìneachadh dìreach mar a tha an t-àrd-ùrlar ag obair an-diugh, ach cha deach iad tro sgrùdadh deireannach fhathast. Tha e air fhoillseachadh gus an urrainn dhut a leughadh agus ar cumail ris, chan ann air sgàth gu bheil e deiseil.",
+  "legal.draftAsk":
+    "Ma tha rud sam bith an seo cudromach do cho-dhùnadh a tha thu a' dèanamh, faighnich dhuinn.",
+  "legal.pendingTitle": "Tha am fear seo fhathast ga sgrìobhadh",
+  "legal.pendingBody":
+    "Tha na faclan againne agus thèid am foillseachadh an seo mus fosgail an t-àrd-ùrlar. Chan eil dad air an duilleag seo an gnìomh gus an tèid.",
+  "legal.pendingAsk":
+    "Ma tha thu airson faighinn a-mach dè thachras dhan na sgrìobhas tu san eadar-ama, faighnich dhuinn agus innsidh sinn dhut gu soilleir.",
+  "photos.aria": "Dealbhan bhon Holistic Wellbeing Summit",
+  "photos.credit": "An Holistic Wellbeing Summit",
+  "testimonials.aria": "Na tha boireannaich ag ràdh",
+  "testimonials.prev": "An iomradh roimhe",
+  "testimonials.next": "An ath iomradh",
+  "form.sendCode": "Cuir thugam còd clàraidh a-steach",
+  "form.yourCode": "An còd clàraidh a-steach agad",
+  "form.codeWorks": "Bidh an còd ag obair airson 15 mionaidean.",
+  "form.newCodeSent": "Chaidh còd ùr a chur. Faodaidh e mionaid a thoirt.",
+  "form.sendNewCode": "Cuir còd ùr",
+  "form.theCodeWeSent": "An còd a chuir sinn",
+  "form.newEmail": "Seòladh puist-d ùr",
+  "form.sendToNew": "Cuir còd dhan t-seòladh ùr",
+  "form.firstName": "Ainm",
+  "form.lastName": "Sloinneadh",
+  "form.phoneOptional": "Àireamh fòn (roghainneil)",
+  "form.phoneNote":
+    "Cha chleachd sinn seo ach ma dh'iarras tu oirnn fònadh air ais thugad.",
+  "form.continue": "Lean air adhart",
+  "org.allOrgs": "A h-uile buidheann",
+  "org.checked": "Air a dhearbhadh le HWS",
+  "org.website": "An làrach-lìn aca",
+  "org.whatTheyDo": "Dè bhios iad a' dèanamh",
+  "org.whatTheyOffer": "Dè tha iad a' tabhann",
+  "org.whoTheyWorkWith": "Cò leis a bhios iad ag obair",
+  "org.whoTheyCanHelp": "Cò as urrainn dhaibh cuideachadh",
+  "org.whoTheyCannot": "Cò nach urrainn dhaibh cuideachadh",
+  "org.when": "Cuin",
+  "org.howToReach": "Mar a ruigeas tu iad",
+  "org.zones": "Raointean Ruigsinneachd",
+  "org.mainOne": "Am prìomh fhear aca",
+  "org.nothingRunning":
+    "Chan eil dad aca a' ruith an-dràsta. Innis dhuinn dè tha a dhìth ort agus coimheadaidh sinn thairis air a h-uile dad a tha againn.",
+  "org.orTellUs":
+    "No innis dhuinn dè tha a dhìth ort agus lorgaidh sinn rud dhut",
+
+  "orgpage.heroTitle":
+    "Na boireannaich a tha sibh air an son, gun aca ri ur lorg",
+  "orgpage.heroBody":
+    "Tha sibh a' dèanamh na h-obrach mu thràth. Is e an duilgheadas gum feum boireannach ur n-ainm a bhith aice gus an làrach agaibh a lorg. An seo bidh i a' mìneachadh a suidheachadh, agus cuiridh sinn sibhse mu coinneimh air sgàth gur sibhse am freagairt ceart, chan ann air sgàth gun do thomhais i.",
+  "orgpage.haveAccount": "Tha cunntas agam mu thràth",
+  "orgpage.freeNote":
+    "An-asgaidh. Gun àite pàighte, gun sanasachd, agus chan eil duine a' pàigheadh gus nochdadh nas àirde.",
+  "orgpage.whatYouGet": "Na gheibh sibh",
+  "orgpage.reach": "Ruigsinneachd, agus dòigh air a dhearbhadh",
+  "orgpage.gain1Title": "Boireannaich a bha a' lorg na tha sibh a' dèanamh",
+  "orgpage.gain1Body":
+    "Bidh i a' mìneachadh a suidheachadh nam faclan aice fhèin. Cothromaichidh sinn e an aghaidh cò dha a tha sibh deiseil, dè tha sibh a' tabhann, càite am bi sibh ag obair agus dè tha e a' cosg. Thig i thugaibh mu thràth a' tuigsinn a bheil i airidh.",
+  "orgpage.gain2Title":
+    "Àireamhan as urrainn dhuibh a thoirt gu neach-maoineachaidh",
+  "orgpage.gain2Body":
+    "Cia mheud boireannach a chaidh a chur chun na làraich agaibh fhèin, cia mheud a leugh duilleag na buidhne agaibh, agus mar a chaidh dha gach rud a chuir sibh suas. Chan e figear faoin: tha a' chiad fhear a' cunntadh dhaoine a bhrùth troimhe thugaibh.",
+  "orgpage.gain3Title": "Air a dhearbhadh aon turas, chan ann gach clàradh",
+  "orgpage.gain3Body":
+    "Bidh sinn gur dearbhadh an aghaidh clàir phoblaich no an luchd-maoineachaidh agaibh nuair a thig sibh a-steach. Às dèidh sin cuiridh sibh suas na thogras sibh, nuair a thogras sibh, gun a bhith a' feitheamh oirnn.",
+  "orgpage.gain4Title": "Nas lugha de na ceistean ceàrr",
+  "orgpage.gain4Body":
+    "Innsidh sibh cò nach urrainn dhuibh a chuideachadh, agus seallaidh sinn e. Cuiridh boireannaich iad fhèin a-mach mus cuir iad fios thugaibh, agus is e sin ùine air ais dhan neach a fhreagras am bogsa agaibh.",
+  "orgpage.fourSteps": "Ceithir ceumannan, agus is e fear dhiubh am fear againne",
+  "orgpage.step1Title": "Innis dhuinn cò sibh",
+  "orgpage.step1Body":
+    "Beagan cheistean mu na nì sibh, cò dha a bhios sibh ag obair agus càite. Deich mionaidean, agus faodaidh sibh stad letheach slighe agus tilleadh.",
+  "orgpage.step2Title": "Nì sinn sgrùdadh oirbh",
+  "orgpage.step2Body":
+    "An aghaidh clàir phoblaich, no an luchd-maoineachaidh agaibh. Aon sgrùdadh, air a dhèanamh le duine.",
+  "orgpage.step3Title": "Cuiribh suas na tha fosgailte",
+  "orgpage.step3Body":
+    "Cùrsa, tabhartas, tadhal a-steach, sgeama treòrachaidh. Rud sam bith aig a bheil slighe a-steach do bhoireannach.",
+  "orgpage.step4Title": "Lorgaidh i e nuair a fhreagras e",
+  "orgpage.step4Body":
+    "Chan ann air sgàth gun do lorg i ur n-ainm. Air sgàth gun do fhreagair na mhìnich i ris na tha sibh a' ruith.",
+  "orgpage.whereYouSit": "Càite am biodh sibh",
+  "orgpage.zonesBody":
+    "Taghaidh sibh fhèin, aon phrìomh fhear agus suas ri dhà eile. Tha feum aig a' mhòr-chuid de bhoireannaich air barrachd air aon aig an aon àm agus chan eil a' mhòr-chuid de sheirbheisean a' dèanamh ach aon, agus is e sin am beàrn a tha seo ann gus a dhùnadh.",
 };
 
 const sco: Catalogue = {
@@ -1488,6 +1773,107 @@ const sco: Catalogue = {
     "Muive yer accoont, and awthing saved on it, tae anither address.",
   "meta.emailCode.title": "Check yer new inbox",
   "meta.emailCode.desc": "Pit in the code we sent tae yer new address.",
+
+  "settings.savedList": "Ma saved leet",
+  "settings.reminders": "Mindins",
+  "settings.howFar": "Hou lang afore",
+  "settings.nothingElse":
+    "We send naethin else. Nae newsletter, nae suggestions.",
+  "settings.neverName":
+    "Mindin emails niver name the kind o support, in case somebody else reads yer inbox.",
+  "settings.emailChanged":
+    "Duin. Yer accoont is on this address nou, and yer saved leet cam wi it.",
+  "reminders.beforeDeadline": "Afore a deadline",
+  "change.heard": "Here's whit we heard",
+  "change.weWillShow":
+    "We'll shaw ye a smaw nummer o neist steps, strangest match first. Naebody pays tae kythe here.",
+  "startover.confirm": "This redds yer answers. Stert again?",
+  "startover.note":
+    "Onythin ye hae saved bides whaur it is. Ainly whit ye telt us aboot whit ye need gangs.",
+  "startover.yes": "Aye, stert again",
+  "startover.keep": "Keep ma answers",
+  "legal.onThisPage": "On this page",
+  "legal.questions": "Quaistens aboot ony o this gang tae a body, no a form.",
+  "legal.draftTitle": "This is a draft",
+  "legal.draftBody":
+    "The wirdin ablow describes exactly hou the platform warks the day, but it hasna yet been throu a final review. It's published sae ye can read it and haud us tae it, no acause it's feenished.",
+  "legal.draftAsk":
+    "Gin onythin here maitters tae a decision ye're makkin, speir at us.",
+  "legal.pendingTitle": "This ane is still bein written",
+  "legal.pendingBody":
+    "The wirdin is wi us and will be published here afore the platform opens. Naethin on this page is in force till it is.",
+  "legal.pendingAsk":
+    "Gin ye want tae ken whit happens tae whit ye type in the meantime, speir at us and we'll tell ye plain.",
+  "photos.aria": "Photies frae the Holistic Wellbeing Summit",
+  "photos.credit": "The Holistic Wellbeing Summit",
+  "testimonials.aria": "Whit weemen say",
+  "testimonials.prev": "Previous quote",
+  "testimonials.next": "Neist quote",
+  "form.sendCode": "Send me a sign-in code",
+  "form.yourCode": "Yer sign-in code",
+  "form.codeWorks": "The code warks for 15 meenits.",
+  "form.newCodeSent": "New code sent. It can tak a meenit tae come.",
+  "form.sendNewCode": "Send a new code",
+  "form.theCodeWeSent": "The code we sent",
+  "form.newEmail": "New email address",
+  "form.sendToNew": "Send a code tae the new address",
+  "form.firstName": "First name",
+  "form.lastName": "Last name",
+  "form.phoneOptional": "Phone nummer (optional)",
+  "form.phoneNote": "We ainly uise this gin ye speir at us tae caw ye back.",
+  "form.continue": "Cairry on",
+  "org.allOrgs": "Aw organisations",
+  "org.checked": "Checkit bi HWS",
+  "org.website": "Thair wabsite",
+  "org.whatTheyDo": "Whit thay dae",
+  "org.whatTheyOffer": "Whit thay offer",
+  "org.whoTheyWorkWith": "Wha thay wark wi",
+  "org.whoTheyCanHelp": "Wha thay can help",
+  "org.whoTheyCannot": "Wha thay canna help",
+  "org.when": "Whan",
+  "org.howToReach": "Hou tae reach thaim",
+  "org.zones": "Access Zones",
+  "org.mainOne": "Thair main ane",
+  "org.nothingRunning":
+    "Thay hae naethin rinnin the nou. Tell us whit ye need and we'll luik ower awthing we hae.",
+  "org.orTellUs": "Or tell us whit ye need and we'll match ye",
+
+  "orgpage.heroTitle": "The weemen ye're for, wioot thaim haein tae find ye",
+  "orgpage.heroBody":
+    "Ye awreadies dae the wark. The bather is that a wumman has tae ken yer name tae find yer wabsite. Here she describes her situation, and we pit ye afore her acause ye're the richt answer, no acause she guessed.",
+  "orgpage.haveAccount": "A hae an accoont awreadies",
+  "orgpage.freeNote":
+    "Free. Nae peyed placement, nae advertisin, and naebody pays tae kythe heicher.",
+  "orgpage.whatYouGet": "Whit ye get",
+  "orgpage.reach": "Reach, and a wey tae pruive it",
+  "orgpage.gain1Title": "Weemen that were luikin for whit ye dae",
+  "orgpage.gain1Body":
+    "She describes her situation in her ain wirds. We match it again wha ye're set up for, whit ye offer, whaur ye wark and whit it costs. She comes awreadies kennin whether she qualifies.",
+  "orgpage.gain2Title": "Nummers ye can tak tae a funder",
+  "orgpage.gain2Body":
+    "Hou mony weemen were sent tae yer ain site, hou mony read yer organisation page, and hou ilka thing ye postit did. No a vanity figure: the first ane coonts fowk that clickit throu tae ye.",
+  "orgpage.gain3Title": "Checkit aince, no per leetin",
+  "orgpage.gain3Body":
+    "We verify ye again a public register or yer funder whan ye jyne. Efter that ye post whit ye like, whan ye like, wioot waitin on us.",
+  "orgpage.gain4Title": "Fewer o the wrang speirins",
+  "orgpage.gain4Body":
+    "Ye say wha ye canna help, and we shaw it. Weemen rule thairsels oot afore thay contact ye, whilk is time back for whaever answers yer inbox.",
+  "orgpage.fourSteps": "Fower steps, and ane o thaim is oors",
+  "orgpage.step1Title": "Tell us wha ye are",
+  "orgpage.step1Body":
+    "A wheen quaistens aboot whit ye dae, wha ye serve and whaur. Ten meenits, and ye can stap haufwey and come back.",
+  "orgpage.step2Title": "We check ye",
+  "orgpage.step2Body":
+    "Again a public register, or yer funder. Ae check, duin bi a body.",
+  "orgpage.step3Title": "Post whit is open",
+  "orgpage.step3Body":
+    "A coorse, a grant, a drap-in, a mentorin scheme. Onythin wi a wey in for a wumman.",
+  "orgpage.step4Title": "She finds it whan it fits",
+  "orgpage.step4Body":
+    "No acause she sairched yer name. Acause whit she described matched whit ye rin.",
+  "orgpage.whereYouSit": "Whaur ye wad sit",
+  "orgpage.zonesBody":
+    "Ye wale yer ain, ae main ane and up tae twa ithers. Maist weemen need mair nor ane at a time and maist services ainly dae ane, whilk is the gap this exists tae close.",
 };
 
 const pl: Catalogue = {
@@ -1855,6 +2241,110 @@ const pl: Catalogue = {
     "Przenieś konto, razem ze wszystkim, co na nim zapisane, na inny adres.",
   "meta.emailCode.title": "Sprawdź nową skrzynkę",
   "meta.emailCode.desc": "Wpisz kod, który wysłaliśmy na twój nowy adres.",
+
+  "settings.savedList": "Moja zapisana lista",
+  "settings.reminders": "Przypomnienia",
+  "settings.howFar": "Z jakim wyprzedzeniem",
+  "settings.nothingElse":
+    "Nie wysyłamy nic więcej. Żadnego newslettera, żadnych propozycji.",
+  "settings.neverName":
+    "E-maile z przypomnieniem nigdy nie nazywają rodzaju wsparcia, na wypadek gdyby ktoś inny czytał twoją skrzynkę.",
+  "settings.emailChanged":
+    "Gotowe. Twoje konto jest teraz na tym adresie, a zapisana lista przeszła razem z nim.",
+  "reminders.beforeDeadline": "Przed terminem",
+  "change.heard": "Oto, co usłyszeliśmy",
+  "change.weWillShow":
+    "Pokażemy ci niewielką liczbę kolejnych kroków, od najlepiej pasującego. Nikt nie płaci za to, by się tu znaleźć.",
+  "startover.confirm": "To wyczyści twoje odpowiedzi. Zacząć od nowa?",
+  "startover.note":
+    "Wszystko, co zapisałaś, zostaje na miejscu. Znika tylko to, co nam powiedziałaś o swoich potrzebach.",
+  "startover.yes": "Tak, zacznij od nowa",
+  "startover.keep": "Zachowaj moje odpowiedzi",
+  "legal.onThisPage": "Na tej stronie",
+  "legal.questions":
+    "Pytania o cokolwiek z tego trafiają do człowieka, nie do formularza.",
+  "legal.draftTitle": "To jest wersja robocza",
+  "legal.draftBody":
+    "Poniższy tekst opisuje dokładnie to, jak platforma działa dzisiaj, ale nie przeszedł jeszcze końcowej weryfikacji. Publikujemy go, żebyś mogła go przeczytać i trzymać nas za słowo, a nie dlatego, że jest skończony.",
+  "legal.draftAsk":
+    "Jeśli cokolwiek tutaj ma znaczenie dla decyzji, którą podejmujesz, zapytaj nas.",
+  "legal.pendingTitle": "Ten dokument jest jeszcze pisany",
+  "legal.pendingBody":
+    "Tekst jest u nas i zostanie tu opublikowany, zanim platforma ruszy. Nic na tej stronie nie obowiązuje, dopóki to nie nastąpi.",
+  "legal.pendingAsk":
+    "Jeśli chcesz w międzyczasie wiedzieć, co dzieje się z tym, co wpisujesz, zapytaj nas, a powiemy ci wprost.",
+  "photos.aria": "Zdjęcia z Holistic Wellbeing Summit",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "Co mówią kobiety",
+  "testimonials.prev": "Poprzedni cytat",
+  "testimonials.next": "Następny cytat",
+  "form.sendCode": "Wyślij mi kod do logowania",
+  "form.yourCode": "Twój kod do logowania",
+  "form.codeWorks": "Kod działa przez 15 minut.",
+  "form.newCodeSent": "Wysłano nowy kod. Może dotrzeć w ciągu minuty.",
+  "form.sendNewCode": "Wyślij nowy kod",
+  "form.theCodeWeSent": "Kod, który wysłaliśmy",
+  "form.newEmail": "Nowy adres e-mail",
+  "form.sendToNew": "Wyślij kod na nowy adres",
+  "form.firstName": "Imię",
+  "form.lastName": "Nazwisko",
+  "form.phoneOptional": "Numer telefonu (opcjonalnie)",
+  "form.phoneNote": "Używamy go tylko wtedy, gdy poprosisz, żebyśmy oddzwonili.",
+  "form.continue": "Dalej",
+  "org.allOrgs": "Wszystkie organizacje",
+  "org.checked": "Sprawdzone przez HWS",
+  "org.website": "Ich strona",
+  "org.whatTheyDo": "Czym się zajmują",
+  "org.whatTheyOffer": "Co oferują",
+  "org.whoTheyWorkWith": "Z kim pracują",
+  "org.whoTheyCanHelp": "Komu mogą pomóc",
+  "org.whoTheyCannot": "Komu nie mogą pomóc",
+  "org.when": "Kiedy",
+  "org.howToReach": "Jak się z nimi skontaktować",
+  "org.zones": "Strefy Dostępu",
+  "org.mainOne": "Ich główna",
+  "org.nothingRunning":
+    "W tej chwili nic nie prowadzą. Powiedz nam, czego potrzebujesz, a poszukamy we wszystkim, co mamy.",
+  "org.orTellUs":
+    "Albo powiedz nam, czego potrzebujesz, a my dopasujemy coś dla ciebie",
+
+  "orgpage.heroTitle":
+    "Kobiety, dla których jesteście, bez tego, żeby musiały was znaleźć",
+  "orgpage.heroBody":
+    "Pracę już wykonujecie. Problem w tym, że kobieta musi znać waszą nazwę, żeby trafić na waszą stronę. Tutaj opisuje swoją sytuację, a my stawiamy was przed nią, bo jesteście właściwą odpowiedzią, nie dlatego, że zgadła.",
+  "orgpage.haveAccount": "Mam już konto",
+  "orgpage.freeNote":
+    "Bezpłatnie. Żadnych płatnych miejsc, żadnych reklam, i nikt nie płaci za wyższą pozycję.",
+  "orgpage.whatYouGet": "Co otrzymujecie",
+  "orgpage.reach": "Zasięg i sposób, żeby to udowodnić",
+  "orgpage.gain1Title": "Kobiety, które szukały właśnie tego, co robicie",
+  "orgpage.gain1Body":
+    "Opisuje swoją sytuację własnymi słowami. Zestawiamy to z tym, dla kogo jesteście, co oferujecie, gdzie działacie i ile to kosztuje. Przychodzi już wiedząc, czy się kwalifikuje.",
+  "orgpage.gain2Title": "Liczby, które możecie pokazać finansującemu",
+  "orgpage.gain2Body":
+    "Ile kobiet trafiło na waszą własną stronę, ile przeczytało stronę organizacji i jak poradziło sobie każde zgłoszenie. Nie wskaźnik na pokaz: pierwszy z nich liczy osoby, które kliknęły i przeszły do was.",
+  "orgpage.gain3Title": "Sprawdzenie raz, nie przy każdym wpisie",
+  "orgpage.gain3Body":
+    "Weryfikujemy was w publicznym rejestrze albo u finansującego, kiedy dołączacie. Potem publikujecie, co chcecie i kiedy chcecie, bez czekania na nas.",
+  "orgpage.gain4Title": "Mniej niewłaściwych zapytań",
+  "orgpage.gain4Body":
+    "Mówicie, komu nie możecie pomóc, a my to pokazujemy. Kobiety same się wykluczają, zanim do was napiszą, a to czas odzyskany przez tego, kto odbiera waszą pocztę.",
+  "orgpage.fourSteps": "Cztery kroki, a jeden z nich jest nasz",
+  "orgpage.step1Title": "Powiedzcie nam, kim jesteście",
+  "orgpage.step1Body":
+    "Kilka pytań o to, czym się zajmujecie, komu służycie i gdzie. Dziesięć minut, a można przerwać w połowie i wrócić.",
+  "orgpage.step2Title": "Sprawdzamy was",
+  "orgpage.step2Body":
+    "W publicznym rejestrze albo u waszego finansującego. Jedno sprawdzenie, wykonane przez człowieka.",
+  "orgpage.step3Title": "Publikujecie to, co otwarte",
+  "orgpage.step3Body":
+    "Kurs, dotacja, dyżur otwarty, program mentoringowy. Cokolwiek, do czego kobieta ma wejście.",
+  "orgpage.step4Title": "Ona znajduje to, gdy pasuje",
+  "orgpage.step4Body":
+    "Nie dlatego, że szukała waszej nazwy. Dlatego, że to, co opisała, pasowało do tego, co prowadzicie.",
+  "orgpage.whereYouSit": "Gdzie byście się znaleźli",
+  "orgpage.zonesBody":
+    "Wybieracie sami, jedną główną i do dwóch kolejnych. Większość kobiet potrzebuje więcej niż jednej naraz, a większość usług robi tylko jedną, i to jest luka, którą to zamyka.",
 };
 
 const uk: Catalogue = {
@@ -2224,6 +2714,109 @@ const uk: Catalogue = {
     "Перенесіть обліковий запис і все збережене на ньому на іншу адресу.",
   "meta.emailCode.title": "Перевірте нову скриньку",
   "meta.emailCode.desc": "Введіть код, який ми надіслали на вашу нову адресу.",
+
+  "settings.savedList": "Мій збережений список",
+  "settings.reminders": "Нагадування",
+  "settings.howFar": "За скільки часу",
+  "settings.nothingElse":
+    "Більше нічого не надсилаємо. Жодних розсилок, жодних порад.",
+  "settings.neverName":
+    "Листи-нагадування ніколи не називають вид підтримки, на випадок, якщо вашу пошту читає хтось інший.",
+  "settings.emailChanged":
+    "Готово. Ваш обліковий запис тепер на цій адресі, і збережений список перейшов разом з ним.",
+  "reminders.beforeDeadline": "Перед кінцевим терміном",
+  "change.heard": "Ось що ми почули",
+  "change.weWillShow":
+    "Ми покажемо невелику кількість наступних кроків, від того, що підходить найкраще. Ніхто не платить за появу тут.",
+  "startover.confirm": "Це очистить ваші відповіді. Почати спочатку?",
+  "startover.note":
+    "Усе збережене залишається на місці. Зникає лише те, що ви розповіли про свої потреби.",
+  "startover.yes": "Так, почати спочатку",
+  "startover.keep": "Залишити мої відповіді",
+  "legal.onThisPage": "На цій сторінці",
+  "legal.questions": "Питання про будь-що з цього йдуть до людини, а не у форму.",
+  "legal.draftTitle": "Це чернетка",
+  "legal.draftBody":
+    "Текст нижче описує саме те, як платформа працює сьогодні, але він ще не пройшов остаточної перевірки. Його опубліковано, щоб ви могли прочитати й тримати нас за слово, а не тому, що він завершений.",
+  "legal.draftAsk":
+    "Якщо щось тут важливе для рішення, яке ви приймаєте, запитайте нас.",
+  "legal.pendingTitle": "Цей документ ще пишеться",
+  "legal.pendingBody":
+    "Текст у нас і буде опублікований тут до відкриття платформи. Ніщо на цій сторінці не чинне, доки цього не станеться.",
+  "legal.pendingAsk":
+    "Якщо ви хочете тим часом знати, що відбувається з тим, що ви пишете, запитайте нас, і ми скажемо прямо.",
+  "photos.aria": "Фотографії з Holistic Wellbeing Summit",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "Що кажуть жінки",
+  "testimonials.prev": "Попередня цитата",
+  "testimonials.next": "Наступна цитата",
+  "form.sendCode": "Надішліть мені код для входу",
+  "form.yourCode": "Ваш код для входу",
+  "form.codeWorks": "Код діє 15 хвилин.",
+  "form.newCodeSent": "Новий код надіслано. Він може прийти за хвилину.",
+  "form.sendNewCode": "Надіслати новий код",
+  "form.theCodeWeSent": "Код, який ми надіслали",
+  "form.newEmail": "Нова адреса електронної пошти",
+  "form.sendToNew": "Надіслати код на нову адресу",
+  "form.firstName": "Імʼя",
+  "form.lastName": "Прізвище",
+  "form.phoneOptional": "Номер телефону (необовʼязково)",
+  "form.phoneNote":
+    "Ми використовуємо його, лише якщо ви попросите передзвонити.",
+  "form.continue": "Далі",
+  "org.allOrgs": "Усі організації",
+  "org.checked": "Перевірено HWS",
+  "org.website": "Їхній сайт",
+  "org.whatTheyDo": "Чим вони займаються",
+  "org.whatTheyOffer": "Що пропонують",
+  "org.whoTheyWorkWith": "З ким працюють",
+  "org.whoTheyCanHelp": "Кому можуть допомогти",
+  "org.whoTheyCannot": "Кому не можуть допомогти",
+  "org.when": "Коли",
+  "org.howToReach": "Як з ними звʼязатися",
+  "org.zones": "Зони доступу",
+  "org.mainOne": "Їхня основна",
+  "org.nothingRunning":
+    "Зараз у них нічого не відбувається. Скажіть, що вам потрібно, і ми пошукаємо в усьому, що маємо.",
+  "org.orTellUs": "Або скажіть, що вам потрібно, і ми підберемо для вас",
+
+  "orgpage.heroTitle":
+    "Жінки, для яких ви працюєте, без того, щоб їм довелося вас шукати",
+  "orgpage.heroBody":
+    "Роботу ви вже робите. Проблема в тому, що жінка має знати вашу назву, щоб знайти ваш сайт. Тут вона описує свою ситуацію, і ми показуємо їй вас, бо ви — правильна відповідь, а не тому, що вона вгадала.",
+  "orgpage.haveAccount": "У мене вже є обліковий запис",
+  "orgpage.freeNote":
+    "Безкоштовно. Без платного розміщення, без реклами, і ніхто не платить за вищу позицію.",
+  "orgpage.whatYouGet": "Що ви отримуєте",
+  "orgpage.reach": "Охоплення — і спосіб це довести",
+  "orgpage.gain1Title": "Жінки, які шукали саме те, що ви робите",
+  "orgpage.gain1Body":
+    "Вона описує свою ситуацію своїми словами. Ми зіставляємо це з тим, для кого ви працюєте, що пропонуєте, де працюєте і скільки це коштує. Вона приходить, уже знаючи, чи підходить.",
+  "orgpage.gain2Title": "Цифри, які можна показати донору",
+  "orgpage.gain2Body":
+    "Скільки жінок перейшло на ваш власний сайт, скільки прочитало сторінку організації і як спрацювало кожне ваше розміщення. Не показник для вигляду: перший рахує людей, які перейшли саме до вас.",
+  "orgpage.gain3Title": "Перевірка один раз, а не до кожного запису",
+  "orgpage.gain3Body":
+    "Ми перевіряємо вас у публічному реєстрі або у вашого донора, коли ви приєднуєтеся. Далі ви публікуєте що хочете і коли хочете, не чекаючи на нас.",
+  "orgpage.gain4Title": "Менше звернень не за адресою",
+  "orgpage.gain4Body":
+    "Ви кажете, кому не можете допомогти, і ми це показуємо. Жінки відсіюють себе самі ще до звернення, і це повернений час для того, хто читає вашу пошту.",
+  "orgpage.fourSteps": "Чотири кроки, і один з них наш",
+  "orgpage.step1Title": "Розкажіть, хто ви",
+  "orgpage.step1Body":
+    "Кілька питань про те, чим ви займаєтеся, кому допомагаєте і де. Десять хвилин, і можна зупинитися на півдорозі та повернутися.",
+  "orgpage.step2Title": "Ми вас перевіряємо",
+  "orgpage.step2Body":
+    "У публічному реєстрі або у вашого донора. Одна перевірка, яку робить людина.",
+  "orgpage.step3Title": "Публікуєте те, що відкрите",
+  "orgpage.step3Body":
+    "Курс, грант, відкритий прийом, менторська програма. Будь-що, куди жінка має вхід.",
+  "orgpage.step4Title": "Вона знаходить це, коли воно підходить",
+  "orgpage.step4Body":
+    "Не тому, що шукала вашу назву. А тому, що описане нею збіглося з тим, що ви проводите.",
+  "orgpage.whereYouSit": "Де б ви були",
+  "orgpage.zonesBody":
+    "Ви обираєте самі: одну основну і ще до двох. Більшості жінок потрібно кілька водночас, а більшість сервісів робить лише одне — і саме цю прогалину це закриває.",
 };
 
 const ar: Catalogue = {
@@ -2572,6 +3165,104 @@ const ar: Catalogue = {
   "meta.emailChange.desc": "انقلي حسابك، وكل ما حُفظ عليه، إلى عنوان آخر.",
   "meta.emailCode.title": "تفقّدي بريدك الجديد",
   "meta.emailCode.desc": "أدخلي الرمز الذي أرسلناه إلى عنوانك الجديد.",
+
+  "settings.savedList": "قائمتي المحفوظة",
+  "settings.reminders": "التذكيرات",
+  "settings.howFar": "قبل الموعد بكم",
+  "settings.nothingElse": "لا نرسل شيئاً غير ذلك. لا نشرة بريدية ولا اقتراحات.",
+  "settings.neverName":
+    "رسائل التذكير لا تذكر أبداً نوع الدعم، تحسّباً لأن يقرأ بريدك شخص آخر.",
+  "settings.emailChanged":
+    "تم. حسابك الآن على هذا العنوان، وقائمتك المحفوظة انتقلت معه.",
+  "reminders.beforeDeadline": "قبل الموعد النهائي",
+  "change.heard": "هذا ما فهمناه",
+  "change.weWillShow":
+    "سنعرض عليك عدداً صغيراً من الخطوات التالية، الأنسب أولاً. لا أحد يدفع ليظهر هنا.",
+  "startover.confirm": "هذا يمسح إجاباتك. نبدأ من جديد؟",
+  "startover.note":
+    "كل ما حفظتِه يبقى مكانه. يذهب فقط ما أخبرتِنا به عمّا تحتاجينه.",
+  "startover.yes": "نعم، ابدئي من جديد",
+  "startover.keep": "احتفظي بإجاباتي",
+  "legal.onThisPage": "في هذه الصفحة",
+  "legal.questions": "الأسئلة عن أي من هذا تصل إلى شخص، لا إلى استمارة.",
+  "legal.draftTitle": "هذه مسودة",
+  "legal.draftBody":
+    "النص أدناه يصف بالضبط كيف تعمل المنصة اليوم، لكنه لم يمر بعد بمراجعة نهائية. نُشر لتقرئيه وتحاسبينا عليه، لا لأنه مكتمل.",
+  "legal.draftAsk": "إن كان أي شيء هنا يهم قراراً تتخذينه، اسألينا.",
+  "legal.pendingTitle": "هذه لا تزال قيد الكتابة",
+  "legal.pendingBody":
+    "النص لدينا وسيُنشر هنا قبل أن تفتح المنصة. لا شيء في هذه الصفحة سارٍ حتى ذلك الحين.",
+  "legal.pendingAsk":
+    "إن أردتِ أن تعرفي في هذه الأثناء ما يحدث لما تكتبينه، اسألينا وسنخبرك بوضوح.",
+  "photos.aria": "صور من Holistic Wellbeing Summit",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "ما تقوله النساء",
+  "testimonials.prev": "الاقتباس السابق",
+  "testimonials.next": "الاقتباس التالي",
+  "form.sendCode": "أرسلوا لي رمز دخول",
+  "form.yourCode": "رمز الدخول الخاص بك",
+  "form.codeWorks": "الرمز صالح لمدة 15 دقيقة.",
+  "form.newCodeSent": "أُرسل رمز جديد. قد يستغرق وصوله دقيقة.",
+  "form.sendNewCode": "أرسلوا رمزاً جديداً",
+  "form.theCodeWeSent": "الرمز الذي أرسلناه",
+  "form.newEmail": "عنوان البريد الجديد",
+  "form.sendToNew": "أرسلوا رمزاً إلى العنوان الجديد",
+  "form.firstName": "الاسم الأول",
+  "form.lastName": "اسم العائلة",
+  "form.phoneOptional": "رقم الهاتف (اختياري)",
+  "form.phoneNote": "لا نستخدمه إلا إن طلبتِ منّا الاتصال بك.",
+  "form.continue": "متابعة",
+  "org.allOrgs": "كل الجهات",
+  "org.checked": "مُتحقَّق منها من HWS",
+  "org.website": "موقعهم",
+  "org.whatTheyDo": "ما الذي يفعلونه",
+  "org.whatTheyOffer": "ما الذي يقدّمونه",
+  "org.whoTheyWorkWith": "مع من يعملون",
+  "org.whoTheyCanHelp": "من يمكنهم مساعدته",
+  "org.whoTheyCannot": "من لا يمكنهم مساعدته",
+  "org.when": "متى",
+  "org.howToReach": "كيف تصلين إليهم",
+  "org.zones": "مجالات الوصول",
+  "org.mainOne": "مجالهم الأساسي",
+  "org.nothingRunning":
+    "لا يوجد لديهم شيء قائم في الوقت الحالي. أخبرينا بما تحتاجينه وسنبحث في كل ما لدينا.",
+  "org.orTellUs": "أو أخبرينا بما تحتاجينه وسنجد لكِ ما يناسبك",
+
+  "orgpage.heroTitle": "النساء اللواتي تعملون لأجلهن، دون أن يضطررن للبحث عنكم",
+  "orgpage.heroBody":
+    "أنتم تقومون بالعمل أصلاً. المشكلة أن على المرأة أن تعرف اسمكم لتصل إلى موقعكم. هنا تصف وضعها، ونضعكم أمامها لأنكم الإجابة الصحيحة، لا لأنها خمّنت.",
+  "orgpage.haveAccount": "لدي حساب بالفعل",
+  "orgpage.freeNote":
+    "مجاناً. لا مكان مدفوع، ولا إعلانات، ولا أحد يدفع ليظهر أعلى.",
+  "orgpage.whatYouGet": "ما الذي تحصلون عليه",
+  "orgpage.reach": "وصول، وطريقة لإثباته",
+  "orgpage.gain1Title": "نساء كنّ يبحثن عمّا تقدّمونه",
+  "orgpage.gain1Body":
+    "تصف وضعها بكلماتها. نطابقه مع من أنتم مهيّأون له، وما تقدّمونه، وأين تعملون، وكم يكلّف. تصل إليكم وهي تعرف مسبقاً ما إذا كانت مؤهّلة.",
+  "orgpage.gain2Title": "أرقام يمكنكم عرضها على ممول",
+  "orgpage.gain2Body":
+    "كم امرأة وصلت إلى موقعكم، وكم قرأت صفحة جهتكم، وكيف أدّى كل ما نشرتموه. ليس رقماً للمباهاة: الأول يحصي من نقرن ووصلن إليكم.",
+  "orgpage.gain3Title": "تحقّق مرة واحدة، لا مع كل عرض",
+  "orgpage.gain3Body":
+    "نتحقق منكم في سجل عام أو لدى مموّلكم عند انضمامكم. بعدها تنشرون ما تشاؤون، متى تشاؤون، دون انتظارنا.",
+  "orgpage.gain4Title": "استفسارات خاطئة أقل",
+  "orgpage.gain4Body":
+    "تقولون من لا تستطيعون مساعدته، ونحن نعرضه. تستبعد النساء أنفسهن قبل التواصل معكم، وهذا وقت يعود لمن يردّ على بريدكم.",
+  "orgpage.fourSteps": "أربع خطوات، واحدة منها لنا",
+  "orgpage.step1Title": "أخبرونا من أنتم",
+  "orgpage.step1Body":
+    "بضعة أسئلة عمّا تفعلونه، ولمن تقدّمونه، وأين. عشر دقائق، ويمكنكم التوقف في المنتصف والعودة.",
+  "orgpage.step2Title": "نتحقق منكم",
+  "orgpage.step2Body": "في سجل عام، أو لدى مموّلكم. تحقق واحد، يقوم به شخص.",
+  "orgpage.step3Title": "انشروا ما هو مفتوح",
+  "orgpage.step3Body":
+    "دورة، منحة، زيارة بلا موعد، برنامج إرشاد. أي شيء فيه مدخل لامرأة.",
+  "orgpage.step4Title": "تجده حين يناسبها",
+  "orgpage.step4Body":
+    "ليس لأنها بحثت عن اسمكم، بل لأن ما وصفته طابق ما تقدّمونه.",
+  "orgpage.whereYouSit": "أين سيكون موقعكم",
+  "orgpage.zonesBody":
+    "تختارون بأنفسكم، مجالاً رئيسياً وما يصل إلى اثنين آخرين. أغلب النساء يحتجن أكثر من واحد في الوقت نفسه، وأغلب الخدمات تقدّم واحداً فقط، وهذه هي الفجوة التي وُجد هذا لسدّها.",
 };
 
 const ur: Catalogue = {
@@ -2938,6 +3629,110 @@ const ur: Catalogue = {
     "اپنا اکاؤنٹ، اور اس پر محفوظ سب کچھ، کسی اور پتے پر منتقل کریں۔",
   "meta.emailCode.title": "اپنا نیا اِن باکس دیکھیں",
   "meta.emailCode.desc": "وہ کوڈ درج کریں جو ہم نے آپ کے نئے پتے پر بھیجا ہے۔",
+
+  "settings.savedList": "میری محفوظ فہرست",
+  "settings.reminders": "یاد دہانیاں",
+  "settings.howFar": "کتنا پہلے",
+  "settings.nothingElse":
+    "ہم اس کے علاوہ کچھ نہیں بھیجتے۔ نہ نیوز لیٹر، نہ تجاویز۔",
+  "settings.neverName":
+    "یاد دہانی کی ای میلز کبھی مدد کی قسم کا نام نہیں لیتیں، اس صورت میں کہ آپ کا ان باکس کوئی اور پڑھے۔",
+  "settings.emailChanged":
+    "ہو گیا۔ آپ کا اکاؤنٹ اب اسی پتے پر ہے، اور آپ کی محفوظ فہرست بھی ساتھ آ گئی۔",
+  "reminders.beforeDeadline": "آخری تاریخ سے پہلے",
+  "change.heard": "ہم نے یہ سمجھا",
+  "change.weWillShow":
+    "ہم آپ کو تھوڑے سے اگلے قدم دکھائیں گے، سب سے زیادہ موزوں پہلے۔ یہاں آنے کے لیے کوئی پیسے نہیں دیتا۔",
+  "startover.confirm": "اس سے آپ کے جواب صاف ہو جائیں گے۔ دوبارہ شروع کریں؟",
+  "startover.note":
+    "جو کچھ آپ نے محفوظ کیا وہ اپنی جگہ رہے گا۔ صرف وہ جاتا ہے جو آپ نے اپنی ضرورت کے بارے میں بتایا۔",
+  "startover.yes": "ہاں، دوبارہ شروع کریں",
+  "startover.keep": "میرے جواب رہنے دیں",
+  "legal.onThisPage": "اس صفحے پر",
+  "legal.questions":
+    "ان میں سے کسی بھی چیز کے سوال کسی شخص تک جاتے ہیں، فارم تک نہیں۔",
+  "legal.draftTitle": "یہ ایک مسودہ ہے",
+  "legal.draftBody":
+    "نیچے دی گئی عبارت بالکل وہی بیان کرتی ہے جیسے پلیٹ فارم آج کام کرتا ہے، مگر یہ ابھی حتمی جائزے سے نہیں گزری۔ یہ اس لیے شائع کی گئی ہے کہ آپ اسے پڑھ سکیں اور ہمیں اس کا پابند ٹھہرا سکیں، اس لیے نہیں کہ یہ مکمل ہے۔",
+  "legal.draftAsk":
+    "اگر یہاں کی کوئی بات آپ کے کسی فیصلے کے لیے اہم ہے تو ہم سے پوچھیں۔",
+  "legal.pendingTitle": "یہ ابھی لکھی جا رہی ہے",
+  "legal.pendingBody":
+    "عبارت ہمارے پاس ہے اور پلیٹ فارم کھلنے سے پہلے یہاں شائع کر دی جائے گی۔ تب تک اس صفحے پر کچھ بھی نافذ العمل نہیں۔",
+  "legal.pendingAsk":
+    "اگر آپ اس دوران جاننا چاہیں کہ آپ جو لکھتی ہیں اس کا کیا ہوتا ہے تو ہم سے پوچھیں، ہم صاف بتا دیں گے۔",
+  "photos.aria": "Holistic Wellbeing Summit کی تصاویر",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "خواتین کیا کہتی ہیں",
+  "testimonials.prev": "پچھلا اقتباس",
+  "testimonials.next": "اگلا اقتباس",
+  "form.sendCode": "مجھے سائن اِن کوڈ بھیجیں",
+  "form.yourCode": "آپ کا سائن اِن کوڈ",
+  "form.codeWorks": "کوڈ 15 منٹ تک کام کرتا ہے۔",
+  "form.newCodeSent": "نیا کوڈ بھیج دیا گیا۔ پہنچنے میں ایک منٹ لگ سکتا ہے۔",
+  "form.sendNewCode": "نیا کوڈ بھیجیں",
+  "form.theCodeWeSent": "وہ کوڈ جو ہم نے بھیجا",
+  "form.newEmail": "نیا ای میل پتہ",
+  "form.sendToNew": "نئے پتے پر کوڈ بھیجیں",
+  "form.firstName": "پہلا نام",
+  "form.lastName": "آخری نام",
+  "form.phoneOptional": "فون نمبر (اختیاری)",
+  "form.phoneNote":
+    "ہم یہ صرف اس وقت استعمال کرتے ہیں جب آپ کہیں کہ ہم واپس فون کریں۔",
+  "form.continue": "جاری رکھیں",
+  "org.allOrgs": "تمام ادارے",
+  "org.checked": "HWS کی جانچ شدہ",
+  "org.website": "ان کی ویب سائٹ",
+  "org.whatTheyDo": "وہ کیا کرتے ہیں",
+  "org.whatTheyOffer": "وہ کیا پیش کرتے ہیں",
+  "org.whoTheyWorkWith": "وہ کن کے ساتھ کام کرتے ہیں",
+  "org.whoTheyCanHelp": "وہ کن کی مدد کر سکتے ہیں",
+  "org.whoTheyCannot": "وہ کن کی مدد نہیں کر سکتے",
+  "org.when": "کب",
+  "org.howToReach": "ان تک کیسے پہنچیں",
+  "org.zones": "رسائی زون",
+  "org.mainOne": "ان کا بنیادی زون",
+  "org.nothingRunning":
+    "اس وقت ان کے پاس کچھ نہیں چل رہا۔ ہمیں بتائیں آپ کو کیا چاہیے اور ہم اپنی ہر چیز میں دیکھیں گے۔",
+  "org.orTellUs": "یا ہمیں بتائیں آپ کو کیا چاہیے اور ہم آپ کے لیے تلاش کریں گے",
+
+  "orgpage.heroTitle":
+    "وہ خواتین جن کے لیے آپ ہیں، بغیر اس کے کہ انہیں آپ کو ڈھونڈنا پڑے",
+  "orgpage.heroBody":
+    "کام تو آپ پہلے ہی کر رہے ہیں۔ مسئلہ یہ ہے کہ کسی خاتون کو آپ کا نام معلوم ہونا چاہیے تاکہ وہ آپ کی ویب سائٹ تک پہنچے۔ یہاں وہ اپنی صورتحال بیان کرتی ہے، اور ہم آپ کو اس کے سامنے رکھتے ہیں کیونکہ آپ صحیح جواب ہیں، نہ کہ اس لیے کہ اس نے اندازہ لگایا۔",
+  "orgpage.haveAccount": "میرا پہلے سے اکاؤنٹ ہے",
+  "orgpage.freeNote":
+    "مفت۔ نہ ادائیگی والی جگہ، نہ اشتہار، اور کوئی اوپر آنے کے لیے پیسے نہیں دیتا۔",
+  "orgpage.whatYouGet": "آپ کو کیا ملتا ہے",
+  "orgpage.reach": "رسائی، اور اسے ثابت کرنے کا طریقہ",
+  "orgpage.gain1Title": "وہ خواتین جو وہی ڈھونڈ رہی تھیں جو آپ کرتے ہیں",
+  "orgpage.gain1Body":
+    "وہ اپنی صورتحال اپنے الفاظ میں بیان کرتی ہے۔ ہم اسے اس سے ملاتے ہیں کہ آپ کن کے لیے ہیں، کیا پیش کرتے ہیں، کہاں کام کرتے ہیں اور اس کی قیمت کیا ہے۔ وہ پہلے سے جانتے ہوئے آتی ہے کہ وہ اہل ہے یا نہیں۔",
+  "orgpage.gain2Title": "ایسے اعداد جو آپ فنڈ دینے والے کو دکھا سکیں",
+  "orgpage.gain2Body":
+    "کتنی خواتین آپ کی اپنی سائٹ تک بھیجی گئیں، کتنوں نے آپ کے ادارے کا صفحہ پڑھا، اور آپ کی ہر پوسٹ نے کیسا کام کیا۔ یہ دکھاوے کا عدد نہیں: پہلا ان لوگوں کو گنتا ہے جنہوں نے کلک کر کے آپ تک رسائی کی۔",
+  "orgpage.gain3Title": "ایک بار جانچ، ہر اندراج پر نہیں",
+  "orgpage.gain3Body":
+    "شامل ہوتے وقت ہم آپ کو کسی عوامی رجسٹر یا آپ کے فنڈ دینے والے کے ذریعے جانچتے ہیں۔ اس کے بعد آپ جو چاہیں، جب چاہیں شائع کریں، ہمارا انتظار کیے بغیر۔",
+  "orgpage.gain4Title": "غلط استفسارات کم",
+  "orgpage.gain4Body":
+    "آپ بتاتے ہیں کہ آپ کن کی مدد نہیں کر سکتے، اور ہم یہ دکھاتے ہیں۔ خواتین آپ سے رابطہ کرنے سے پہلے خود کو خارج کر لیتی ہیں، جو آپ کا ان باکس سنبھالنے والے کا وقت بچاتا ہے۔",
+  "orgpage.fourSteps": "چار قدم، اور ان میں سے ایک ہمارا ہے",
+  "orgpage.step1Title": "ہمیں بتائیں آپ کون ہیں",
+  "orgpage.step1Body":
+    "چند سوال کہ آپ کیا کرتے ہیں، کن کی خدمت کرتے ہیں اور کہاں۔ دس منٹ، اور آپ بیچ میں رک کر واپس آ سکتے ہیں۔",
+  "orgpage.step2Title": "ہم آپ کو جانچتے ہیں",
+  "orgpage.step2Body":
+    "کسی عوامی رجسٹر، یا آپ کے فنڈ دینے والے کے ذریعے۔ ایک جانچ، جو ایک شخص کرتا ہے۔",
+  "orgpage.step3Title": "جو کھلا ہے وہ شائع کریں",
+  "orgpage.step3Body":
+    "ایک کورس، ایک گرانٹ، ایک کھلی نشست، ایک رہنمائی کا پروگرام۔ کوئی بھی چیز جس میں کسی خاتون کے لیے راستہ ہو۔",
+  "orgpage.step4Title": "وہ اسے تب ڈھونڈتی ہے جب وہ موزوں ہو",
+  "orgpage.step4Body":
+    "اس لیے نہیں کہ اس نے آپ کا نام تلاش کیا۔ بلکہ اس لیے کہ جو اس نے بیان کیا وہ آپ کے کام سے میل کھایا۔",
+  "orgpage.whereYouSit": "آپ کہاں ہوں گے",
+  "orgpage.zonesBody":
+    "آپ خود چنتے ہیں، ایک بنیادی اور دو تک مزید۔ زیادہ تر خواتین کو بیک وقت ایک سے زیادہ کی ضرورت ہوتی ہے اور زیادہ تر خدمات صرف ایک کرتی ہیں، اور یہی وہ خلا ہے جسے یہ پُر کرنے کے لیے موجود ہے۔",
 };
 
 const pa: Catalogue = {
@@ -3302,6 +4097,110 @@ const pa: Catalogue = {
     "ਆਪਣਾ ਖਾਤਾ, ਤੇ ਉਸ ਉੱਤੇ ਸੰਭਾਲਿਆ ਸਭ ਕੁਝ, ਕਿਸੇ ਹੋਰ ਪਤੇ ਤੇ ਲੈ ਜਾਓ।",
   "meta.emailCode.title": "ਆਪਣਾ ਨਵਾਂ ਇਨਬਾਕਸ ਵੇਖੋ",
   "meta.emailCode.desc": "ਉਹ ਕੋਡ ਦਰਜ ਕਰੋ ਜੋ ਅਸੀਂ ਤੁਹਾਡੇ ਨਵੇਂ ਪਤੇ ਤੇ ਭੇਜਿਆ ਹੈ।",
+
+  "settings.savedList": "ਮੇਰੀ ਸੰਭਾਲੀ ਸੂਚੀ",
+  "settings.reminders": "ਯਾਦ-ਦਹਾਨੀਆਂ",
+  "settings.howFar": "ਕਿੰਨਾ ਪਹਿਲਾਂ",
+  "settings.nothingElse":
+    "ਅਸੀਂ ਇਸ ਤੋਂ ਇਲਾਵਾ ਕੁਝ ਨਹੀਂ ਭੇਜਦੇ। ਨਾ ਨਿਊਜ਼ਲੈਟਰ, ਨਾ ਸੁਝਾਅ।",
+  "settings.neverName":
+    "ਯਾਦ-ਦਹਾਨੀ ਦੀਆਂ ਈਮੇਲਾਂ ਕਦੇ ਸਹਾਰੇ ਦੀ ਕਿਸਮ ਦਾ ਨਾਮ ਨਹੀਂ ਲੈਂਦੀਆਂ, ਇਸ ਸੂਰਤ ਵਿੱਚ ਕਿ ਤੁਹਾਡਾ ਇਨਬਾਕਸ ਕੋਈ ਹੋਰ ਪੜ੍ਹੇ।",
+  "settings.emailChanged":
+    "ਹੋ ਗਿਆ। ਤੁਹਾਡਾ ਖਾਤਾ ਹੁਣ ਇਸੇ ਪਤੇ ਤੇ ਹੈ, ਤੇ ਤੁਹਾਡੀ ਸੰਭਾਲੀ ਸੂਚੀ ਵੀ ਨਾਲ ਆ ਗਈ।",
+  "reminders.beforeDeadline": "ਆਖ਼ਰੀ ਤਾਰੀਖ਼ ਤੋਂ ਪਹਿਲਾਂ",
+  "change.heard": "ਅਸੀਂ ਇਹ ਸਮਝਿਆ",
+  "change.weWillShow":
+    "ਅਸੀਂ ਤੁਹਾਨੂੰ ਥੋੜ੍ਹੇ ਜਿਹੇ ਅਗਲੇ ਕਦਮ ਦਿਖਾਵਾਂਗੇ, ਸਭ ਤੋਂ ਢੁਕਵਾਂ ਪਹਿਲਾਂ। ਇੱਥੇ ਆਉਣ ਲਈ ਕੋਈ ਪੈਸੇ ਨਹੀਂ ਦਿੰਦਾ।",
+  "startover.confirm": "ਇਸ ਨਾਲ ਤੁਹਾਡੇ ਜਵਾਬ ਸਾਫ਼ ਹੋ ਜਾਣਗੇ। ਮੁੜ ਸ਼ੁਰੂ ਕਰੀਏ?",
+  "startover.note":
+    "ਜੋ ਕੁਝ ਤੁਸੀਂ ਸੰਭਾਲਿਆ ਉਹ ਆਪਣੀ ਥਾਂ ਰਹੇਗਾ। ਸਿਰਫ਼ ਉਹ ਜਾਂਦਾ ਹੈ ਜੋ ਤੁਸੀਂ ਆਪਣੀ ਲੋੜ ਬਾਰੇ ਦੱਸਿਆ।",
+  "startover.yes": "ਹਾਂ, ਮੁੜ ਸ਼ੁਰੂ ਕਰੋ",
+  "startover.keep": "ਮੇਰੇ ਜਵਾਬ ਰਹਿਣ ਦਿਓ",
+  "legal.onThisPage": "ਇਸ ਸਫ਼ੇ ਉੱਤੇ",
+  "legal.questions":
+    "ਇਨ੍ਹਾਂ ਵਿੱਚੋਂ ਕਿਸੇ ਵੀ ਗੱਲ ਦੇ ਸਵਾਲ ਕਿਸੇ ਵਿਅਕਤੀ ਤੱਕ ਜਾਂਦੇ ਹਨ, ਫਾਰਮ ਤੱਕ ਨਹੀਂ।",
+  "legal.draftTitle": "ਇਹ ਇੱਕ ਖਰੜਾ ਹੈ",
+  "legal.draftBody":
+    "ਹੇਠਾਂ ਦਿੱਤੀ ਇਬਾਰਤ ਬਿਲਕੁਲ ਉਹੀ ਦੱਸਦੀ ਹੈ ਜਿਵੇਂ ਪਲੇਟਫਾਰਮ ਅੱਜ ਕੰਮ ਕਰਦਾ ਹੈ, ਪਰ ਇਹ ਅਜੇ ਆਖ਼ਰੀ ਜਾਂਚ ਵਿੱਚੋਂ ਨਹੀਂ ਲੰਘੀ। ਇਹ ਇਸ ਲਈ ਛਾਪੀ ਗਈ ਹੈ ਕਿ ਤੁਸੀਂ ਇਸ ਨੂੰ ਪੜ੍ਹ ਸਕੋ ਤੇ ਸਾਨੂੰ ਇਸ ਦਾ ਪਾਬੰਦ ਰੱਖ ਸਕੋ, ਇਸ ਲਈ ਨਹੀਂ ਕਿ ਇਹ ਮੁਕੰਮਲ ਹੈ।",
+  "legal.draftAsk":
+    "ਜੇ ਇੱਥੇ ਦੀ ਕੋਈ ਗੱਲ ਤੁਹਾਡੇ ਕਿਸੇ ਫ਼ੈਸਲੇ ਲਈ ਅਹਿਮ ਹੈ ਤਾਂ ਸਾਨੂੰ ਪੁੱਛੋ।",
+  "legal.pendingTitle": "ਇਹ ਅਜੇ ਲਿਖੀ ਜਾ ਰਹੀ ਹੈ",
+  "legal.pendingBody":
+    "ਇਬਾਰਤ ਸਾਡੇ ਕੋਲ ਹੈ ਤੇ ਪਲੇਟਫਾਰਮ ਖੁੱਲ੍ਹਣ ਤੋਂ ਪਹਿਲਾਂ ਇੱਥੇ ਛਾਪ ਦਿੱਤੀ ਜਾਵੇਗੀ। ਉਦੋਂ ਤੱਕ ਇਸ ਸਫ਼ੇ ਉੱਤੇ ਕੁਝ ਵੀ ਲਾਗੂ ਨਹੀਂ।",
+  "legal.pendingAsk":
+    "ਜੇ ਤੁਸੀਂ ਇਸ ਦੌਰਾਨ ਜਾਣਨਾ ਚਾਹੋ ਕਿ ਤੁਹਾਡੇ ਲਿਖੇ ਦਾ ਕੀ ਬਣਦਾ ਹੈ ਤਾਂ ਸਾਨੂੰ ਪੁੱਛੋ, ਅਸੀਂ ਸਾਫ਼ ਦੱਸਾਂਗੇ।",
+  "photos.aria": "Holistic Wellbeing Summit ਦੀਆਂ ਤਸਵੀਰਾਂ",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "ਔਰਤਾਂ ਕੀ ਕਹਿੰਦੀਆਂ ਹਨ",
+  "testimonials.prev": "ਪਿਛਲਾ ਹਵਾਲਾ",
+  "testimonials.next": "ਅਗਲਾ ਹਵਾਲਾ",
+  "form.sendCode": "ਮੈਨੂੰ ਸਾਈਨ ਇਨ ਕੋਡ ਭੇਜੋ",
+  "form.yourCode": "ਤੁਹਾਡਾ ਸਾਈਨ ਇਨ ਕੋਡ",
+  "form.codeWorks": "ਕੋਡ 15 ਮਿੰਟ ਤੱਕ ਕੰਮ ਕਰਦਾ ਹੈ।",
+  "form.newCodeSent": "ਨਵਾਂ ਕੋਡ ਭੇਜ ਦਿੱਤਾ। ਪਹੁੰਚਣ ਵਿੱਚ ਇੱਕ ਮਿੰਟ ਲੱਗ ਸਕਦਾ ਹੈ।",
+  "form.sendNewCode": "ਨਵਾਂ ਕੋਡ ਭੇਜੋ",
+  "form.theCodeWeSent": "ਉਹ ਕੋਡ ਜੋ ਅਸੀਂ ਭੇਜਿਆ",
+  "form.newEmail": "ਨਵਾਂ ਈਮੇਲ ਪਤਾ",
+  "form.sendToNew": "ਨਵੇਂ ਪਤੇ ਤੇ ਕੋਡ ਭੇਜੋ",
+  "form.firstName": "ਪਹਿਲਾ ਨਾਮ",
+  "form.lastName": "ਆਖ਼ਰੀ ਨਾਮ",
+  "form.phoneOptional": "ਫ਼ੋਨ ਨੰਬਰ (ਇਖ਼ਤਿਆਰੀ)",
+  "form.phoneNote":
+    "ਅਸੀਂ ਇਹ ਸਿਰਫ਼ ਤਾਂ ਵਰਤਦੇ ਹਾਂ ਜੇ ਤੁਸੀਂ ਕਹੋ ਕਿ ਅਸੀਂ ਵਾਪਸ ਫ਼ੋਨ ਕਰੀਏ।",
+  "form.continue": "ਜਾਰੀ ਰੱਖੋ",
+  "org.allOrgs": "ਸਾਰੇ ਅਦਾਰੇ",
+  "org.checked": "HWS ਵੱਲੋਂ ਜਾਂਚਿਆ",
+  "org.website": "ਉਨ੍ਹਾਂ ਦੀ ਵੈੱਬਸਾਈਟ",
+  "org.whatTheyDo": "ਉਹ ਕੀ ਕਰਦੇ ਹਨ",
+  "org.whatTheyOffer": "ਉਹ ਕੀ ਪੇਸ਼ ਕਰਦੇ ਹਨ",
+  "org.whoTheyWorkWith": "ਉਹ ਕਿਨ੍ਹਾਂ ਨਾਲ ਕੰਮ ਕਰਦੇ ਹਨ",
+  "org.whoTheyCanHelp": "ਉਹ ਕਿਨ੍ਹਾਂ ਦੀ ਮਦਦ ਕਰ ਸਕਦੇ ਹਨ",
+  "org.whoTheyCannot": "ਉਹ ਕਿਨ੍ਹਾਂ ਦੀ ਮਦਦ ਨਹੀਂ ਕਰ ਸਕਦੇ",
+  "org.when": "ਕਦੋਂ",
+  "org.howToReach": "ਉਨ੍ਹਾਂ ਤੱਕ ਕਿਵੇਂ ਪਹੁੰਚੀਏ",
+  "org.zones": "ਪਹੁੰਚ ਖੇਤਰ",
+  "org.mainOne": "ਉਨ੍ਹਾਂ ਦਾ ਮੁੱਖ ਖੇਤਰ",
+  "org.nothingRunning":
+    "ਇਸ ਵੇਲੇ ਉਨ੍ਹਾਂ ਕੋਲ ਕੁਝ ਨਹੀਂ ਚੱਲ ਰਿਹਾ। ਸਾਨੂੰ ਦੱਸੋ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ ਤੇ ਅਸੀਂ ਆਪਣੀ ਹਰ ਚੀਜ਼ ਵਿੱਚ ਵੇਖਾਂਗੇ।",
+  "org.orTellUs": "ਜਾਂ ਸਾਨੂੰ ਦੱਸੋ ਤੁਹਾਨੂੰ ਕੀ ਚਾਹੀਦਾ ਹੈ ਤੇ ਅਸੀਂ ਤੁਹਾਡੇ ਲਈ ਲੱਭਾਂਗੇ",
+
+  "orgpage.heroTitle":
+    "ਉਹ ਔਰਤਾਂ ਜਿਨ੍ਹਾਂ ਲਈ ਤੁਸੀਂ ਹੋ, ਬਿਨਾਂ ਇਸ ਦੇ ਕਿ ਉਨ੍ਹਾਂ ਨੂੰ ਤੁਹਾਨੂੰ ਲੱਭਣਾ ਪਵੇ",
+  "orgpage.heroBody":
+    "ਕੰਮ ਤਾਂ ਤੁਸੀਂ ਪਹਿਲਾਂ ਹੀ ਕਰਦੇ ਹੋ। ਮੁਸ਼ਕਲ ਇਹ ਹੈ ਕਿ ਕਿਸੇ ਔਰਤ ਨੂੰ ਤੁਹਾਡਾ ਨਾਮ ਪਤਾ ਹੋਣਾ ਚਾਹੀਦਾ ਹੈ ਤਾਂ ਜੋ ਉਹ ਤੁਹਾਡੀ ਵੈੱਬਸਾਈਟ ਤੱਕ ਪਹੁੰਚੇ। ਇੱਥੇ ਉਹ ਆਪਣੀ ਹਾਲਤ ਬਿਆਨ ਕਰਦੀ ਹੈ, ਤੇ ਅਸੀਂ ਤੁਹਾਨੂੰ ਉਸ ਦੇ ਸਾਹਮਣੇ ਰੱਖਦੇ ਹਾਂ ਕਿਉਂਕਿ ਤੁਸੀਂ ਸਹੀ ਜਵਾਬ ਹੋ, ਨਾ ਕਿ ਇਸ ਲਈ ਕਿ ਉਸ ਨੇ ਅੰਦਾਜ਼ਾ ਲਾਇਆ।",
+  "orgpage.haveAccount": "ਮੇਰਾ ਪਹਿਲਾਂ ਹੀ ਖਾਤਾ ਹੈ",
+  "orgpage.freeNote":
+    "ਮੁਫ਼ਤ। ਨਾ ਪੈਸੇ ਵਾਲੀ ਥਾਂ, ਨਾ ਇਸ਼ਤਿਹਾਰ, ਤੇ ਕੋਈ ਉੱਪਰ ਆਉਣ ਲਈ ਪੈਸੇ ਨਹੀਂ ਦਿੰਦਾ।",
+  "orgpage.whatYouGet": "ਤੁਹਾਨੂੰ ਕੀ ਮਿਲਦਾ ਹੈ",
+  "orgpage.reach": "ਪਹੁੰਚ, ਤੇ ਉਸ ਨੂੰ ਸਾਬਤ ਕਰਨ ਦਾ ਤਰੀਕਾ",
+  "orgpage.gain1Title": "ਉਹ ਔਰਤਾਂ ਜੋ ਉਹੀ ਲੱਭ ਰਹੀਆਂ ਸਨ ਜੋ ਤੁਸੀਂ ਕਰਦੇ ਹੋ",
+  "orgpage.gain1Body":
+    "ਉਹ ਆਪਣੀ ਹਾਲਤ ਆਪਣੇ ਸ਼ਬਦਾਂ ਵਿੱਚ ਦੱਸਦੀ ਹੈ। ਅਸੀਂ ਉਸ ਨੂੰ ਇਸ ਨਾਲ ਮਿਲਾਉਂਦੇ ਹਾਂ ਕਿ ਤੁਸੀਂ ਕਿਨ੍ਹਾਂ ਲਈ ਹੋ, ਕੀ ਪੇਸ਼ ਕਰਦੇ ਹੋ, ਕਿੱਥੇ ਕੰਮ ਕਰਦੇ ਹੋ ਤੇ ਇਸ ਦਾ ਖਰਚਾ ਕੀ ਹੈ। ਉਹ ਪਹਿਲਾਂ ਹੀ ਜਾਣਦੀ ਹੋਈ ਆਉਂਦੀ ਹੈ ਕਿ ਉਹ ਹੱਕਦਾਰ ਹੈ ਜਾਂ ਨਹੀਂ।",
+  "orgpage.gain2Title": "ਉਹ ਅੰਕੜੇ ਜੋ ਤੁਸੀਂ ਫੰਡ ਦੇਣ ਵਾਲੇ ਨੂੰ ਦਿਖਾ ਸਕੋ",
+  "orgpage.gain2Body":
+    "ਕਿੰਨੀਆਂ ਔਰਤਾਂ ਤੁਹਾਡੀ ਆਪਣੀ ਸਾਈਟ ਤੇ ਭੇਜੀਆਂ ਗਈਆਂ, ਕਿੰਨੀਆਂ ਨੇ ਤੁਹਾਡੇ ਅਦਾਰੇ ਦਾ ਸਫ਼ਾ ਪੜ੍ਹਿਆ, ਤੇ ਤੁਹਾਡੀ ਹਰ ਪੋਸਟ ਨੇ ਕਿਵੇਂ ਕੰਮ ਕੀਤਾ। ਇਹ ਦਿਖਾਵੇ ਦਾ ਅੰਕੜਾ ਨਹੀਂ: ਪਹਿਲਾ ਉਨ੍ਹਾਂ ਲੋਕਾਂ ਨੂੰ ਗਿਣਦਾ ਹੈ ਜਿਨ੍ਹਾਂ ਨੇ ਕਲਿੱਕ ਕਰ ਕੇ ਤੁਹਾਡੇ ਤੱਕ ਪਹੁੰਚ ਕੀਤੀ।",
+  "orgpage.gain3Title": "ਇੱਕ ਵਾਰ ਜਾਂਚ, ਹਰ ਇੰਦਰਾਜ ਤੇ ਨਹੀਂ",
+  "orgpage.gain3Body":
+    "ਜਦੋਂ ਤੁਸੀਂ ਜੁੜਦੇ ਹੋ ਤਾਂ ਅਸੀਂ ਤੁਹਾਨੂੰ ਜਨਤਕ ਰਜਿਸਟਰ ਜਾਂ ਤੁਹਾਡੇ ਫੰਡ ਦੇਣ ਵਾਲੇ ਰਾਹੀਂ ਜਾਂਚਦੇ ਹਾਂ। ਉਸ ਤੋਂ ਬਾਅਦ ਤੁਸੀਂ ਜੋ ਚਾਹੋ, ਜਦੋਂ ਚਾਹੋ ਪਾਓ, ਸਾਡੀ ਉਡੀਕ ਕੀਤੇ ਬਿਨਾਂ।",
+  "orgpage.gain4Title": "ਗਲਤ ਪੁੱਛਗਿੱਛ ਘੱਟ",
+  "orgpage.gain4Body":
+    "ਤੁਸੀਂ ਦੱਸਦੇ ਹੋ ਕਿ ਤੁਸੀਂ ਕਿਨ੍ਹਾਂ ਦੀ ਮਦਦ ਨਹੀਂ ਕਰ ਸਕਦੇ, ਤੇ ਅਸੀਂ ਇਹ ਦਿਖਾਉਂਦੇ ਹਾਂ। ਔਰਤਾਂ ਤੁਹਾਡੇ ਨਾਲ ਰਾਬਤਾ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਹੀ ਆਪਣੇ ਆਪ ਨੂੰ ਬਾਹਰ ਕਰ ਲੈਂਦੀਆਂ ਹਨ, ਜੋ ਤੁਹਾਡਾ ਇਨਬਾਕਸ ਸੰਭਾਲਣ ਵਾਲੇ ਦਾ ਸਮਾਂ ਬਚਾਉਂਦਾ ਹੈ।",
+  "orgpage.fourSteps": "ਚਾਰ ਕਦਮ, ਤੇ ਉਨ੍ਹਾਂ ਵਿੱਚੋਂ ਇੱਕ ਸਾਡਾ ਹੈ",
+  "orgpage.step1Title": "ਸਾਨੂੰ ਦੱਸੋ ਤੁਸੀਂ ਕੌਣ ਹੋ",
+  "orgpage.step1Body":
+    "ਕੁਝ ਸਵਾਲ ਕਿ ਤੁਸੀਂ ਕੀ ਕਰਦੇ ਹੋ, ਕਿਨ੍ਹਾਂ ਦੀ ਸੇਵਾ ਕਰਦੇ ਹੋ ਤੇ ਕਿੱਥੇ। ਦਸ ਮਿੰਟ, ਤੇ ਤੁਸੀਂ ਵਿਚਾਲੇ ਰੁਕ ਕੇ ਵਾਪਸ ਆ ਸਕਦੇ ਹੋ।",
+  "orgpage.step2Title": "ਅਸੀਂ ਤੁਹਾਨੂੰ ਜਾਂਚਦੇ ਹਾਂ",
+  "orgpage.step2Body":
+    "ਜਨਤਕ ਰਜਿਸਟਰ, ਜਾਂ ਤੁਹਾਡੇ ਫੰਡ ਦੇਣ ਵਾਲੇ ਰਾਹੀਂ। ਇੱਕ ਜਾਂਚ, ਜੋ ਇੱਕ ਵਿਅਕਤੀ ਕਰਦਾ ਹੈ।",
+  "orgpage.step3Title": "ਜੋ ਖੁੱਲ੍ਹਾ ਹੈ ਉਹ ਪਾਓ",
+  "orgpage.step3Body":
+    "ਇੱਕ ਕੋਰਸ, ਇੱਕ ਗ੍ਰਾਂਟ, ਇੱਕ ਖੁੱਲ੍ਹੀ ਬੈਠਕ, ਇੱਕ ਰਹਿਨੁਮਾਈ ਸਕੀਮ। ਕੋਈ ਵੀ ਚੀਜ਼ ਜਿਸ ਵਿੱਚ ਕਿਸੇ ਔਰਤ ਲਈ ਰਾਹ ਹੋਵੇ।",
+  "orgpage.step4Title": "ਉਹ ਇਸ ਨੂੰ ਉਦੋਂ ਲੱਭਦੀ ਹੈ ਜਦੋਂ ਇਹ ਢੁਕਦਾ ਹੈ",
+  "orgpage.step4Body":
+    "ਇਸ ਲਈ ਨਹੀਂ ਕਿ ਉਸ ਨੇ ਤੁਹਾਡਾ ਨਾਮ ਲੱਭਿਆ। ਸਗੋਂ ਇਸ ਲਈ ਕਿ ਜੋ ਉਸ ਨੇ ਦੱਸਿਆ ਉਹ ਤੁਹਾਡੇ ਕੰਮ ਨਾਲ ਮੇਲ ਖਾਇਆ।",
+  "orgpage.whereYouSit": "ਤੁਸੀਂ ਕਿੱਥੇ ਹੋਵੋਗੇ",
+  "orgpage.zonesBody":
+    "ਤੁਸੀਂ ਆਪ ਚੁਣਦੇ ਹੋ, ਇੱਕ ਮੁੱਖ ਤੇ ਦੋ ਤੱਕ ਹੋਰ। ਬਹੁਤੀਆਂ ਔਰਤਾਂ ਨੂੰ ਇੱਕੋ ਵੇਲੇ ਇੱਕ ਤੋਂ ਵੱਧ ਦੀ ਲੋੜ ਹੁੰਦੀ ਹੈ ਤੇ ਬਹੁਤੀਆਂ ਸੇਵਾਵਾਂ ਸਿਰਫ਼ ਇੱਕ ਕਰਦੀਆਂ ਹਨ, ਤੇ ਇਹੀ ਉਹ ਪਾੜਾ ਹੈ ਜਿਸ ਨੂੰ ਇਹ ਪੂਰਨ ਲਈ ਹੈ।",
 };
 
 const zh: Catalogue = {
@@ -3610,6 +4509,92 @@ const zh: Catalogue = {
   "meta.emailChange.desc": "把你的账户，以及上面保存的一切，迁移到另一个邮箱地址。",
   "meta.emailCode.title": "查看你的新邮箱",
   "meta.emailCode.desc": "输入我们发送到你新邮箱地址的验证码。",
+
+  "settings.savedList": "我保存的清单",
+  "settings.reminders": "提醒",
+  "settings.howFar": "提前多久",
+  "settings.nothingElse": "我们不会发送其他内容。没有通讯，也没有推荐。",
+  "settings.neverName": "提醒邮件从不写明支持的类型，以防别人看到你的邮箱。",
+  "settings.emailChanged": "完成。你的账户现在在这个邮箱上，保存的清单也一起转过来了。",
+  "reminders.beforeDeadline": "截止前",
+  "change.heard": "我们听到的是",
+  "change.weWillShow": "我们会给你少量的下一步，最匹配的排在前面。没有人付费出现在这里。",
+  "startover.confirm": "这会清空你的回答。要重新开始吗？",
+  "startover.note": "你保存过的内容都不会动。只有你告诉我们的需求会被清空。",
+  "startover.yes": "是的，重新开始",
+  "startover.keep": "保留我的回答",
+  "legal.onThisPage": "本页内容",
+  "legal.questions": "关于这些的任何问题都会交到人手上，而不是一个表单。",
+  "legal.draftTitle": "这是一份草稿",
+  "legal.draftBody":
+    "下面的文字准确描述了平台今天的运作方式，但尚未经过最终审阅。公开它是为了让你阅读并据此监督我们，而不是因为它已经定稿。",
+  "legal.draftAsk": "如果这里的任何内容关系到你正在做的决定，请问我们。",
+  "legal.pendingTitle": "这一份仍在撰写中",
+  "legal.pendingBody": "文字在我们手上，会在平台开放前发布于此。在那之前，本页上的任何内容都不具效力。",
+  "legal.pendingAsk": "如果你想在此期间了解你输入的内容会怎样，请问我们，我们会直截了当地告诉你。",
+  "photos.aria": "来自 Holistic Wellbeing Summit 的照片",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "女性的评价",
+  "testimonials.prev": "上一条",
+  "testimonials.next": "下一条",
+  "form.sendCode": "给我发送登录码",
+  "form.yourCode": "你的登录码",
+  "form.codeWorks": "验证码有效期为 15 分钟。",
+  "form.newCodeSent": "新验证码已发送。可能需要一分钟才会收到。",
+  "form.sendNewCode": "重新发送验证码",
+  "form.theCodeWeSent": "我们发送的验证码",
+  "form.newEmail": "新的电子邮箱",
+  "form.sendToNew": "向新邮箱发送验证码",
+  "form.firstName": "名",
+  "form.lastName": "姓",
+  "form.phoneOptional": "电话号码（选填）",
+  "form.phoneNote": "只有在你要求我们回电时才会使用。",
+  "form.continue": "继续",
+  "org.allOrgs": "全部机构",
+  "org.checked": "经 HWS 核实",
+  "org.website": "他们的网站",
+  "org.whatTheyDo": "他们做什么",
+  "org.whatTheyOffer": "他们提供什么",
+  "org.whoTheyWorkWith": "他们与谁合作",
+  "org.whoTheyCanHelp": "他们能帮谁",
+  "org.whoTheyCannot": "他们帮不了谁",
+  "org.when": "时间",
+  "org.howToReach": "如何联系他们",
+  "org.zones": "访问领域",
+  "org.mainOne": "他们的主要领域",
+  "org.nothingRunning": "他们目前没有在进行的项目。告诉我们你需要什么，我们会在全部内容中为你查找。",
+  "org.orTellUs": "或者告诉我们你需要什么，我们为你匹配",
+
+  "orgpage.heroTitle": "你们服务的女性，不必先找到你们",
+  "orgpage.heroBody":
+    "工作你们已经在做。问题是，一位女性必须先知道你们的名字，才能找到你们的网站。在这里她描述自己的处境，而我们把你们呈现给她——因为你们就是对的答案，不是因为她猜对了。",
+  "orgpage.haveAccount": "我已经有账户",
+  "orgpage.freeNote": "免费。没有付费排位，没有广告，也没有人付费排得更靠前。",
+  "orgpage.whatYouGet": "你们会得到什么",
+  "orgpage.reach": "触达，以及证明它的方式",
+  "orgpage.gain1Title": "正在寻找你们所做之事的女性",
+  "orgpage.gain1Body":
+    "她用自己的话描述处境。我们把它与你们服务的对象、提供的内容、工作的地点和费用一一比对。她来到你们面前时，已经知道自己是否符合条件。",
+  "orgpage.gain2Title": "可以拿给资助方看的数字",
+  "orgpage.gain2Body":
+    "多少女性被引荐到你们自己的网站，多少人读过你们的机构页面，以及你们发布的每一项表现如何。不是面子数据：第一项统计的是真正点击进入你们页面的人。",
+  "orgpage.gain3Title": "只核实一次，不是每条都核",
+  "orgpage.gain3Body":
+    "你们加入时，我们通过公共登记处或你们的资助方核实。之后你们想发什么就发什么，想什么时候发就什么时候发，不必等我们。",
+  "orgpage.gain4Title": "更少不对路的咨询",
+  "orgpage.gain4Body": "你们说明自己帮不了谁，我们把它展示出来。女性在联系你们之前就会自行排除，这为处理你们邮箱的人省下时间。",
+  "orgpage.fourSteps": "四个步骤，其中一个是我们的",
+  "orgpage.step1Title": "告诉我们你们是谁",
+  "orgpage.step1Body": "关于你们做什么、服务谁、在哪里的几个问题。十分钟，中途可以停下，之后再回来。",
+  "orgpage.step2Title": "我们核实你们",
+  "orgpage.step2Body": "通过公共登记处，或你们的资助方。一次核实，由人完成。",
+  "orgpage.step3Title": "发布开放的项目",
+  "orgpage.step3Body": "一门课程、一笔资助、一次免预约到访、一个辅导计划。任何为女性留有入口的东西。",
+  "orgpage.step4Title": "在合适的时候她会找到它",
+  "orgpage.step4Body": "不是因为她搜索了你们的名字，而是因为她描述的内容与你们所做的相符。",
+  "orgpage.whereYouSit": "你们会在哪里",
+  "orgpage.zonesBody":
+    "你们自己选，一个主要领域，最多再加两个。大多数女性同时需要不止一个，而大多数服务只做一个——这正是本平台要填补的空白。",
 };
 
 const ro: Catalogue = {
@@ -3977,6 +4962,109 @@ const ro: Catalogue = {
     "Mută-ți contul, și tot ce este salvat pe el, pe altă adresă.",
   "meta.emailCode.title": "Verifică noua ta căsuță",
   "meta.emailCode.desc": "Scrie codul pe care l-am trimis la noua ta adresă.",
+
+  "settings.savedList": "Lista mea de salvate",
+  "settings.reminders": "Memento-uri",
+  "settings.howFar": "Cu cât timp înainte",
+  "settings.nothingElse":
+    "Nu trimitem nimic altceva. Fără newsletter, fără sugestii.",
+  "settings.neverName":
+    "E-mailurile de memento nu numesc niciodată felul de sprijin, în caz că altcineva îți citește căsuța.",
+  "settings.emailChanged":
+    "Gata. Contul tău este acum pe această adresă, iar lista salvată a venit cu el.",
+  "reminders.beforeDeadline": "Înainte de termen",
+  "change.heard": "Iată ce am înțeles",
+  "change.weWillShow":
+    "Îți vom arăta un număr mic de pași următori, cel mai potrivit primul. Nimeni nu plătește ca să apară aici.",
+  "startover.confirm": "Asta îți șterge răspunsurile. Începem din nou?",
+  "startover.note":
+    "Tot ce ai salvat rămâne unde este. Dispare doar ce ne-ai spus despre ce ai nevoie.",
+  "startover.yes": "Da, începe din nou",
+  "startover.keep": "Păstrează-mi răspunsurile",
+  "legal.onThisPage": "Pe această pagină",
+  "legal.questions":
+    "Întrebările despre oricare dintre acestea ajung la o persoană, nu la un formular.",
+  "legal.draftTitle": "Aceasta este o ciornă",
+  "legal.draftBody":
+    "Textul de mai jos descrie exact cum funcționează platforma astăzi, dar nu a trecut încă printr-o verificare finală. Este publicat ca să îl poți citi și să ne ții de cuvânt, nu pentru că ar fi terminat.",
+  "legal.draftAsk":
+    "Dacă ceva de aici contează pentru o decizie pe care o iei, întreabă-ne.",
+  "legal.pendingTitle": "Acesta încă se scrie",
+  "legal.pendingBody":
+    "Textul este la noi și va fi publicat aici înainte ca platforma să se deschidă. Nimic de pe această pagină nu este în vigoare până atunci.",
+  "legal.pendingAsk":
+    "Dacă vrei să știi între timp ce se întâmplă cu ce scrii, întreabă-ne și îți spunem pe șleau.",
+  "photos.aria": "Fotografii de la Holistic Wellbeing Summit",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "Ce spun femeile",
+  "testimonials.prev": "Citatul anterior",
+  "testimonials.next": "Citatul următor",
+  "form.sendCode": "Trimite-mi un cod de conectare",
+  "form.yourCode": "Codul tău de conectare",
+  "form.codeWorks": "Codul este valabil 15 minute.",
+  "form.newCodeSent": "Am trimis un cod nou. Poate dura un minut să ajungă.",
+  "form.sendNewCode": "Trimite un cod nou",
+  "form.theCodeWeSent": "Codul pe care l-am trimis",
+  "form.newEmail": "Noua adresă de e-mail",
+  "form.sendToNew": "Trimite un cod la noua adresă",
+  "form.firstName": "Prenume",
+  "form.lastName": "Nume",
+  "form.phoneOptional": "Număr de telefon (opțional)",
+  "form.phoneNote": "Îl folosim doar dacă ne ceri să te sunăm înapoi.",
+  "form.continue": "Continuă",
+  "org.allOrgs": "Toate organizațiile",
+  "org.checked": "Verificată de HWS",
+  "org.website": "Site-ul lor",
+  "org.whatTheyDo": "Ce fac",
+  "org.whatTheyOffer": "Ce oferă",
+  "org.whoTheyWorkWith": "Cu cine lucrează",
+  "org.whoTheyCanHelp": "Pe cine pot ajuta",
+  "org.whoTheyCannot": "Pe cine nu pot ajuta",
+  "org.when": "Când",
+  "org.howToReach": "Cum îi contactezi",
+  "org.zones": "Zone de acces",
+  "org.mainOne": "Zona lor principală",
+  "org.nothingRunning":
+    "Momentan nu au nimic în desfășurare. Spune-ne de ce ai nevoie și căutăm în tot ce avem.",
+  "org.orTellUs": "Sau spune-ne de ce ai nevoie și îți găsim noi ceva potrivit",
+
+  "orgpage.heroTitle":
+    "Femeile pentru care existați, fără să fie nevoie să vă găsească",
+  "orgpage.heroBody":
+    "Munca o faceți deja. Problema este că o femeie trebuie să vă știe numele ca să ajungă pe site-ul vostru. Aici ea își descrie situația, iar noi vă punem în fața ei pentru că sunteți răspunsul potrivit, nu pentru că a ghicit.",
+  "orgpage.haveAccount": "Am deja un cont",
+  "orgpage.freeNote":
+    "Gratuit. Fără plasare plătită, fără publicitate, și nimeni nu plătește ca să apară mai sus.",
+  "orgpage.whatYouGet": "Ce primiți",
+  "orgpage.reach": "Acoperire, și o dovadă a ei",
+  "orgpage.gain1Title": "Femei care căutau exact ce faceți",
+  "orgpage.gain1Body":
+    "Ea își descrie situația cu cuvintele ei. O potrivim cu cine sunteți pregătiți să ajutați, ce oferiți, unde lucrați și cât costă. Ajunge la voi știind deja dacă se încadrează.",
+  "orgpage.gain2Title": "Cifre pe care le puteți duce unui finanțator",
+  "orgpage.gain2Body":
+    "Câte femei au ajuns pe site-ul vostru, câte au citit pagina organizației și cum a mers fiecare lucru publicat. Nu o cifră de fațadă: prima numără oamenii care au dat clic și au ajuns la voi.",
+  "orgpage.gain3Title": "Verificare o singură dată, nu la fiecare anunț",
+  "orgpage.gain3Body":
+    "Vă verificăm într-un registru public sau la finanțatorul vostru când vă înscrieți. După aceea publicați ce vreți, când vreți, fără să ne așteptați.",
+  "orgpage.gain4Title": "Mai puține solicitări nepotrivite",
+  "orgpage.gain4Body":
+    "Spuneți pe cine nu puteți ajuta, iar noi arătăm asta. Femeile se exclud singure înainte să vă contacteze, ceea ce înseamnă timp câștigat pentru cine vă răspunde la mesaje.",
+  "orgpage.fourSteps": "Patru pași, iar unul dintre ei este al nostru",
+  "orgpage.step1Title": "Spuneți-ne cine sunteți",
+  "orgpage.step1Body":
+    "Câteva întrebări despre ce faceți, pe cine ajutați și unde. Zece minute, și puteți opri la jumătate și reveni.",
+  "orgpage.step2Title": "Vă verificăm",
+  "orgpage.step2Body":
+    "Într-un registru public sau la finanțatorul vostru. O singură verificare, făcută de un om.",
+  "orgpage.step3Title": "Publicați ce este deschis",
+  "orgpage.step3Body":
+    "Un curs, o finanțare, un program cu acces liber, un program de mentorat. Orice la care o femeie are o cale de intrare.",
+  "orgpage.step4Title": "Ea îl găsește când i se potrivește",
+  "orgpage.step4Body":
+    "Nu pentru că v-a căutat numele. Pentru că ce a descris s-a potrivit cu ce organizați.",
+  "orgpage.whereYouSit": "Unde v-ați situa",
+  "orgpage.zonesBody":
+    "Vă alegeți singuri, una principală și până la încă două. Majoritatea femeilor au nevoie de mai multe deodată, iar majoritatea serviciilor acoperă doar una, și acesta este golul pe care platforma îl închide.",
 };
 
 const so: Catalogue = {
@@ -4347,6 +5435,112 @@ const so: Catalogue = {
     "U wareeji xisaabtaada, iyo wax kasta oo lagu kaydiyay, cinwaan kale.",
   "meta.emailCode.title": "Fiiri sanduuqaaga cusub",
   "meta.emailCode.desc": "Geli koodhka aan u dirnay cinwaankaaga cusub.",
+
+  "settings.savedList": "Liiskayga la kaydiyay",
+  "settings.reminders": "Xusuusinta",
+  "settings.howFar": "Intee ka hor",
+  "settings.nothingElse":
+    "Waxba kale ma dirno. Wargeys ma jiro, talo soo jeedin midna.",
+  "settings.neverName":
+    "Iimaylada xusuusintu weligood ma sheegaan nooca taageerada, haddii uu qof kale akhriyo sanduuqaaga.",
+  "settings.emailChanged":
+    "Waa dhammaatay. Xisaabtaadu hadda waa cinwaankan, liiskaagii la kaydiyayna wuu la yimid.",
+  "reminders.beforeDeadline": "Ka hor waqtiga kama dambeysta ah",
+  "change.heard": "Waa kan waxa aan maqalnay",
+  "change.weWillShow":
+    "Waxaan ku tusi doonnaa tiro yar oo tallaabooyin xiga ah, kan ugu habboon marka hore. Qofna lacag uma bixiyo inuu halkan ka muuqdo.",
+  "startover.confirm":
+    "Tani way nadiifinaysaa jawaabahaaga. Dib ma u bilaabaynaa?",
+  "startover.note":
+    "Wax kasta oo aad kaydisay meeshiisa ayuu ku sii jiraa. Waxa keliya ee baabba'aya waa waxa aad noo sheegtay ee aad u baahan tahay.",
+  "startover.yes": "Haa, dib u bilow",
+  "startover.keep": "Hay jawaabahayga",
+  "legal.onThisPage": "Boggan",
+  "legal.questions":
+    "Su'aalaha ku saabsan wax kasta oo kan ka mid ah waxay u tagaan qof, ee ma aha foom.",
+  "legal.draftTitle": "Kani waa qabyo",
+  "legal.draftBody":
+    "Qoraalka hoose wuxuu si sax ah u qeexayaa sida barahan maanta u shaqeeyo, laakiin weli ma soo marin dib u eegis kama dambeys ah. Waxaa loo daabacay inaad akhrido oo aad nagu xisaabtanto, ee ma aha inuu dhammaystiran yahay.",
+  "legal.draftAsk":
+    "Haddii wax halkan ku jira uu khuseeyo go'aan aad qaadanayso, na weydii.",
+  "legal.pendingTitle": "Kani weli waa la qorayaa",
+  "legal.pendingBody":
+    "Qoraalku waa nagu jiraa waxaana halkan lagu daabici doonaa ka hor inta uusan barahan furmin. Waxba boggan kuma shaqeeyaan ilaa taas dhacdo.",
+  "legal.pendingAsk":
+    "Haddii aad doonayso inaad ogaato inta u dhaxaysa waxa ku dhaca waxa aad qorto, na weydii waanan si cad kuugu sheegaynaa.",
+  "photos.aria": "Sawirro ka socda Holistic Wellbeing Summit",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "Waxa ay haweenku yiraahdaan",
+  "testimonials.prev": "Hadalkii hore",
+  "testimonials.next": "Hadalka xiga",
+  "form.sendCode": "Ii soo dir koodh gelitaan",
+  "form.yourCode": "Koodhkaaga gelitaanka",
+  "form.codeWorks": "Koodhku wuxuu shaqeeyaa 15 daqiiqo.",
+  "form.newCodeSent": "Koodh cusub waa la diray. Waxay qaadan kartaa daqiiqad.",
+  "form.sendNewCode": "Dir koodh cusub",
+  "form.theCodeWeSent": "Koodhkii aan dirnay",
+  "form.newEmail": "Cinwaan iimayl cusub",
+  "form.sendToNew": "Koodh u dir cinwaanka cusub",
+  "form.firstName": "Magaca koowaad",
+  "form.lastName": "Magaca dambe",
+  "form.phoneOptional": "Lambarka taleefanka (ikhtiyaari)",
+  "form.phoneNote":
+    "Waxaan u isticmaalnaa oo keliya haddii aad na weydiisato inaan ku soo wacno.",
+  "form.continue": "Sii wad",
+  "org.allOrgs": "Dhammaan hay'adaha",
+  "org.checked": "Waxaa hubiyay HWS",
+  "org.website": "Websaydkooda",
+  "org.whatTheyDo": "Waxa ay qabtaan",
+  "org.whatTheyOffer": "Waxa ay bixiyaan",
+  "org.whoTheyWorkWith": "Cidda ay la shaqeeyaan",
+  "org.whoTheyCanHelp": "Cidda ay caawin karaan",
+  "org.whoTheyCannot": "Cidda aanay caawin karin",
+  "org.when": "Goorma",
+  "org.howToReach": "Sida aad u gaari karto",
+  "org.zones": "Aagagga Helitaanka",
+  "org.mainOne": "Aagooda ugu weyn",
+  "org.nothingRunning":
+    "Hadda waxba kuma socdaan. Noo sheeg waxa aad u baahan tahay waanan ka raadinaynaa wax kasta oo aan haysanno.",
+  "org.orTellUs":
+    "Ama noo sheeg waxa aad u baahan tahay oo waannu kuu raadinaynaa",
+
+  "orgpage.heroTitle":
+    "Haweenka aad u taagan tihiin, iyagoon u baahnayn inay idin raadiyaan",
+  "orgpage.heroBody":
+    "Shaqada horay ayaad u qabataan. Dhibaatadu waa in haweeneydu ay tahay inay magacyada ogaato si ay websaydkiinna u hesho. Halkan waxay ku sharraxdaa xaaladdeeda, annaguna waxaan hortaagnaa idinka maxaa yeelay idinku waxaad tihiin jawaabta saxda ah, ee ma aha inay malawaawisay.",
+  "orgpage.haveAccount": "Horay ayaan xisaab u lahaa",
+  "orgpage.freeNote":
+    "Bilaash. Boos lacag lagu iibsado ma jiro, xayeysiis ma jiro, qofna lacag ma bixiyo si uu kor ugu muuqdo.",
+  "orgpage.whatYouGet": "Waxa aad heleysaan",
+  "orgpage.reach": "Gaadhid, iyo si aad u caddayso",
+  "orgpage.gain1Title": "Haween raadinayay waxa aad qabataan",
+  "orgpage.gain1Body":
+    "Waxay xaaladdeeda ku sharraxdaa erayadeeda. Waxaan la barbar dhignaa cidda aad u diyaar tihiin, waxa aad bixisaan, meesha aad ka shaqeysaan iyo intee ku kacayso. Waxay timaadaa iyadoo horay u og in ay u qalanto iyo in kale.",
+  "orgpage.gain2Title": "Tirooyin aad u qaadan karto deeq-bixiye",
+  "orgpage.gain2Body":
+    "Imisa haween ah ayaa loo diray websaydkiinna, imisa ayaa akhriyay bogga hay'addiinna, iyo sida mid walba oo aad soo dhigteen u shaqeeyay. Ma aha tiro is-bogaadin ah: tan koowaad waxay tirisaa dadka riixay oo idiin yimid.",
+  "orgpage.gain3Title": "Hal mar la hubiyo, ee ma aha liis walba",
+  "orgpage.gain3Body":
+    "Waxaan idinku hubinnaa diiwaan dadweyne ama deeq-bixiyahiinna marka aad soo biirtaan. Taas kadib waxaad soo dhigtaan waxaad doontaan, markaad doontaan, idinkoon na sugin.",
+  "orgpage.gain4Title": "Weydiimo khaldan oo yar",
+  "orgpage.gain4Body":
+    "Waxaad sheegtaan cidda aydaan caawin karin, annaguna waan tusnaa. Haweenku way is saaraan ka hor inta aysan idin soo xiriirin, taasoo waqti u celinaysa qofka ka jawaaba sanduuqiinna.",
+  "orgpage.fourSteps": "Afar tallaabo, mid ka mid ahna waa tayada",
+  "orgpage.step1Title": "Noo sheega cidda aad tihiin",
+  "orgpage.step1Body":
+    "Dhowr su'aalood oo ku saabsan waxa aad qabataan, cidda aad u adeegtaan iyo meesha. Toban daqiiqo, waxaadna joojin kartaa badhtanka oo aad dib u soo noqon kartaa.",
+  "orgpage.step2Title": "Waan idin hubinnaa",
+  "orgpage.step2Body":
+    "Diiwaan dadweyne, ama deeq-bixiyahiinna. Hal hubin, oo qof sameeyay.",
+  "orgpage.step3Title": "Soo dhiga waxa furan",
+  "orgpage.step3Body":
+    "Koorso, deeq, imaatin furan, barnaamij hagid ah. Wax kasta oo haweeney albaab u leh.",
+  "orgpage.step4Title": "Way heshaa marka ay ku habboon tahay",
+  "orgpage.step4Body":
+    "Ma aha sababtoo ah magacyada ayay raadisay. Waa sababtoo ah waxa ay sharraxday ayaa u dhigmay waxa aad qabataan.",
+  "orgpage.whereYouSit": "Meesha aad ku jiri lahaydeen",
+  "orgpage.zonesBody":
+    "Idinkaa dooranaya, hal mid oo weyn iyo ilaa laba kale. Haweenka badidood hal mar ayay u baahan yihiin wax ka badan mid, adeegyada badidooduna mid keliya ayay qabtaan, taasina waa farqiga tani u jirto inay xirto.",
 };
 
 const ti: Catalogue = {
@@ -4684,6 +5878,101 @@ const ti: Catalogue = {
   "meta.emailChange.desc": "ኣካውንትኪን ኣብኡ ዝተዓቀበ ኩሉን ናብ ካልእ ኣድራሻ ኣግዓዝዮ።",
   "meta.emailCode.title": "ሓድሽ ኢመይልኪ ርኣዪ",
   "meta.emailCode.desc": "ናብ ሓድሽ ኣድራሻኺ ዝሰደድናዮ ኮድ ኣእትዊ።",
+
+  "settings.savedList": "ዝዓቀብክዮ ዝርዝረይ",
+  "settings.reminders": "መዘኻኸሪታት",
+  "settings.howFar": "ክንደይ ኣቐዲሙ",
+  "settings.nothingElse": "ካልእ ዝኾነ ነገር ኣይንሰድን። ጋዜጣ የለን፡ ምሕጽንታ የለን።",
+  "settings.neverName":
+    "መዘኻኸሪ ኢመይላት ካልእ ሰብ ኢመይልኪ እንተ ኣንበቦ ኢሉ፡ ዓይነት እቲ ደገፍ ፈጺሞም ኣይጠቕሱን።",
+  "settings.emailChanged":
+    "ተዛዚሙ። ኣካውንትኪ ሕጂ ኣብዚ ኣድራሻ እዩ ዘሎ፡ ዝተዓቀበ ዝርዝርኪ እውን ምስኡ መጺኡ።",
+  "reminders.beforeDeadline": "ቅድሚ ናይ መወዳእታ ዕለት",
+  "change.heard": "ንሕና ዝሰማዕናዮ እዚ እዩ",
+  "change.weWillShow":
+    "ውሑዳት ቀጺሎም ዘለዉ ስጉምትታት ከነርእየኪ ኢና፡ እቲ ዝበለጸ ዝሰማምዕ ቀዲሙ። ኣብዚ ንምምጻእ ዝኸፍል የለን።",
+  "startover.confirm": "እዚ መልስታትኪ የጽሪ። ከም ብሓድሽ ንጀምር?",
+  "startover.note": "ዝዓቀብክዮ ኩሉ ኣብ ቦታኡ ይጸንሕ። ዝኸይድ እቲ ብዛዕባ ዘድልየኪ ዝነገርክና ጥራይ እዩ።",
+  "startover.yes": "እወ፡ ከም ብሓድሽ ጀምሪ",
+  "startover.keep": "መልስታተይ ሓዝዮም",
+  "legal.onThisPage": "ኣብዚ ገጽ",
+  "legal.questions": "ብዛዕባ ዝኾነ ካብዚ ዘሎ ሕቶታት ናብ ሰብ እዩ ዝኸይድ፡ ናብ ቅጥዒ ኣይኮነን።",
+  "legal.draftTitle": "እዚ ንድፊ እዩ",
+  "legal.draftBody":
+    "እቲ ኣብ ታሕቲ ዘሎ ቃላት እዚ መድረኽ ሎሚ ብኸመይ ከም ዝሰርሕ ብትኽክል ይገልጽ፡ ግን ገና ናይ መወዳእታ ምርመራ ኣይሓለፈን። ዝተዘርግሐ ንኽተንብብዮን ተሓታትነት ንኽትሓትናን እዩ እምበር ስለ ዝተዛዘመ ኣይኮነን።",
+  "legal.draftAsk": "ኣብዚ ዘሎ ዝኾነ ነገር ንእትገብርዮ ውሳነ ኣገዳሲ እንተ ኾይኑ፡ ሕተትና።",
+  "legal.pendingTitle": "እዚ ገና ይጸሓፍ ኣሎ",
+  "legal.pendingBody":
+    "እቲ ቃላት ኣባና ኣሎ፡ እዚ መድረኽ ቅድሚ ምኽፋቱ ድማ ኣብዚ ክዝርጋሕ እዩ። ክሳብ ሽዑ ኣብዚ ገጽ ዝሰርሕ ነገር የለን።",
+  "legal.pendingAsk":
+    "ኣብ መንጎ እቲ እትጽሕፍዮ ነገር እንታይ ከም ዝኸውን ክትፈልጢ እንተ ደሊኺ፡ ሕተትና እሞ ብንጹር ክንነግረኪ ኢና።",
+  "photos.aria": "ካብ Holistic Wellbeing Summit ዝተወስዱ ስእልታት",
+  "photos.credit": "Holistic Wellbeing Summit",
+  "testimonials.aria": "ደቂ ኣንስትዮ ዝብልኦ",
+  "testimonials.prev": "ዝሓለፈ ጥቕሲ",
+  "testimonials.next": "ቀጺሉ ዘሎ ጥቕሲ",
+  "form.sendCode": "መእተዊ ኮድ ስደዱለይ",
+  "form.yourCode": "መእተዊ ኮድኪ",
+  "form.codeWorks": "እቲ ኮድ ን 15 ደቓይቕ ይሰርሕ።",
+  "form.newCodeSent": "ሓድሽ ኮድ ተሰዲዱ። ንኽበጽሕ ደቒቕ ክወስድ ይኽእል።",
+  "form.sendNewCode": "ሓድሽ ኮድ ስደዱ",
+  "form.theCodeWeSent": "እቲ ዝሰደድናዮ ኮድ",
+  "form.newEmail": "ሓድሽ ኢመይል ኣድራሻ",
+  "form.sendToNew": "ናብቲ ሓድሽ ኣድራሻ ኮድ ስደዱ",
+  "form.firstName": "ቀዳማይ ስም",
+  "form.lastName": "ዳሕራይ ስም",
+  "form.phoneOptional": "ቁጽሪ ስልኪ (ኣማራጺ)",
+  "form.phoneNote": "ንኽንድውለልኪ እንተ ሓቲትክና ጥራይ ኢና እንጥቀመሉ።",
+  "form.continue": "ቀጽሊ",
+  "org.allOrgs": "ኩሎም ትካላት",
+  "org.checked": "ብ HWS ዝተረጋገጸ",
+  "org.website": "ናቶም ዌብሳይት",
+  "org.whatTheyDo": "እንታይ ይገብሩ",
+  "org.whatTheyOffer": "እንታይ የቕርቡ",
+  "org.whoTheyWorkWith": "ምስ መን ይሰርሑ",
+  "org.whoTheyCanHelp": "ንመን ክሕግዙ ይኽእሉ",
+  "org.whoTheyCannot": "ንመን ክሕግዙ ኣይክእሉን",
+  "org.when": "መዓስ",
+  "org.howToReach": "ከመይ ጌርኪ ትረኽብዮም",
+  "org.zones": "ዞባታት ተበጻሕነት",
+  "org.mainOne": "ቀንዲ ዞባኦም",
+  "org.nothingRunning":
+    "ሕጂ ዝካየድ ነገር የብሎምን። እንታይ ከም ዘድልየኪ ንገርና እሞ ኣብ ኩሉ ዘሎና ክንደሊ ኢና።",
+  "org.orTellUs": "ወይ እንታይ ከም ዘድልየኪ ንገርና እሞ ንሕና ክንረኽበልኪ ኢና",
+
+  "orgpage.heroTitle": "እተን ንዓኣተን እትሰርሑለን ደቂ ኣንስትዮ፡ ንኣኻትኩም ክደልያ ከየድለየን",
+  "orgpage.heroBody":
+    "እቲ ስራሕ ድሮ ትሰርሕዎ ኣለኹም። እቲ ጸገም ሓንቲ ጓል ኣንስተይቲ ዌብሳይትኩም ንምርካብ ስምኩም ክትፈልጥ ምግዳዳ እዩ። ኣብዚ ግን ኩነታታ ትገልጽ፡ ንሕና ድማ ቅኑዕ መልሲ ስለ ዝኾንኩም ኣብ ቅድሚኣ ነቐምጠኩም እምበር ስለ ዝገመተት ኣይኮነን።",
+  "orgpage.haveAccount": "ድሮ ኣካውንት ኣለኒ",
+  "orgpage.freeNote": "ነጻ። ዝተኸፍለሉ ቦታ የለን፡ መወዓውዒ የለን፡ ንላዕሊ ንምውጻእ ዝኸፍል እውን የለን።",
+  "orgpage.whatYouGet": "እንታይ ትረኽቡ",
+  "orgpage.reach": "ተበጻሕነት፡ ከምኡ ድማ ንምርግጋጹ ዝኸውን መንገዲ",
+  "orgpage.gain1Title": "እቲ እትገብርዎ ዝደልያ ዝነበራ ደቂ ኣንስትዮ",
+  "orgpage.gain1Body":
+    "ኩነታታ ብናታ ቃላት ትገልጽ። ንሕና ድማ ምስ ንመን ተዳሊኹም ከም ዘለኹም፡ እንታይ ከም እትህቡ፡ ኣበይ ከም እትሰርሑን ክንደይ ከም ዝኽፈልን ነወዳድሮ። ብቕዕቲ ምዃናን ዘይምዃናን ፈሊጣ እያ እትመጽእ።",
+  "orgpage.gain2Title": "ናብ ወሃቢ ገንዘብ ክትወስድዎ እትኽእሉ ቁጽርታት",
+  "orgpage.gain2Body":
+    "ክንደይ ደቂ ኣንስትዮ ናብ ናትኩም ዌብሳይት ከም ዝተላእካ፡ ክንደይ ገጽ ትካልኩም ከም ዘንበባ፡ ከምኡ ድማ ዝዘርጋሕኩምዎ ነፍሲ ወከፍ ነገር ከመይ ከም ዝሰርሐ። ናይ ውዳሰ ቁጽሪ ኣይኮነን፡ እቲ ቀዳማይ ነቶም ጠዊቖም ናባኹም ዝመጹ ሰባት እዩ ዝቖጽር።",
+  "orgpage.gain3Title": "ሓደ ግዜ ይረጋገጽ፡ ኣብ ነፍሲ ወከፍ ዝርዝር ኣይኮነን",
+  "orgpage.gain3Body":
+    "ክትጽምበሩ ከለኹም ብህዝባዊ መዝገብ ወይ ብወሃቢ ገንዘብኩም ንሕልወኩም። ድሕሪኡ ዝደለኹምዎ ኣብ ዝደለኹምሉ ግዜ ትዝርግሑ፡ ንዓና ከይተጸበኹም።",
+  "orgpage.gain4Title": "ዝወሓደ ዘይተደልየ ሕቶታት",
+  "orgpage.gain4Body":
+    "ንመን ክትሕግዙ ከም ዘይትኽእሉ ትነግሩ፡ ንሕና ድማ ነርእዮ። ደቂ ኣንስትዮ ቅድሚ ምርካብኩም ባዕላተን ይወጻ፡ እዚ ድማ ነቲ ኢመይልኩም ዝምልስ ሰብ ዝምለሰሉ ግዜ እዩ።",
+  "orgpage.fourSteps": "ኣርባዕተ ስጉምትታት፡ ሓደ ካባታቶም ድማ ናትና እዩ",
+  "orgpage.step1Title": "መን ምዃንኩም ንገሩና",
+  "orgpage.step1Body":
+    "ብዛዕባ እትገብርዎ፡ ንመን ከም እተገልግሉን ኣበይን ውሑዳት ሕቶታት። ዓሰርተ ደቒቕ፡ ኣብ መንጎ ደው ኢልኩም ክትምለሱ እውን ትኽእሉ።",
+  "orgpage.step2Title": "ንሕልወኩም",
+  "orgpage.step2Body": "ብህዝባዊ መዝገብ ወይ ብወሃቢ ገንዘብኩም። ሓደ ምርመራ፡ ብሰብ ዝተገብረ።",
+  "orgpage.step3Title": "ክፉት ዘሎ ኣስፍሩ",
+  "orgpage.step3Body":
+    "ትምህርቲ፡ ገንዘባዊ ሓገዝ፡ ክፉት ኣገልግሎት፡ መደብ ምምካር። ንሓንቲ ጓል ኣንስተይቲ መእተዊ ዘለዎ ዝኾነ ነገር።",
+  "orgpage.step4Title": "ዝሰማምዓላ ግዜ ትረኽቦ",
+  "orgpage.step4Body": "ስምኩም ስለ ዝደለየት ዘይኮነ፡ እቲ ዝገለጸቶ ነገር ምስቲ እተካይድዎ ስለ ዝሰማምዐ እዩ።",
+  "orgpage.whereYouSit": "ኣበይ ምተቐመጥኩም",
+  "orgpage.zonesBody":
+    "ባዕልኻትኩም ትመርጹ፡ ሓደ ቀንዲን ክሳብ ክልተ ካልኦትን። መብዛሕትአን ደቂ ኣንስትዮ ኣብ ሓደ እዋን ካብ ሓደ ንላዕሊ የድልየን፡ መብዛሕትኡ ኣገልግሎት ግን ሓደ ጥራይ እዩ ዝገብር፡ እዚ ድማ እቲ ክዓጽዎ ዝተፈጥረሉ ጋግ እዩ።",
 };
 
 export const MESSAGES: Record<string, Catalogue> & { en: Record<MessageKey, string> } = {

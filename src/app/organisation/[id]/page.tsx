@@ -140,7 +140,7 @@ export default async function OrganisationProfilePage({
   const organisation = await getOrganisationProfile(id);
   if (!organisation) notFound();
 
-  const [zones, listings, { label, labels }] = await Promise.all([
+  const [zones, listings, { t, label, labels }] = await Promise.all([
     getZonesForOrganisation(organisation.id),
     getListingsForOrganisation(organisation.id),
     getTranslator(),
@@ -196,7 +196,7 @@ export default async function OrganisationProfilePage({
           className="inline-flex min-h-[44px] items-center gap-[6px] self-start text-[14px] font-bold text-ink no-underline"
         >
           <ArrowLeft size={16} strokeWidth={2} aria-hidden="true" />
-          All organisations
+          {t("org.allOrgs")}
         </Link>
 
         <header className="mt-4 flex flex-col gap-7">
@@ -229,7 +229,7 @@ export default async function OrganisationProfilePage({
               <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[16px] text-ink-70">
                 <span className="flex items-center gap-[6px] font-semibold text-green-700">
                   <BadgeCheck size={17} strokeWidth={2} aria-hidden="true" />
-                  Checked by HWS
+                  {t("org.checked")}
                 </span>
                 {organisation.place ? (
                   <span className="flex items-center gap-[6px]">
@@ -278,7 +278,7 @@ export default async function OrganisationProfilePage({
                 rel="noopener noreferrer nofollow"
                 className="inline-flex min-h-[44px] items-center gap-2 rounded-full bg-surface px-7 py-4 text-[17px] font-bold text-ink no-underline shadow-hairline transition-[box-shadow] duration-150 ease-out hover:shadow-hairline-gold"
               >
-                Their website
+                {t("org.website")}
                 <ExternalLink size={17} strokeWidth={2} aria-hidden="true" />
               </a>
             ) : null}
@@ -293,7 +293,7 @@ export default async function OrganisationProfilePage({
         >
           <div className="flex flex-col gap-8">
             {organisation.mission ? (
-              <Block title="What they do">
+              <Block title={t("org.whatTheyDo")}>
                 <Prose>{organisation.mission}</Prose>
                 {organisation.uniqueOffer ? (
                   <p className="m-0 max-w-[62ch] text-[17px] leading-[1.65] text-ink-70">
@@ -304,19 +304,19 @@ export default async function OrganisationProfilePage({
             ) : null}
 
             {kinds.length > 0 ? (
-              <Block title="What they offer">
+              <Block title={t("org.whatTheyOffer")}>
                 <Tags items={kinds} />
               </Block>
             ) : null}
 
             {audiences.length > 0 ? (
-              <Block title="Who they work with">
+              <Block title={t("org.whoTheyWorkWith")}>
                 <Tags items={audiences} />
               </Block>
             ) : null}
 
             {organisation.eligibility ? (
-              <Block title="Who they can help">
+              <Block title={t("org.whoTheyCanHelp")}>
                 <Prose>{organisation.eligibility}</Prose>
               </Block>
             ) : null}
@@ -331,7 +331,7 @@ export default async function OrganisationProfilePage({
                 />
                 <div className="flex flex-col gap-1">
                   <span className="text-[16px] font-bold text-red-700">
-                    Who they cannot help
+                    {t("org.whoTheyCannot")}
                   </span>
                   <p className="m-0 max-w-[58ch] text-[16px] leading-[1.6] text-red-700">
                     {organisation.notEligible}
@@ -350,10 +350,10 @@ export default async function OrganisationProfilePage({
             <aside className="flex flex-col gap-8 self-start lg:sticky lg:top-8">
               {hasFacts ? (
                 <dl className="m-0 flex flex-col gap-4 rounded-card border border-hairline bg-ground p-6">
-                  {where ? <Fact label="Where">{where}</Fact> : null}
-                  {when ? <Fact label="When">{when}</Fact> : null}
+                  {where ? <Fact label={t("service.where")}>{where}</Fact> : null}
+                  {when ? <Fact label={t("org.when")}>{when}</Fact> : null}
                   {costs.length > 0 || costNote ? (
-                    <Fact label="Cost">
+                    <Fact label={t("service.cost")}>
                       {costs.length > 0 ? costs.join(" · ") : null}
                       {costNote ? (
                         <span className="mt-[3px] block text-[15px] leading-[1.5] text-ink-70">
@@ -363,14 +363,14 @@ export default async function OrganisationProfilePage({
                     </Fact>
                   ) : null}
                   {routes.length > 0 ? (
-                    <Fact label="How to reach them">{routes.join(", ")}</Fact>
+                    <Fact label={t("org.howToReach")}>{routes.join(", ")}</Fact>
                   ) : null}
                 </dl>
               ) : null}
 
               {zones.length > 0 ? (
                 <div className="flex flex-col gap-3">
-                  <h2 className="m-0 eyebrow text-ink-60">Access Zones</h2>
+                  <h2 className="m-0 eyebrow text-ink-60">{t("org.zones")}</h2>
                   {/* Stacked rather than wrapped. A zone name is long and the
                       column is narrow, so chips in a row would break mid-name
                       and the marker on the main one would land on its own
@@ -385,7 +385,7 @@ export default async function OrganisationProfilePage({
                         <span className="leading-[1.35]">{zone.name}</span>
                         {zone.isPrimary ? (
                           <span className="text-[13px] font-medium text-ink-60">
-                            Their main one
+                            {t("org.mainOne")}
                           </span>
                         ) : null}
                       </Link>
@@ -413,8 +413,7 @@ export default async function OrganisationProfilePage({
 
             {listings.length === 0 ? (
               <p className="m-0 max-w-[58ch] text-[17px] leading-[1.6] text-ink-70">
-                They have nothing running at the moment. Tell us what you need
-                and we will look across every organisation, not just this one.
+                {t("org.nothingRunning")}
               </p>
             ) : (
               <div className="flex flex-col gap-[14px]">
@@ -457,7 +456,7 @@ export default async function OrganisationProfilePage({
               href="/find"
               className="mt-1 inline-flex min-h-[44px] items-center gap-2 self-start p-1 text-[16px] font-bold text-gold-700 no-underline"
             >
-              Or tell us what you need and we will match you
+              {t("org.orTellUs")}
               <ArrowRight size={17} strokeWidth={2} aria-hidden="true" />
             </Link>
           </section>
