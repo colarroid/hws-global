@@ -659,7 +659,7 @@ const en: Record<MessageKey, string> = {
   "discover.orAnswer": "Or answer three questions and we will match you",
   "discover.byZone": "Browse by Access Zone",
   "discover.byZoneNote":
-    "The eight kinds of support the platform is built around. Each one leads to the organisations working in it.",
+    "The kinds of support the platform is built around. Each one leads to the organisations working in it.",
   "discover.nobodyYet": "Nobody here yet",
   "discover.byNeed": "Browse by what you need",
   "discover.byNeedNote": "Say it the way you would say it out loud.",
@@ -1138,7 +1138,7 @@ const gd: Catalogue = {
   "discover.orAnswer": "No freagair trì ceistean agus lorgaidh sinn rud dhut",
   "discover.byZone": "Rùraich a rèir Raon Ruigsinneachd",
   "discover.byZoneNote":
-    "Na h-ochd seòrsaichean taice air a bheil an t-àrd-ùrlar air a thogail. Bheir gach fear thu dha na buidhnean a tha ag obair ann.",
+    "Na seòrsaichean taice air a bheil an t-àrd-ùrlar air a thogail. Bheir gach fear thu dha na buidhnean a tha ag obair ann.",
   "discover.nobodyYet": "Chan eil duine an seo fhathast",
   "discover.byNeed": "Rùraich a rèir na tha a dhìth ort",
   "discover.byNeedNote": "Abair e mar a chanadh tu a-mach e.",
@@ -1634,7 +1634,7 @@ const sco: Catalogue = {
   "discover.orAnswer": "Or answer three quaistens and we'll match ye",
   "discover.byZone": "Brouse bi Access Zone",
   "discover.byZoneNote":
-    "The echt kinds o support the platform is biggit roond. Ilk ane leads tae the organisations warkin in it.",
+    "The kinds o support the platform is biggit roond. Ilk ane leads tae the organisations warkin in it.",
   "discover.nobodyYet": "Naebody here yet",
   "discover.byNeed": "Brouse bi whit ye need",
   "discover.byNeedNote": "Say it the wey ye'd say it oot loud.",
@@ -2110,7 +2110,7 @@ const pl: Catalogue = {
     "Albo odpowiedz na trzy pytania, a my dopasujemy coś dla ciebie",
   "discover.byZone": "Przeglądaj według Strefy Dostępu",
   "discover.byZoneNote":
-    "Osiem rodzajów wsparcia, wokół których zbudowana jest platforma. Każdy prowadzi do organizacji, które się nim zajmują.",
+    "Rodzaje wsparcia, wokół których zbudowana jest platforma. Każdy prowadzi do organizacji, które się nim zajmują.",
   "discover.nobodyYet": "Jeszcze nikogo tu nie ma",
   "discover.byNeed": "Przeglądaj według tego, czego potrzebujesz",
   "discover.byNeedNote": "Powiedz to tak, jak powiedziałabyś na głos.",
@@ -2594,7 +2594,7 @@ const uk: Catalogue = {
     "Або дайте відповідь на три питання, і ми підберемо для вас",
   "discover.byZone": "Переглядати за Зоною доступу",
   "discover.byZoneNote":
-    "Вісім видів підтримки, навколо яких побудовано платформу. Кожен веде до організацій, що ним займаються.",
+    "Види підтримки, навколо яких побудовано платформу. Кожен веде до організацій, що ним займаються.",
   "discover.nobodyYet": "Тут поки нікого немає",
   "discover.byNeed": "Переглядати за тим, що вам потрібно",
   "discover.byNeedNote": "Скажіть так, як сказали б уголос.",
@@ -3076,7 +3076,7 @@ const ar: Catalogue = {
   "discover.orAnswer": "أو أجيبي عن ثلاثة أسئلة وسنجد لكِ ما يناسبك",
   "discover.byZone": "تصفّحي حسب مجال الوصول",
   "discover.byZoneNote":
-    "أنواع الدعم الثمانية التي بُنيت عليها المنصة. كل واحد يقودك إلى الجهات العاملة فيه.",
+    "أنواع الدعم التي بُنيت عليها المنصة. كل واحد يقودك إلى الجهات العاملة فيه.",
   "discover.nobodyYet": "لا أحد هنا بعد",
   "discover.byNeed": "تصفّحي حسب ما تحتاجين",
   "discover.byNeedNote": "قوليها كما تقولينها بصوت عالٍ.",
@@ -3538,7 +3538,7 @@ const ur: Catalogue = {
   "discover.orAnswer": "یا تین سوالوں کے جواب دیں اور ہم آپ کے لیے تلاش کریں گے",
   "discover.byZone": "رسائی زون کے حساب سے دیکھیں",
   "discover.byZoneNote":
-    "مدد کی وہ آٹھ اقسام جن پر یہ پلیٹ فارم بنا ہے۔ ہر ایک آپ کو اس میں کام کرنے والے اداروں تک لے جاتی ہے۔",
+    "مدد کی وہ اقسام جن پر یہ پلیٹ فارم بنا ہے۔ ہر ایک آپ کو اس میں کام کرنے والے اداروں تک لے جاتی ہے۔",
   "discover.nobodyYet": "ابھی یہاں کوئی نہیں",
   "discover.byNeed": "اپنی ضرورت کے حساب سے دیکھیں",
   "discover.byNeedNote": "جیسے آپ بول کر کہتیں، ویسے ہی کہیں۔",
@@ -4021,7 +4021,7 @@ const pa: Catalogue = {
   "discover.orAnswer": "ਜਾਂ ਤਿੰਨ ਸਵਾਲਾਂ ਦੇ ਜਵਾਬ ਦਿਓ ਤੇ ਅਸੀਂ ਤੁਹਾਡੇ ਲਈ ਲੱਭਾਂਗੇ",
   "discover.byZone": "ਪਹੁੰਚ ਖੇਤਰ ਮੁਤਾਬਕ ਵੇਖੋ",
   "discover.byZoneNote":
-    "ਸਹਾਰੇ ਦੀਆਂ ਉਹ ਅੱਠ ਕਿਸਮਾਂ ਜਿਨ੍ਹਾਂ ਦੁਆਲੇ ਇਹ ਪਲੇਟਫਾਰਮ ਬਣਿਆ ਹੈ। ਹਰ ਇੱਕ ਉਸ ਵਿੱਚ ਕੰਮ ਕਰਦੇ ਅਦਾਰਿਆਂ ਤੱਕ ਲੈ ਜਾਂਦੀ ਹੈ।",
+    "ਸਹਾਰੇ ਦੀਆਂ ਉਹ ਕਿਸਮਾਂ ਜਿਨ੍ਹਾਂ ਦੁਆਲੇ ਇਹ ਪਲੇਟਫਾਰਮ ਬਣਿਆ ਹੈ। ਹਰ ਇੱਕ ਉਸ ਵਿੱਚ ਕੰਮ ਕਰਦੇ ਅਦਾਰਿਆਂ ਤੱਕ ਲੈ ਜਾਂਦੀ ਹੈ।",
   "discover.nobodyYet": "ਅਜੇ ਇੱਥੇ ਕੋਈ ਨਹੀਂ",
   "discover.byNeed": "ਆਪਣੀ ਲੋੜ ਮੁਤਾਬਕ ਵੇਖੋ",
   "discover.byNeedNote": "ਜਿਵੇਂ ਤੁਸੀਂ ਬੋਲ ਕੇ ਕਹਿੰਦੇ, ਉਵੇਂ ਹੀ ਕਹੋ।",
@@ -4488,7 +4488,7 @@ const zh: Catalogue = {
   "discover.searchButton": "搜索机构",
   "discover.orAnswer": "或者回答三个问题，我们为你匹配",
   "discover.byZone": "按访问领域浏览",
-  "discover.byZoneNote": "平台围绕的八类支持。每一类都通向在该领域工作的机构。",
+  "discover.byZoneNote": "平台围绕的各类支持。每一类都通向在该领域工作的机构。",
   "discover.nobodyYet": "这里还没有机构",
   "discover.byNeed": "按你的需要浏览",
   "discover.byNeedNote": "就像你说出口那样说。",
@@ -4912,7 +4912,7 @@ const ro: Catalogue = {
     "Sau răspunde la trei întrebări și îți găsim noi ceva potrivit",
   "discover.byZone": "Caută după Zona de acces",
   "discover.byZoneNote":
-    "Cele opt feluri de sprijin în jurul cărora este construită platforma. Fiecare duce la organizațiile care lucrează acolo.",
+    "Felurile de sprijin în jurul cărora este construită platforma. Fiecare duce la organizațiile care lucrează acolo.",
   "discover.nobodyYet": "Încă nu este nimeni aici",
   "discover.byNeed": "Caută după ce ai nevoie",
   "discover.byNeedNote": "Spune-o așa cum ai spune-o cu voce tare.",
@@ -5399,7 +5399,7 @@ const so: Catalogue = {
   "discover.orAnswer": "Ama ka jawaab saddex su'aal oo waannu kuu raadinaynaa",
   "discover.byZone": "Ka eeg Aagga Helitaanka",
   "discover.byZoneNote":
-    "Siddeedda nooc ee taageero ee barahan lagu dhisay. Mid kastaa wuxuu ku geynayaa hay'adaha ka shaqeeya.",
+    "Noocyada taageero ee barahan lagu dhisay. Mid kastaa wuxuu ku geynayaa hay'adaha ka shaqeeya.",
   "discover.nobodyYet": "Weli qofna halkan ma joogo",
   "discover.byNeed": "Ka eeg waxa aad u baahan tahay",
   "discover.byNeedNote": "U sheeg sidaad afka uga sheegi lahayd.",
@@ -5878,7 +5878,7 @@ const ti: Catalogue = {
   "discover.orAnswer": "ወይ ሰለስተ ሕቶታት መልሲ እሞ ንሕና ክንረኽበልኪ ኢና",
   "discover.byZone": "ብዞባ ተበጻሕነት ረኣዪ",
   "discover.byZoneNote":
-    "እቶም ሸሞንተ ዓይነታት ደገፍ እዚ መድረኽ ዝተሃንጸሎም። ነፍሲ ወከፎም ናብቶም ኣብኡ ዝሰርሑ ትካላት ይመርሑ።",
+    "እቶም ዓይነታት ደገፍ እዚ መድረኽ ዝተሃንጸሎም። ነፍሲ ወከፎም ናብቶም ኣብኡ ዝሰርሑ ትካላት ይመርሑ።",
   "discover.nobodyYet": "ክሳብ ሕጂ ዝኾነ የለን",
   "discover.byNeed": "በቲ ዘድልየኪ ረኣዪ",
   "discover.byNeedNote": "ከምቲ ብኣፍኪ እትብልዮ ኢልክዮ።",

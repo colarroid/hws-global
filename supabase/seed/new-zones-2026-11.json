@@ -1,0 +1,106 @@
+{
+  "_note": [
+    "Four Access Zones proposed by HWS on 13 November 2026, added on the same",
+    "day. The client's note gave a 'who it gives a clearer route to' paragraph",
+    "for each; the focus line below is that paragraph in the register the",
+    "other eight use — a short phrase, not a sentence.",
+    "",
+    "Slugs are permanent: they are the URL of the zone page and the key every",
+    "translation hangs off. Renaming one later orphans its translations, which",
+    "is what npm run check:vocab reports."
+  ],
+  "zones": [
+    {
+      "slug": "migration-language-settlement",
+      "name": "Migration, Language & Settlement",
+      "focus": "English classes, rights, qualification recognition, community connection",
+      "sort_order": 9
+    },
+    {
+      "slug": "safety-justice-recovery",
+      "name": "Safety, Justice & Recovery",
+      "focus": "Specialist support for abuse, harassment and exploitation",
+      "sort_order": 10
+    },
+    {
+      "slug": "housing-household-security",
+      "name": "Housing & Household Security",
+      "focus": "Housing, homelessness, debt, food and fuel",
+      "sort_order": 11
+    },
+    {
+      "slug": "care-disability-independent-living",
+      "name": "Care, Disability & Independent Living",
+      "focus": "Caring, disability, childcare, respite and independent living",
+      "sort_order": 12
+    }
+  ],
+  "translations": {
+    "gd": {
+      "migration-language-settlement": ["Imrich, Cànan agus Tuineachadh", "Clasaichean Beurla, còraichean, aithneachadh theisteanas, ceangal coimhearsnachd"],
+      "safety-justice-recovery": ["Sàbhailteachd, Ceartas agus Faighinn Seachad Air", "Taic shònraichte le droch-dhìol, sàrachadh agus gabhail brath"],
+      "housing-household-security": ["Taigheadas agus Tèarainteachd Dachaigh", "Taigheadas, dìth dachaigh, fiachan, biadh agus connadh"],
+      "care-disability-independent-living": ["Cùram, Ciorram agus Beatha Neo-eisimeileach", "Cùram, ciorram, cùram-chloinne, fois agus beatha neo-eisimeileach"]
+    },
+    "sco": {
+      "migration-language-settlement": ["Migration, Language & Settlin", "English classes, richts, qualification recognition, community connection"],
+      "safety-justice-recovery": ["Safety, Juistice & Recovery", "Specialist support for abuse, harassment and exploitation"],
+      "housing-household-security": ["Hoosin & Hoosehaud Security", "Hoosin, homelessness, debt, meat and fuel"],
+      "care-disability-independent-living": ["Care, Disability & Independent Livin", "Carin, disability, bairn care, respite and independent livin"]
+    },
+    "pl": {
+      "migration-language-settlement": ["Migracja, język i osiedlenie", "Kursy angielskiego, prawa, uznanie kwalifikacji, kontakt ze społecznością"],
+      "safety-justice-recovery": ["Bezpieczeństwo, sprawiedliwość i powrót do siebie", "Specjalistyczne wsparcie przy przemocy, nękaniu i wyzysku"],
+      "housing-household-security": ["Mieszkanie i bezpieczeństwo domowe", "Mieszkanie, bezdomność, długi, jedzenie i opał"],
+      "care-disability-independent-living": ["Opieka, niepełnosprawność i samodzielne życie", "Opieka, niepełnosprawność, opieka nad dziećmi, wytchnienie i samodzielne życie"]
+    },
+    "uk": {
+      "migration-language-settlement": ["Міграція, мова та облаштування", "Курси англійської, права, визнання кваліфікацій, звʼязок із громадою"],
+      "safety-justice-recovery": ["Безпека, правосуддя та відновлення", "Спеціалізована підтримка при насильстві, переслідуванні та експлуатації"],
+      "housing-household-security": ["Житло та побутова захищеність", "Житло, безпритульність, борги, їжа та паливо"],
+      "care-disability-independent-living": ["Догляд, інвалідність і самостійне життя", "Догляд, інвалідність, догляд за дітьми, перепочинок і самостійне життя"]
+    },
+    "ar": {
+      "migration-language-settlement": ["الهجرة واللغة والاستقرار", "دروس الإنجليزية، الحقوق، الاعتراف بالمؤهلات، التواصل مع المجتمع"],
+      "safety-justice-recovery": ["الأمان والعدالة والتعافي", "دعم متخصص في حالات الإساءة والتحرش والاستغلال"],
+      "housing-household-security": ["السكن وأمان المعيشة", "السكن، التشرد، الديون، الطعام والتدفئة"],
+      "care-disability-independent-living": ["الرعاية والإعاقة والعيش المستقل", "الرعاية، الإعاقة، رعاية الأطفال، الاستراحة والعيش المستقل"]
+    },
+    "ur": {
+      "migration-language-settlement": ["ہجرت، زبان اور آباد کاری", "انگریزی کلاسیں، حقوق، اسناد کی شناخت، برادری سے رابطہ"],
+      "safety-justice-recovery": ["تحفظ، انصاف اور بحالی", "زیادتی، ہراسانی اور استحصال میں ماہرانہ مدد"],
+      "housing-household-security": ["رہائش اور گھریلو تحفظ", "رہائش، بے گھری، قرض، خوراک اور ایندھن"],
+      "care-disability-independent-living": ["دیکھ بھال، معذوری اور خودمختار زندگی", "دیکھ بھال، معذوری، بچوں کی نگہداشت، وقفہ اور خودمختار زندگی"]
+    },
+    "pa": {
+      "migration-language-settlement": ["ਪਰਵਾਸ, ਭਾਸ਼ਾ ਤੇ ਵਸੇਬਾ", "ਅੰਗਰੇਜ਼ੀ ਕਲਾਸਾਂ, ਹੱਕ, ਯੋਗਤਾਵਾਂ ਦੀ ਮਾਨਤਾ, ਭਾਈਚਾਰੇ ਨਾਲ ਜੁੜਾਅ"],
+      "safety-justice-recovery": ["ਸੁਰੱਖਿਆ, ਇਨਸਾਫ਼ ਤੇ ਸੰਭਲਣਾ", "ਦੁਰਵਿਵਹਾਰ, ਤੰਗ-ਪ੍ਰੇਸ਼ਾਨੀ ਤੇ ਸ਼ੋਸ਼ਣ ਵਿੱਚ ਮਾਹਰ ਮਦਦ"],
+      "housing-household-security": ["ਰਿਹਾਇਸ਼ ਤੇ ਘਰੇਲੂ ਸੁਰੱਖਿਆ", "ਰਿਹਾਇਸ਼, ਬੇਘਰੀ, ਕਰਜ਼ਾ, ਖਾਣਾ ਤੇ ਬਾਲਣ"],
+      "care-disability-independent-living": ["ਸੰਭਾਲ, ਅਪਾਹਜਤਾ ਤੇ ਆਜ਼ਾਦ ਜੀਵਨ", "ਸੰਭਾਲ, ਅਪਾਹਜਤਾ, ਬੱਚਿਆਂ ਦੀ ਦੇਖਭਾਲ, ਆਰਾਮ ਤੇ ਆਜ਼ਾਦ ਜੀਵਨ"]
+    },
+    "zh": {
+      "migration-language-settlement": ["移民、语言与安顿", "英语课程、权利、学历认可、社区联系"],
+      "safety-justice-recovery": ["安全、司法与复原", "针对虐待、骚扰与剥削的专业支持"],
+      "housing-household-security": ["住房与家庭保障", "住房、无家可归、债务、食物与燃料"],
+      "care-disability-independent-living": ["照顾、残障与自主生活", "照顾、残障、托育、喘息服务与自主生活"]
+    },
+    "ro": {
+      "migration-language-settlement": ["Migrație, limbă și stabilire", "Cursuri de engleză, drepturi, recunoașterea calificărilor, legături în comunitate"],
+      "safety-justice-recovery": ["Siguranță, justiție și refacere", "Sprijin specializat pentru abuz, hărțuire și exploatare"],
+      "housing-household-security": ["Locuire și siguranța gospodăriei", "Locuință, lipsa locuinței, datorii, hrană și încălzire"],
+      "care-disability-independent-living": ["Îngrijire, dizabilitate și viață independentă", "Îngrijire, dizabilitate, creșterea copiilor, respiro și viață independentă"]
+    },
+    "so": {
+      "migration-language-settlement": ["Socdaal, Luqad iyo Degitaan", "Fasalada Ingiriisiga, xuquuqda, aqoonsiga shahaadooyinka, xiriirka bulshada"],
+      "safety-justice-recovery": ["Badbaado, Caddaalad iyo Soo Kabasho", "Taageero takhasus leh oo xadgudub, dhibaataynta iyo ka faa'iidaysiga ah"],
+      "housing-household-security": ["Guri iyo Badbaadada Qoyska", "Guri, guri la'aan, deyn, cunto iyo shidaal"],
+      "care-disability-independent-living": ["Daryeel, Naafonimo iyo Nolol Madax-bannaan", "Daryeel, naafonimo, xannaanada carruurta, nasasho iyo nolol madax-bannaan"]
+    },
+    "ti": {
+      "migration-language-settlement": ["ስደት፡ ቋንቋን መንበሪን", "ናይ እንግሊዝኛ ትምህርቲ፡ መሰላት፡ ምስክር ወረቐት ምፍላጥ፡ ምስ ሕብረተሰብ ምትእስሳር"],
+      "safety-justice-recovery": ["ድሕንነት፡ ፍትሕን ምሕዋይን", "ኣብ ጐነጽ፡ ምክልባትን ምምዝማዝን ዝተሞኮረ ደገፍ"],
+      "housing-household-security": ["መንበሪ ገዛን ናይ ስድራ ድሕንነትን", "መንበሪ ገዛ፡ ገዛ ምስኣን፡ ዕዳ፡ መግብን ነዳድን"],
+      "care-disability-independent-living": ["ክንክን፡ ስንክልናን ርእሰ ምምሕዳር ናብራን", "ክንክን፡ ስንክልና፡ ሕጻናት ምእላይ፡ ዕረፍትን ባዕልኻ ምንባርን"]
+    }
+  }
+}
