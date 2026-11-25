@@ -377,6 +377,23 @@ export async function deleteAccount(): Promise<FormState> {
 
   const { error } = await supabase.rpc("delete_own_account");
 
+  // 42501 is the one refusal that is not a failure: this account belongs to
+  // an organisation, and the cascade would take its membership with it,
+  // leaving a verified organisation and its live listings with nobody in
+  // them. That happened once, on 24 November 2026, and migration 0028 is
+  // what stops it happening again. The screen does not offer the button in
+  // that case, so arriving here means the page was stale or the call came
+  // from somewhere else; either way she is told what is actually true.
+  if (error?.code === "42501") {
+    return {
+      error:
+        "This account also runs an organisation on Path Grid, so it can't " +
+        "be deleted here — that would take the organisation and its " +
+        "listings with it. Close or hand on the organisation in the " +
+        "organisation portal first.",
+    };
+  }
+
   if (error) {
     return {
       error:

@@ -7,7 +7,8 @@ import { ArrowLeft } from "lucide-react";
 import { Page } from "@/components/ui/Page";
 import { RemindersToggle } from "@/components/account/RemindersToggle";
 import { DangerZone } from "@/components/account/DangerZone";
-import { getAccount } from "@/lib/data/account";
+import { getAccount, getMyOrganisation } from "@/lib/data/account";
+import { portalUrl } from "@/lib/portal";
 import { getSavedIds } from "@/lib/saved";
 
 export function generateMetadata(): Promise<Metadata> {
@@ -38,7 +39,13 @@ export default async function SettingsPage({
   if (!account) redirect("/account");
 
   const { email: emailState } = await searchParams;
-  const saved = await getSavedIds();
+  // Asked for here rather than inside DangerZone, which is a client
+  // component. Null for almost everybody; when it is not, the delete button
+  // is replaced rather than merely warned about. See migration 0028.
+  const [saved, organisation] = await Promise.all([
+    getSavedIds(),
+    getMyOrganisation(),
+  ]);
 
   return (
     <Page width={600} top={56} gap={30}>
@@ -105,7 +112,11 @@ export default async function SettingsPage({
         </div>
       </section>
 
-      <DangerZone savedCount={saved.length} />
+      <DangerZone
+        savedCount={saved.length}
+        organisation={organisation}
+        portalUrl={portalUrl()}
+      />
     </Page>
   );
 }
